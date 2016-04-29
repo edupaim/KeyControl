@@ -61,7 +61,15 @@ public class ChaveRN {
 		}
 	}
 
-	public List<ChaveDTO> buscarChave(ChaveDTO chave) throws NegocioException;
+	public List<ChaveDTO> buscarChave(ChaveDTO chave) throws NegocioException {
+		try {
+			List<ChaveDTO> chaves = ChaveDAO.buscarChave();
+			return chaves;
+		}
+		catch (PersistenciaException ex) {
+			throw new NegocioException(ex.getMessage(), ex);
+		}
+	}
 
 	public boolean devolucaoChave(BeneficiarioDTO benef, ChaveDTO chave) throws NegocioException;
 
