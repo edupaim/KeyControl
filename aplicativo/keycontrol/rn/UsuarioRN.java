@@ -37,4 +37,8 @@ public class UsuarioRN {
         return usuarioR;
     }
 
+    public boolean cadastrarUsuario(UsuarioDTO usuario) throws NegocioException { /* ... */ }
+
+    public boolean alterarUsuario(UsuarioDTO usuario) throws NegocioException { /* ... */ }
+
 }
