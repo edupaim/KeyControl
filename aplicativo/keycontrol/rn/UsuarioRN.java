@@ -6,8 +6,6 @@ import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.main.KeyControl;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /*
  * @author Edu
@@ -63,37 +61,47 @@ public class UsuarioRN {
         return resul;
     }
 
-    public void atualizar(Integer id, UsuarioDTO u) throws NegocioException {
+    public boolean atualizar(Integer id, UsuarioDTO u, String senha, String senhar) throws NegocioException {
+        boolean resul = false;
         try {
             if (id == null || id == 0) {
                 throw new NegocioException("ID inválido.");
             }
             if (u.getLogin() == null || "".equals(u.getLogin())) {
                 throw new NegocioException("Login obrigatório.");
+            } else if (u.getNome() == null || "".equals(u.getNome())) {
+                throw new NegocioException("Nome obrigatório.");
             } else if (u.getSenha() == null || "".equals(u.getSenha())) {
                 throw new NegocioException("Senha obrigatória.");
+            } else if (!senhar.equals(senha)) {
+                throw new NegocioException("Repita a senha nova corretamente.");
             } else {
                 u.setLogin(u.getLogin().trim());
                 u.setNome(u.getNome().trim());
                 u.setSenha(u.getSenha().trim());
                 UsuarioDAO usuarioDAO = new UsuarioDAO();
                 usuarioDAO.atualizar(id, u);
+                resul = true;
             }
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }
+        return resul;
     }
 
-    public void deletar(Integer id) throws NegocioException {
+    public boolean deletar(Integer id) throws NegocioException {
+        boolean resul = false;
         try {
             if (id == null || id == 0) {
                 throw new NegocioException("ID inválido.");
             }
             UsuarioDAO dao = new UsuarioDAO();
             dao.deletar(id);
+            resul = true;
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }
+        return resul;
     }
 
     public List<UsuarioDTO> listarTodos() throws NegocioException {
