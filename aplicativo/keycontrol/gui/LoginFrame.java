@@ -141,15 +141,19 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButSairActionPerformed
 
     private void ButLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButLoginActionPerformed
-        String login = TextLogin.getText();
-        String senha = (String.copyValueOf(TextPsw.getPassword()));
+        UsuarioDTO user = new UsuarioDTO();
+        user.setLogin(TextLogin.getText()); 
+        user.setSenha(String.copyValueOf(TextPsw.getPassword()));
         UsuarioRN loginBo = new UsuarioRN();
         UsuarioDTO userLogin;
         try {
-            userLogin = loginBo.logar(login, senha);
+            userLogin = loginBo.logar(user.getLogin(), user.getSenha());
             if(userLogin != null){
                 MensagensUtil.addMsg(LoginFrame.this, "Login com sucesso!");
                 this.dispose();
+                MainFrame mainFrame = new MainFrame();
+                mainFrame.setLocationRelativeTo(null);
+                mainFrame.setVisible(true);
             }
         } catch (NegocioException ex) {
             ex.printStackTrace();

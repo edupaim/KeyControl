@@ -59,8 +59,6 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
         } finally {
             ConexaoUtil.fecharConexao(con);
         }
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -81,8 +79,6 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
         } finally {
             ConexaoUtil.fecharConexao(con);
         }
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -99,8 +95,6 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
         } finally {
             ConexaoUtil.fecharConexao(con);
         }
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -127,7 +121,6 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
             ConexaoUtil.fecharConexao(con);
         }
         return retorno;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -154,7 +147,6 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
             ConexaoUtil.fecharConexao(con);
         }
         return usuarioR;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -9,6 +9,14 @@ public class UsuarioDTO {
     String login;
     String senha;
     int tipo;
+    
+    public String getTipoString(){
+        if(this.tipo==0){
+            return "Administrador";
+        } else {
+            return "Funcionário";
+        }
+    }
 
     public UsuarioDTO(int id, String nome, String login, String senha) {
         this.id = id;
