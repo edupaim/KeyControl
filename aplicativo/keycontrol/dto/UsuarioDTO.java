@@ -4,11 +4,11 @@ package aplicativo.keycontrol.dto;
  * @author Edu
  */
 public class UsuarioDTO {
-    int id;
+    Integer id;
     String nome;
     String login;
     String senha;
-    int tipo;
+    Integer tipo;
     
     public String getTipoString(){
         if(this.tipo==0){
@@ -18,17 +18,25 @@ public class UsuarioDTO {
         }
     }
 
-    public UsuarioDTO(int id, String nome, String login, String senha) {
+    public UsuarioDTO(int id, String nome, String login, String senha, int tipo) {
         this.id = id;
         this.nome = nome;
         this.login = login;
         this.senha = senha;
+        this.tipo = tipo;
+    }
+    
+    public UsuarioDTO(String nome, String login, String senha, int tipo) {
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.tipo = tipo;
     }
 
     public UsuarioDTO() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -60,7 +68,7 @@ public class UsuarioDTO {
         this.senha = senha;
     }
 
-    public int getTipo() {
+    public Integer getTipo() {
         return tipo;
     }
 

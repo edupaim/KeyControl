@@ -18,9 +18,9 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
     public UsuarioDTO logar(UsuarioDTO usuario) throws PersistenciaException {
         UsuarioDTO usuarioR = null;
         Connection con = ConexaoUtil.abrirConexao("Login");
-        String sql = "select * from usuario ";
-        sql += "where login = ? ";
-        sql += "and senha = ? ";
+        String sql = "SELECT * FROM usuario ";
+        sql += "WHERE login = ? ";
+        sql += "AND senha = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, usuario.getLogin());
@@ -64,7 +64,7 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
     @Override
     public void atualizar(Integer id, UsuarioDTO u) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Inserir Usuario");
-        String sql = "UPDATE usuario set nome = ?, login = ?, senha = ?, tipo = ? WHERE id = ?";
+        String sql = "UPDATE usuario SET nome = ?, login = ?, senha = ?, tipo = ? WHERE id = ?";
         try{
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, u.getNome());
@@ -101,7 +101,7 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
     public List<UsuarioDTO> listarTodos() throws PersistenciaException {
         List<UsuarioDTO> retorno = new ArrayList<UsuarioDTO>();
         Connection con = ConexaoUtil.abrirConexao("Login");
-        String sql = "select * from usuario ";
+        String sql = "SELECT * FROM usuario ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -127,8 +127,8 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
     public UsuarioDTO buscarPorId(Integer id) throws PersistenciaException {
         UsuarioDTO usuarioR = null;
         Connection con = ConexaoUtil.abrirConexao("Login");
-        String sql = "select * from usuario ";
-        sql += "where id = ? ";
+        String sql = "SELECT * FROM usuario ";
+        sql += "WHERE id = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -147,6 +147,74 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
             ConexaoUtil.fecharConexao(con);
         }
         return usuarioR;
+    }
+    
+    public List<UsuarioDTO> listaFiltro(UsuarioDTO user) throws PersistenciaException {
+        Connection con = ConexaoUtil.abrirConexao("ListaFiltro");
+        List<UsuarioDTO> lista = new ArrayList<>();
+        String sql = "SELECT * FROM usuario ";
+        boolean ultimo = false;
+        int cont = 0;
+        if (user.getId() != null) {
+            sql += "WHERE id LIKE ? ";
+            ultimo = true;
+        }
+        if (user.getLogin() != null) {
+            if (ultimo) {
+                sql += "AND ";
+            } else {
+                sql += "WHERE ";
+                ultimo = true;
+            }
+            sql += "login LIKE ? ";
+        }
+        if (user.getTipo() != null) {
+            if (ultimo) {
+                sql += "AND ";
+            } else {
+                sql += "WHERE ";
+                ultimo = true;
+            }
+            sql += "tipo LIKE ? ";
+        }
+        if (user.getNome() != null) {
+            if (ultimo) {
+                sql += "AND ";
+            } else {
+                sql += "WHERE ";
+            }
+            sql += "nome LIKE ? ";
+        }
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            if (user.getId() != null) {
+                ps.setInt(++cont, user.getId());
+            }
+            if (user.getLogin() != null) {
+                ps.setString(++cont, "%" + user.getLogin() + "%");
+            }
+            if (user.getTipo() != null) {
+                ps.setInt(++cont, user.getTipo());
+            }
+            if (user.getNome() != null) {
+                ps.setString(++cont, "%" + user.getNome() + "%");
+            }
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                UsuarioDTO aux = new UsuarioDTO();
+                aux.setId(rs.getInt(1));
+                aux.setNome(rs.getString(2));
+                aux.setLogin(rs.getString(3));
+                aux.setSenha(rs.getString(4));
+                aux.setTipo(rs.getInt(5));
+                lista.add(aux);
+            }
+        } catch (SQLException ex) {
+            throw new PersistenciaException(ex.getMessage(), ex);
+        } finally {
+            ConexaoUtil.fecharConexao(con);
+        }
+        return lista;
     }
 
 }

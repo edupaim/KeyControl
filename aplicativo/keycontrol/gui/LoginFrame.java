@@ -8,6 +8,7 @@ package aplicativo.keycontrol.gui;
 
 import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.exception.NegocioException;
+import aplicativo.keycontrol.main.KeyControl;
 import aplicativo.keycontrol.rn.UsuarioRN;
 import aplicativo.keycontrol.util.MensagensUtil;
 
@@ -151,9 +152,9 @@ public class LoginFrame extends javax.swing.JFrame {
             if(userLogin != null){
                 MensagensUtil.addMsg(LoginFrame.this, "Login com sucesso!");
                 this.dispose();
-                MainFrame mainFrame = new MainFrame();
-                mainFrame.setLocationRelativeTo(null);
-                mainFrame.setVisible(true);
+                KeyControl.mainFrame = new MainFrame();
+                KeyControl.mainFrame.setLocationRelativeTo(null);
+                KeyControl.mainFrame.setVisible(true);
             }
         } catch (NegocioException ex) {
             ex.printStackTrace();

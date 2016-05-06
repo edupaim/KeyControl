@@ -9,10 +9,11 @@ import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.main.KeyControl;
 import aplicativo.keycontrol.rn.UsuarioRN;
-import aplicativo.keycontrol.util.HorarioUtil;
 import aplicativo.keycontrol.util.MensagensUtil;
 import java.awt.Component;
 import java.awt.Container;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,11 +37,6 @@ public class MainFrame extends javax.swing.JFrame {
         if (KeyControl.getUsuarioLogado() != null) {
             LbNome.setText(KeyControl.getUsuarioLogado().getNome());
             LbTipo.setText(KeyControl.getUsuarioLogado().getTipoString());
-            if (KeyControl.getUsuarioLogado().getTipo() == 1) {
-                Menu.remove(MenuUsuarios);
-                Menu.repaint();
-                Menu.validate();
-            }
             Painel.removeAll();
         } else {
             MensagensUtil.addMsg(MainFrame.this, "Usuário não logado.");
@@ -55,6 +51,36 @@ public class MainFrame extends javax.swing.JFrame {
     private void iniThreadHora() {
         hora = new Thread(new HorarioUtil());
         hora.start();
+    }
+
+    private class HorarioUtil implements Runnable {
+
+        private SimpleDateFormat sdf = null;
+
+        public HorarioUtil() {
+            sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        }
+
+        @Override
+        public void run() {
+            while (true) {
+                hora();
+            }
+        }
+
+        public void hora() {
+            LbHora.setText(sdf.format(new Date()));
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                MensagensUtil.addMsg(MainFrame.this, ex.getMessage());
+            }
+        }
+
+        public String getHora() {
+            return sdf + "";
+        }
+
     }
 
     public void limparTodosCampos(Container container) {
@@ -72,23 +98,22 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
 
-    private void logout() {
+    public void logout() {
         this.dispose();
         LoginFrame login = new LoginFrame();
         login.setLocationRelativeTo(null);
         login.setVisible(true);
         KeyControl.setUsuarioLogado(null);
     }
-    
+
     public void atualizarTxtUsuario(Integer id) {
         TxtIdAltC.setText(String.valueOf(id));
-        UsuarioRN user = new UsuarioRN();
+        UsuarioRN userRn = new UsuarioRN();
         UsuarioDTO u;
         try {
-            u = user.buscarPorId(id);
+            u = userRn.buscarPorId(id);
             TxtNomeAltC.setText(u.getNome());
             TxtLoginAltC.setText(u.getLogin());
-            TxtSenhaAltC.setText(u.getSenha());
         } catch (NegocioException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -120,17 +145,17 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void atualizarTabelaUsuarios(List<UsuarioDTO> consulta) {
         if (consulta != null) {
-            DefaultTableModel tbl = (DefaultTableModel) TblUser.getModel();
+            DefaultTableModel tbl = (DefaultTableModel) TblUserFiltro.getModel();
             while (tbl.getRowCount() > 0) {
                 tbl.removeRow(0);
             }
             int i = 0;
             for (UsuarioDTO user : consulta) {
                 tbl.addRow(new String[1]);
-                TblUser.setValueAt(user.getId(), i, 0);
-                TblUser.setValueAt(user.getNome(), i, 1);
-                TblUser.setValueAt(user.getLogin(), i, 2);
-                TblUser.setValueAt((user.getTipoString()), i, 3);
+                TblUserFiltro.setValueAt(user.getId(), i, 0);
+                TblUserFiltro.setValueAt(user.getNome(), i, 1);
+                TblUserFiltro.setValueAt(user.getLogin(), i, 2);
+                TblUserFiltro.setValueAt((user.getTipoString()), i, 3);
                 i++;
             }
         } else {
@@ -138,16 +163,17 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }
 
-    public void listarFiltrado() {
+    public void listarUsuFiltrado() {
         List<UsuarioDTO> lista;
-        Integer id = Integer.parseInt(TxtIdBusU.getText());
-        String nome = TxtNomeBusU.getText();
-        String login = TxtLoginBusU.getText();
         UsuarioRN buscarRn = new UsuarioRN();
-
-        Integer tipo = CBoxTipoBusU.getSelectedIndex();
-        if(tipo>1){
-            tipo = null;
+        try {
+            lista = buscarRn.busca(TxtIdBusU.getText(),
+                    TxtNomeBusU.getText(),
+                    TxtLoginBusU.getText(),
+                    String.valueOf(CBoxTipoBusU.getSelectedIndex()));
+            atualizarTabelaUsuarios(lista);
+        } catch (NegocioException ex) {
+            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -198,11 +224,10 @@ public class MainFrame extends javax.swing.JFrame {
         TxtNomeBusU = new javax.swing.JTextField();
         ScrollPaneTab1 = new javax.swing.JScrollPane();
         TblUserFiltro = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        ButBuscarBusU = new javax.swing.JButton();
         AlteraUsuario = new javax.swing.JPanel();
         LabIdA = new javax.swing.JLabel();
         LabLoginA = new javax.swing.JLabel();
-        LabSenhaA = new javax.swing.JLabel();
         LabSenhaNA = new javax.swing.JLabel();
         LabSenhaNRA = new javax.swing.JLabel();
         LabTipoA = new javax.swing.JLabel();
@@ -215,7 +240,6 @@ public class MainFrame extends javax.swing.JFrame {
         TxtNomeAltC = new javax.swing.JTextField();
         ButExcluirAltC = new javax.swing.JButton();
         ButAlterarAltC = new javax.swing.JButton();
-        TxtSenhaAltC = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         ButSair = new javax.swing.JButton();
         ButLogout = new javax.swing.JButton();
@@ -315,7 +339,7 @@ public class MainFrame extends javax.swing.JFrame {
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
                 .addComponent(MenuUsuarios)
-                .addContainerGap(547, Short.MAX_VALUE))
+                .addContainerGap(640, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,7 +427,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(CadastroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabTipoC)
                     .addComponent(CBoxTipoCadU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
                 .addComponent(ButCadastroCadU))
         );
 
@@ -457,14 +481,14 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(ButAtualizarL))
             .addGroup(ListaUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTab, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
                 .addContainerGap())
         );
         ListaUsuarioLayout.setVerticalGroup(
             ListaUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ListaUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTab, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButAtualizarL))
         );
@@ -492,6 +516,7 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         CBoxTipoBusU.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Funcionário", "Nenhum" }));
+        CBoxTipoBusU.setSelectedIndex(2);
         CBoxTipoBusU.setToolTipText("");
         CBoxTipoBusU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -537,10 +562,10 @@ public class MainFrame extends javax.swing.JFrame {
         });
         ScrollPaneTab1.setViewportView(TblUserFiltro);
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ButBuscarBusU.setText("Buscar");
+        ButBuscarBusU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ButBuscarBusUActionPerformed(evt);
             }
         });
 
@@ -557,16 +582,16 @@ public class MainFrame extends javax.swing.JFrame {
                             .addComponent(LabLoginB)
                             .addComponent(LabTipoB)
                             .addComponent(LabNomeB))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 320, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 413, Short.MAX_VALUE)
                         .addGroup(BuscaUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(CBoxTipoBusU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TxtNomeBusU, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(TxtLoginBusU)
                             .addComponent(TxtIdBusU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(ScrollPaneTab1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                    .addComponent(ScrollPaneTab1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuscaUsuarioLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(ButBuscarBusU)))
                 .addContainerGap())
         );
         BuscaUsuarioLayout.setVerticalGroup(
@@ -589,9 +614,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(LabLoginB)
                     .addComponent(TxtLoginBusU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(ButBuscarBusU)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ScrollPaneTab1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab1, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -600,8 +625,6 @@ public class MainFrame extends javax.swing.JFrame {
         LabIdA.setText("ID");
 
         LabLoginA.setText("Login");
-
-        LabSenhaA.setText("Senha");
 
         LabSenhaNA.setText("Nova senha");
 
@@ -640,6 +663,11 @@ public class MainFrame extends javax.swing.JFrame {
         AlteraUsuario.setLayout(AlteraUsuarioLayout);
         AlteraUsuarioLayout.setHorizontalGroup(
             AlteraUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AlteraUsuarioLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(ButExcluirAltC)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ButAlterarAltC))
             .addGroup(AlteraUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(AlteraUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -655,22 +683,17 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(AlteraUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabLoginA)
                             .addComponent(LabNomeA)
-                            .addComponent(LabSenhaA)
-                            .addComponent(LabSenhaNA)
                             .addComponent(LabSenhaNRA))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 377, Short.MAX_VALUE)
                         .addGroup(AlteraUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(TxtSenhaN2AltC, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtSenhaNAltC, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TxtNomeAltC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(TxtLoginAltC, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtSenhaAltC))))
+                            .addComponent(TxtLoginAltC, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(AlteraUsuarioLayout.createSequentialGroup()
+                        .addComponent(LabSenhaNA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TxtSenhaNAltC, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AlteraUsuarioLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(ButExcluirAltC)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButAlterarAltC))
         );
         AlteraUsuarioLayout.setVerticalGroup(
             AlteraUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -693,17 +716,13 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(TxtLoginAltC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AlteraUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabSenhaA)
-                    .addComponent(TxtSenhaAltC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(AlteraUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabSenhaNA)
                     .addComponent(TxtSenhaNAltC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AlteraUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabSenhaNRA)
-                    .addComponent(TxtSenhaN2AltC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TxtSenhaN2AltC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabSenhaNRA))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
                 .addGroup(AlteraUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButAlterarAltC)
                     .addComponent(ButExcluirAltC)))
@@ -750,7 +769,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(ButLogout)
                 .addGap(6, 6, 6)
                 .addComponent(ButSair))
-            .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+            .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -759,7 +778,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -774,31 +793,34 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void MenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuUsuariosActionPerformed
         Painel.removeAll();
-        Painel.add(AbasUsuarios);
-        Painel.repaint();
-        Painel.validate();
+        if (KeyControl.getUsuarioLogado().getTipo() > 0) {
+            MensagensUtil.addMsg(MainFrame.this, "Tipo de usuario não permitido.");
+        } else {
+            Painel.add(AbasUsuarios);
+            Painel.repaint();
+            Painel.validate();
+        }
     }//GEN-LAST:event_MenuUsuariosActionPerformed
 
     private void ButCadastroCadUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCadastroCadUActionPerformed
-        UsuarioDTO u = new UsuarioDTO();
-        u.setNome(TxtNomeCadU.getText());
-        u.setLogin(TxtUserCadU.getText());
-        u.setSenha(String.copyValueOf(TxtSenhaCadU.getPassword()));
-        String senha = String.copyValueOf(TxtSenhaRCadU.getPassword());
-        u.setTipo(CBoxTipoCadU.getSelectedIndex());
         UsuarioRN cadastroRn = new UsuarioRN();
         try {
-            if (cadastroRn.inserir(u, senha)) {
+            if (cadastroRn.inserir(
+                    new UsuarioDTO(
+                            TxtNomeCadU.getText(),
+                            TxtUserCadU.getText(),
+                            String.copyValueOf(TxtSenhaCadU.getPassword()),
+                            CBoxTipoCadU.getSelectedIndex()),
+                    String.copyValueOf(TxtSenhaRCadU.getPassword()))) {
                 MensagensUtil.addMsg(MainFrame.this, "Cadastro efetuado com sucesso!");
                 AbasUsuarios.setSelectedComponent(ListaUsuario);
                 atualizarTabelaUsuarios();
+                limparTodosCampos(rootPane);
             } else {
                 MensagensUtil.addMsg(MainFrame.this, "Falha no cadastro.");
             }
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(MainFrame.this, ex.getMessage());
-        } finally {
-            limparTodosCampos(rootPane);
         }
     }//GEN-LAST:event_ButCadastroCadUActionPerformed
 
@@ -825,28 +847,28 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButLimparActionPerformed
 
     private void TxtIdBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtIdBusUActionPerformed
-        listarFiltrado();
+        listarUsuFiltrado();
     }//GEN-LAST:event_TxtIdBusUActionPerformed
 
     private void TxtLoginBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtLoginBusUActionPerformed
-        listarFiltrado();
+        listarUsuFiltrado();
     }//GEN-LAST:event_TxtLoginBusUActionPerformed
 
     private void CBoxTipoBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoBusUActionPerformed
-        listarFiltrado();
+        listarUsuFiltrado();
     }//GEN-LAST:event_CBoxTipoBusUActionPerformed
 
     private void TxtNomeBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNomeBusUActionPerformed
-        listarFiltrado();
+        listarUsuFiltrado();
     }//GEN-LAST:event_TxtNomeBusUActionPerformed
 
     private void TblUserFiltroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUserFiltroMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_TblUserFiltroMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        listarFiltrado();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void ButBuscarBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButBuscarBusUActionPerformed
+        listarUsuFiltrado();
+    }//GEN-LAST:event_ButBuscarBusUActionPerformed
 
     private void ButExcluirAltCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButExcluirAltCActionPerformed
         String id = TxtIdAltC.getText();
@@ -858,37 +880,31 @@ public class MainFrame extends javax.swing.JFrame {
                 MensagensUtil.addMsg(MainFrame.this, "Excluido com sucesso!");
                 AbasUsuarios.setSelectedComponent(ListaUsuario);
                 atualizarTabelaUsuarios();
+                limparTodosCampos(rootPane);
             }
         } catch (NegocioException ex) {
-            ex.printStackTrace();
             MensagensUtil.addMsg(MainFrame.this, ex.getMessage());
-        } finally {
-            limparTodosCampos(rootPane);
         }
     }//GEN-LAST:event_ButExcluirAltCActionPerformed
 
     private void ButAlterarAltCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAlterarAltCActionPerformed
-        UsuarioDTO u = new UsuarioDTO();
-        Integer id = Integer.parseInt(TxtIdAltC.getText());
-        u.setLogin(TxtLoginAltC.getText());
-        u.setNome(TxtNomeAltC.getText());
-        u.setSenha(String.copyValueOf(TxtSenhaAltC.getPassword()));
-        u.setTipo(CBoxTipoAaltC.getSelectedIndex());
-        String senhan = String.copyValueOf(TxtSenhaNAltC.getPassword());
-        String senhan2 = String.copyValueOf(TxtSenhaN2AltC.getPassword());
         UsuarioRN alterarBo = new UsuarioRN();
         try {
-            if (alterarBo.atualizar(id, u, senhan, senhan2)) {
+            if (alterarBo.atualizar(Integer.parseInt(TxtIdAltC.getText()),
+                    new UsuarioDTO(TxtNomeAltC.getText(),
+                            TxtLoginAltC.getText(),
+                            String.copyValueOf(TxtSenhaNAltC.getPassword()),
+                                    CBoxTipoAaltC.getSelectedIndex()
+                            ), String.copyValueOf(TxtSenhaN2AltC.getPassword()))) {
                 MensagensUtil.addMsg(MainFrame.this, "Alterado com sucesso!");
                 AbasUsuarios.setSelectedComponent(ListaUsuario);
                 atualizarTabelaUsuarios();
+                limparTodosCampos(rootPane);
             } else {
                 MensagensUtil.addMsg(MainFrame.this, "Falha na alteração.");
             }
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(MainFrame.this, ex.getMessage());
-        } finally {
-            limparTodosCampos(rootPane);
         }
     }//GEN-LAST:event_ButAlterarAltCActionPerformed
 
@@ -925,6 +941,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new MainFrame().setVisible(true);
             }
@@ -937,6 +954,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel BuscaUsuario;
     private javax.swing.JButton ButAlterarAltC;
     private javax.swing.JButton ButAtualizarL;
+    private javax.swing.JButton ButBuscarBusU;
     private javax.swing.JButton ButCadastroCadU;
     private javax.swing.JButton ButExcluirAltC;
     private javax.swing.JButton ButLimpar;
@@ -956,7 +974,6 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel LabNomeA;
     private javax.swing.JLabel LabNomeB;
     private javax.swing.JLabel LabNomeC;
-    private javax.swing.JLabel LabSenhaA;
     private javax.swing.JLabel LabSenhaC;
     private javax.swing.JLabel LabSenhaNA;
     private javax.swing.JLabel LabSenhaNRA;
@@ -983,14 +1000,12 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JTextField TxtNomeAltC;
     private javax.swing.JTextField TxtNomeBusU;
     private javax.swing.JTextField TxtNomeCadU;
-    private javax.swing.JPasswordField TxtSenhaAltC;
     private javax.swing.JPasswordField TxtSenhaCadU;
     private javax.swing.JPasswordField TxtSenhaN2AltC;
     private javax.swing.JPasswordField TxtSenhaNAltC;
     private javax.swing.JPasswordField TxtSenhaRCadU;
     private javax.swing.JTextField TxtUserCadU;
     private javax.swing.JPanel Usuario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

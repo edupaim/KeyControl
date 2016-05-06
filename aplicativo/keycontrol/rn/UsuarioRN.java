@@ -5,6 +5,7 @@ import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.main.KeyControl;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -61,7 +62,7 @@ public class UsuarioRN {
         return resul;
     }
 
-    public boolean atualizar(Integer id, UsuarioDTO u, String senha, String senhar) throws NegocioException {
+    public boolean atualizar(Integer id, UsuarioDTO u, String senhar) throws NegocioException {
         boolean resul = false;
         try {
             if (id == null || id == 0) {
@@ -73,7 +74,7 @@ public class UsuarioRN {
                 throw new NegocioException("Nome obrigatório.");
             } else if (u.getSenha() == null || "".equals(u.getSenha())) {
                 throw new NegocioException("Senha obrigatória.");
-            } else if (!senhar.equals(senha)) {
+            } else if (!u.getSenha().equals(senhar)) {
                 throw new NegocioException("Repita a senha nova corretamente.");
             } else {
                 u.setLogin(u.getLogin().trim());
@@ -123,6 +124,31 @@ public class UsuarioRN {
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }
+    }
+
+    public List<UsuarioDTO> busca(String id, String nome, String login, String tipo) throws NegocioException {
+        List<UsuarioDTO> lista = new ArrayList<>();
+        UsuarioDAO userDao = new UsuarioDAO();
+        UsuarioDTO user = new UsuarioDTO();
+        if (id != null && !"".equals(id)) {
+            user.setId(Integer.parseInt(id));
+        }
+        if (login != null && !"".equals(login)) {
+            user.setLogin(login.trim());
+        }
+        if (nome != null && !"".equals(nome)) {
+            user.setNome(nome.trim());
+        }
+        if (tipo != null && !"".equals(tipo) && Integer.parseInt(tipo) < 2) {
+            user.setTipo(Integer.parseInt(tipo));
+        }
+        try {
+
+            lista = userDao.listaFiltro(user);
+        } catch (PersistenciaException ex) {
+            throw new NegocioException(ex.getMessage());
+        }
+        return lista;
     }
 
 }

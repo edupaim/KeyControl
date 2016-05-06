@@ -7,6 +7,7 @@ package aplicativo.keycontrol.main;
 
 import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.gui.LoginFrame;
+import aplicativo.keycontrol.gui.MainFrame;
 
 /**
  *
@@ -15,7 +16,9 @@ import aplicativo.keycontrol.gui.LoginFrame;
 public class KeyControl {
 
     private static UsuarioDTO usuarioLogado;
-    
+    public static MainFrame mainFrame;
+    public static LoginFrame loginFrame;
+
     public static void main(String[] args) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -26,7 +29,7 @@ public class KeyControl {
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
         }
-        LoginFrame loginFrame = new LoginFrame();
+        loginFrame = new LoginFrame();
         loginFrame.setLocationRelativeTo(null);
         loginFrame.setVisible(true);
     }

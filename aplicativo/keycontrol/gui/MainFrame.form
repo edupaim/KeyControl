@@ -34,7 +34,7 @@
               <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
               <Component id="ButSair" min="-2" max="-2" attributes="0"/>
           </Group>
-          <Component id="Painel" alignment="0" pref="634" max="32767" attributes="0"/>
+          <Component id="Painel" alignment="0" pref="727" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -44,7 +44,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="Menu" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Painel" pref="311" max="32767" attributes="0"/>
+              <Component id="Painel" pref="380" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -211,7 +211,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="MenuUsuarios" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="547" max="32767" attributes="0"/>
+                  <EmptySpace pref="640" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -327,7 +327,7 @@
                               <Component id="LabTipoC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CBoxTipoCadU" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="215" max="32767" attributes="0"/>
                           <Component id="ButCadastroCadU" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -406,7 +406,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab" pref="547" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab" pref="640" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -415,7 +415,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab" pref="266" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab" pref="335" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ButAtualizarL" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -482,7 +482,7 @@
                                       <Component id="LabTipoB" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="LabNomeB" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="320" max="32767" attributes="0"/>
+                                  <EmptySpace pref="413" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="CBoxTipoBusU" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="TxtNomeBusU" alignment="0" pref="200" max="32767" attributes="0"/>
@@ -490,10 +490,10 @@
                                       <Component id="TxtIdBusU" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="ScrollPaneTab1" alignment="1" pref="547" max="32767" attributes="0"/>
+                              <Component id="ScrollPaneTab1" alignment="1" pref="640" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ButBuscarBusU" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -524,9 +524,9 @@
                               <Component id="TxtLoginBusU" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="ButBuscarBusU" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab1" pref="149" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab1" pref="218" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -572,6 +572,7 @@
                         <StringItem index="2" value="Nenhum"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="2"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Events>
@@ -610,12 +611,12 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="ButBuscarBusU">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButBuscarBusUActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -632,7 +633,13 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="ButExcluirAltC" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ButAlterarAltC" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
@@ -649,27 +656,22 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="LabLoginA" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="LabNomeA" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="LabSenhaA" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="LabSenhaNA" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="LabSenhaNRA" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="284" max="32767" attributes="0"/>
+                                  <EmptySpace pref="377" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="TxtSenhaN2AltC" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="TxtSenhaNAltC" alignment="0" max="32767" attributes="0"/>
                                       <Component id="TxtNomeAltC" alignment="0" pref="200" max="32767" attributes="0"/>
                                       <Component id="TxtLoginAltC" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="TxtSenhaAltC" alignment="1" max="32767" attributes="0"/>
                                   </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="LabSenhaNA" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="TxtSenhaNAltC" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="ButExcluirAltC" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ButAlterarAltC" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -698,20 +700,15 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabSenhaA" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtSenhaAltC" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="LabSenhaNA" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtSenhaNAltC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabSenhaNRA" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtSenhaN2AltC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabSenhaNRA" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="189" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="ButAlterarAltC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ButExcluirAltC" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -729,11 +726,6 @@
                 <Component class="javax.swing.JLabel" name="LabLoginA">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Login"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="LabSenhaA">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Senha"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="LabSenhaNA">
@@ -798,8 +790,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButAlterarAltCActionPerformed"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JPasswordField" name="TxtSenhaAltC">
                 </Component>
               </SubComponents>
             </Container>
