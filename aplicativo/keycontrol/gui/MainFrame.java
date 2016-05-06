@@ -9,11 +9,10 @@ import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.main.KeyControl;
 import aplicativo.keycontrol.rn.UsuarioRN;
+import aplicativo.keycontrol.util.HoraUtil;
 import aplicativo.keycontrol.util.MensagensUtil;
 import java.awt.Component;
 import java.awt.Container;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,33 +48,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void iniThreadHora() {
-        hora = new Thread(new HorarioUtil());
+        hora = new Thread(new HoraUtil());
         hora.start();
-    }
-
-    private class HorarioUtil implements Runnable {
-
-        private SimpleDateFormat sdf = null;
-
-        public HorarioUtil() {
-            sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-        }
-
-        @Override
-        public void run() {
-            while (true) {
-                hora();
-            }
-        }
-
-        public void hora() {
-            LbHora.setText(sdf.format(new Date()));
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                MensagensUtil.addMsg(MainFrame.this, ex.getMessage());
-            }
-        }
     }
 
     public void limparTodosCampos(Container container) {
@@ -963,7 +937,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel LabTipoA;
     private javax.swing.JLabel LabTipoB;
     private javax.swing.JLabel LabTipoC;
-    private javax.swing.JLabel LbHora;
+    public javax.swing.JLabel LbHora;
     private javax.swing.JLabel LbNome;
     private javax.swing.JLabel LbTipo;
     public javax.swing.JPanel ListaUsuario;
