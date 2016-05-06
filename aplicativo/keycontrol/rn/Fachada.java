@@ -27,7 +27,6 @@ public class Fachada {
                 KeyControl.mainFrame.setVisible(true);
             }
         } catch (NegocioException ex) {
-            ex.printStackTrace();
             MensagensUtil.addMsg(KeyControl.loginFrame, ex.getMessage());
         }
     }

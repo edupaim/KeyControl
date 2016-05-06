@@ -66,8 +66,9 @@ public class UsuarioRN {
 
     public boolean atualizar(Integer id, UsuarioDTO u, String senhar) throws NegocioException {
         boolean resul = false;
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
         try {
-            if (id == null || id == 0) {
+            if (id == null || id < 0) {
                 throw new NegocioException("ID inválido.");
             }
             if (u.getLogin() == null || "".equals(u.getLogin())) {
@@ -82,7 +83,6 @@ public class UsuarioRN {
                 u.setLogin(u.getLogin().trim());
                 u.setNome(u.getNome().trim());
                 u.setSenha(u.getSenha().trim());
-                UsuarioDAO usuarioDAO = new UsuarioDAO();
                 usuarioDAO.atualizar(id, u);
                 resul = true;
             }

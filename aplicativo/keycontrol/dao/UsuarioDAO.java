@@ -71,7 +71,7 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
                 ps.setString(2, u.getLogin());
                 ps.setString(3, u.getSenha());
                 ps.setInt(4, u.getTipo());
-                ps.setInt(5, u.getTipo());
+                ps.setInt(5, u.getId());
                 ps.execute();
             }
         }catch (SQLException ex) {
