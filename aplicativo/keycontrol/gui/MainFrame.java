@@ -5,20 +5,9 @@
  */
 package aplicativo.keycontrol.gui;
 
-import aplicativo.keycontrol.dto.UsuarioDTO;
-import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.main.KeyControl;
-import aplicativo.keycontrol.rn.UsuarioRN;
-import aplicativo.keycontrol.util.HoraUtil;
+import aplicativo.keycontrol.util.ThreadHoraUtil;
 import aplicativo.keycontrol.util.MensagensUtil;
-import java.awt.Component;
-import java.awt.Container;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -48,102 +37,8 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void iniThreadHora() {
-        hora = new Thread(new HoraUtil());
+        hora = new Thread(new ThreadHoraUtil());
         hora.start();
-    }
-
-    public void limparTodosCampos(Container container) {
-        Component components[] = container.getComponents();
-        for (Component component : components) {
-            if (component instanceof JFormattedTextField) {
-                JFormattedTextField field = (JFormattedTextField) component;
-                field.setValue(null);
-            } else if (component instanceof JTextField) {
-                JTextField field = (JTextField) component;
-                field.setText("");
-            } else if (component instanceof Container) {
-                limparTodosCampos((Container) component);
-            }
-        }
-    }
-
-    public void logout() {
-        this.dispose();
-        LoginFrame login = new LoginFrame();
-        login.setLocationRelativeTo(null);
-        login.setVisible(true);
-        KeyControl.setUsuarioLogado(null);
-    }
-
-    public void atualizarTxtUsuario(Integer id) {
-        TxtIdAltC.setText(String.valueOf(id));
-        UsuarioRN userRn = new UsuarioRN();
-        UsuarioDTO u;
-        try {
-            u = userRn.buscarPorId(id);
-            TxtNomeAltC.setText(u.getNome());
-            TxtLoginAltC.setText(u.getLogin());
-        } catch (NegocioException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    public void atualizarTabelaUsuarios() {
-        UsuarioRN listaBo = new UsuarioRN();
-        List<UsuarioDTO> lista;
-        DefaultTableModel tbl = (DefaultTableModel) TblUser.getModel();
-        try {
-            lista = listaBo.listarTodos();
-            while (tbl.getRowCount() > 0) {
-                tbl.removeRow(0);
-            }
-            int i = 0;
-            for (UsuarioDTO user : lista) {
-                tbl.addRow(new String[1]);
-                TblUser.setValueAt(user.getId(), i, 0);
-                TblUser.setValueAt(user.getNome(), i, 1);
-                TblUser.setValueAt(user.getLogin(), i, 2);
-                TblUser.setValueAt(user.getTipoString(), i, 3);
-                i++;
-            }
-        } catch (NegocioException ex) {
-            MensagensUtil.addMsg(MainFrame.this, ex.getMessage());
-        }
-    }
-
-    public void atualizarTabelaUsuarios(List<UsuarioDTO> consulta) {
-        if (consulta != null) {
-            DefaultTableModel tbl = (DefaultTableModel) TblUserFiltro.getModel();
-            while (tbl.getRowCount() > 0) {
-                tbl.removeRow(0);
-            }
-            int i = 0;
-            for (UsuarioDTO user : consulta) {
-                tbl.addRow(new String[1]);
-                TblUserFiltro.setValueAt(user.getId(), i, 0);
-                TblUserFiltro.setValueAt(user.getNome(), i, 1);
-                TblUserFiltro.setValueAt(user.getLogin(), i, 2);
-                TblUserFiltro.setValueAt((user.getTipoString()), i, 3);
-                i++;
-            }
-        } else {
-            MainFrame.this.atualizarTabelaUsuarios();
-        }
-    }
-
-    public void listarUsuFiltrado() {
-        List<UsuarioDTO> lista;
-        UsuarioRN buscarRn = new UsuarioRN();
-        try {
-            lista = buscarRn.busca(TxtIdBusU.getText(),
-                    TxtNomeBusU.getText(),
-                    TxtLoginBusU.getText(),
-                    String.valueOf(CBoxTipoBusU.getSelectedIndex()));
-            atualizarTabelaUsuarios(lista);
-        } catch (NegocioException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     /**
@@ -761,14 +656,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuUsuariosActionPerformed
-        Painel.removeAll();
-        if (KeyControl.getUsuarioLogado().getTipo() > 0) {
-            MensagensUtil.addMsg(MainFrame.this, "Tipo de usuario não permitido.");
-        } else {
-            Painel.add(AbasUsuarios);
-            Painel.repaint();
-            Painel.validate();
-        }
+        KeyControl.fachada.menuUsuarios();
     }//GEN-LAST:event_MenuUsuariosActionPerformed
 
     private void ButCadastroCadUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCadastroCadUActionPerformed
@@ -781,13 +669,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButCadastroCadUActionPerformed
 
     private void TblUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUserMouseClicked
-        Integer linha = TblUser.getSelectedRow();
-        AbasUsuarios.setSelectedComponent(AlteraUsuario);
-        atualizarTxtUsuario((Integer) TblUser.getValueAt(linha, 0));
+        KeyControl.fachada.tabelaUsuario(TblUser.getSelectedRow());
     }//GEN-LAST:event_TblUserMouseClicked
 
     private void ButAtualizarLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAtualizarLActionPerformed
-        atualizarTabelaUsuarios();
+        KeyControl.fachada.atualizarTabelaUsuarios();
     }//GEN-LAST:event_ButAtualizarLActionPerformed
 
     private void ButSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButSairActionPerformed
@@ -795,73 +681,49 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButSairActionPerformed
 
     private void ButLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButLogoutActionPerformed
-        logout();
+        KeyControl.fachada.logout();
     }//GEN-LAST:event_ButLogoutActionPerformed
 
     private void ButLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButLimparActionPerformed
-        limparTodosCampos(Painel);
+        KeyControl.fachada.limparTodosCampos(Painel);
     }//GEN-LAST:event_ButLimparActionPerformed
 
     private void TxtIdBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtIdBusUActionPerformed
-        listarUsuFiltrado();
+        KeyControl.fachada.listarUsuFiltrado();
     }//GEN-LAST:event_TxtIdBusUActionPerformed
 
     private void TxtLoginBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtLoginBusUActionPerformed
-        listarUsuFiltrado();
+        KeyControl.fachada.listarUsuFiltrado();
     }//GEN-LAST:event_TxtLoginBusUActionPerformed
 
     private void CBoxTipoBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoBusUActionPerformed
-        listarUsuFiltrado();
+        KeyControl.fachada.listarUsuFiltrado();
     }//GEN-LAST:event_CBoxTipoBusUActionPerformed
 
     private void TxtNomeBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNomeBusUActionPerformed
-        listarUsuFiltrado();
+        KeyControl.fachada.listarUsuFiltrado();
     }//GEN-LAST:event_TxtNomeBusUActionPerformed
 
     private void TblUserFiltroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUserFiltroMouseClicked
-        // TODO add your handling code here:
+        KeyControl.fachada.tabelaUsuario(TblUserFiltro.getSelectedRow());
     }//GEN-LAST:event_TblUserFiltroMouseClicked
 
     private void ButBuscarBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButBuscarBusUActionPerformed
-        listarUsuFiltrado();
+        KeyControl.fachada.listarUsuFiltrado();
     }//GEN-LAST:event_ButBuscarBusUActionPerformed
 
     private void ButExcluirAltCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButExcluirAltCActionPerformed
-        String id = TxtIdAltC.getText();
-        UsuarioRN excluirBo = new UsuarioRN();
-        try {
-            if (!excluirBo.deletar(Integer.parseInt(id))) {
-                MensagensUtil.addMsg(MainFrame.this, "Falha ao excluir.");
-            } else {
-                MensagensUtil.addMsg(MainFrame.this, "Excluido com sucesso!");
-                AbasUsuarios.setSelectedComponent(ListaUsuario);
-                atualizarTabelaUsuarios();
-                limparTodosCampos(rootPane);
-            }
-        } catch (NegocioException ex) {
-            MensagensUtil.addMsg(MainFrame.this, ex.getMessage());
-        }
+        KeyControl.fachada.excluirUsuario(Integer.parseInt(TxtIdAltC.getText()));
     }//GEN-LAST:event_ButExcluirAltCActionPerformed
 
     private void ButAlterarAltCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAlterarAltCActionPerformed
-        UsuarioRN alterarBo = new UsuarioRN();
-        try {
-            if (alterarBo.atualizar(Integer.parseInt(TxtIdAltC.getText()),
-                    new UsuarioDTO(TxtNomeAltC.getText(),
-                            TxtLoginAltC.getText(),
-                            String.copyValueOf(TxtSenhaNAltC.getPassword()),
-                            CBoxTipoAaltC.getSelectedIndex()
-                    ), String.copyValueOf(TxtSenhaN2AltC.getPassword()))) {
-                MensagensUtil.addMsg(MainFrame.this, "Alterado com sucesso!");
-                AbasUsuarios.setSelectedComponent(ListaUsuario);
-                atualizarTabelaUsuarios();
-                limparTodosCampos(rootPane);
-            } else {
-                MensagensUtil.addMsg(MainFrame.this, "Falha na alteração.");
-            }
-        } catch (NegocioException ex) {
-            MensagensUtil.addMsg(MainFrame.this, ex.getMessage());
-        }
+        KeyControl.fachada.alterarUsuario(
+                Integer.parseInt(TxtIdAltC.getText()),
+                TxtNomeAltC.getText(),
+                TxtLoginAltC.getText(),
+                String.copyValueOf(TxtSenhaNAltC.getPassword()),
+                CBoxTipoAaltC.getSelectedIndex(),
+                String.copyValueOf(TxtSenhaN2AltC.getPassword()));
     }//GEN-LAST:event_ButAlterarAltCActionPerformed
 
     private void TxtSenhaNAltCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtSenhaNAltCActionPerformed

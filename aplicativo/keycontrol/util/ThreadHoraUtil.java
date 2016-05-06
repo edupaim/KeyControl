@@ -8,11 +8,11 @@ import java.util.Date;
 /*
  * @author Edu
  */
-public class HoraUtil implements Runnable{
+public class ThreadHoraUtil implements Runnable{
     
     private SimpleDateFormat sdf = null;
 
-        public HoraUtil() {
+        public ThreadHoraUtil() {
             sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         }
 
