@@ -13,7 +13,8 @@ import java.util.List;
  */
 public class UsuarioRN {
 
-    public UsuarioDTO logar(String login, String senha) throws NegocioException {
+    public boolean logar(String login, String senha) throws NegocioException {
+        boolean resul = false;
         UsuarioDTO usuarioR = null;
         try {
             if (login == null || "".equals(login)) {
@@ -27,6 +28,7 @@ public class UsuarioRN {
                 UsuarioDAO usuarioDAO = new UsuarioDAO();
                 usuarioR = usuarioDAO.logar(usuario);
                 if (usuarioR != null) {
+                    resul = true;
                     KeyControl.setUsuarioLogado(usuarioR);
                 } else {
                     throw new NegocioException("Login ou senha inválido!");
@@ -35,7 +37,7 @@ public class UsuarioRN {
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }
-        return usuarioR;
+        return resul;
     }
 
     public boolean inserir(UsuarioDTO u, String senha) throws NegocioException {

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package aplicativo.keycontrol.gui;
 
 import aplicativo.keycontrol.dto.UsuarioDTO;
@@ -142,24 +141,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButSairActionPerformed
 
     private void ButLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButLoginActionPerformed
-        UsuarioDTO user = new UsuarioDTO();
-        user.setLogin(TextLogin.getText()); 
-        user.setSenha(String.copyValueOf(TextPsw.getPassword()));
-        UsuarioRN loginBo = new UsuarioRN();
-        UsuarioDTO userLogin;
-        try {
-            userLogin = loginBo.logar(user.getLogin(), user.getSenha());
-            if(userLogin != null){
-                MensagensUtil.addMsg(LoginFrame.this, "Login com sucesso!");
-                this.dispose();
-                KeyControl.mainFrame = new MainFrame();
-                KeyControl.mainFrame.setLocationRelativeTo(null);
-                KeyControl.mainFrame.setVisible(true);
-            }
-        } catch (NegocioException ex) {
-            ex.printStackTrace();
-            MensagensUtil.addMsg(LoginFrame.this, ex.getMessage());
-        }
+        KeyControl.fachada.fazerLogin(TextLogin.getText(), String.copyValueOf(TextPsw.getPassword()));
     }//GEN-LAST:event_ButLoginActionPerformed
 
     /**

@@ -8,6 +8,7 @@ package aplicativo.keycontrol.main;
 import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.gui.LoginFrame;
 import aplicativo.keycontrol.gui.MainFrame;
+import aplicativo.keycontrol.rn.Fachada;
 
 /**
  *
@@ -18,6 +19,7 @@ public class KeyControl {
     private static UsuarioDTO usuarioLogado;
     public static MainFrame mainFrame;
     public static LoginFrame loginFrame;
+    public static Fachada fachada;
 
     public static void main(String[] args) {
         try {
@@ -29,6 +31,7 @@ public class KeyControl {
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
         }
+        fachada = new Fachada();
         loginFrame = new LoginFrame();
         loginFrame.setLocationRelativeTo(null);
         loginFrame.setVisible(true);
