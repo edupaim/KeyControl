@@ -70,13 +70,6 @@ public class UsuarioRN {
         try {
             if (id == null || id < 0) {
                 throw new NegocioException("ID inválido.");
-            }
-            if (u.getLogin() == null || "".equals(u.getLogin())) {
-                throw new NegocioException("Login obrigatório.");
-            } else if (u.getNome() == null || "".equals(u.getNome())) {
-                throw new NegocioException("Nome obrigatório.");
-            } else if (u.getSenha() == null || "".equals(u.getSenha())) {
-                throw new NegocioException("Senha obrigatória.");
             } else if (!u.getSenha().equals(senhar)) {
                 throw new NegocioException("Repita a senha nova corretamente.");
             } else {

@@ -26,6 +26,9 @@ public class Fachada {
         Fachada.usuarioRn = new UsuarioRN();
     }
 
+    /**
+     * METODOS DO MAIN FRAME (GERAL)
+     */
     public void limparTodosCampos(Container container) {
         Component components[] = container.getComponents();
         for (Component component : components) {
@@ -120,6 +123,9 @@ public class Fachada {
         }
     }
 
+    /**
+     * METODOS DO LOGIN FRAME
+     */
     public void fazerLogin(String login, String senha) {
         try {
             if (usuarioRn.logar(login, senha)) {
@@ -134,6 +140,9 @@ public class Fachada {
         }
     }
 
+    /**
+     * METODOS DO MENU MAIN FRAME
+     */
     public void menuUsuarios() {
         KeyControl.mainFrame.Painel.removeAll();
         if (KeyControl.getUsuarioLogado().getTipo() > 0) {
@@ -145,6 +154,9 @@ public class Fachada {
         }
     }
 
+    /**
+     * METODOS DO USUARIO MAIN FRAME
+     */
     public void cadastrarUsuario(String nome, String login, String senha, String senhar, Integer tipo) {
         try {
             if (usuarioRn.inserir(
@@ -166,7 +178,7 @@ public class Fachada {
         }
     }
 
-    public void tabelaUsuario(Integer linha) {
+    public void tabelaUsuarioSelecionada(Integer linha) {
         KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.AlteraUsuario);
         atualizarTxtUsuario((Integer) KeyControl.mainFrame.TblUser.getValueAt(linha, 0));
     }
@@ -190,8 +202,8 @@ public class Fachada {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
     }
-    
-    public void excluirUsuario(Integer id){
+
+    public void excluirUsuario(Integer id) {
         try {
             if (!usuarioRn.deletar(id)) {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Falha ao excluir.");

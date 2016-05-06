@@ -669,7 +669,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButCadastroCadUActionPerformed
 
     private void TblUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUserMouseClicked
-        KeyControl.fachada.tabelaUsuario(TblUser.getSelectedRow());
+        KeyControl.fachada.tabelaUsuarioSelecionada(TblUser.getSelectedRow());
     }//GEN-LAST:event_TblUserMouseClicked
 
     private void ButAtualizarLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAtualizarLActionPerformed
@@ -705,7 +705,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtNomeBusUActionPerformed
 
     private void TblUserFiltroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUserFiltroMouseClicked
-        KeyControl.fachada.tabelaUsuario(TblUserFiltro.getSelectedRow());
+        KeyControl.fachada.tabelaUsuarioSelecionada(TblUserFiltro.getSelectedRow());
     }//GEN-LAST:event_TblUserFiltroMouseClicked
 
     private void ButBuscarBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButBuscarBusUActionPerformed
