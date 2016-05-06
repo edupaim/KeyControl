@@ -47,13 +47,13 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
         Connection con = ConexaoUtil.abrirConexao("Inserir Usuario");
         String sql = "INSERT INTO usuario (id, nome, login, senha, tipo) values (NULL, ?,?,?,?)";
         try{
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, u.getNome());
-            ps.setString(2, u.getLogin());
-            ps.setString(3, u.getSenha());
-            ps.setInt(4, u.getTipo());
-            ps.execute();
-            ps.close();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, u.getNome());
+                ps.setString(2, u.getLogin());
+                ps.setString(3, u.getSenha());
+                ps.setInt(4, u.getTipo());
+                ps.execute();
+            }
         }catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
         } finally {
@@ -66,14 +66,14 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
         Connection con = ConexaoUtil.abrirConexao("Inserir Usuario");
         String sql = "UPDATE usuario SET nome = ?, login = ?, senha = ?, tipo = ? WHERE id = ?";
         try{
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, u.getNome());
-            ps.setString(2, u.getLogin());
-            ps.setString(3, u.getSenha());
-            ps.setInt(4, u.getTipo());
-            ps.setInt(5, u.getTipo());
-            ps.execute();
-            ps.close();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, u.getNome());
+                ps.setString(2, u.getLogin());
+                ps.setString(3, u.getSenha());
+                ps.setInt(4, u.getTipo());
+                ps.setInt(5, u.getTipo());
+                ps.execute();
+            }
         }catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
         } finally {
@@ -86,10 +86,10 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
         Connection con = ConexaoUtil.abrirConexao("Inserir Usuario");
         String sql = "DELETE FROM usuario WHERE id = ?";
         try{
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
-            ps.execute();
-            ps.close();
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ps.execute();
+            }
         }catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
         } finally {
@@ -99,7 +99,7 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO>{
 
     @Override
     public List<UsuarioDTO> listarTodos() throws PersistenciaException {
-        List<UsuarioDTO> retorno = new ArrayList<UsuarioDTO>();
+        List<UsuarioDTO> retorno = new ArrayList<>();
         Connection con = ConexaoUtil.abrirConexao("Login");
         String sql = "SELECT * FROM usuario ";
         try {

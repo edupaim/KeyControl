@@ -5,11 +5,7 @@
  */
 package aplicativo.keycontrol.gui;
 
-import aplicativo.keycontrol.dto.UsuarioDTO;
-import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.main.KeyControl;
-import aplicativo.keycontrol.rn.UsuarioRN;
-import aplicativo.keycontrol.util.MensagensUtil;
 
 /**
  *

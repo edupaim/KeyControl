@@ -15,7 +15,7 @@ public class UsuarioRN {
 
     public boolean logar(String login, String senha) throws NegocioException {
         boolean resul = false;
-        UsuarioDTO usuarioR = null;
+        UsuarioDTO usuarioR;
         try {
             if (login == null || "".equals(login)) {
                 throw new NegocioException("Login obrigatório.");

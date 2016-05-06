@@ -2,24 +2,22 @@ package aplicativo.keycontrol.rn;
 
 import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.exception.NegocioException;
-import aplicativo.keycontrol.gui.LoginFrame;
 import aplicativo.keycontrol.gui.MainFrame;
 import aplicativo.keycontrol.main.KeyControl;
 import aplicativo.keycontrol.util.MensagensUtil;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /*
  * @author Edu
  */
 public class Fachada {
-    private UsuarioRN usuarioRn;
+
+    private static UsuarioRN usuarioRn;
 
     public Fachada() {
-        this.usuarioRn = new UsuarioRN();
+        Fachada.usuarioRn = new UsuarioRN();
     }
-    
-    public void fazerLogin(String login, String senha){
+
+    public void fazerLogin(String login, String senha) {
         try {
             if (usuarioRn.logar(login, senha)) {
                 MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
@@ -31,6 +29,27 @@ public class Fachada {
         } catch (NegocioException ex) {
             ex.printStackTrace();
             MensagensUtil.addMsg(KeyControl.loginFrame, ex.getMessage());
+        }
+    }
+
+    public void cadastrarUsuario(String nome, String login, String senha, String senhar, Integer tipo) {
+        try {
+            if (usuarioRn.inserir(
+                    new UsuarioDTO(
+                            nome,
+                            login,
+                            senha,
+                            tipo),
+                    senhar)) {
+                MensagensUtil.addMsg(KeyControl.mainFrame, "Cadastro efetuado com sucesso!");
+                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
+                KeyControl.mainFrame.atualizarTabelaUsuarios();
+                KeyControl.mainFrame.limparTodosCampos(KeyControl.mainFrame.Painel);
+            } else {
+                MensagensUtil.addMsg(KeyControl.mainFrame, "Falha no cadastro.");
+            }
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
     }
 }

@@ -76,11 +76,6 @@ public class MainFrame extends javax.swing.JFrame {
                 MensagensUtil.addMsg(MainFrame.this, ex.getMessage());
             }
         }
-
-        public String getHora() {
-            return sdf + "";
-        }
-
     }
 
     public void limparTodosCampos(Container container) {
@@ -120,7 +115,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     }
 
-    private void atualizarTabelaUsuarios() {
+    public void atualizarTabelaUsuarios() {
         UsuarioRN listaBo = new UsuarioRN();
         List<UsuarioDTO> lista;
         DefaultTableModel tbl = (DefaultTableModel) TblUser.getModel();
@@ -803,25 +798,12 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuUsuariosActionPerformed
 
     private void ButCadastroCadUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCadastroCadUActionPerformed
-        UsuarioRN cadastroRn = new UsuarioRN();
-        try {
-            if (cadastroRn.inserir(
-                    new UsuarioDTO(
-                            TxtNomeCadU.getText(),
-                            TxtUserCadU.getText(),
-                            String.copyValueOf(TxtSenhaCadU.getPassword()),
-                            CBoxTipoCadU.getSelectedIndex()),
-                    String.copyValueOf(TxtSenhaRCadU.getPassword()))) {
-                MensagensUtil.addMsg(MainFrame.this, "Cadastro efetuado com sucesso!");
-                AbasUsuarios.setSelectedComponent(ListaUsuario);
-                atualizarTabelaUsuarios();
-                limparTodosCampos(rootPane);
-            } else {
-                MensagensUtil.addMsg(MainFrame.this, "Falha no cadastro.");
-            }
-        } catch (NegocioException ex) {
-            MensagensUtil.addMsg(MainFrame.this, ex.getMessage());
-        }
+        KeyControl.fachada.cadastrarUsuario(
+                TxtNomeCadU.getText(),
+                TxtUserCadU.getText(),
+                String.copyValueOf(TxtSenhaCadU.getPassword()),
+                String.copyValueOf(TxtSenhaRCadU.getPassword()),
+                CBoxTipoCadU.getSelectedIndex());
     }//GEN-LAST:event_ButCadastroCadUActionPerformed
 
     private void TblUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUserMouseClicked
@@ -894,8 +876,8 @@ public class MainFrame extends javax.swing.JFrame {
                     new UsuarioDTO(TxtNomeAltC.getText(),
                             TxtLoginAltC.getText(),
                             String.copyValueOf(TxtSenhaNAltC.getPassword()),
-                                    CBoxTipoAaltC.getSelectedIndex()
-                            ), String.copyValueOf(TxtSenhaN2AltC.getPassword()))) {
+                            CBoxTipoAaltC.getSelectedIndex()
+                    ), String.copyValueOf(TxtSenhaN2AltC.getPassword()))) {
                 MensagensUtil.addMsg(MainFrame.this, "Alterado com sucesso!");
                 AbasUsuarios.setSelectedComponent(ListaUsuario);
                 atualizarTabelaUsuarios();
@@ -949,7 +931,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane AbasUsuarios;
+    public javax.swing.JTabbedPane AbasUsuarios;
     private javax.swing.JPanel AlteraUsuario;
     private javax.swing.JPanel BuscaUsuario;
     private javax.swing.JButton ButAlterarAltC;
@@ -984,10 +966,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel LbHora;
     private javax.swing.JLabel LbNome;
     private javax.swing.JLabel LbTipo;
-    private javax.swing.JPanel ListaUsuario;
+    public javax.swing.JPanel ListaUsuario;
     private javax.swing.JPanel Menu;
     private javax.swing.JButton MenuUsuarios;
-    private javax.swing.JPanel Painel;
+    public javax.swing.JPanel Painel;
     private javax.swing.JScrollPane ScrollPaneTab;
     private javax.swing.JScrollPane ScrollPaneTab1;
     private javax.swing.JTable TblUser;
