@@ -121,7 +121,7 @@ public class UsuarioRN {
         }
     }
 
-    public List<UsuarioDTO> busca(String id, String nome, String login, String tipo) throws NegocioException {
+    public List<UsuarioDTO> buscar(String id, String nome, String login, String tipo) throws NegocioException {
         List<UsuarioDTO> lista = new ArrayList<>();
         UsuarioDAO userDao = new UsuarioDAO();
         UsuarioDTO user = new UsuarioDTO();
@@ -139,7 +139,7 @@ public class UsuarioRN {
         }
         try {
 
-            lista = userDao.listaFiltro(user);
+            lista = userDao.buscar(user);
         } catch (PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }

@@ -14,5 +14,7 @@ public interface GenericoDAO<DTO> {
     List<DTO> listarTodos() throws PersistenciaException;
 
     DTO buscarPorId(Integer id) throws PersistenciaException;
+    
+    List<DTO> buscar(DTO obj) throws PersistenciaException;
 
 }

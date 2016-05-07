@@ -26,7 +26,7 @@ public class Fachada {
         Fachada.usuarioRn = new UsuarioRN();
     }
 
-    /**
+    /*
      * METODOS DO MAIN FRAME (GERAL)
      */
     public void limparTodosCampos(Container container) {
@@ -61,7 +61,7 @@ public class Fachada {
             KeyControl.mainFrame.TxtNomeAltC.setText(u.getNome());
             KeyControl.mainFrame.TxtLoginAltC.setText(u.getLogin());
         } catch (NegocioException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
 
     }
@@ -113,7 +113,7 @@ public class Fachada {
         List<UsuarioDTO> lista;
         UsuarioRN buscarRn = new UsuarioRN();
         try {
-            lista = buscarRn.busca(KeyControl.mainFrame.TxtIdBusU.getText(),
+            lista = buscarRn.buscar(KeyControl.mainFrame.TxtIdBusU.getText(),
                     KeyControl.mainFrame.TxtNomeBusU.getText(),
                     KeyControl.mainFrame.TxtLoginBusU.getText(),
                     String.valueOf(KeyControl.mainFrame.CBoxTipoBusU.getSelectedIndex()));
@@ -123,7 +123,7 @@ public class Fachada {
         }
     }
 
-    /**
+    /*
      * METODOS DO LOGIN FRAME
      */
     public void fazerLogin(String login, String senha) {
@@ -140,7 +140,7 @@ public class Fachada {
         }
     }
 
-    /**
+    /*
      * METODOS DO MENU MAIN FRAME
      */
     public void menuUsuarios() {
@@ -154,7 +154,7 @@ public class Fachada {
         }
     }
 
-    /**
+    /*
      * METODOS DO USUARIO MAIN FRAME
      */
     public void cadastrarUsuario(String nome, String login, String senha, String senhar, Integer tipo) {

@@ -27,11 +27,10 @@ public class MainFrame extends javax.swing.JFrame {
             LbTipo.setText(KeyControl.getUsuarioLogado().getTipoString());
             Painel.removeAll();
         } else {
-            MensagensUtil.addMsg(MainFrame.this, "Usuário não logado.");
-            MainFrame.this.dispose();
-            LoginFrame loginFrame = new LoginFrame();
-            loginFrame.setLocationRelativeTo(null);
-            loginFrame.setVisible(true);
+            MensagensUtil.addMsg(KeyControl.mainFrame, "Usuário não logado.");
+            KeyControl.mainFrame.dispose();
+            KeyControl.loginFrame.setLocationRelativeTo(null);
+            KeyControl.loginFrame.setVisible(true);
         }
         iniThreadHora();
     }
