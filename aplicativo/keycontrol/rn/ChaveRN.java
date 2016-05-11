@@ -7,43 +7,49 @@ import aplicativo.keycontrol.exception.PersistenciaException;
 import java.util.List;
 
 public class ChaveRN {
-    public ChaveRN() {
-        
-    }
+    /*
+        Singleton
+    */
+    private ChaveRN() {}
     
-    public void devolucaoChave(ChaveDTO chave) throws NegocioException {
-        ChaveDAO chaveDAO;
+    /*
+        Checa se o ID é valido, lista todas as chaves com o ID fornecido pelo objeto ChaveDTO,
+        como só existe uma, modifica o objeto na parte de estado de "Não disponível" para "Disponível"
+        executa uma alteração na db com os novos valores.
+    */
+    public static void devolucaoChave(ChaveDTO chave) throws NegocioException {
         List<ChaveDTO> chaves;
         try {
-            if(chave.getId() == 0)
-                throw new NegocioException("ID não pode ser nulo");
-            else {
-                chaveDAO = new ChaveDAO();
-                if((chaves = chaveDAO.buscarChave(chave)) != null) {
-                    chaveDAO.alterarChave(chaves.get(0));
+            if(chave.getId() != null) {
+                if((chaves = ChaveDAO.buscar(chave)).size() > 0) {
+                    ChaveDTO alt_chave = chaves.get(0);
+                    alt_chave.setEstado("Disponível");
+                    ChaveDAO.atualizar(alt_chave);
                 } else {
                     throw new NegocioException("Não foi encontrado nenhuma chave com tal ID.");
                 }
-            }
+            } else throw new NegocioException("ID inválido.");
         } catch ( NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }
     }
 
-    public List<ChaveDTO> buscarChave(ChaveDTO chave) throws NegocioException {
-        ChaveDAO chaveDAO;
+    /*
+        Checa se é ambos os campos estão nulos, se não, realiza uma busca na DB
+        para retornar todas as chaves que tem os campos coincidindo.
+    */
+    public static List<ChaveDTO> buscarChave(ChaveDTO chave) throws NegocioException {
         List<ChaveDTO> chaves;
         try {
-            if(chave.getCod().equals("") && chave.getSala().equals("")) {
-                throw new NegocioException("msg");
-            }
-            else {
-                chaveDAO = new ChaveDAO();
-                if((chaves = chaveDAO.buscarChave(chave)) != null) {
+            if(chave.getCod() != null || chave.getSala() != null) {
+                if((chaves = ChaveDAO.buscar(chave)).size() > 0) {
                     return chaves;
                 } else {
                     throw new NegocioException("Não foi encontrado nenhuma chave.");
                 }
+            }
+            else {
+                throw new NegocioException("Ambos campos nulos.");
             }
         } catch ( NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());

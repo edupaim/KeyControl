@@ -23,12 +23,10 @@ public class Fachada {
 
     // felipe: por que static?
     private static UsuarioRN usuarioRn;
-    private static ChaveRN chaveRn;
 
     public Fachada() {
         // felipe: por que não usar this?
         Fachada.usuarioRn = new UsuarioRN();
-        Fachada.chaveRn = new ChaveRN();
     }
 
     /*
@@ -224,10 +222,11 @@ public class Fachada {
      * METODOS DO DEVOLUCAO MAIN FRAME
      */
 
-    public void devolverChave(int id) {
+    public void devolverChave(Integer id) {
         try {
-            ChaveDTO chave = new ChaveDTO(id);
-            chaveRn.devolucaoChave(chave);
+            ChaveDTO chave = new ChaveDTO();
+            chave.setId(id);
+            ChaveRN.devolucaoChave(chave);
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
@@ -235,13 +234,14 @@ public class Fachada {
 
     public void buscarChave(String cod, String sala) {
         try {
-            ChaveDTO chave = new ChaveDTO(cod, sala);
-            List<ChaveDTO> chaves = chaveRn.buscarChave(chave);
+            ChaveDTO chave = new ChaveDTO();
+            chave.setCod(cod);
+            chave.setSala(sala);
+            List<ChaveDTO> chaves = ChaveRN.buscarChave(chave);
             chave = chaves.get(0);
             KeyControl.mainFrame.TxtDevolucaoID.setText(String.valueOf(chave.getId()));
             KeyControl.mainFrame.TxtDevolucaoAndar.setText(chave.getAndar());
             KeyControl.mainFrame.TxtDevolucaoCap.setText(String.valueOf(chave.getCapacidade()));
-            
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }

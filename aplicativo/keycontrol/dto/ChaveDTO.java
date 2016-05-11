@@ -4,18 +4,18 @@ package aplicativo.keycontrol.dto;
  * @author Edu
  */
 public class ChaveDTO {
-    private int     id;
+    private Integer id;
     private String  cod;
     private String  sala;
-    private int     capacidade;
+    private Integer capacidade;
     private String  andar;
-    private char    tipo;
+    private String  tipo;
     private String  estado;
     
 
-    public ChaveDTO(int id, String cod, 
-                    String Sala, int capacidade, 
-                    String andar, char tipo, 
+    public ChaveDTO(Integer id, String cod, 
+                    String sala, Integer capacidade, 
+                    String andar, String tipo, 
                     String estado) {
         this.id = id;
         this.sala = sala;
@@ -26,22 +26,18 @@ public class ChaveDTO {
         this.estado = estado;
     }
     
-    public ChaveDTO(int id) {
-        this(id, "", "", 0, "", '\0', "");
+    public ChaveDTO() {
+        this(null, null, null, null, null, null, null);
     }
-    
-    public ChaveDTO(String cod, String sala) {
-        this(0, cod, sala, 0, "", '\0', "");
-    }
-    
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
-    
+
     public String getCod() {
         return cod;
     }
@@ -49,7 +45,7 @@ public class ChaveDTO {
     public void setCod(String cod) {
         this.cod = cod;
     }
-    
+
     public String getSala() {
         return sala;
     }
@@ -58,11 +54,11 @@ public class ChaveDTO {
         this.sala = sala;
     }
 
-    public int getCapacidade() {
+    public Integer getCapacidade() {
         return capacidade;
     }
 
-    public void setCapacidade(int capacidade) {
+    public void setCapacidade(Integer capacidade) {
         this.capacidade = capacidade;
     }
 
@@ -74,11 +70,11 @@ public class ChaveDTO {
         this.andar = andar;
     }
 
-    public char getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(char tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 

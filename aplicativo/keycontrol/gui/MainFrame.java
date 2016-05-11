@@ -1567,11 +1567,17 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButAlterarAltC1ActionPerformed
 
     private void MenuEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEmprestimoActionPerformed
-        // TODO add your handling code here:
+        Painel.removeAll();
+        Painel.add(KeyControl.mainFrame.AbaEmprestimo);
+        Painel.repaint();
+        Painel.validate();
     }//GEN-LAST:event_MenuEmprestimoActionPerformed
 
     private void MenuDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuDevolucaoActionPerformed
-        // TODO add your handling code here:
+        Painel.removeAll();
+        Painel.add(KeyControl.mainFrame.AbaDevolucao);
+        Painel.repaint();
+        Painel.validate();
     }//GEN-LAST:event_MenuDevolucaoActionPerformed
 
     private void MenuReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuReservaActionPerformed
@@ -1591,11 +1597,12 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtLoginBusU4ActionPerformed
 
     private void ButtonDevolucaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoBuscarActionPerformed
-        KeyControl.fachada.buscarChave(this.TxtDevolucaoCod.getText(), this.TxtDevolucaoSala.getText());
+        KeyControl.fachada.buscarChave(!"".equals(this.TxtDevolucaoCod.getText()) ? this.TxtDevolucaoCod.getText() : null,
+                                        !"".equals(this.TxtDevolucaoSala.getText()) ? this.TxtDevolucaoSala.getText() : null);
     }//GEN-LAST:event_ButtonDevolucaoBuscarActionPerformed
 
     private void ButtonDevolucaoDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoDevolverActionPerformed
-        KeyControl.fachada.devolverChave(Integer.parseInt(TxtDevolucaoID.getText()));
+        KeyControl.fachada.devolverChave(!"".equals(TxtDevolucaoID.getText()) ? Integer.parseInt(TxtDevolucaoID.getText()) : null);
     }//GEN-LAST:event_ButtonDevolucaoDevolverActionPerformed
 
     /**
