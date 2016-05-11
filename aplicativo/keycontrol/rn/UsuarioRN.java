@@ -130,25 +130,23 @@ public class UsuarioRN {
         }
     }
 
-    public List<UsuarioDTO> buscar(String id, String nome, String login, String tipo) throws NegocioException {
+    public List<UsuarioDTO> buscar(UsuarioDTO u) throws NegocioException {
         List<UsuarioDTO> lista = new ArrayList<>();
         UsuarioDAO userDao = new UsuarioDAO();
-        UsuarioDTO user = new UsuarioDTO();
-        if (id != null && !"".equals(id)) {
-            user.setId(Integer.parseInt(id));
+        if (u.getId() != null && "".equals(String.valueOf(u.getId()))) {
+           u.setId(null);
         }
-        if (login != null && !"".equals(login)) {
-            user.setLogin(login.trim());
+        if (u.getLogin() != null && "".equals(u.getLogin())) {
+            u.setLogin(null);
         }
-        if (nome != null && !"".equals(nome)) {
-            user.setNome(nome.trim());
+        if (u.getNome() != null && "".equals(u.getNome())) {
+            u.setNome(null);
         }
-        if (tipo != null && !"".equals(tipo) && Integer.parseInt(tipo) < 2) {
-            user.setTipo(Integer.parseInt(tipo));
+        if (u.getTipo() != null && "".equals(String.valueOf(u.getTipo())) && u.getTipo() > 2) {
+            u.setTipo(null);
         }
         try {
-
-            lista = userDao.buscar(user);
+            lista = userDao.buscar(u);
         } catch (PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }

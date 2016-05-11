@@ -190,50 +190,46 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
         List<UsuarioDTO> lista = new ArrayList<>();
         String sql = "SELECT * FROM usuario ";
         boolean ultimo = false;
-        int cont = 0;
+        List<Object> values = new ArrayList<>();
+        sql += "WHERE ";
         if (u.getId() != null) {
-            sql += "WHERE id_usuario LIKE ? ";
+            sql += "id_usuario LIKE ? ";
             ultimo = true;
+            values.add(u.getId());
         }
         if (u.getLogin() != null) {
             if (ultimo) {
                 sql += "AND ";
             } else {
-                sql += "WHERE ";
                 ultimo = true;
             }
             sql += "login LIKE ? ";
+            values.add(u.getLogin());
         }
         if (u.getTipo() != null) {
             if (ultimo) {
                 sql += "AND ";
             } else {
-                sql += "WHERE ";
                 ultimo = true;
             }
             sql += "tipo LIKE ? ";
+            values.add(u.getTipo());
         }
         if (u.getNome() != null) {
             if (ultimo) {
                 sql += "AND ";
-            } else {
-                sql += "WHERE ";
             }
             sql += "nome LIKE ? ";
+            values.add(u.getNome());
         }
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            if (u.getId() != null) {
-                ps.setInt(++cont, u.getId());
-            }
-            if (u.getLogin() != null) {
-                ps.setString(++cont, "%" + u.getLogin() + "%");
-            }
-            if (u.getTipo() != null) {
-                ps.setInt(++cont, u.getTipo());
-            }
-            if (u.getNome() != null) {
-                ps.setString(++cont, "%" + u.getNome() + "%");
+            for (int i = 1; i <= values.size(); i++) {
+                if (values.get(i) instanceof Integer) {
+                    ps.setInt(i, (int) values.get(i));
+                } else if (values.get(i) instanceof String) {
+                    ps.setString(i, "%" +(String) values.get(i)+ "%");
+                }
             }
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {

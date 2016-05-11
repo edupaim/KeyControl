@@ -116,10 +116,10 @@ public class Fachada {
         List<UsuarioDTO> lista;
         UsuarioRN buscarRn = new UsuarioRN();
         try {
-            lista = buscarRn.buscar(KeyControl.mainFrame.TxtIdBusU.getText(),
+            lista = buscarRn.buscar(new UsuarioDTO(KeyControl.mainFrame.TxtIdBusU.getText(),
                     KeyControl.mainFrame.TxtNomeBusU.getText(),
                     KeyControl.mainFrame.TxtLoginBusU.getText(),
-                    String.valueOf(KeyControl.mainFrame.CBoxTipoBusU.getSelectedIndex()));
+                    KeyControl.mainFrame.CBoxTipoBusU.getSelectedIndex()));
             atualizarTabelaUsuarios(lista);
         } catch (NegocioException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);

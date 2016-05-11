@@ -14,86 +14,81 @@ import java.util.List;
  *
  * @author Felipe
  */
-public class ChaveDAO {
-    
-    /*
-        Singleton
-    */    
-    private ChaveDAO() {}
-    
+public class ChaveDAO implements GenericoDAO<ChaveDTO> {
+
     // obs: pra que Integer id nos argumentos das funções se o DTO ja vem com o id?
-    //@Override
-    public static void atualizar(ChaveDTO obj) throws PersistenciaException {
+
+    @Override
+    public void atualizar(ChaveDTO obj) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Atualizar Chave");
         List<Object> values = new ArrayList<>();
         boolean primeiro = true;
         String sql = "UPDATE chaves WHERE";
         sql += " id_chave = ?";
         sql += " SET ";
-        
-        if(obj.getAndar() != null) {
-            if(primeiro) {
+        if (obj.getAndar() != null) {
+            if (primeiro) {
                 sql += "andar = ?";
                 primeiro = false;
-            }
-            else
+            } else {
                 sql += ", andar = ?";
+            }
             values.add(obj.getAndar());
         }
-        if(obj.getCapacidade() != null) {
-            if(primeiro) {
+        if (obj.getCapacidade() != null) {
+            if (primeiro) {
                 sql += "capacidade = ?";
                 primeiro = false;
-            }
-            else
+            } else {
                 sql += ", capacidade = ?";
+            }
             values.add(obj.getCapacidade());
         }
-        if(obj.getCod() != null) {
-            if(primeiro) {
+        if (obj.getCod() != null) {
+            if (primeiro) {
                 sql += "cod = ?";
                 primeiro = false;
-            }
-            else
+            } else {
                 sql += ", cod = ?";
+            }
             values.add(obj.getCod());
         }
-        if(obj.getEstado() != null) {
-            if(primeiro) {
+        if (obj.getEstado() != null) {
+            if (primeiro) {
                 sql += "estado = ?";
                 primeiro = false;
-            }
-            else
+            } else {
                 sql += ", estado = ?";
-             values.add(obj.getEstado());
+            }
+            values.add(obj.getEstado());
         }
-        if(obj.getSala() != null) {
-            if(primeiro) {
+        if (obj.getSala() != null) {
+            if (primeiro) {
                 sql += "sala = ?";
                 primeiro = false;
-            }
-            else
+            } else {
                 sql += ", sala = ?";
+            }
             values.add(obj.getSala());
         }
-        if(obj.getTipo() != null) {
-            if(primeiro) {
+        if (obj.getTipo() != null) {
+            if (primeiro) {
                 sql += "tipo = ?";
-                primeiro = false;
-            }
-            else
+            } else {
                 sql += ", tipo = ?";
+            }
             values.add(obj.getTipo());
         }
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, obj.getId());
-            for(int i = 2; i <= values.size(); i++) {
-                if(values.get(i) instanceof Integer)
+            for (int i = 2; i <= values.size(); i++) {
+                if (values.get(i) instanceof Integer) {
                     ps.setInt(i, (int) values.get(i));
-                else if(values.get(i) instanceof String)
+                } else if (values.get(i) instanceof String) {
                     ps.setString(i, (String) values.get(i));
+                }
             }
             ps.execute();
         } catch (SQLException ex) {
@@ -102,114 +97,130 @@ public class ChaveDAO {
             ConexaoUtil.fecharConexao(con);
         }
     }
-    
-    //@Override
-    public void inserir(ChaveDTO obj) throws PersistenciaException {
-        throw new PersistenciaException("Not supported yet.");
+
+    @Override
+    public void inserir(ChaveDTO chave) throws PersistenciaException {
+        Connection con = ConexaoUtil.abrirConexao("Inserir Usuario");
+        String sql = "INSERT INTO chave (id_chave, cod, sala, capacidade, andar, tipo, estado) values (NULL, ?,?,?,?,?,?)";
+        try {
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, chave.getCod());
+                ps.setString(2, chave.getSala());
+                ps.setInt(3, chave.getCapacidade());
+                ps.setString(4, chave.getAndar());
+                ps.setString(4, chave.getTipo());
+                ps.setString(4, chave.getEstado());
+                ps.execute();
+            }
+        } catch (SQLException ex) {
+            throw new PersistenciaException(ex.getMessage(), ex);
+        } finally {
+            ConexaoUtil.fecharConexao(con);
+        }
     }
 
-    //@Override
+    @Override
     public void deletar(Integer id) throws PersistenciaException {
         throw new PersistenciaException("Not supported yet.");
     }
 
-    //@Override
+    @Override
     public List<ChaveDTO> listarTodos() throws PersistenciaException {
         throw new PersistenciaException("Not supported yet.");
     }
 
-    //@Override
+    @Override
     public ChaveDTO buscarPorId(Integer id) throws PersistenciaException {
         throw new PersistenciaException("Not supported yet.");
     }
 
-    //@Override
-    public static List<ChaveDTO> buscar(ChaveDTO obj) throws PersistenciaException {
+    @Override
+    public List<ChaveDTO> buscar(ChaveDTO obj) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Buscar chave");
         List<ChaveDTO> lista = new ArrayList<>();
         String sql = "SELECT * FROM chaves";
         sql += " WHERE ";
         boolean primeiro = true;
         List<Object> values = new ArrayList<>();
-        
-        if(obj.getId() != null) {
+
+        if (obj.getId() != null) {
             sql += "id_chave LIKE ?";
             primeiro = false;
             values.add(obj.getId());
         }
-        if(obj.getAndar() != null) {
-            if(primeiro) {
+        if (obj.getAndar() != null) {
+            if (primeiro) {
                 sql += "andar LIKE ?";
                 primeiro = false;
-            }
-            else
+            } else {
                 sql += " AND andar LIKE ?";
+            }
             values.add(obj.getAndar());
         }
-        if(obj.getCapacidade() != null) {
-            if(primeiro) {
+        if (obj.getCapacidade() != null) {
+            if (primeiro) {
                 sql += "capacidade LIKE ?";
                 primeiro = false;
-            }
-            else
+            } else {
                 sql += " AND capacidade LIKE ?";
+            }
             values.add(obj.getCapacidade());
         }
-        if(obj.getCod() != null) {
-            if(primeiro) {
+        if (obj.getCod() != null) {
+            if (primeiro) {
                 sql += "cod LIKE ?";
                 primeiro = false;
-            }
-            else
+            } else {
                 sql += " AND cod LIKE ?";
+            }
             values.add(obj.getCod());
         }
-        if(obj.getEstado() != null) {
-            if(primeiro) {
+        if (obj.getEstado() != null) {
+            if (primeiro) {
                 sql += "estado LIKE ?";
                 primeiro = false;
-            }
-            else
+            } else {
                 sql += " AND estado LIKE ?";
-             values.add(obj.getEstado());
+            }
+            values.add(obj.getEstado());
         }
-        if(obj.getSala() != null) {
-            if(primeiro) {
+        if (obj.getSala() != null) {
+            if (primeiro) {
                 sql += "sala LIKE ?";
                 primeiro = false;
-            }
-            else
+            } else {
                 sql += " AND sala LIKE ?";
+            }
             values.add(obj.getSala());
         }
-        if(obj.getTipo() != null) {
-            if(primeiro) {
+        if (obj.getTipo() != null) {
+            if (primeiro) {
                 sql += "tipo LIKE ?";
-                primeiro = false;
-            }
-            else
+            } else {
                 sql += " AND tipo LIKE ?";
+            }
             values.add(obj.getTipo());
         }
-        
+
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            for(int i = 1; i <= values.size(); i++) {
-                if(values.get(i) instanceof Integer)
+            for (int i = 1; i <= values.size(); i++) {
+                if (values.get(i) instanceof Integer) {
                     ps.setInt(i, (int) values.get(i));
-                else if(values.get(i) instanceof String)
-                    ps.setString(i, (String) values.get(i));
+                } else if (values.get(i) instanceof String) {
+                    ps.setString(i, "%" + (String) values.get(i) + "%");
+                }
             }
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 lista.add(new ChaveDTO(rs.getInt(1),
-                                       rs.getString(2),
-                                       rs.getString(3),
-                                       rs.getInt(4),
-                                       rs.getString(5),
-                                       rs.getString(6),
-                                       rs.getString(7)
-                                        ));
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7)
+                ));
             }
         } catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);

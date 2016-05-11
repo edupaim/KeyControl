@@ -17,10 +17,11 @@ public class ChaveRN {
         executa uma alteração na db com os novos valores.
     */
     public static void devolucaoChave(ChaveDTO chave) throws NegocioException {
+        ChaveDAO DAO = new ChaveDAO();
         try {
             if(chave.getId() != null) {
                 chave.setEstado("Disponível");
-                ChaveDAO.atualizar(chave);
+                DAO.atualizar(chave);
             } else throw new NegocioException("ID inválido.");
         } catch ( NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
@@ -32,10 +33,11 @@ public class ChaveRN {
         para retornar todas as chaves que tem os campos coincidindo.
     */
     public static List<ChaveDTO> buscarChave(ChaveDTO chave) throws NegocioException {
+        ChaveDAO DAO = new ChaveDAO();
         List<ChaveDTO> chaves;
         try {
             if(chave.getCod() != null || chave.getSala() != null) {
-                if((chaves = ChaveDAO.buscar(chave)).size() > 0) {
+                if((chaves = DAO.buscar(chave)).size() > 0) {
                     return chaves;
                 } else {
                     throw new NegocioException("Não foi encontrado nenhuma chave.");
