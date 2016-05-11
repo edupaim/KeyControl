@@ -1516,6 +1516,143 @@
             </Container>
           </SubComponents>
         </Container>
+        <Container class="javax.swing.JPanel" name="AbaDevolucao">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card5"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="SeparatorDevolucao" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="ButtonDevolucaoDevolver" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="LabDevolucaoCod" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoCod" min="-2" pref="64" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoSala" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoSala" min="-2" pref="84" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoCap" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoCap" min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoAndar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoAndar" min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoID" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoID" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace pref="62" max="32767" attributes="0"/>
+                              <Component id="ButtonDevolucaoBuscar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ButtonDevolucaoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabDevolucaoCod" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtDevolucaoCod" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabDevolucaoAndar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtDevolucaoAndar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="SeparatorDevolucao" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="ButtonDevolucaoDevolver" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="277" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="LabDevolucaoCod">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtDevolucaoCod">
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabDevolucaoSala">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sala"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtDevolucaoSala">
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabDevolucaoCap">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Capacidade"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtDevolucaoCap">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabDevolucaoAndar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Andar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtDevolucaoAndar">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabDevolucaoID">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtDevolucaoID">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="ButtonDevolucaoBuscar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDevolucaoBuscarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="SeparatorDevolucao">
+            </Component>
+            <Component class="javax.swing.JButton" name="ButtonDevolucaoDevolver">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Realizar Devolu&#xe7;&#xe3;o"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDevolucaoDevolverActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
         <Container class="javax.swing.JPanel" name="AbaEmprestimo">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">

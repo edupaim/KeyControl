@@ -159,6 +159,20 @@ public class MainFrame extends javax.swing.JFrame {
         ButAlterarAltC1 = new javax.swing.JButton();
         LabSenhaNRA2 = new javax.swing.JLabel();
         TxtSenhaN2AltC2 = new javax.swing.JPasswordField();
+        AbaDevolucao = new javax.swing.JPanel();
+        LabDevolucaoCod = new javax.swing.JLabel();
+        TxtDevolucaoCod = new javax.swing.JTextField();
+        LabDevolucaoSala = new javax.swing.JLabel();
+        TxtDevolucaoSala = new javax.swing.JTextField();
+        LabDevolucaoCap = new javax.swing.JLabel();
+        TxtDevolucaoCap = new javax.swing.JTextField();
+        LabDevolucaoAndar = new javax.swing.JLabel();
+        TxtDevolucaoAndar = new javax.swing.JTextField();
+        LabDevolucaoID = new javax.swing.JLabel();
+        TxtDevolucaoID = new javax.swing.JTextField();
+        ButtonDevolucaoBuscar = new javax.swing.JButton();
+        SeparatorDevolucao = new javax.swing.JSeparator();
+        ButtonDevolucaoDevolver = new javax.swing.JButton();
         AbaEmprestimo = new javax.swing.JPanel();
         LabEmprestimoMatricula = new javax.swing.JLabel();
         TxtEmprestimoMatricula = new javax.swing.JTextField();
@@ -1150,6 +1164,96 @@ public class MainFrame extends javax.swing.JFrame {
 
         Painel.add(AbasChaves, "card2");
 
+        LabDevolucaoCod.setText("Código");
+
+        LabDevolucaoSala.setText("Sala");
+
+        LabDevolucaoCap.setText("Capacidade");
+
+        TxtDevolucaoCap.setEditable(false);
+
+        LabDevolucaoAndar.setText("Andar");
+
+        TxtDevolucaoAndar.setEditable(false);
+
+        LabDevolucaoID.setText("ID");
+
+        TxtDevolucaoID.setEditable(false);
+
+        ButtonDevolucaoBuscar.setText("Buscar");
+        ButtonDevolucaoBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonDevolucaoBuscarActionPerformed(evt);
+            }
+        });
+
+        ButtonDevolucaoDevolver.setText("Realizar Devolução");
+        ButtonDevolucaoDevolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonDevolucaoDevolverActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AbaDevolucaoLayout = new javax.swing.GroupLayout(AbaDevolucao);
+        AbaDevolucao.setLayout(AbaDevolucaoLayout);
+        AbaDevolucaoLayout.setHorizontalGroup(
+            AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SeparatorDevolucao)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ButtonDevolucaoDevolver))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
+                        .addComponent(LabDevolucaoCod)
+                        .addGap(18, 18, 18)
+                        .addComponent(TxtDevolucaoCod, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabDevolucaoSala)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TxtDevolucaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabDevolucaoCap)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabDevolucaoAndar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TxtDevolucaoAndar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabDevolucaoID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addComponent(ButtonDevolucaoBuscar)))
+                .addContainerGap())
+        );
+        AbaDevolucaoLayout.setVerticalGroup(
+            AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AbaDevolucaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonDevolucaoBuscar)
+                    .addComponent(LabDevolucaoCod)
+                    .addComponent(TxtDevolucaoCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabDevolucaoSala)
+                    .addComponent(TxtDevolucaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabDevolucaoCap)
+                    .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabDevolucaoAndar)
+                    .addComponent(TxtDevolucaoAndar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabDevolucaoID)
+                    .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(SeparatorDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonDevolucaoDevolver)
+                .addContainerGap(277, Short.MAX_VALUE))
+        );
+
+        Painel.add(AbaDevolucao, "card5");
+
         LabEmprestimoMatricula.setText("Matrícula");
 
         LabEmprestimoNome.setText("Nome");
@@ -1486,6 +1590,14 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtLoginBusU4ActionPerformed
 
+    private void ButtonDevolucaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoBuscarActionPerformed
+        KeyControl.fachada.buscarChave(this.TxtDevolucaoCod.getText(), this.TxtDevolucaoSala.getText());
+    }//GEN-LAST:event_ButtonDevolucaoBuscarActionPerformed
+
+    private void ButtonDevolucaoDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoDevolverActionPerformed
+        KeyControl.fachada.devolverChave(Integer.parseInt(TxtDevolucaoID.getText()));
+    }//GEN-LAST:event_ButtonDevolucaoDevolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1519,6 +1631,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JPanel AbaDevolucao;
     public javax.swing.JPanel AbaEmprestimo;
     public javax.swing.JTabbedPane AbasChaves;
     public javax.swing.JTabbedPane AbasUsuarios;
@@ -1539,6 +1652,8 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JButton ButLimpar;
     public javax.swing.JButton ButLogout;
     public javax.swing.JButton ButSair;
+    public javax.swing.JButton ButtonDevolucaoBuscar;
+    public javax.swing.JButton ButtonDevolucaoDevolver;
     public javax.swing.JButton ButtonEmprestimoPreencher;
     public javax.swing.JComboBox CBoxTipoAaltC;
     public javax.swing.JComboBox CBoxTipoAaltC1;
@@ -1553,6 +1668,11 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JLabel LabAndar;
     public javax.swing.JLabel LabCap;
     public javax.swing.JLabel LabCod;
+    public javax.swing.JLabel LabDevolucaoAndar;
+    public javax.swing.JLabel LabDevolucaoCap;
+    public javax.swing.JLabel LabDevolucaoCod;
+    public javax.swing.JLabel LabDevolucaoID;
+    public javax.swing.JLabel LabDevolucaoSala;
     public javax.swing.JLabel LabEmprestimoMatricula;
     public javax.swing.JLabel LabEmprestimoNome;
     public javax.swing.JLabel LabEmprestimoTipo;
@@ -1603,11 +1723,17 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JScrollPane ScrollPaneTab1;
     public javax.swing.JScrollPane ScrollPaneTab2;
     public javax.swing.JScrollPane ScrollPaneTab3;
+    public javax.swing.JSeparator SeparatorDevolucao;
     public javax.swing.JTable TblUser;
     public javax.swing.JTable TblUser1;
     public javax.swing.JTable TblUserFiltro;
     public javax.swing.JTable TblUserFiltro1;
     public javax.swing.JPanel Tipo;
+    public javax.swing.JTextField TxtDevolucaoAndar;
+    public javax.swing.JTextField TxtDevolucaoCap;
+    public javax.swing.JTextField TxtDevolucaoCod;
+    public javax.swing.JTextField TxtDevolucaoID;
+    public javax.swing.JTextField TxtDevolucaoSala;
     public javax.swing.JTextField TxtEmprestimoMatricula;
     public javax.swing.JTextField TxtEmprestimoNome;
     public javax.swing.JTextField TxtEmprestimoTipo;
