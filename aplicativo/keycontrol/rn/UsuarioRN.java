@@ -5,6 +5,7 @@ import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.main.KeyControl;
+import aplicativo.keycontrol.util.MensagensUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,8 +93,10 @@ public class UsuarioRN {
                 throw new NegocioException("ID inválido.");
             }
             UsuarioDAO dao = new UsuarioDAO();
-            dao.deletar(id);
-            resul = true;
+            if (MensagensUtil.confirm("Deseja realmente deletar o usario "+buscarPorId(id).getNome(), "DELETAR")){
+                dao.deletar(id);
+                resul = true;
+            }
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }

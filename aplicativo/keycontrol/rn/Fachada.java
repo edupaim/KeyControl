@@ -145,7 +145,7 @@ public class Fachada {
      */
     public void menuUsuarios() {
         KeyControl.mainFrame.Painel.removeAll();
-        if (KeyControl.getUsuarioLogado().getTipo() > 0) {
+        if (KeyControl.getUsuarioLogado().getTipo() > 1) {
             MensagensUtil.addMsg(KeyControl.mainFrame, "Tipo de usuario não permitido.");
         } else {
             KeyControl.mainFrame.Painel.add(KeyControl.mainFrame.AbasUsuarios);
@@ -155,7 +155,7 @@ public class Fachada {
     }
 
     /*
-     * METODOS DO USUARIO MAIN FRAME
+     * METODOS DO MAIN FRAME>USUARIO
      */
     public void cadastrarUsuario(String nome, String login, String senha, String senhar, Integer tipo) {
         try {

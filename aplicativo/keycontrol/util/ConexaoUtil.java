@@ -16,7 +16,11 @@ public class ConexaoUtil {
         } catch (ClassNotFoundException | SQLException ex) {
         } catch (InstantiationException | IllegalAccessException ex) {
         }
-        System.out.println("Conexao aberta. [" + s + "]");
+        if (con != null) {
+            System.out.println("Conexao aberta. [" + s + "]");
+        } else {
+            System.out.println("Nao foi possivel realizar conexao.");
+        }
         return con;
     }
 

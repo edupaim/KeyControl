@@ -45,7 +45,7 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
     @Override
     public void inserir(UsuarioDTO u) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Inserir Usuario");
-        String sql = "INSERT INTO usuario (id, nome, login, senha, tipo) values (NULL, ?,?,?,?)";
+        String sql = "INSERT INTO usuario (id_usuario, nome, login, senha, tipo) values (NULL, ?,?,?,?)";
         try {
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setString(1, u.getNome());
@@ -93,7 +93,7 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
             }
             sql += "tipo = ? ";
         }
-        sql += "WHERE id = ?";
+        sql += "WHERE id_usuario = ?";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
             if (u.getNome() != null && !u.getNome().equals("")) {
                 ps.setString(++cont, u.getNome());
@@ -114,13 +114,12 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
         } finally {
             ConexaoUtil.fecharConexao(con);
         }
-
     }
 
     @Override
     public void deletar(Integer id) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Deletar Usuario");
-        String sql = "DELETE FROM usuario WHERE id = ?";
+        String sql = "DELETE FROM usuario WHERE id_usuario = ?";
         try {
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setInt(1, id);
@@ -144,8 +143,8 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
             while (rs.next()) {
                 UsuarioDTO u = new UsuarioDTO();
                 u.setId(rs.getInt(1));
-                u.setLogin(rs.getString(3));
                 u.setNome(rs.getString(2));
+                u.setLogin(rs.getString(3));
                 u.setSenha(rs.getString(4));
                 u.setTipo(rs.getInt(5));
                 retorno.add(u);
@@ -164,7 +163,7 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
         UsuarioDTO usuarioR = null;
         Connection con = ConexaoUtil.abrirConexao("Buscar Usuario por ID");
         String sql = "SELECT * FROM usuario ";
-        sql += "WHERE id = ? ";
+        sql += "WHERE id_usuario = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -193,7 +192,7 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
         boolean ultimo = false;
         int cont = 0;
         if (u.getId() != null) {
-            sql += "WHERE id LIKE ? ";
+            sql += "WHERE id_usuario LIKE ? ";
             ultimo = true;
         }
         if (u.getLogin() != null) {

@@ -11,11 +11,14 @@ public class UsuarioDTO {
     Integer tipo;
     
     public String getTipoString(){
-        if(this.tipo==0){
-            return "Administrador";
-        } else {
-            return "Funcionário";
-        }
+       switch (tipo){
+           case 1:
+               return "Administrador";
+           case 2:
+               return "Funcionario";
+           default:
+               return "Tipo nao identificado";
+       }
     }
 
     public UsuarioDTO(int id, String nome, String login, String senha, int tipo) {
