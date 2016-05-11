@@ -17,29 +17,28 @@ USE `keycontrol`;
 
 -- Copiando estrutura para tabela keycontrol.usuario
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL DEFAULT '0',
   `login` varchar(50) NOT NULL DEFAULT '0',
   `senha` varchar(50) NOT NULL DEFAULT '0',
   `tipo` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `chaves` (
- `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id da chave (int)' , 
+ `id_chave` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id da chave (int)' , 
  `cod` VARCHAR(20) NOT NULL COMMENT 'código da chave/sala (string)' , 
  `sala` VARCHAR(30) NOT NULL COMMENT 'sala da chave (string)' , 
  `capacidade` INT UNSIGNED NOT NULL COMMENT 'capacidade da sala (int)' , 
  `andar` VARCHAR(30) NOT NULL COMMENT 'andar da sala (string)' , 
  `tipo` CHAR NOT NULL COMMENT 'tipo da chave (char)' , 
  `estado` VARCHAR(10) NOT NULL COMMENT 'estado da chave (string)' , 
- PRIMARY KEY (`id`), 
+ PRIMARY KEY (`id_chave`), 
  UNIQUE (`cod`)) ENGINE = MyISAM;
-
 -- Copiando dados para a tabela keycontrol.usuario: ~1 rows (aproximadamente)
 DELETE FROM `usuario`;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` (`id`, `nome`, `login`, `senha`, `tipo`) VALUES
+INSERT INTO `usuario` (`id_usuario`, `nome`, `login`, `senha`, `tipo`) VALUES
 	(1, 'Administrador', 'admin', 'admin', 0);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
