@@ -21,7 +21,7 @@ public class UsuarioDTO {
        }
     }
 
-    public UsuarioDTO(int id, String nome, String login, String senha, int tipo) {
+    public UsuarioDTO(Integer id, String nome, String login, String senha, Integer tipo) {
         this.id = id;
         this.nome = nome;
         this.login = login;
@@ -29,7 +29,7 @@ public class UsuarioDTO {
         this.tipo = tipo;
     }
     
-    public UsuarioDTO(String nome, String login, String senha, int tipo) {
+    public UsuarioDTO(String nome, String login, String senha, Integer tipo) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
@@ -37,6 +37,7 @@ public class UsuarioDTO {
     }
 
     public UsuarioDTO() {
+        this(null, null, null, null, null);
     }
 
     public Integer getId() {

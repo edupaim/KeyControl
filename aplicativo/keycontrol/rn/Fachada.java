@@ -1,6 +1,7 @@
 package aplicativo.keycontrol.rn;
 
 import aplicativo.keycontrol.dto.UsuarioDTO;
+import aplicativo.keycontrol.dto.ChaveDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.gui.LoginFrame;
 import aplicativo.keycontrol.gui.MainFrame;
@@ -20,9 +21,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Fachada {
 
+    // felipe: por que static?
     private static UsuarioRN usuarioRn;
 
     public Fachada() {
+        // felipe: por que não usar this?
         Fachada.usuarioRn = new UsuarioRN();
     }
 
@@ -127,17 +130,26 @@ public class Fachada {
      * METODOS DO LOGIN FRAME
      */
     public void fazerLogin(String login, String senha) {
-        try {
-            if (usuarioRn.logar(login, senha)) {
-                MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
-                KeyControl.loginFrame.dispose();
-                KeyControl.mainFrame = new MainFrame();
-                KeyControl.mainFrame.setLocationRelativeTo(null);
-                KeyControl.mainFrame.setVisible(true);
-            }
-        } catch (NegocioException ex) {
-            MensagensUtil.addMsg(KeyControl.loginFrame, ex.getMessage());
-        }
+        // modifiquei para não precisar de login
+        MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
+        KeyControl.setUsuarioLogado(new UsuarioDTO(0, "debug", "debug", "debug", 1));
+        KeyControl.loginFrame.dispose();
+        KeyControl.mainFrame = new MainFrame();
+        KeyControl.mainFrame.setLocationRelativeTo(null);
+        KeyControl.mainFrame.setVisible(true);
+        /*
+         try {
+         if (usuarioRn.logar(login, senha)) {
+         MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
+         KeyControl.loginFrame.dispose();
+         KeyControl.mainFrame = new MainFrame();
+         KeyControl.mainFrame.setLocationRelativeTo(null);
+         KeyControl.mainFrame.setVisible(true);
+         }
+         } catch (NegocioException ex) {
+         MensagensUtil.addMsg(KeyControl.loginFrame, ex.getMessage());
+         }
+         */
     }
 
     /*
@@ -153,7 +165,7 @@ public class Fachada {
             KeyControl.mainFrame.Painel.validate();
         }
     }
-
+    
     /*
      * METODOS DO MAIN FRAME>USUARIO
      */
@@ -213,6 +225,35 @@ public class Fachada {
                 KeyControl.fachada.atualizarTabelaUsuarios();
                 KeyControl.fachada.limparTodosCampos(KeyControl.mainFrame.Painel);
             }
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+
+    /*
+     * METODOS DO DEVOLUCAO MAIN FRAME
+     */
+    public void devolverChave(Integer id) {
+        try {
+            ChaveDTO chave = new ChaveDTO();
+            chave.setId(id);
+            ChaveRN.devolucaoChave(chave);
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+    public void buscarChave(String cod, String sala) {
+        try {
+            ChaveDTO chave = new ChaveDTO();
+            chave.setCod(cod);
+            chave.setSala(sala);
+            List<ChaveDTO> chaves = ChaveRN.buscarChave(chave);
+            chave = chaves.get(0);
+            KeyControl.mainFrame.TxtDevolucaoID.setText(String.valueOf(chave.getId()));
+            KeyControl.mainFrame.TxtDevolucaoAndar.setText(chave.getAndar());
+            KeyControl.mainFrame.TxtDevolucaoCap.setText(String.valueOf(chave.getCapacidade()));
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
