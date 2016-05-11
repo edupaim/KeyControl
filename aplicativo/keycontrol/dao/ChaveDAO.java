@@ -25,7 +25,7 @@ public class ChaveDAO {
     public static void atualizar(ChaveDTO chave) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Atualizar Chave");
         String sql = "UPDATE chaves WHERE";
-        sql += " id = ?";
+        sql += " id_chave = ?";
         sql += " SET";
         sql += " cod = ?"; // string
         sql += ", sala = ?"; // string
@@ -79,7 +79,7 @@ public class ChaveDAO {
         List<Object> values = new ArrayList<>();
         
         if(obj.getId() != null) {
-            sql += "id = ?";
+            sql += "id_chave = ?";
             primeiro = false;
             values.add(obj.getId());
         }
