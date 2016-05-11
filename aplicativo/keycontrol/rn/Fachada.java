@@ -127,6 +127,14 @@ public class Fachada {
      * METODOS DO LOGIN FRAME
      */
     public void fazerLogin(String login, String senha) {
+        // modifiquei para não precisar de login
+        MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
+        KeyControl.setUsuarioLogado(new UsuarioDTO(0, "debug", "debug", "debug", 0));
+        KeyControl.loginFrame.dispose();
+        KeyControl.mainFrame = new MainFrame();
+        KeyControl.mainFrame.setLocationRelativeTo(null);
+        KeyControl.mainFrame.setVisible(true);
+        /*
         try {
             if (usuarioRn.logar(login, senha)) {
                 MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
@@ -138,21 +146,9 @@ public class Fachada {
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.loginFrame, ex.getMessage());
         }
+        */
     }
-
-    /*
-     * METODOS DO MENU MAIN FRAME
-     */
-    public void menuUsuarios() {
-        KeyControl.mainFrame.Painel.removeAll();
-        if (KeyControl.getUsuarioLogado().getTipo() > 0) {
-            MensagensUtil.addMsg(KeyControl.mainFrame, "Tipo de usuario não permitido.");
-        } else {
-            KeyControl.mainFrame.Painel.add(KeyControl.mainFrame.AbasUsuarios);
-            KeyControl.mainFrame.Painel.repaint();
-            KeyControl.mainFrame.Painel.validate();
-        }
-    }
+    
 
     /*
      * METODOS DO USUARIO MAIN FRAME
