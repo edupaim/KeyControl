@@ -13,21 +13,14 @@ public class ChaveRN {
     private ChaveRN() {}
     
     /*
-        Checa se o ID é valido, lista todas as chaves com o ID fornecido pelo objeto ChaveDTO,
-        como só existe uma, modifica o objeto na parte de estado de "Não disponível" para "Disponível"
+        Checa se o ID é valido, modifica o objeto na parte de estado de "Não disponível" para "Disponível"
         executa uma alteração na db com os novos valores.
     */
     public static void devolucaoChave(ChaveDTO chave) throws NegocioException {
-        List<ChaveDTO> chaves;
         try {
             if(chave.getId() != null) {
-                if((chaves = ChaveDAO.buscar(chave)).size() > 0) {
-                    ChaveDTO alt_chave = chaves.get(0);
-                    alt_chave.setEstado("Disponível");
-                    ChaveDAO.atualizar(alt_chave);
-                } else {
-                    throw new NegocioException("Não foi encontrado nenhuma chave com tal ID.");
-                }
+                chave.setEstado("Disponível");
+                ChaveDAO.atualizar(chave);
             } else throw new NegocioException("ID inválido.");
         } catch ( NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
