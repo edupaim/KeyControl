@@ -8,6 +8,8 @@ import aplicativo.keycontrol.main.KeyControl;
 import aplicativo.keycontrol.util.MensagensUtil;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * @author Edu
@@ -65,11 +67,11 @@ public class UsuarioRN {
         return resul;
     }
 
-    public boolean atualizar(Integer id, UsuarioDTO u, String senhar) throws NegocioException {
+    public boolean atualizar(UsuarioDTO u, String senhar) throws NegocioException {
         boolean resul = false;
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         try {
-            if (id == null || id < 0) {
+            if (u.getId() == null || u.getId() < 0) {
                 throw new NegocioException("ID inválido.");
             } else if (!u.getSenha().equals(senhar)) {
                 throw new NegocioException("Repita a senha nova corretamente.");
@@ -77,10 +79,14 @@ public class UsuarioRN {
                 u.setLogin(u.getLogin().trim());
                 u.setNome(u.getNome().trim());
                 u.setSenha(u.getSenha().trim());
-                usuarioDAO.atualizar(id, u);
+                try {
+                    usuarioDAO.atualizar(u);
+                } catch (PersistenciaException ex) {
+                    throw new NegocioException(ex.getMessage());
+                }
                 resul = true;
             }
-        } catch (NegocioException | PersistenciaException ex) {
+        } catch (NegocioException ex) {
             throw new NegocioException(ex.getMessage());
         }
         return resul;

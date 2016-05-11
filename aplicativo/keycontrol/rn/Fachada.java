@@ -165,7 +165,7 @@ public class Fachada {
             KeyControl.mainFrame.Painel.validate();
         }
     }
-    
+
     /*
      * METODOS DO MAIN FRAME>USUARIO
      */
@@ -197,12 +197,12 @@ public class Fachada {
 
     public void alterarUsuario(Integer id, String nome, String login, String senha, Integer tipo, String senhar) {
         try {
-            if (usuarioRn.atualizar(id,
-                    new UsuarioDTO(nome,
-                            login,
-                            senha,
-                            tipo
-                    ), senhar)) {
+            if (usuarioRn.atualizar(new UsuarioDTO(id,
+                    nome,
+                    login,
+                    senha,
+                    tipo
+            ), senhar)) {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Alterado com sucesso!");
                 KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
                 atualizarTabelaUsuarios();

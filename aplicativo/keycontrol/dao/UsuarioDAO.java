@@ -62,7 +62,7 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
     }
 
     @Override
-    public void atualizar(Integer id, UsuarioDTO u) throws PersistenciaException {
+    public void atualizar(UsuarioDTO u) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Atualizar Usuario");
         String sql = "UPDATE usuario SET ";
         boolean ultimo = false;
@@ -107,7 +107,7 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
             if (u.getTipo() != null) {
                 ps.setInt(++cont, u.getTipo());
             }
-            ps.setInt(++cont, id);
+            ps.setInt(++cont, u.getId());
             ps.execute();
         } catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
