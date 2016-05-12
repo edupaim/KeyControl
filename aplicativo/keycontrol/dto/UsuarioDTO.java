@@ -28,13 +28,6 @@ public class UsuarioDTO {
         this.senha = senha;
         this.tipo = tipo;
     }
-    
-    public UsuarioDTO(String nome, String login, String senha, Integer tipo) {
-        this.nome = nome;
-        this.login = login;
-        this.senha = senha;
-        this.tipo = tipo;
-    }
 
     public UsuarioDTO() {
         this(null, null, null, null, null);

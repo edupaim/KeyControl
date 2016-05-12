@@ -1450,17 +1450,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButAlterarAltC1ActionPerformed
 
     private void MenuEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEmprestimoActionPerformed
-        Painel.removeAll();
-        Painel.add(KeyControl.mainFrame.AbaEmprestimo);
-        Painel.repaint();
-        Painel.validate();
+        KeyControl.fachada.menuPainel(1, AbaEmprestimo);
     }//GEN-LAST:event_MenuEmprestimoActionPerformed
 
     private void MenuDevolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuDevolucaoActionPerformed
-        Painel.removeAll();
-        Painel.add(KeyControl.mainFrame.AbaDevolucao);
-        Painel.repaint();
-        Painel.validate();
+        KeyControl.fachada.menuPainel(1, AbaDevolucao);
     }//GEN-LAST:event_MenuDevolucaoActionPerformed
 
     private void MenuReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuReservaActionPerformed

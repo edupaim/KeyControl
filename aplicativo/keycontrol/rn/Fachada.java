@@ -116,7 +116,8 @@ public class Fachada {
         List<UsuarioDTO> lista;
         UsuarioRN buscarRn = new UsuarioRN();
         try {
-            lista = buscarRn.buscar(new UsuarioDTO(KeyControl.mainFrame.TxtIdBusU.getText(),
+            lista = buscarRn.buscar(new UsuarioDTO(null,
+                    KeyControl.mainFrame.TxtIdBusU.getText(),
                     KeyControl.mainFrame.TxtNomeBusU.getText(),
                     KeyControl.mainFrame.TxtLoginBusU.getText(),
                     KeyControl.mainFrame.CBoxTipoBusU.getSelectedIndex()));
@@ -132,7 +133,7 @@ public class Fachada {
     public void fazerLogin(String login, String senha) {
         // modifiquei para não precisar de login
         MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
-        KeyControl.setUsuarioLogado(new UsuarioDTO(1, "debug", "debug", "debug", 1));
+        KeyControl.setUsuarioLogado(new UsuarioDTO(0, "debug", "debug", "debug", 1));
         KeyControl.loginFrame.dispose();
         KeyControl.mainFrame = new MainFrame();
         KeyControl.mainFrame.setLocationRelativeTo(null);
@@ -153,7 +154,9 @@ public class Fachada {
     }
 
     /*
-     * METODOS DO MENU MAIN FRAME
+     * METODOS DE PERMISSÃO DO MENU
+     * RECEBE UM INTEIRO (NIVEL DO TIPO QUE PODE TER O ACESSO) E 
+     * O COMPONENTE QUE VAI SER INSERIDO NO PAINEL...
      */
     public void menuPainel(Integer tipo, Component comp) {
         KeyControl.mainFrame.Painel.removeAll();
@@ -172,7 +175,7 @@ public class Fachada {
     public void cadastrarUsuario(String nome, String login, String senha, String senhar, Integer tipo) {
         try {
             if (usuarioRn.inserir(
-                    new UsuarioDTO(
+                    new UsuarioDTO(null,
                             nome,
                             login,
                             senha,
@@ -229,11 +232,11 @@ public class Fachada {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
     }
-    
+
     /*
-    *METODOS DO MAINFRAME > CRUD DE CHAVE
-    */
-    public void inserirChave(String sala, Integer capacidade, Integer tipo){
+     *METODOS DO MAINFRAME > CRUD DE CHAVE
+     */
+    public void inserirChave(String sala, Integer capacidade, Integer tipo) {
         ChaveDTO chave = new ChaveDTO();
         chave.setSala(sala);
         chave.setCapacidade(capacidade);
@@ -244,9 +247,9 @@ public class Fachada {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
     }
-    
-    public void deletarChave(Integer id){
-        
+
+    public void deletarChave(Integer id) {
+
     }
 
 
