@@ -1323,14 +1323,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuUsuariosActionPerformed
-        if (KeyControl.getUsuarioLogado().getTipo() > 1) {
-            MensagensUtil.addMsg(this, "Tipo de usuario não permitido.");
-        } else {
-            Painel.removeAll();
-            Painel.add(KeyControl.mainFrame.AbasUsuarios);
-            Painel.repaint();
-            Painel.validate();
-        }
+        KeyControl.fachada.menuPainel(0, KeyControl.mainFrame.AbasUsuarios);
     }//GEN-LAST:event_MenuUsuariosActionPerformed
 
     private void ButCadastroCadUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCadastroCadUActionPerformed
@@ -1405,14 +1398,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtSenhaNAltCActionPerformed
 
     private void MenuChavesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuChavesActionPerformed
-        if (KeyControl.getUsuarioLogado().getTipo() > 1) {
-            MensagensUtil.addMsg(this, "Tipo de usuario não permitido.");
-        } else {
-            Painel.removeAll();
-            Painel.add(KeyControl.mainFrame.AbasChaves);
-            Painel.repaint();
-            Painel.validate();
-        }
+        KeyControl.fachada.menuPainel(0, KeyControl.mainFrame.AbasChaves);
     }//GEN-LAST:event_MenuChavesActionPerformed
 
     private void ButCadastroCadU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCadastroCadU1ActionPerformed
