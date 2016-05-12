@@ -17,7 +17,6 @@ import java.util.List;
 public class ChaveDAO implements GenericoDAO<ChaveDTO> {
 
     // obs: pra que Integer id nos argumentos das funções se o DTO ja vem com o id?
-
     @Override
     public void atualizar(ChaveDTO obj) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Atualizar Chave");
@@ -100,7 +99,7 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
 
     @Override
     public void inserir(ChaveDTO chave) throws PersistenciaException {
-        Connection con = ConexaoUtil.abrirConexao("Inserir Usuario");
+        Connection con = ConexaoUtil.abrirConexao("Inserir Sala");
         String sql = "INSERT INTO chave (id_chave, cod, sala, capacidade, andar, tipo, estado) values (NULL, ?,?,?,?,?,?)";
         try {
             try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -121,17 +120,74 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
 
     @Override
     public void deletar(Integer id) throws PersistenciaException {
-        throw new PersistenciaException("Not supported yet.");
+        Connection con = ConexaoUtil.abrirConexao("Deletar Sala");
+        String sql = "DELETE FROM sala WHERE id_sala = ?";
+        try {
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ps.execute();
+            }
+        } catch (SQLException ex) {
+            throw new PersistenciaException(ex.getMessage(), ex);
+        } finally {
+            ConexaoUtil.fecharConexao(con);
+        }
     }
 
     @Override
     public List<ChaveDTO> listarTodos() throws PersistenciaException {
-        throw new PersistenciaException("Not supported yet.");
+        List<ChaveDTO> retorno = new ArrayList<>();
+        Connection con = ConexaoUtil.abrirConexao("Listar Todos Usuarios");
+        String sql = "SELECT * FROM usuario ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                ChaveDTO chave = new ChaveDTO();
+                chave.setId(rs.getInt(1));
+                chave.setCod(rs.getString(2));
+                chave.setSala(rs.getString(3));
+                chave.setCapacidade(rs.getInt(4));
+                chave.setAndar(rs.getString(5));
+                chave.setTipo(rs.getString(6));
+                chave.setEstado(rs.getString(7));
+                retorno.add(chave);
+            }
+
+        } catch (SQLException ex) {
+            throw new PersistenciaException(ex.getMessage(), ex);
+        } finally {
+            ConexaoUtil.fecharConexao(con);
+        }
+        return retorno;
     }
 
     @Override
     public ChaveDTO buscarPorId(Integer id) throws PersistenciaException {
-        throw new PersistenciaException("Not supported yet.");
+        ChaveDTO chave = null;
+        Connection con = ConexaoUtil.abrirConexao("Buscar Usuario por ID");
+        String sql = "SELECT * FROM usuario ";
+        sql += "WHERE id_usuario = ? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                chave = new ChaveDTO();
+                chave.setId(rs.getInt(1));
+                chave.setCod(rs.getString(2));
+                chave.setSala(rs.getString(3));
+                chave.setCapacidade(rs.getInt(4));
+                chave.setAndar(rs.getString(5));
+                chave.setTipo(rs.getString(6));
+                chave.setEstado(rs.getString(7));
+            }
+        } catch (SQLException ex) {
+            throw new PersistenciaException(ex.getMessage(), ex);
+        } finally {
+            ConexaoUtil.fecharConexao(con);
+        }
+        return chave;
     }
 
     @Override
