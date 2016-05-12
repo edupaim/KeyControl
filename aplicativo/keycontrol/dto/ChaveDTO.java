@@ -6,28 +6,31 @@ package aplicativo.keycontrol.dto;
 public class ChaveDTO {
 
     private Integer id;
-    private String cod;
     private String sala;
     private Integer capacidade;
-    private String andar;
-    private String tipo;
-    private String estado;
+    private Integer tipo;
+    private Integer beneficiario_id;
 
-    public ChaveDTO(Integer id, String cod,
-            String sala, Integer capacidade,
-            String andar, String tipo,
-            String estado) {
+    public ChaveDTO(Integer id,
+            String sala, Integer capacidade, Integer tipo,
+            Integer beneficiario_id) {
         this.id = id;
         this.sala = sala;
-        this.andar = andar;
         this.capacidade = capacidade;
-        this.cod = cod;
         this.tipo = tipo;
-        this.estado = estado;
+        this.beneficiario_id = beneficiario_id;
     }
 
     public ChaveDTO() {
-        this(null, null, null, null, null, null, null);
+        this(null, null, null, null, null);
+    }
+
+    public Integer getBeneficiario_id() {
+        return beneficiario_id;
+    }
+
+    public void setBeneficiario_id(Integer beneficiario_id) {
+        this.beneficiario_id = beneficiario_id;
     }
 
     public Integer getId() {
@@ -36,14 +39,6 @@ public class ChaveDTO {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getCod() {
-        return cod;
-    }
-
-    public void setCod(String cod) {
-        this.cod = cod;
     }
 
     public String getSala() {
@@ -62,27 +57,11 @@ public class ChaveDTO {
         this.capacidade = capacidade;
     }
 
-    public String getAndar() {
-        return andar;
-    }
-
-    public void setAndar(String andar) {
-        this.andar = andar;
-    }
-
-    public String getTipo() {
+    public Integer getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
+    public void setTipo(Integer tipo) {
         this.tipo = tipo;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 }

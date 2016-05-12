@@ -229,15 +229,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="MenuUsuarios" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="MenuChaves" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="MenuEmprestimo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="MenuDevolucao" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="MenuReserva" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="42" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -885,7 +885,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card2"/>
+              <CardConstraints cardName="card5"/>
             </Constraint>
           </Constraints>
 
@@ -907,30 +907,26 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="LabTipoC1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabTipoCadC" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="CBoxTipoCadU1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CBoxTipoCadC" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="LabSala" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="LabCap" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="LabCod" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="LabAndar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabSalaCadC" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabCapCadC" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="284" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="TxtSenhaRCadU1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="TxtUserCadU1" alignment="1" pref="200" max="32767" attributes="0"/>
-                                      <Component id="TxtSenhaCadU1" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="TxtNomeCadU1" alignment="1" pref="200" max="32767" attributes="0"/>
+                                  <EmptySpace pref="347" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="TxtSalaCadC" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                      <Component id="TxtCapacidadeCadC" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="450" max="32767" attributes="0"/>
                           <Component id="ButCadastroCadU1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -940,79 +936,56 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabCod" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtNomeCadU1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabSalaCadC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TxtSalaCadC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabSala" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtUserCadU1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabCapCadC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TxtCapacidadeCadC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabCap" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtSenhaCadU1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabTipoCadC" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="CBoxTipoCadC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabAndar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtSenhaRCadU1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabTipoC1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="CBoxTipoCadU1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="217" max="32767" attributes="0"/>
+                          <EmptySpace pref="375" max="32767" attributes="0"/>
                           <Component id="ButCadastroCadU1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="LabSala">
+                <Component class="javax.swing.JLabel" name="LabSalaCadC">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Sala"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="LabCap">
+                <Component class="javax.swing.JLabel" name="LabCapCadC">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Capacidade"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="LabAndar">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Andar"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="LabTipoC1">
+                <Component class="javax.swing.JLabel" name="LabTipoCadC">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tipo"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="LabCod">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
-                  </Properties>
+                <Component class="javax.swing.JTextField" name="TxtSalaCadC">
                 </Component>
-                <Component class="javax.swing.JTextField" name="TxtNomeCadU1">
-                </Component>
-                <Component class="javax.swing.JTextField" name="TxtUserCadU1">
-                </Component>
-                <Component class="javax.swing.JPasswordField" name="TxtSenhaCadU1">
-                </Component>
-                <Component class="javax.swing.JPasswordField" name="TxtSenhaRCadU1">
-                </Component>
-                <Component class="javax.swing.JComboBox" name="CBoxTipoCadU1">
+                <Component class="javax.swing.JComboBox" name="CBoxTipoCadC">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
-                        <StringItem index="0" value="A"/>
-                        <StringItem index="1" value="B"/>
-                        <StringItem index="2" value="C"/>
+                        <StringItem index="0" value="S"/>
+                        <StringItem index="1" value="L"/>
+                        <StringItem index="2" value="R"/>
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CBoxTipoCadCActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="ButCadastroCadU1">
                   <Properties>
@@ -1021,6 +994,8 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButCadastroCadU1ActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="TxtCapacidadeCadC">
                 </Component>
               </SubComponents>
             </Container>
@@ -1045,7 +1020,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab2" pref="638" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab2" pref="513" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1054,7 +1029,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab2" pref="335" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab2" pref="443" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ButAtualizarL1" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -1075,13 +1050,11 @@
                     <Component class="javax.swing.JTable" name="TblUser1">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="7" rowCount="0">
+                          <Table columnCount="5" rowCount="0">
                             <Column editable="false" title="ID" type="java.lang.Integer"/>
-                            <Column editable="false" title="C&#xf3;digo" type="java.lang.String"/>
                             <Column editable="false" title="Sala" type="java.lang.String"/>
                             <Column editable="false" title="Capacidade" type="java.lang.Integer"/>
                             <Column editable="false" title="Tipo" type="java.lang.String"/>
-                            <Column editable="false" title="Andar" type="java.lang.String"/>
                             <Column editable="false" title="Estado" type="java.lang.String"/>
                           </Table>
                         </Property>
@@ -1114,10 +1087,10 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="ScrollPaneTab3" alignment="1" max="32767" attributes="0"/>
+                              <Component id="ScrollPaneTab4" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="LabIdB1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1129,38 +1102,30 @@
                                       <Component id="CBoxTipoBusU1" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="LabLoginB2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="TxtLoginBusU2" min="-2" pref="42" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="LabNomeB1" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                                          <Component id="TxtNomeBusU1" min="-2" pref="64" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="LabLoginB1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="LabLoginB3" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="TxtLoginBusU1" min="-2" pref="200" max="-2" attributes="0"/>
-                                      <Component id="TxtLoginBusU3" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="LabLoginB4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="TxtLoginBusU4" min="-2" pref="153" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="ButBuscarBusU1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="LabLoginB4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabLoginB1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="367" max="32767" attributes="0"/>
+                                          <Component id="TxtLoginBusU1" min="-2" pref="200" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="TxtLoginBusU4" min="-2" pref="101" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="LabLoginB2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="TxtLoginBusU2" min="-2" pref="42" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1182,8 +1147,6 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabNomeB1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtNomeBusU1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="LabLoginB1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtLoginBusU1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -1191,8 +1154,6 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="LabLoginB2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtLoginBusU2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabLoginB3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtLoginBusU3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1201,8 +1162,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ButBuscarBusU1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="47" max="32767" attributes="0"/>
-                          <Component id="ScrollPaneTab3" min="-2" pref="153" max="-2" attributes="0"/>
+                          <EmptySpace pref="125" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab4" min="-2" pref="181" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1224,11 +1185,6 @@
                     <Property name="text" type="java.lang.String" value="Tipo"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="LabNomeB1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JTextField" name="TxtIdBusU1">
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtIdBusU1ActionPerformed"/>
@@ -1243,51 +1199,18 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
-                        <StringItem index="0" value="A"/>
-                        <StringItem index="1" value="B"/>
-                        <StringItem index="2" value="C"/>
+                        <StringItem index="0" value="S"/>
+                        <StringItem index="1" value="L"/>
+                        <StringItem index="2" value="R"/>
                         <StringItem index="3" value="Nenhum"/>
                       </StringArray>
                     </Property>
-                    <Property name="selectedIndex" type="int" value="3"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CBoxTipoBusU1ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="TxtNomeBusU1">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtNomeBusU1ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Container class="javax.swing.JScrollPane" name="ScrollPaneTab3">
-                  <Properties>
-                    <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTable" name="TblUserFiltro1">
-                      <Properties>
-                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="4" rowCount="0">
-                            <Column editable="false" title="ID" type="java.lang.Integer"/>
-                            <Column editable="false" title="Nome" type="java.lang.String"/>
-                            <Column editable="false" title="Login" type="java.lang.String"/>
-                            <Column editable="false" title="Tipo" type="java.lang.Integer"/>
-                          </Table>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TblUserFiltro1MouseClicked"/>
-                      </Events>
-                    </Component>
-                  </SubComponents>
-                </Container>
                 <Component class="javax.swing.JButton" name="ButBuscarBusU1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Buscar"/>
@@ -1306,16 +1229,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtLoginBusU2ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="TxtLoginBusU3">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtLoginBusU3ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="LabLoginB3">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Andar"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="LabLoginB4">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Estado"/>
@@ -1326,6 +1239,34 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtLoginBusU4ActionPerformed"/>
                   </Events>
                 </Component>
+                <Container class="javax.swing.JScrollPane" name="ScrollPaneTab4">
+                  <Properties>
+                    <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="TblUser2">
+                      <Properties>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="5" rowCount="0">
+                            <Column editable="false" title="ID" type="java.lang.Integer"/>
+                            <Column editable="false" title="Sala" type="java.lang.String"/>
+                            <Column editable="false" title="Capacidade" type="java.lang.Integer"/>
+                            <Column editable="false" title="Tipo" type="java.lang.String"/>
+                            <Column editable="false" title="Estado" type="java.lang.String"/>
+                          </Table>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TblUser2MouseClicked"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="AlteraChave">
@@ -1359,25 +1300,15 @@
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="CBoxTipoAaltC1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="LabSenhaNA1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="382" max="32767" attributes="0"/>
-                                  <Component id="TxtSenhaNAltC1" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="TxtSenhaNAltC1" min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="LabLoginA1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="LabNomeA1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="LabSenhaNRA1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="LabSenhaNRA2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="TxtSenhaN2AltC2" max="32767" attributes="0"/>
-                                      <Component id="TxtSenhaN2AltC1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="TxtNomeAltC1" alignment="0" pref="200" max="32767" attributes="0"/>
-                                      <Component id="TxtLoginAltC1" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="LabLoginA1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="293" max="32767" attributes="0"/>
+                                  <Component id="TxtLoginAltC1" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1399,30 +1330,15 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabNomeA1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtNomeAltC1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabLoginA1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtLoginAltC1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabLoginA1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabSenhaNA1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtSenhaNAltC1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabSenhaNA1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="TxtSenhaN2AltC1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabSenhaNRA1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="TxtSenhaN2AltC2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabSenhaNRA2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="165" max="32767" attributes="0"/>
+                          <EmptySpace pref="349" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="ButAlterarAltC1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ButExcluirAltC1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1447,19 +1363,9 @@
                     <Property name="text" type="java.lang.String" value="Capacidade"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="LabSenhaNRA1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Andar"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="LabTipoA1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Tipo"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="LabNomeA1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="TxtLoginAltC1">
@@ -1474,20 +1380,16 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtSenhaNAltC1ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JPasswordField" name="TxtSenhaN2AltC1">
-                </Component>
                 <Component class="javax.swing.JComboBox" name="CBoxTipoAaltC1">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
-                        <StringItem index="0" value="A"/>
-                        <StringItem index="1" value="B"/>
-                        <StringItem index="2" value="C"/>
+                        <StringItem index="0" value="S"/>
+                        <StringItem index="1" value="L"/>
+                        <StringItem index="2" value="R"/>
                       </StringArray>
                     </Property>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="TxtNomeAltC1">
                 </Component>
                 <Component class="javax.swing.JButton" name="ButExcluirAltC1">
                   <Properties>
@@ -1504,13 +1406,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButAlterarAltC1ActionPerformed"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="LabSenhaNRA2">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Estado"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JPasswordField" name="TxtSenhaN2AltC2">
                 </Component>
               </SubComponents>
             </Container>
@@ -1547,14 +1442,10 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="TxtDevolucaoCap" min="-2" pref="41" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabDevolucaoAndar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TxtDevolucaoAndar" min="-2" pref="41" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="LabDevolucaoID" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="TxtDevolucaoID" min="-2" pref="71" max="-2" attributes="0"/>
-                              <EmptySpace pref="62" max="32767" attributes="0"/>
+                              <EmptySpace pref="160" max="32767" attributes="0"/>
                               <Component id="ButtonDevolucaoBuscar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1574,8 +1465,6 @@
                           <Component id="TxtDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="LabDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TxtDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabDevolucaoAndar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtDevolucaoAndar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="LabDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TxtDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -1609,16 +1498,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="TxtDevolucaoCap">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabDevolucaoAndar">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Andar"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtDevolucaoAndar">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
@@ -1705,10 +1584,6 @@
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jTextField3" min="-2" pref="41" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextField4" min="-2" pref="41" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -1742,8 +1617,6 @@
                           <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
@@ -1821,16 +1694,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField3">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Andar"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>

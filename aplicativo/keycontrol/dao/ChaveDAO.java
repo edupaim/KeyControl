@@ -25,15 +25,6 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
         String sql = "UPDATE chaves WHERE";
         sql += " id_chave = ?";
         sql += " SET ";
-        if (obj.getAndar() != null) {
-            if (primeiro) {
-                sql += "andar = ?";
-                primeiro = false;
-            } else {
-                sql += ", andar = ?";
-            }
-            values.add(obj.getAndar());
-        }
         if (obj.getCapacidade() != null) {
             if (primeiro) {
                 sql += "capacidade = ?";
@@ -43,23 +34,14 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             }
             values.add(obj.getCapacidade());
         }
-        if (obj.getCod() != null) {
+        if (obj.getBeneficiario_id()!= null) {
             if (primeiro) {
-                sql += "cod = ?";
+                sql += "id_beneficiario = ?";
                 primeiro = false;
             } else {
-                sql += ", cod = ?";
+                sql += ", id_beneficiario = ?";
             }
-            values.add(obj.getCod());
-        }
-        if (obj.getEstado() != null) {
-            if (primeiro) {
-                sql += "estado = ?";
-                primeiro = false;
-            } else {
-                sql += ", estado = ?";
-            }
-            values.add(obj.getEstado());
+            values.add(obj.getBeneficiario_id());
         }
         if (obj.getSala() != null) {
             if (primeiro) {
@@ -100,15 +82,12 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
     @Override
     public void inserir(ChaveDTO chave) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Inserir Sala");
-        String sql = "INSERT INTO chave (id_chave, cod, sala, capacidade, andar, tipo, estado) values (NULL, ?,?,?,?,?,?)";
+        String sql = "INSERT INTO chave (id_chave, sala, capacidade, tipo, id_beneficiario) values (NULL,?,?,?,NULL)";
         try {
             try (PreparedStatement ps = con.prepareStatement(sql)) {
-                ps.setString(1, chave.getCod());
-                ps.setString(2, chave.getSala());
-                ps.setInt(3, chave.getCapacidade());
-                ps.setString(4, chave.getAndar());
-                ps.setString(4, chave.getTipo());
-                ps.setString(4, chave.getEstado());
+                ps.setString(1, chave.getSala());
+                ps.setInt(2, chave.getCapacidade());
+                ps.setInt(3, chave.getTipo());
                 ps.execute();
             }
         } catch (SQLException ex) {
@@ -120,7 +99,7 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
 
     @Override
     public void deletar(Integer id) throws PersistenciaException {
-        Connection con = ConexaoUtil.abrirConexao("Deletar Sala");
+        Connection con = ConexaoUtil.abrirConexao("Deletar Chave");
         String sql = "DELETE FROM sala WHERE id_sala = ?";
         try {
             try (PreparedStatement ps = con.prepareStatement(sql)) {
@@ -137,7 +116,7 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
     @Override
     public List<ChaveDTO> listarTodos() throws PersistenciaException {
         List<ChaveDTO> retorno = new ArrayList<>();
-        Connection con = ConexaoUtil.abrirConexao("Listar Todos Usuarios");
+        Connection con = ConexaoUtil.abrirConexao("Listar Todas Chaves");
         String sql = "SELECT * FROM usuario ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -145,12 +124,10 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             while (rs.next()) {
                 ChaveDTO chave = new ChaveDTO();
                 chave.setId(rs.getInt(1));
-                chave.setCod(rs.getString(2));
-                chave.setSala(rs.getString(3));
-                chave.setCapacidade(rs.getInt(4));
-                chave.setAndar(rs.getString(5));
-                chave.setTipo(rs.getString(6));
-                chave.setEstado(rs.getString(7));
+                chave.setSala(rs.getString(2));
+                chave.setCapacidade(rs.getInt(3));
+                chave.setTipo(rs.getInt(4));
+                chave.setBeneficiario_id(rs.getInt(5));
                 retorno.add(chave);
             }
 
@@ -165,9 +142,9 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
     @Override
     public ChaveDTO buscarPorId(Integer id) throws PersistenciaException {
         ChaveDTO chave = null;
-        Connection con = ConexaoUtil.abrirConexao("Buscar Usuario por ID");
-        String sql = "SELECT * FROM usuario ";
-        sql += "WHERE id_usuario = ? ";
+        Connection con = ConexaoUtil.abrirConexao("Buscar Chave por ID");
+        String sql = "SELECT * FROM chaves ";
+        sql += "WHERE id_chave = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -175,12 +152,10 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             if (rs.next()) {
                 chave = new ChaveDTO();
                 chave.setId(rs.getInt(1));
-                chave.setCod(rs.getString(2));
-                chave.setSala(rs.getString(3));
-                chave.setCapacidade(rs.getInt(4));
-                chave.setAndar(rs.getString(5));
-                chave.setTipo(rs.getString(6));
-                chave.setEstado(rs.getString(7));
+                chave.setSala(rs.getString(2));
+                chave.setCapacidade(rs.getInt(3));
+                chave.setTipo(rs.getInt(4));
+                chave.setBeneficiario_id(rs.getInt(5));
             }
         } catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
@@ -204,15 +179,6 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             primeiro = false;
             values.add(obj.getId());
         }
-        if (obj.getAndar() != null) {
-            if (primeiro) {
-                sql += "andar LIKE ?";
-                primeiro = false;
-            } else {
-                sql += " AND andar LIKE ?";
-            }
-            values.add(obj.getAndar());
-        }
         if (obj.getCapacidade() != null) {
             if (primeiro) {
                 sql += "capacidade LIKE ?";
@@ -222,23 +188,14 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             }
             values.add(obj.getCapacidade());
         }
-        if (obj.getCod() != null) {
+        if (obj.getBeneficiario_id()!= null) {
             if (primeiro) {
-                sql += "cod LIKE ?";
+                sql += "id_beneficiario LIKE ?";
                 primeiro = false;
             } else {
-                sql += " AND cod LIKE ?";
+                sql += " AND id_beneficiario LIKE ?";
             }
-            values.add(obj.getCod());
-        }
-        if (obj.getEstado() != null) {
-            if (primeiro) {
-                sql += "estado LIKE ?";
-                primeiro = false;
-            } else {
-                sql += " AND estado LIKE ?";
-            }
-            values.add(obj.getEstado());
+            values.add(obj.getBeneficiario_id());
         }
         if (obj.getSala() != null) {
             if (primeiro) {
@@ -271,11 +228,9 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             while (rs.next()) {
                 lista.add(new ChaveDTO(rs.getInt(1),
                         rs.getString(2),
-                        rs.getString(3),
+                        rs.getInt(3),
                         rs.getInt(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getString(7)
+                        rs.getInt(5)
                 ));
             }
         } catch (SQLException ex) {

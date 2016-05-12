@@ -229,6 +229,21 @@ public class Fachada {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
     }
+    
+    /*
+    *METODOS DO MAINFRAME > CRUD DE CHAVE
+    */
+    public void inserirChave(String sala, Integer capacidade, Integer tipo){
+        ChaveDTO chave = new ChaveDTO();
+        chave.setSala(sala);
+        chave.setCapacidade(capacidade);
+        chave.setTipo(tipo);
+        try {
+            ChaveRN.inserir(chave);
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
 
 
     /*
@@ -244,15 +259,13 @@ public class Fachada {
         }
     }
 
-    public void buscarChave(String cod, String sala) {
+    public void buscarChave(String sala) {
         try {
             ChaveDTO chave = new ChaveDTO();
-            chave.setCod(cod);
             chave.setSala(sala);
             List<ChaveDTO> chaves = ChaveRN.buscarChave(chave);
             chave = chaves.get(0);
             KeyControl.mainFrame.TxtDevolucaoID.setText(String.valueOf(chave.getId()));
-            KeyControl.mainFrame.TxtDevolucaoAndar.setText(chave.getAndar());
             KeyControl.mainFrame.TxtDevolucaoCap.setText(String.valueOf(chave.getCapacidade()));
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());

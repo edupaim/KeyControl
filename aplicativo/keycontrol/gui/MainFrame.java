@@ -109,17 +109,13 @@ public class MainFrame extends javax.swing.JFrame {
         ButAlterarAltC = new javax.swing.JButton();
         AbasChaves = new javax.swing.JTabbedPane();
         CadastroChave = new javax.swing.JPanel();
-        LabSala = new javax.swing.JLabel();
-        LabCap = new javax.swing.JLabel();
-        LabAndar = new javax.swing.JLabel();
-        LabTipoC1 = new javax.swing.JLabel();
-        LabCod = new javax.swing.JLabel();
-        TxtNomeCadU1 = new javax.swing.JTextField();
-        TxtUserCadU1 = new javax.swing.JTextField();
-        TxtSenhaCadU1 = new javax.swing.JPasswordField();
-        TxtSenhaRCadU1 = new javax.swing.JPasswordField();
-        CBoxTipoCadU1 = new javax.swing.JComboBox();
+        LabSalaCadC = new javax.swing.JLabel();
+        LabCapCadC = new javax.swing.JLabel();
+        LabTipoCadC = new javax.swing.JLabel();
+        TxtSalaCadC = new javax.swing.JTextField();
+        CBoxTipoCadC = new javax.swing.JComboBox();
         ButCadastroCadU1 = new javax.swing.JButton();
+        TxtCapacidadeCadC = new javax.swing.JTextField();
         ListaChave = new javax.swing.JPanel();
         ScrollPaneTab2 = new javax.swing.JScrollPane();
         TblUser1 = new javax.swing.JTable();
@@ -128,37 +124,27 @@ public class MainFrame extends javax.swing.JFrame {
         LabIdB1 = new javax.swing.JLabel();
         LabLoginB1 = new javax.swing.JLabel();
         LabTipoB1 = new javax.swing.JLabel();
-        LabNomeB1 = new javax.swing.JLabel();
         TxtIdBusU1 = new javax.swing.JTextField();
         TxtLoginBusU1 = new javax.swing.JTextField();
         CBoxTipoBusU1 = new javax.swing.JComboBox();
-        TxtNomeBusU1 = new javax.swing.JTextField();
-        ScrollPaneTab3 = new javax.swing.JScrollPane();
-        TblUserFiltro1 = new javax.swing.JTable();
         ButBuscarBusU1 = new javax.swing.JButton();
         LabLoginB2 = new javax.swing.JLabel();
         TxtLoginBusU2 = new javax.swing.JTextField();
-        TxtLoginBusU3 = new javax.swing.JTextField();
-        LabLoginB3 = new javax.swing.JLabel();
         LabLoginB4 = new javax.swing.JLabel();
         TxtLoginBusU4 = new javax.swing.JTextField();
+        ScrollPaneTab4 = new javax.swing.JScrollPane();
+        TblUser2 = new javax.swing.JTable();
         AlteraChave = new javax.swing.JPanel();
         LabIdA1 = new javax.swing.JLabel();
         LabLoginA1 = new javax.swing.JLabel();
         LabSenhaNA1 = new javax.swing.JLabel();
-        LabSenhaNRA1 = new javax.swing.JLabel();
         LabTipoA1 = new javax.swing.JLabel();
-        LabNomeA1 = new javax.swing.JLabel();
         TxtLoginAltC1 = new javax.swing.JTextField();
         TxtIdAltC1 = new javax.swing.JTextField();
         TxtSenhaNAltC1 = new javax.swing.JPasswordField();
-        TxtSenhaN2AltC1 = new javax.swing.JPasswordField();
         CBoxTipoAaltC1 = new javax.swing.JComboBox();
-        TxtNomeAltC1 = new javax.swing.JTextField();
         ButExcluirAltC1 = new javax.swing.JButton();
         ButAlterarAltC1 = new javax.swing.JButton();
-        LabSenhaNRA2 = new javax.swing.JLabel();
-        TxtSenhaN2AltC2 = new javax.swing.JPasswordField();
         AbaDevolucao = new javax.swing.JPanel();
         LabDevolucaoCod = new javax.swing.JLabel();
         TxtDevolucaoCod = new javax.swing.JTextField();
@@ -166,8 +152,6 @@ public class MainFrame extends javax.swing.JFrame {
         TxtDevolucaoSala = new javax.swing.JTextField();
         LabDevolucaoCap = new javax.swing.JLabel();
         TxtDevolucaoCap = new javax.swing.JTextField();
-        LabDevolucaoAndar = new javax.swing.JLabel();
-        TxtDevolucaoAndar = new javax.swing.JTextField();
         LabDevolucaoID = new javax.swing.JLabel();
         TxtDevolucaoID = new javax.swing.JTextField();
         ButtonDevolucaoBuscar = new javax.swing.JButton();
@@ -191,8 +175,6 @@ public class MainFrame extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         ButSair = new javax.swing.JButton();
         ButLogout = new javax.swing.JButton();
@@ -321,15 +303,15 @@ public class MainFrame extends javax.swing.JFrame {
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MenuLayout.createSequentialGroup()
                 .addComponent(MenuUsuarios)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(MenuChaves)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(MenuEmprestimo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(MenuDevolucao)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(MenuReserva)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -732,17 +714,18 @@ public class MainFrame extends javax.swing.JFrame {
         AbasChaves.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         AbasChaves.setPreferredSize(new java.awt.Dimension(500, 600));
 
-        LabSala.setText("Sala");
+        LabSalaCadC.setText("Sala");
 
-        LabCap.setText("Capacidade");
+        LabCapCadC.setText("Capacidade");
 
-        LabAndar.setText("Andar");
+        LabTipoCadC.setText("Tipo");
 
-        LabTipoC1.setText("Tipo");
-
-        LabCod.setText("Código");
-
-        CBoxTipoCadU1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C" }));
+        CBoxTipoCadC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "S", "L", "R" }));
+        CBoxTipoCadC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBoxTipoCadCActionPerformed(evt);
+            }
+        });
 
         ButCadastroCadU1.setText("Cadastrar");
         ButCadastroCadU1.addActionListener(new java.awt.event.ActionListener() {
@@ -759,24 +742,20 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(CadastroChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CadastroChaveLayout.createSequentialGroup()
-                        .addComponent(LabTipoC1)
+                        .addComponent(LabTipoCadC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CBoxTipoCadU1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CBoxTipoCadC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(CadastroChaveLayout.createSequentialGroup()
                         .addGroup(CadastroChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabSala)
-                            .addComponent(LabCap)
-                            .addComponent(LabCod)
-                            .addComponent(LabAndar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(CadastroChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TxtSenhaRCadU1)
-                            .addComponent(TxtUserCadU1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(TxtSenhaCadU1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TxtNomeCadU1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))))
+                            .addComponent(LabSalaCadC)
+                            .addComponent(LabCapCadC))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 347, Short.MAX_VALUE)
+                        .addGroup(CadastroChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtSalaCadC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtCapacidadeCadC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastroChaveLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 450, Short.MAX_VALUE)
                 .addComponent(ButCadastroCadU1))
         );
         CadastroChaveLayout.setVerticalGroup(
@@ -784,25 +763,17 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(CadastroChaveLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(CadastroChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabCod)
-                    .addComponent(TxtNomeCadU1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LabSalaCadC)
+                    .addComponent(TxtSalaCadC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(CadastroChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabSala)
-                    .addComponent(TxtUserCadU1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LabCapCadC)
+                    .addComponent(TxtCapacidadeCadC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(CadastroChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabCap)
-                    .addComponent(TxtSenhaCadU1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CadastroChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabAndar)
-                    .addComponent(TxtSenhaRCadU1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CadastroChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabTipoC1)
-                    .addComponent(CBoxTipoCadU1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                    .addComponent(LabTipoCadC)
+                    .addComponent(CBoxTipoCadC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
                 .addComponent(ButCadastroCadU1))
         );
 
@@ -815,14 +786,14 @@ public class MainFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Código", "Sala", "Capacidade", "Tipo", "Andar", "Estado"
+                "ID", "Sala", "Capacidade", "Tipo", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -856,14 +827,14 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(ButAtualizarL1))
             .addGroup(ListaChaveLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTab2, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab2, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
                 .addContainerGap())
         );
         ListaChaveLayout.setVerticalGroup(
             ListaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ListaChaveLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTab2, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab2, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButAtualizarL1))
         );
@@ -875,8 +846,6 @@ public class MainFrame extends javax.swing.JFrame {
         LabLoginB1.setText("Sala");
 
         LabTipoB1.setText("Tipo");
-
-        LabNomeB1.setText("Código");
 
         TxtIdBusU1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -890,52 +859,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        CBoxTipoBusU1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C", "Nenhum" }));
-        CBoxTipoBusU1.setSelectedIndex(3);
+        CBoxTipoBusU1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "S", "L", "R", "Nenhum" }));
         CBoxTipoBusU1.setToolTipText("");
         CBoxTipoBusU1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBoxTipoBusU1ActionPerformed(evt);
             }
         });
-
-        TxtNomeBusU1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtNomeBusU1ActionPerformed(evt);
-            }
-        });
-
-        ScrollPaneTab3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-        TblUserFiltro1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Nome", "Login", "Tipo"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        TblUserFiltro1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TblUserFiltro1MouseClicked(evt);
-            }
-        });
-        ScrollPaneTab3.setViewportView(TblUserFiltro1);
 
         ButBuscarBusU1.setText("Buscar");
         ButBuscarBusU1.addActionListener(new java.awt.event.ActionListener() {
@@ -952,14 +882,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        TxtLoginBusU3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtLoginBusU3ActionPerformed(evt);
-            }
-        });
-
-        LabLoginB3.setText("Andar");
-
         LabLoginB4.setText("Estado");
 
         TxtLoginBusU4.addActionListener(new java.awt.event.ActionListener() {
@@ -968,6 +890,38 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        ScrollPaneTab4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        TblUser2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Sala", "Capacidade", "Tipo", "Estado"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TblUser2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblUser2MouseClicked(evt);
+            }
+        });
+        ScrollPaneTab4.setViewportView(TblUser2);
+
         javax.swing.GroupLayout BuscaChaveLayout = new javax.swing.GroupLayout(BuscaChave);
         BuscaChave.setLayout(BuscaChaveLayout);
         BuscaChaveLayout.setHorizontalGroup(
@@ -975,7 +929,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(BuscaChaveLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ScrollPaneTab3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ScrollPaneTab4)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuscaChaveLayout.createSequentialGroup()
                         .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabIdB1)
@@ -984,31 +938,24 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TxtIdBusU1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CBoxTipoBusU1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(BuscaChaveLayout.createSequentialGroup()
-                        .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(BuscaChaveLayout.createSequentialGroup()
-                                .addComponent(LabLoginB2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(TxtLoginBusU2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(BuscaChaveLayout.createSequentialGroup()
-                                .addComponent(LabNomeB1)
-                                .addGap(148, 148, 148)
-                                .addComponent(TxtNomeBusU1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(146, 146, 146)
-                        .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabLoginB1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LabLoginB3, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtLoginBusU1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxtLoginBusU3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuscaChaveLayout.createSequentialGroup()
-                        .addComponent(LabLoginB4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TxtLoginBusU4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuscaChaveLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(ButBuscarBusU1)))
+                        .addComponent(ButBuscarBusU1))
+                    .addGroup(BuscaChaveLayout.createSequentialGroup()
+                        .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabLoginB4)
+                            .addComponent(LabLoginB1))
+                        .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BuscaChaveLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TxtLoginBusU1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuscaChaveLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TxtLoginBusU4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(BuscaChaveLayout.createSequentialGroup()
+                        .addComponent(LabLoginB2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TxtLoginBusU2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         BuscaChaveLayout.setVerticalGroup(
@@ -1024,24 +971,20 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(CBoxTipoBusU1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabNomeB1)
-                    .addComponent(TxtNomeBusU1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabLoginB1)
                     .addComponent(TxtLoginBusU1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabLoginB2)
-                    .addComponent(TxtLoginBusU2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabLoginB3)
-                    .addComponent(TxtLoginBusU3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtLoginBusU2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtLoginBusU4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabLoginB4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButBuscarBusU1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(ScrollPaneTab3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab4, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1053,11 +996,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         LabSenhaNA1.setText("Capacidade");
 
-        LabSenhaNRA1.setText("Andar");
-
         LabTipoA1.setText("Tipo");
-
-        LabNomeA1.setText("Código");
 
         TxtIdAltC1.setEditable(false);
 
@@ -1067,7 +1006,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        CBoxTipoAaltC1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A", "B", "C" }));
+        CBoxTipoAaltC1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "S", "L", "R" }));
 
         ButExcluirAltC1.setText("Excluir");
         ButExcluirAltC1.addActionListener(new java.awt.event.ActionListener() {
@@ -1082,8 +1021,6 @@ public class MainFrame extends javax.swing.JFrame {
                 ButAlterarAltC1ActionPerformed(evt);
             }
         });
-
-        LabSenhaNRA2.setText("Estado");
 
         javax.swing.GroupLayout AlteraChaveLayout = new javax.swing.GroupLayout(AlteraChave);
         AlteraChave.setLayout(AlteraChaveLayout);
@@ -1105,22 +1042,14 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(LabTipoA1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(CBoxTipoAaltC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(AlteraChaveLayout.createSequentialGroup()
-                        .addComponent(LabSenhaNA1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
-                        .addComponent(TxtSenhaNAltC1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AlteraChaveLayout.createSequentialGroup()
-                        .addGroup(AlteraChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabLoginA1)
-                            .addComponent(LabNomeA1)
-                            .addComponent(LabSenhaNRA1)
-                            .addComponent(LabSenhaNRA2))
+                        .addComponent(LabSenhaNA1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(AlteraChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TxtSenhaN2AltC2)
-                            .addComponent(TxtSenhaN2AltC1)
-                            .addComponent(TxtNomeAltC1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(TxtLoginAltC1))))
+                        .addComponent(TxtSenhaNAltC1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AlteraChaveLayout.createSequentialGroup()
+                        .addComponent(LabLoginA1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
+                        .addComponent(TxtLoginAltC1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         AlteraChaveLayout.setVerticalGroup(
@@ -1136,25 +1065,13 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(CBoxTipoAaltC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AlteraChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabNomeA1)
-                    .addComponent(TxtNomeAltC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(TxtLoginAltC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabLoginA1))
+                .addGap(6, 6, 6)
                 .addGroup(AlteraChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabLoginA1)
-                    .addComponent(TxtLoginAltC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(AlteraChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabSenhaNA1)
-                    .addComponent(TxtSenhaNAltC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(AlteraChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtSenhaN2AltC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabSenhaNRA1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(AlteraChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtSenhaN2AltC2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabSenhaNRA2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                    .addComponent(TxtSenhaNAltC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabSenhaNA1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
                 .addGroup(AlteraChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButAlterarAltC1)
                     .addComponent(ButExcluirAltC1)))
@@ -1162,7 +1079,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         AbasChaves.addTab("Alterar", AlteraChave);
 
-        Painel.add(AbasChaves, "card2");
+        Painel.add(AbasChaves, "card5");
 
         LabDevolucaoCod.setText("Código");
 
@@ -1171,10 +1088,6 @@ public class MainFrame extends javax.swing.JFrame {
         LabDevolucaoCap.setText("Capacidade");
 
         TxtDevolucaoCap.setEditable(false);
-
-        LabDevolucaoAndar.setText("Andar");
-
-        TxtDevolucaoAndar.setEditable(false);
 
         LabDevolucaoID.setText("ID");
 
@@ -1218,14 +1131,10 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(LabDevolucaoAndar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtDevolucaoAndar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(LabDevolucaoID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                         .addComponent(ButtonDevolucaoBuscar)))
                 .addContainerGap())
         );
@@ -1241,8 +1150,6 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(TxtDevolucaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabDevolucaoCap)
                     .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabDevolucaoAndar)
-                    .addComponent(TxtDevolucaoAndar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabDevolucaoID)
                     .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -1277,10 +1184,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3.setText("Capacidade");
 
         jTextField3.setEnabled(false);
-
-        jLabel4.setText("Andar");
-
-        jTextField4.setEnabled(false);
 
         javax.swing.GroupLayout AbaEmprestimoLayout = new javax.swing.GroupLayout(AbaEmprestimo);
         AbaEmprestimo.setLayout(AbaEmprestimoLayout);
@@ -1323,10 +1226,6 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
@@ -1354,9 +1253,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1519,7 +1416,15 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuChavesActionPerformed
 
     private void ButCadastroCadU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCadastroCadU1ActionPerformed
-        // TODO add your handling code here:
+        if (!"".equals(TxtCapacidadeCadC.getText())) {
+            KeyControl.fachada.inserirChave(TxtSalaCadC.getText(),
+                    Integer.parseInt(TxtCapacidadeCadC.getText()),
+                    CBoxTipoCadC.getSelectedIndex());
+        } else {
+            KeyControl.fachada.inserirChave(TxtSalaCadC.getText(),
+                    null,
+                    CBoxTipoCadC.getSelectedIndex());
+        }
     }//GEN-LAST:event_ButCadastroCadU1ActionPerformed
 
     private void TblUser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUser1MouseClicked
@@ -1541,14 +1446,6 @@ public class MainFrame extends javax.swing.JFrame {
     private void CBoxTipoBusU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoBusU1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CBoxTipoBusU1ActionPerformed
-
-    private void TxtNomeBusU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNomeBusU1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtNomeBusU1ActionPerformed
-
-    private void TblUserFiltro1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUserFiltro1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TblUserFiltro1MouseClicked
 
     private void ButBuscarBusU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButBuscarBusU1ActionPerformed
         // TODO add your handling code here:
@@ -1588,22 +1485,25 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtLoginBusU2ActionPerformed
 
-    private void TxtLoginBusU3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtLoginBusU3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtLoginBusU3ActionPerformed
-
     private void TxtLoginBusU4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtLoginBusU4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtLoginBusU4ActionPerformed
 
     private void ButtonDevolucaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoBuscarActionPerformed
-        KeyControl.fachada.buscarChave(!"".equals(this.TxtDevolucaoCod.getText()) ? this.TxtDevolucaoCod.getText() : null,
-                                        !"".equals(this.TxtDevolucaoSala.getText()) ? this.TxtDevolucaoSala.getText() : null);
+        KeyControl.fachada.buscarChave(!"".equals(this.TxtDevolucaoSala.getText()) ? this.TxtDevolucaoSala.getText() : null);
     }//GEN-LAST:event_ButtonDevolucaoBuscarActionPerformed
 
     private void ButtonDevolucaoDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoDevolverActionPerformed
         KeyControl.fachada.devolverChave(!"".equals(TxtDevolucaoID.getText()) ? Integer.parseInt(TxtDevolucaoID.getText()) : null);
     }//GEN-LAST:event_ButtonDevolucaoDevolverActionPerformed
+
+    private void CBoxTipoCadCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoCadCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBoxTipoCadCActionPerformed
+
+    private void TblUser2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUser2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TblUser2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1625,7 +1525,7 @@ public class MainFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -1666,16 +1566,13 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JComboBox CBoxTipoAaltC1;
     public javax.swing.JComboBox CBoxTipoBusU;
     public javax.swing.JComboBox CBoxTipoBusU1;
+    public javax.swing.JComboBox CBoxTipoCadC;
     public javax.swing.JComboBox CBoxTipoCadU;
-    public javax.swing.JComboBox CBoxTipoCadU1;
     public javax.swing.JPanel CadastroChave;
     public javax.swing.JPanel CadastroUsuario;
     public javax.swing.JPanel Hora;
     public javax.swing.JPanel Infos;
-    public javax.swing.JLabel LabAndar;
-    public javax.swing.JLabel LabCap;
-    public javax.swing.JLabel LabCod;
-    public javax.swing.JLabel LabDevolucaoAndar;
+    public javax.swing.JLabel LabCapCadC;
     public javax.swing.JLabel LabDevolucaoCap;
     public javax.swing.JLabel LabDevolucaoCod;
     public javax.swing.JLabel LabDevolucaoID;
@@ -1692,28 +1589,23 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JLabel LabLoginB;
     public javax.swing.JLabel LabLoginB1;
     public javax.swing.JLabel LabLoginB2;
-    public javax.swing.JLabel LabLoginB3;
     public javax.swing.JLabel LabLoginB4;
     public javax.swing.JLabel LabLoginC;
     public javax.swing.JLabel LabNomeA;
-    public javax.swing.JLabel LabNomeA1;
     public javax.swing.JLabel LabNomeB;
-    public javax.swing.JLabel LabNomeB1;
     public javax.swing.JLabel LabNomeC;
-    public javax.swing.JLabel LabSala;
+    public javax.swing.JLabel LabSalaCadC;
     public javax.swing.JLabel LabSenhaC;
     public javax.swing.JLabel LabSenhaNA;
     public javax.swing.JLabel LabSenhaNA1;
     public javax.swing.JLabel LabSenhaNRA;
-    public javax.swing.JLabel LabSenhaNRA1;
-    public javax.swing.JLabel LabSenhaNRA2;
     public javax.swing.JLabel LabSenhaRC;
     public javax.swing.JLabel LabTipoA;
     public javax.swing.JLabel LabTipoA1;
     public javax.swing.JLabel LabTipoB;
     public javax.swing.JLabel LabTipoB1;
     public javax.swing.JLabel LabTipoC;
-    public javax.swing.JLabel LabTipoC1;
+    public javax.swing.JLabel LabTipoCadC;
     public javax.swing.JLabel LbHora;
     public javax.swing.JLabel LbNome;
     public javax.swing.JLabel LbTipo;
@@ -1729,14 +1621,14 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JScrollPane ScrollPaneTab;
     public javax.swing.JScrollPane ScrollPaneTab1;
     public javax.swing.JScrollPane ScrollPaneTab2;
-    public javax.swing.JScrollPane ScrollPaneTab3;
+    public javax.swing.JScrollPane ScrollPaneTab4;
     public javax.swing.JSeparator SeparatorDevolucao;
     public javax.swing.JTable TblUser;
     public javax.swing.JTable TblUser1;
+    public javax.swing.JTable TblUser2;
     public javax.swing.JTable TblUserFiltro;
-    public javax.swing.JTable TblUserFiltro1;
     public javax.swing.JPanel Tipo;
-    public javax.swing.JTextField TxtDevolucaoAndar;
+    public javax.swing.JTextField TxtCapacidadeCadC;
     public javax.swing.JTextField TxtDevolucaoCap;
     public javax.swing.JTextField TxtDevolucaoCod;
     public javax.swing.JTextField TxtDevolucaoID;
@@ -1753,38 +1645,28 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JTextField TxtLoginBusU;
     public javax.swing.JTextField TxtLoginBusU1;
     public javax.swing.JTextField TxtLoginBusU2;
-    public javax.swing.JTextField TxtLoginBusU3;
     public javax.swing.JTextField TxtLoginBusU4;
     public javax.swing.JTextField TxtNomeAltC;
-    public javax.swing.JTextField TxtNomeAltC1;
     public javax.swing.JTextField TxtNomeBusU;
-    public javax.swing.JTextField TxtNomeBusU1;
     public javax.swing.JTextField TxtNomeCadU;
-    public javax.swing.JTextField TxtNomeCadU1;
+    public javax.swing.JTextField TxtSalaCadC;
     public javax.swing.JPasswordField TxtSenhaCadU;
-    public javax.swing.JPasswordField TxtSenhaCadU1;
     public javax.swing.JPasswordField TxtSenhaN2AltC;
-    public javax.swing.JPasswordField TxtSenhaN2AltC1;
-    public javax.swing.JPasswordField TxtSenhaN2AltC2;
     public javax.swing.JPasswordField TxtSenhaNAltC;
     public javax.swing.JPasswordField TxtSenhaNAltC1;
     public javax.swing.JPasswordField TxtSenhaRCadU;
-    public javax.swing.JPasswordField TxtSenhaRCadU1;
     public javax.swing.JTextField TxtUserCadU;
-    public javax.swing.JTextField TxtUserCadU1;
     public javax.swing.JPanel Usuario;
     public javax.swing.JButton jButton1;
     public javax.swing.JButton jButton2;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
     public javax.swing.JLabel jLabel3;
-    public javax.swing.JLabel jLabel4;
     public javax.swing.JSeparator jSeparator1;
     public javax.swing.JSeparator jSeparator3;
     public javax.swing.JSeparator jSeparator4;
     public javax.swing.JTextField jTextField1;
     public javax.swing.JTextField jTextField2;
     public javax.swing.JTextField jTextField3;
-    public javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,7 +23,7 @@ public class ChaveRN {
         ChaveDAO DAO = new ChaveDAO();
         try {
             if (chave.getId() != null) {
-                chave.setEstado("Disponível");
+                chave.setBeneficiario_id(null);
                 DAO.atualizar(chave);
             } else {
                 throw new NegocioException("ID inválido.");
@@ -41,7 +41,7 @@ public class ChaveRN {
         ChaveDAO DAO = new ChaveDAO();
         List<ChaveDTO> chaves;
         try {
-            if (chave.getCod() != null || chave.getSala() != null) {
+            if (chave.getSala() != null) {
                 if ((chaves = DAO.buscar(chave)).size() > 0) {
                     return chaves;
                 } else {
@@ -55,19 +55,15 @@ public class ChaveRN {
         }
     }
 
-    public boolean inserir(ChaveDTO chave) throws NegocioException {
+    public static boolean inserir(ChaveDTO chave) throws NegocioException {
         boolean resul = false;
         try {
-            if (chave.getCod() == null || "".equals(chave.getCod())) {
-                throw new NegocioException("Codigo obrigatório.");
-            } else if (chave.getSala() == null || "".equals(chave.getSala())) {
+            if (chave.getSala() == null || "".equals(chave.getSala())) {
                 throw new NegocioException("Sala obrigatória.");
             } else if (chave.getCapacidade() == null) {
                 throw new NegocioException("Capacidade obrigatório.");
-            } else if (chave.getAndar() == null || "".equals(chave.getAndar())) {
-                throw new NegocioException("Andar obrigatório.");
-            } else if (chave.getTipo() == null || "".equals(chave.getTipo())) {
-                throw new NegocioException("Tipo obrigatória.");
+            } else if (chave.getTipo() == null) {
+                throw new NegocioException("Tipo obrigatório.");
             } else {
                 ChaveDAO chaveDAO = new ChaveDAO();
                 chaveDAO.inserir(chave);
@@ -78,15 +74,15 @@ public class ChaveRN {
         }
         return resul;
     }
-    
-    public boolean deletar(Integer id) throws NegocioException {
+
+    public static boolean deletar(Integer id) throws NegocioException {
         boolean resul = false;
         try {
             if (id == null || id < 1) {
                 throw new NegocioException("ID inválido.");
             }
             ChaveDAO dao = new ChaveDAO();
-            if (MensagensUtil.confirm("Deseja realmente deletar a chave da sala "+buscarPorId(id).getSala(), "DELETAR")){
+            if (MensagensUtil.confirm("Deseja realmente deletar a chave da sala " + buscarPorId(id).getSala(), "DELETAR")) {
                 dao.deletar(id);
                 resul = true;
             }
@@ -95,8 +91,8 @@ public class ChaveRN {
         }
         return resul;
     }
-    
-    public ChaveDTO buscarPorId(Integer id) throws NegocioException {
+
+    public static ChaveDTO buscarPorId(Integer id) throws NegocioException {
         try {
             if (id < 1) {
                 throw new NegocioException("ID inválido.");
