@@ -1,7 +1,9 @@
 package aplicativo.keycontrol.rn;
 
 import aplicativo.keycontrol.dao.ChaveDAO;
+import aplicativo.keycontrol.dao.UsuarioDAO;
 import aplicativo.keycontrol.dto.ChaveDTO;
+import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.util.MensagensUtil;
@@ -32,37 +34,34 @@ public class ChaveRN {
             throw new NegocioException(ex.getMessage());
         }
     }
-    
-    
-    
-    
-    public static void emprestar(int idChave, int idBeneficiario) throws NegocioException{
-        try 
-        {
-            if (!verificarDisponibilidade(idChave))
+
+    public static void emprestar(int idChave, int idBeneficiario) throws NegocioException {
+        try {
+            if (!verificarDisponibilidade(idChave)) {
                 throw new NegocioException("Chave não disponível");
-            
+            }
+
             ChaveDAO DAO = new ChaveDAO();
             ChaveDTO chave = DAO.buscarPorId(idChave); //FAZ COM QUE VERIFIQUE A EXISTENCIA DE UMA CHAVE
             chave.setBeneficiario_id(idBeneficiario);
             DAO.atualizar(chave);
         } catch (NegocioException | PersistenciaException ex) {
-            
+
         }
-        
+
         ChaveDAO DAO = new ChaveDAO();
-        
+
     }
-    
-    public static boolean verificarDisponibilidade(int id) throws NegocioException{
-        
+
+    public static boolean verificarDisponibilidade(int id) throws NegocioException {
+
         try {
             ChaveDAO DAO = new ChaveDAO();
             ChaveDTO c = DAO.buscarPorId(id);
             return (c.getBeneficiario_id() == null);
-            } catch ( PersistenciaException ex) {
-                throw new NegocioException(ex.getMessage());
-            }
+        } catch (PersistenciaException ex) {
+            throw new NegocioException(ex.getMessage());
+        }
 
     }
 
@@ -74,12 +73,9 @@ public class ChaveRN {
         ChaveDAO DAO = new ChaveDAO();
         List<ChaveDTO> chaves;
         try {
-            if ((chaves = DAO.buscar(chave)).size() > 0) {
-                return chaves;
-            } else {
-                throw new NegocioException("Não foi encontrado nenhuma chave.");
-            }
-        } catch (NegocioException | PersistenciaException ex) {
+            chaves = DAO.buscar(chave);
+            return chaves;
+        } catch (PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }
     }
@@ -131,5 +127,26 @@ public class ChaveRN {
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }
+    }
+    
+    public static boolean atualizar(ChaveDTO chave) throws NegocioException {
+        boolean resul = false;
+        ChaveDAO chaveDAO = new ChaveDAO();
+        try {
+            if (chave.getId() == null || chave.getId() < 0) {
+                throw new NegocioException("ID inválido.");
+            } else {
+                chave.setSala(chave.getSala().trim());
+                try {
+                    chaveDAO.atualizar(chave);
+                } catch (PersistenciaException ex) {
+                    throw new NegocioException(ex.getMessage());
+                }
+                resul = true;
+            }
+        } catch (NegocioException ex) {
+            throw new NegocioException(ex.getMessage());
+        }
+        return resul;
     }
 }

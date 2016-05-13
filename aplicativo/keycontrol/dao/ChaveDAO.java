@@ -25,8 +25,8 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
         Connection con = ConexaoUtil.abrirConexao("Atualizar Chave");
         List<Object> values = new ArrayList<>();
         boolean primeiro = true;
-        String sql = "UPDATE chaves WHERE";
-        sql += " id_chave = ?";
+        String sql = "UPDATE chaves ";
+        sql += "WHERE id_chave = ?";
         sql += " SET ";
         if (obj.getCapacidade() != null) {
             if (primeiro) {
@@ -67,11 +67,11 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, obj.getId());
-            for (int i = 2; i <= values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 if (values.get(i) instanceof Integer) {
-                    ps.setInt(i, (int) values.get(i));
+                    ps.setInt(i+2, (int) values.get(i));
                 } else if (values.get(i) instanceof String) {
-                    ps.setString(i, (String) values.get(i));
+                    ps.setString(i+2, (String) values.get(i));
                 }
             }
             ps.execute();
@@ -85,7 +85,7 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
     @Override
     public void inserir(ChaveDTO chave) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Inserir Sala");
-        String sql = "INSERT INTO chave (id_chave, sala, capacidade, tipo, id_beneficiario) values (NULL,?,?,?,NULL)";
+        String sql = "INSERT INTO chave (id_chave, sala, capacidade, tipo, id_beneficiario) values (NULL,?,?,?,0)";
         try {
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setString(1, chave.getSala());
@@ -146,7 +146,7 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
     public ChaveDTO buscarPorId(Integer id) throws PersistenciaException {
         ChaveDTO chave = null;
         Connection con = ConexaoUtil.abrirConexao("Buscar Chave por ID");
-        String sql = "SELECT * FROM chaves ";
+        String sql = "SELECT * FROM chave ";
         sql += "WHERE id_chave = ? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -176,37 +176,36 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
     public List<ChaveDTO> buscar(ChaveDTO obj) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Buscar chave");
         List<ChaveDTO> lista = new ArrayList<>();
-        String sql = "SELECT * FROM chaves";
-        sql += " WHERE ";
+        String sql = "SELECT * FROM chave";
         boolean primeiro = true;
         List<Object> values = new ArrayList<>();
 
         if (obj.getId() != null) {
-            sql += "id_chave LIKE ?";
+            sql += " WHERE id_chave LIKE ?";
             primeiro = false;
             values.add(obj.getId());
         }
         if (obj.getCapacidade() != null) {
             if (primeiro) {
-                sql += "capacidade LIKE ?";
+                sql += " WHERE capacidade LIKE ?";
                 primeiro = false;
             } else {
                 sql += " AND capacidade LIKE ?";
             }
             values.add(obj.getCapacidade());
         }
-        if (obj.getBeneficiario_id() == null) {
+        if (obj.getBeneficiario_id() != null) {
             if (primeiro) {
-                sql += "id_beneficiario IS NULL";
+                sql += " WHERE  id_beneficiario LIKE ?";
                 primeiro = false;
             } else {
-                sql += " AND id_beneficiario IS NULL";
+                sql += " AND id_beneficiario LIKE ?";
             }
             values.add(obj.getBeneficiario_id());
         }
         if (obj.getSala() != null) {
             if (primeiro) {
-                sql += "sala LIKE ?";
+                sql += " WHERE sala LIKE ?";
                 primeiro = false;
             } else {
                 sql += " AND sala LIKE ?";
@@ -215,7 +214,7 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
         }
         if (obj.getTipo() != null) {
             if (primeiro) {
-                sql += "tipo LIKE ?";
+                sql += " WHERE tipo LIKE ?";
             } else {
                 sql += " AND tipo LIKE ?";
             }
@@ -224,11 +223,11 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            for (int i = 1; i <= values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 if (values.get(i) instanceof Integer) {
-                    ps.setInt(i, (int) values.get(i));
+                    ps.setInt(i+1, (int) values.get(i));
                 } else if (values.get(i) instanceof String) {
-                    ps.setString(i, "%" + (String) values.get(i) + "%");
+                    ps.setString(i+1, "%" + (String) values.get(i) + "%");
                 }
             }
             ResultSet rs = ps.executeQuery();

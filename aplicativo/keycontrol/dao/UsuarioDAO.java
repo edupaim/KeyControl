@@ -64,12 +64,16 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
     @Override
     public void atualizar(UsuarioDTO u) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Atualizar Usuario");
-        String sql = "UPDATE usuario SET ";
+        List<Object> values = new ArrayList<>();
+        String sql = "UPDATE usuario ";
+        sql += "SET ";
         boolean ultimo = false;
-        int cont = 0;
+        Integer count = 1;
         if (u.getNome() != null && !u.getNome().equals("")) {
             ultimo = true;
             sql += "nome = ? ";
+            values.add(u.getNome());
+            count++;
         }
         if (u.getLogin() != null && !u.getLogin().equals("")) {
             if (ultimo) {
@@ -78,6 +82,8 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
                 ultimo = true;
             }
             sql += "login = ? ";
+            values.add(u.getLogin());
+            count++;
         }
         if (u.getSenha() != null && !u.getSenha().equals("")) {
             if (ultimo) {
@@ -86,28 +92,27 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
                 ultimo = true;
             }
             sql += "senha = ? ";
+            values.add(u.getSenha());
+            count++;
         }
         if (u.getTipo() != null) {
             if (ultimo) {
                 sql += ", ";
             }
             sql += "tipo = ? ";
+            values.add(u.getTipo());
+            count++;
         }
-        sql += "WHERE id_usuario = ?";
+        sql += "WHERE id_usuario = ? ";
         try (PreparedStatement ps = con.prepareStatement(sql)) {
-            if (u.getNome() != null && !u.getNome().equals("")) {
-                ps.setString(++cont, u.getNome());
+            ps.setInt(count, u.getId());
+            for (int i = 0; i < values.size(); i++) {
+                if (values.get(i) instanceof Integer) {
+                    ps.setInt(i+1, (int) values.get(i));
+                } else if (values.get(i) instanceof String) {
+                    ps.setString(i+1, (String) values.get(i));
+                }
             }
-            if (u.getLogin() != null && !u.getLogin().equals("")) {
-                ps.setString(++cont, u.getLogin());
-            }
-            if (u.getSenha() != null && !u.getSenha().equals("")) {
-                ps.setString(++cont, u.getSenha());
-            }
-            if (u.getTipo() != null) {
-                ps.setInt(++cont, u.getTipo());
-            }
-            ps.setInt(++cont, u.getId());
             ps.execute();
         } catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
@@ -185,50 +190,53 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
     }
 
     @Override
-    public List<UsuarioDTO> buscar(UsuarioDTO u) throws PersistenciaException {
+    public List<UsuarioDTO> buscar(UsuarioDTO obj) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Listar Usuarios Filtrado");
         List<UsuarioDTO> lista = new ArrayList<>();
         String sql = "SELECT * FROM usuario ";
-        boolean ultimo = false;
+        boolean primeiro = false;
         List<Object> values = new ArrayList<>();
-        sql += "WHERE ";
-        if (u.getId() != null) {
-            sql += "id_usuario LIKE ? ";
-            ultimo = true;
-            values.add(u.getId());
+        if (obj.getId() != null) {
+            sql += "WHERE id_usuario LIKE ? ";
+            primeiro = true;
+            values.add(obj.getId());
         }
-        if (u.getLogin() != null) {
-            if (ultimo) {
+        if (obj.getLogin() != null) {
+            if (primeiro) {
                 sql += "AND ";
             } else {
-                ultimo = true;
+                primeiro = true;
+                sql += "WHERE ";
             }
             sql += "login LIKE ? ";
-            values.add(u.getLogin());
+            values.add(obj.getLogin());
         }
-        if (u.getTipo() != null) {
-            if (ultimo) {
+        if (obj.getTipo() != null) {
+            if (primeiro) {
                 sql += "AND ";
             } else {
-                ultimo = true;
+                primeiro = true;
+                sql += "WHERE ";
             }
             sql += "tipo LIKE ? ";
-            values.add(u.getTipo());
+            values.add(obj.getTipo());
         }
-        if (u.getNome() != null) {
-            if (ultimo) {
+        if (obj.getNome() != null) {
+            if (primeiro) {
                 sql += "AND ";
+            } else {
+                sql += "WHERE ";
             }
             sql += "nome LIKE ? ";
-            values.add(u.getNome());
+            values.add(obj.getNome());
         }
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            for (int i = 1; i <= values.size(); i++) {
+            for (int i = 0; i < values.size(); i++) {
                 if (values.get(i) instanceof Integer) {
-                    ps.setInt(i, (int) values.get(i));
+                    ps.setInt(i + 1, (int) values.get(i));
                 } else if (values.get(i) instanceof String) {
-                    ps.setString(i, "%" +(String) values.get(i)+ "%");
+                    ps.setString(i + 1, "%" + (String) values.get(i) + "%");
                 }
             }
             ResultSet rs = ps.executeQuery();

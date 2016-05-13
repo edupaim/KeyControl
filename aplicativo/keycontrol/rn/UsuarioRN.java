@@ -131,16 +131,13 @@ public class UsuarioRN {
     public List<UsuarioDTO> buscar(UsuarioDTO u) throws NegocioException {
         List<UsuarioDTO> lista = new ArrayList<>();
         UsuarioDAO userDao = new UsuarioDAO();
-        if (u.getId() != null && "".equals(String.valueOf(u.getId()))) {
-           u.setId(null);
-        }
         if (u.getLogin() != null && "".equals(u.getLogin())) {
             u.setLogin(null);
         }
         if (u.getNome() != null && "".equals(u.getNome())) {
             u.setNome(null);
         }
-        if (u.getTipo() != null && "".equals(String.valueOf(u.getTipo())) && u.getTipo() > 2) {
+        if ((u.getTipo() != null && "".equals(String.valueOf(u.getTipo()))) || u.getTipo() > 1) {
             u.setTipo(null);
         }
         try {
