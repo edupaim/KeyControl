@@ -5,7 +5,11 @@
  */
 package aplicativo.keycontrol.gui;
 
+import aplicativo.keycontrol.dto.AlunoDTO;
+import aplicativo.keycontrol.dto.IBeneficiarioDTO;
+import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.main.KeyControl;
+import aplicativo.keycontrol.rn.BeneficiarioRN;
 import aplicativo.keycontrol.util.ThreadHoraUtil;
 import aplicativo.keycontrol.util.MensagensUtil;
 
@@ -146,8 +150,6 @@ public class MainFrame extends javax.swing.JFrame {
         ButExcluirAltC = new javax.swing.JButton();
         ButAlterarAltC = new javax.swing.JButton();
         AbaDevolucao = new javax.swing.JPanel();
-        LabDevolucaoCod = new javax.swing.JLabel();
-        TxtDevolucaoCod = new javax.swing.JTextField();
         LabDevolucaoSala = new javax.swing.JLabel();
         TxtDevolucaoSala = new javax.swing.JTextField();
         LabDevolucaoCap = new javax.swing.JLabel();
@@ -157,6 +159,9 @@ public class MainFrame extends javax.swing.JFrame {
         ButtonDevolucaoBuscar = new javax.swing.JButton();
         SeparatorDevolucao = new javax.swing.JSeparator();
         ButtonDevolucaoDevolver = new javax.swing.JButton();
+        LabDevolucaoTipo = new javax.swing.JLabel();
+        ScrollDevolucaoTipo = new javax.swing.JScrollPane();
+        ListDevolucaoTipo = new javax.swing.JList<>();
         AbaEmprestimo = new javax.swing.JPanel();
         LabEmprestimoMatricula = new javax.swing.JLabel();
         TxtEmprestimoMatricula = new javax.swing.JTextField();
@@ -938,7 +943,23 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(ScrollPaneTab1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BuscaUsuarioLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+<<<<<<< HEAD
                         .addComponent(ButBuscarBusU)))
+=======
+                        .addComponent(ButBuscarBusU1))
+                    .addGroup(BuscaChaveLayout.createSequentialGroup()
+                        .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabLoginB4)
+                            .addComponent(LabLoginB1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(BuscaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtLoginBusU1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtLoginBusU4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(BuscaChaveLayout.createSequentialGroup()
+                        .addComponent(LabLoginB2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TxtLoginBusU2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+>>>>>>> 80c69a92c6ad8883eb2db5b870ae43edfb0f0765
                 .addContainerGap())
         );
         BuscaUsuarioLayout.setVerticalGroup(
@@ -1079,13 +1100,9 @@ public class MainFrame extends javax.swing.JFrame {
 
         Painel.add(AbasUsuarios, "card2");
 
-        LabDevolucaoCod.setText("Código");
-
         LabDevolucaoSala.setText("Sala");
 
         LabDevolucaoCap.setText("Capacidade");
-
-        TxtDevolucaoCap.setEditable(false);
 
         LabDevolucaoID.setText("ID");
 
@@ -1105,6 +1122,15 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        LabDevolucaoTipo.setText("Tipo");
+
+        ListDevolucaoTipo.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Laboratório", "Comum" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        ScrollDevolucaoTipo.setViewportView(ListDevolucaoTipo);
+
         javax.swing.GroupLayout AbaDevolucaoLayout = new javax.swing.GroupLayout(AbaDevolucao);
         AbaDevolucao.setLayout(AbaDevolucaoLayout);
         AbaDevolucaoLayout.setHorizontalGroup(
@@ -1117,9 +1143,9 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(ButtonDevolucaoDevolver))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
-                        .addComponent(LabDevolucaoCod)
-                        .addGap(18, 18, 18)
-                        .addComponent(TxtDevolucaoCod, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabDevolucaoID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(LabDevolucaoSala)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1129,10 +1155,10 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(LabDevolucaoID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                        .addComponent(LabDevolucaoTipo)
+                        .addGap(18, 18, 18)
+                        .addComponent(ScrollDevolucaoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                         .addComponent(ButtonDevolucaoBuscar)))
                 .addContainerGap())
         );
@@ -1140,16 +1166,17 @@ public class MainFrame extends javax.swing.JFrame {
             AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AbaDevolucaoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonDevolucaoBuscar)
-                    .addComponent(LabDevolucaoCod)
-                    .addComponent(TxtDevolucaoCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabDevolucaoSala)
-                    .addComponent(TxtDevolucaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabDevolucaoCap)
-                    .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabDevolucaoID)
-                    .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ButtonDevolucaoBuscar)
+                        .addComponent(LabDevolucaoSala)
+                        .addComponent(TxtDevolucaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabDevolucaoCap)
+                        .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabDevolucaoID)
+                        .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabDevolucaoTipo))
+                    .addComponent(ScrollDevolucaoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(SeparatorDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1170,6 +1197,11 @@ public class MainFrame extends javax.swing.JFrame {
         TxtEmprestimoTipo.setEnabled(false);
 
         ButtonEmprestimoPreencher.setText("Preencher");
+        ButtonEmprestimoPreencher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEmprestimoPreencherActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Código");
 
@@ -1478,11 +1510,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtCapacidadeBusCActionPerformed
 
     private void ButtonDevolucaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoBuscarActionPerformed
-        KeyControl.fachada.buscarChave(!"".equals(this.TxtDevolucaoSala.getText()) ? this.TxtDevolucaoSala.getText() : null);
+        KeyControl.fachada.buscarChave(this.TxtDevolucaoSala.getText(), this.TxtDevolucaoCap.getText(), this.ListDevolucaoTipo.getSelectedIndex());
     }//GEN-LAST:event_ButtonDevolucaoBuscarActionPerformed
 
     private void ButtonDevolucaoDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoDevolverActionPerformed
-        KeyControl.fachada.devolverChave(!"".equals(TxtDevolucaoID.getText()) ? Integer.parseInt(TxtDevolucaoID.getText()) : null);
+        KeyControl.fachada.devolverChave(TxtDevolucaoID.getText());
     }//GEN-LAST:event_ButtonDevolucaoDevolverActionPerformed
 
     private void CBoxTipoCadCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoCadCActionPerformed
@@ -1500,6 +1532,21 @@ public class MainFrame extends javax.swing.JFrame {
     private void TxtIdAltChaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtIdAltChaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtIdAltChaveActionPerformed
+
+    private void ButtonEmprestimoPreencherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoPreencherActionPerformed
+        try {
+            IBeneficiarioDTO beneficiario = BeneficiarioRN.buscarPorMatricula(TxtEmprestimoMatricula.getText());
+            TxtEmprestimoNome.setText(beneficiario.getNome());
+            String tipo = "";
+            if (beneficiario instanceof AlunoDTO)
+                tipo = "Aluno";
+            TxtEmprestimoTipo.setText(tipo);
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+        
+        
+    }//GEN-LAST:event_ButtonEmprestimoPreencherActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1571,9 +1618,9 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JPanel Infos;
     public javax.swing.JLabel LabCapCadC;
     public javax.swing.JLabel LabDevolucaoCap;
-    public javax.swing.JLabel LabDevolucaoCod;
     public javax.swing.JLabel LabDevolucaoID;
     public javax.swing.JLabel LabDevolucaoSala;
+    public javax.swing.JLabel LabDevolucaoTipo;
     public javax.swing.JLabel LabEmprestimoMatricula;
     public javax.swing.JLabel LabEmprestimoNome;
     public javax.swing.JLabel LabEmprestimoTipo;
@@ -1606,6 +1653,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JLabel LbHora;
     public javax.swing.JLabel LbNome;
     public javax.swing.JLabel LbTipo;
+    public javax.swing.JList<String> ListDevolucaoTipo;
     public javax.swing.JPanel ListaChave;
     public javax.swing.JPanel ListaUsuario;
     public javax.swing.JPanel Menu;
@@ -1615,6 +1663,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JButton MenuReserva;
     public javax.swing.JButton MenuUsuarios;
     public javax.swing.JPanel Painel;
+    public javax.swing.JScrollPane ScrollDevolucaoTipo;
     public javax.swing.JScrollPane ScrollPaneTab;
     public javax.swing.JScrollPane ScrollPaneTab1;
     public javax.swing.JScrollPane ScrollPaneTab2;
@@ -1629,7 +1678,6 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JTextField TxtCapacidadeBusC;
     public javax.swing.JTextField TxtCapacidadeCadC;
     public javax.swing.JTextField TxtDevolucaoCap;
-    public javax.swing.JTextField TxtDevolucaoCod;
     public javax.swing.JTextField TxtDevolucaoID;
     public javax.swing.JTextField TxtDevolucaoSala;
     public javax.swing.JTextField TxtEmprestimoMatricula;

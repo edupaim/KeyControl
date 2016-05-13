@@ -6,7 +6,7 @@ package aplicativo.keycontrol.dto;
 public class ChaveDTO {
 
     private Integer id;
-    private String sala;
+    private String  sala;
     private Integer capacidade;
     private Integer tipo;
     private Integer beneficiario_id;
