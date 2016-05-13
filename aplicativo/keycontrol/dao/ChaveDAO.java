@@ -16,6 +16,9 @@ import java.util.List;
  */
 public class ChaveDAO implements GenericoDAO<ChaveDTO> {
 
+    
+    
+    
     // obs: pra que Integer id nos argumentos das funções se o DTO ja vem com o id?
     @Override
     public void atualizar(ChaveDTO obj) throws PersistenciaException {
@@ -149,20 +152,24 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
+            
             if (rs.next()) {
+                
                 chave = new ChaveDTO();
                 chave.setId(rs.getInt(1));
                 chave.setSala(rs.getString(2));
                 chave.setCapacidade(rs.getInt(3));
                 chave.setTipo(rs.getInt(4));
                 chave.setBeneficiario_id(rs.getInt(5));
+                return chave;
             }
+            throw new PersistenciaException("Chave inexistente");
         } catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
         } finally {
             ConexaoUtil.fecharConexao(con);
         }
-        return chave;
+        
     }
 
     @Override

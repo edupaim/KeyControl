@@ -10,11 +10,11 @@ package aplicativo.keycontrol.dto;
  * @author ramon
  */
 public class ProfessorDTO implements IBeneficiarioDTO{
-    private int id;
+    private Integer id;
     private String nome;
     private String matricula;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
