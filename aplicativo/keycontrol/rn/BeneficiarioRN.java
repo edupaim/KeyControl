@@ -15,7 +15,7 @@ import aplicativo.keycontrol.exception.PersistenciaException;
  * @author ramon
  */
 public class BeneficiarioRN {
-    public void inserir(IBeneficiarioDTO beneficiario) throws NegocioException{
+    public static void inserir(IBeneficiarioDTO beneficiario) throws NegocioException{
         try {
             if(beneficiario.getMatricula().length()==0)
                 throw new NegocioException("Matricula obrigatória.");
@@ -28,7 +28,7 @@ public class BeneficiarioRN {
         }
     }
     
-    public IBeneficiarioDTO buscarPorMatricula(String matricula) throws NegocioException{
+    public static IBeneficiarioDTO buscarPorMatricula(String matricula) throws NegocioException{
         try {
             if(matricula.length()==0)
                 throw new NegocioException("Matricula obrigatória.");

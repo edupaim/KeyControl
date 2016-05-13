@@ -5,7 +5,11 @@
  */
 package aplicativo.keycontrol.gui;
 
+import aplicativo.keycontrol.dto.AlunoDTO;
+import aplicativo.keycontrol.dto.IBeneficiarioDTO;
+import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.main.KeyControl;
+import aplicativo.keycontrol.rn.BeneficiarioRN;
 import aplicativo.keycontrol.util.ThreadHoraUtil;
 import aplicativo.keycontrol.util.MensagensUtil;
 
@@ -1176,6 +1180,11 @@ public class MainFrame extends javax.swing.JFrame {
         TxtEmprestimoTipo.setEnabled(false);
 
         ButtonEmprestimoPreencher.setText("Preencher");
+        ButtonEmprestimoPreencher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEmprestimoPreencherActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Código");
 
@@ -1488,6 +1497,21 @@ public class MainFrame extends javax.swing.JFrame {
     private void TblUser2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUser2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_TblUser2MouseClicked
+
+    private void ButtonEmprestimoPreencherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoPreencherActionPerformed
+        try {
+            IBeneficiarioDTO beneficiario = BeneficiarioRN.buscarPorMatricula(TxtEmprestimoMatricula.getText());
+            TxtEmprestimoNome.setText(beneficiario.getNome());
+            String tipo = "";
+            if (beneficiario instanceof AlunoDTO)
+                tipo = "Aluno";
+            TxtEmprestimoTipo.setText(tipo);
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+        
+        
+    }//GEN-LAST:event_ButtonEmprestimoPreencherActionPerformed
 
     /**
      * @param args the command line arguments

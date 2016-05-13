@@ -9,9 +9,9 @@ public class ConexaoUtil {
     public static Connection abrirConexao(String s) {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String url = "jdbc:mysql://localhost:3306/keycontrol";
-            String user = "root";
-            String senha = "1305";
+            String url = "jdbc:mysql://base2.trevvo.com.br:3306/admin_key";
+            String user = "admin_key";
+            String senha = "engsoft";
             con = DriverManager.getConnection(url, user, senha);
         } catch (ClassNotFoundException | SQLException ex) {
         } catch (InstantiationException | IllegalAccessException ex) {
