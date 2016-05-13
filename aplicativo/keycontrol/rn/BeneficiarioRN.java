@@ -5,10 +5,37 @@
  */
 package aplicativo.keycontrol.rn;
 
+import aplicativo.keycontrol.dao.BeneficiarioDAO;
+import aplicativo.keycontrol.dto.IBeneficiarioDTO;
+import aplicativo.keycontrol.exception.NegocioException;
+import aplicativo.keycontrol.exception.PersistenciaException;
+
 /**
  *
  * @author ramon
  */
 public class BeneficiarioRN {
+    public void inserir(IBeneficiarioDTO beneficiario) throws NegocioException{
+        try {
+            if(beneficiario.getMatricula().length()==0)
+                throw new NegocioException("Matricula obrigatória.");
+            if(beneficiario.getNome().length()==0)
+                throw new NegocioException("Nome obrigatório.");
+            BeneficiarioDAO DAO = new BeneficiarioDAO();
+            DAO.inserir(beneficiario);
+        } catch (NegocioException | PersistenciaException ex) {
+            throw new NegocioException(ex.getMessage());
+        }
+    }
     
+    public IBeneficiarioDTO buscarPorMatricula(String matricula) throws NegocioException{
+        try {
+            if(matricula.length()==0)
+                throw new NegocioException("Matricula obrigatória.");
+            BeneficiarioDAO DAO = new BeneficiarioDAO();
+            return DAO.buscarPorMatricula(matricula);
+        } catch (NegocioException | PersistenciaException ex) {
+            throw new NegocioException(ex.getMessage());
+        }
+    }
 }
