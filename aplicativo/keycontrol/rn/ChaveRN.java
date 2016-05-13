@@ -32,6 +32,39 @@ public class ChaveRN {
             throw new NegocioException(ex.getMessage());
         }
     }
+    
+    
+    
+    
+    public static void emprestar(int idChave, int idBeneficiario) throws NegocioException{
+        try 
+        {
+            if (!verificarDisponibilidade(idChave))
+                throw new NegocioException("Chave não disponível");
+            
+            ChaveDAO DAO = new ChaveDAO();
+            ChaveDTO chave = DAO.buscarPorId(idChave); //FAZ COM QUE VERIFIQUE A EXISTENCIA DE UMA CHAVE
+            chave.setBeneficiario_id(idBeneficiario);
+            DAO.atualizar(chave);
+        } catch (NegocioException | PersistenciaException ex) {
+            
+        }
+        
+        ChaveDAO DAO = new ChaveDAO();
+        
+    }
+    
+    public static boolean verificarDisponibilidade(int id) throws NegocioException{
+        
+        try {
+            ChaveDAO DAO = new ChaveDAO();
+            ChaveDTO c = DAO.buscarPorId(id);
+            return (c.getBeneficiario_id() == null);
+            } catch ( PersistenciaException ex) {
+                throw new NegocioException(ex.getMessage());
+            }
+
+    }
 
     /*
      Checa se é ambos os campos estão nulos, se não, realiza uma busca na DB
