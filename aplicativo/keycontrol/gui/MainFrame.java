@@ -1505,6 +1505,8 @@ public class MainFrame extends javax.swing.JFrame {
             String tipo = "";
             if (beneficiario instanceof AlunoDTO)
                 tipo = "Aluno";
+            else
+                tipo = "Professor";
             TxtEmprestimoTipo.setText(tipo);
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
