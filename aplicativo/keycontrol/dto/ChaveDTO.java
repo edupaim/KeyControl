@@ -25,6 +25,20 @@ public class ChaveDTO {
         this(null, null, null, null, null);
     }
 
+    
+   public String getTipoString(){
+       switch (tipo){
+           case 0:
+               return "Sala";
+           case 1:
+               return "Laboratorio";
+           case 2:
+               return "Reuniao";
+           default:
+               return "Nao especificado";
+       }
+   }
+   
     public Integer getBeneficiario_id() {
         return beneficiario_id;
     }

@@ -41,14 +41,10 @@ public class ChaveRN {
         ChaveDAO DAO = new ChaveDAO();
         List<ChaveDTO> chaves;
         try {
-            if (chave.getSala() != null) {
-                if ((chaves = DAO.buscar(chave)).size() > 0) {
-                    return chaves;
-                } else {
-                    throw new NegocioException("Não foi encontrado nenhuma chave.");
-                }
+            if ((chaves = DAO.buscar(chave)).size() > 0) {
+                return chaves;
             } else {
-                throw new NegocioException("Ambos campos nulos.");
+                throw new NegocioException("Não foi encontrado nenhuma chave.");
             }
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());

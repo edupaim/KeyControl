@@ -188,12 +188,12 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             }
             values.add(obj.getCapacidade());
         }
-        if (obj.getBeneficiario_id()!= null) {
+        if (obj.getBeneficiario_id() == null) {
             if (primeiro) {
-                sql += "id_beneficiario LIKE ?";
+                sql += "id_beneficiario IS NULL";
                 primeiro = false;
             } else {
-                sql += " AND id_beneficiario LIKE ?";
+                sql += " AND id_beneficiario IS NULL";
             }
             values.add(obj.getBeneficiario_id());
         }

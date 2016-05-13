@@ -69,7 +69,7 @@ public class Fachada {
 
     }
 
-    public void atualizarTabelaUsuarios() {
+    public void buscarUsuarios() {
         UsuarioRN listaBo = new UsuarioRN();
         List<UsuarioDTO> lista;
         DefaultTableModel tbl = (DefaultTableModel) KeyControl.mainFrame.TblUser.getModel();
@@ -92,7 +92,7 @@ public class Fachada {
         }
     }
 
-    public void atualizarTabelaUsuarios(List<UsuarioDTO> consulta) {
+    public void buscarUsuarios(List<UsuarioDTO> consulta) {
         if (consulta != null) {
             DefaultTableModel tbl = (DefaultTableModel) KeyControl.mainFrame.TblUserFiltro.getModel();
             while (tbl.getRowCount() > 0) {
@@ -108,11 +108,11 @@ public class Fachada {
                 i++;
             }
         } else {
-            atualizarTabelaUsuarios();
+            Fachada.this.buscarUsuarios();
         }
     }
 
-    public void listarUsuFiltrado() {
+    public void buscarUsuariosFiltrado() {
         List<UsuarioDTO> lista;
         UsuarioRN buscarRn = new UsuarioRN();
         try {
@@ -121,7 +121,7 @@ public class Fachada {
                     KeyControl.mainFrame.TxtNomeBusU.getText(),
                     KeyControl.mainFrame.TxtLoginBusU.getText(),
                     KeyControl.mainFrame.CBoxTipoBusU.getSelectedIndex()));
-            atualizarTabelaUsuarios(lista);
+            buscarUsuarios(lista);
         } catch (NegocioException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -133,7 +133,7 @@ public class Fachada {
     public void fazerLogin(String login, String senha) {
         // modifiquei para não precisar de login
         MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
-        KeyControl.setUsuarioLogado(new UsuarioDTO(0, "debug", "debug", "debug", 1));
+        KeyControl.setUsuarioLogado(new UsuarioDTO(1, "debug", "debug", "debug", 0));
         KeyControl.loginFrame.dispose();
         KeyControl.mainFrame = new MainFrame();
         KeyControl.mainFrame.setLocationRelativeTo(null);
@@ -183,7 +183,7 @@ public class Fachada {
                     senhar)) {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Cadastro efetuado com sucesso!");
                 KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
-                atualizarTabelaUsuarios();
+                Fachada.this.buscarUsuarios();
                 limparTodosCampos(KeyControl.mainFrame.Painel);
             } else {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Falha no cadastro.");
@@ -208,7 +208,7 @@ public class Fachada {
             ), senhar)) {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Alterado com sucesso!");
                 KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
-                atualizarTabelaUsuarios();
+                Fachada.this.buscarUsuarios();
                 limparTodosCampos(KeyControl.mainFrame.Painel);
             } else {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Falha na alteração.");
@@ -225,7 +225,7 @@ public class Fachada {
             } else {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Excluido com sucesso!");
                 KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
-                KeyControl.fachada.atualizarTabelaUsuarios();
+                KeyControl.fachada.buscarUsuarios();
                 KeyControl.fachada.limparTodosCampos(KeyControl.mainFrame.Painel);
             }
         } catch (NegocioException ex) {
@@ -252,7 +252,29 @@ public class Fachada {
 
     }
 
-
+    public void buscarChave(Integer id, String sala, Integer capacidade, Integer tipo, Integer estado){
+        DefaultTableModel tbl = (DefaultTableModel) KeyControl.mainFrame.TblChave.getModel();
+        ChaveDTO chave = new ChaveDTO(id, sala, capacidade, tipo, estado);
+        try {
+            List<ChaveDTO> lista = ChaveRN.buscarChave(chave);
+            while (tbl.getRowCount() > 0) {
+                tbl.removeRow(0);
+            }
+            int i = 0;
+            for (ChaveDTO user : lista) {
+                tbl.addRow(new String[1]);
+                KeyControl.mainFrame.TblChave.setValueAt(user.getId(), i, 0);
+                KeyControl.mainFrame.TblChave.setValueAt(user.getSala(), i, 1);
+                KeyControl.mainFrame.TblChave.setValueAt(user.getCapacidade(), i, 2);
+                KeyControl.mainFrame.TblChave.setValueAt(user.getTipoString(), i, 3);
+                KeyControl.mainFrame.TblChave.setValueAt(user.getBeneficiario_id(), i, 3);
+                i++;
+            }
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+        
+    }
     /*
      * METODOS DO DEVOLUCAO MAIN FRAME
      */
