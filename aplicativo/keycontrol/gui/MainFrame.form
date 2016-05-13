@@ -237,7 +237,7 @@
                   <Component id="MenuDevolucao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="MenuReserva" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -309,7 +309,7 @@
             <Property name="tabLayoutPolicy" type="int" value="1"/>
             <Property name="tabPlacement" type="int" value="2"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Padr&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[500, 600]"/>
@@ -874,7 +874,7 @@
             <Property name="tabLayoutPolicy" type="int" value="1"/>
             <Property name="tabPlacement" type="int" value="2"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Cursor Padr&#xe3;o"/>
+              <Color id="Default Cursor"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[500, 600]"/>
@@ -1111,15 +1111,10 @@
                                       <Component id="LabLoginB4" min="-2" max="-2" attributes="0"/>
                                       <Component id="LabLoginB1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="367" max="32767" attributes="0"/>
-                                          <Component id="TxtLoginBusU1" min="-2" pref="200" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="TxtLoginBusU4" min="-2" pref="101" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="TxtLoginBusU1" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                                      <Component id="TxtLoginBusU4" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -1430,9 +1425,9 @@
                               <Component id="ButtonDevolucaoDevolver" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="LabDevolucaoCod" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="TxtDevolucaoCod" min="-2" pref="64" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoID" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoID" min="-2" pref="71" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="LabDevolucaoSala" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -1442,10 +1437,10 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="TxtDevolucaoCap" min="-2" pref="41" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabDevolucaoID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TxtDevolucaoID" min="-2" pref="71" max="-2" attributes="0"/>
-                              <EmptySpace pref="160" max="32767" attributes="0"/>
+                              <Component id="LabDevolucaoTipo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ScrollDevolucaoTipo" min="-2" pref="117" max="-2" attributes="0"/>
+                              <EmptySpace pref="120" max="32767" attributes="0"/>
                               <Component id="ButtonDevolucaoBuscar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1457,16 +1452,18 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ButtonDevolucaoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabDevolucaoCod" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtDevolucaoCod" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="ButtonDevolucaoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="ScrollDevolucaoTipo" min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="SeparatorDevolucao" min="-2" pref="10" max="-2" attributes="0"/>
@@ -1478,13 +1475,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="LabDevolucaoCod">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtDevolucaoCod">
-            </Component>
             <Component class="javax.swing.JLabel" name="LabDevolucaoSala">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sala"/>
@@ -1498,9 +1488,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="TxtDevolucaoCap">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="LabDevolucaoID">
               <Properties>
@@ -1530,6 +1517,33 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDevolucaoDevolverActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JLabel" name="LabDevolucaoTipo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="ScrollDevolucaoTipo">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="ListDevolucaoTipo">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="2">
+                        <StringItem index="0" value="Laborat&#xf3;rio"/>
+                        <StringItem index="1" value="Comum"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="AbaEmprestimo">

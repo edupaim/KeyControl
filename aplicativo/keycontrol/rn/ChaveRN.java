@@ -15,16 +15,18 @@ public class ChaveRN {
     private ChaveRN() {
     }
 
-    /*
-     Checa se o ID é valido, modifica o objeto na parte de estado de "Não disponível" para "Disponível"
-     executa uma alteração na db com os novos valores.
-     */
     public static void devolucaoChave(ChaveDTO chave) throws NegocioException {
         ChaveDAO DAO = new ChaveDAO();
         try {
             if (chave.getId() != null) {
-                chave.setBeneficiario_id(null);
-                DAO.atualizar(chave);
+                ChaveDTO new_chave;
+                if((new_chave = buscarPorId(chave.getId())) != null && new_chave.getBeneficiario_id() > 0) {
+                    chave.setBeneficiario_id(0); // se for null, ele não irá modificar no metodo atualizar
+                    DAO.atualizar(chave);
+                }
+                else {
+                    throw new NegocioException("Chave já disponivel.");
+                }
             } else {
                 throw new NegocioException("ID inválido.");
             }
@@ -66,10 +68,6 @@ public class ChaveRN {
 
     }
 
-    /*
-     Checa se é ambos os campos estão nulos, se não, realiza uma busca na DB
-     para retornar todas as chaves que tem os campos coincidindo.
-     */
     public static List<ChaveDTO> buscarChave(ChaveDTO chave) throws NegocioException {
         ChaveDAO DAO = new ChaveDAO();
         List<ChaveDTO> chaves;

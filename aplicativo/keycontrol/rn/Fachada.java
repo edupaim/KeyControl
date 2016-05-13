@@ -21,11 +21,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Fachada {
 
-    // felipe: por que static?
     private static UsuarioRN usuarioRn;
 
     public Fachada() {
-        // felipe: por que não usar this?
         Fachada.usuarioRn = new UsuarioRN();
     }
 
@@ -133,7 +131,7 @@ public class Fachada {
     public void fazerLogin(String login, String senha) {
         // modifiquei para não precisar de login
         MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
-        KeyControl.setUsuarioLogado(new UsuarioDTO(0, "debug", "debug", "debug", 1));
+        KeyControl.setUsuarioLogado(new UsuarioDTO(0, "debug", "debug", "debug", 0));
         KeyControl.loginFrame.dispose();
         KeyControl.mainFrame = new MainFrame();
         KeyControl.mainFrame.setLocationRelativeTo(null);
@@ -256,24 +254,29 @@ public class Fachada {
     /*
      * METODOS DO DEVOLUCAO MAIN FRAME
      */
-    public void devolverChave(Integer id) {
+    public void devolverChave(String id) {
         try {
             ChaveDTO chave = new ChaveDTO();
-            chave.setId(id);
+            Integer new_id = (id == null || "".equals(id)) ? null : Integer.parseInt(id);
+            chave.setId(new_id);
             ChaveRN.devolucaoChave(chave);
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
     }
 
-    public void buscarChave(String sala) {
+    public void buscarChave(String sala, String capacidade, Integer tipo) {
         try {
             ChaveDTO chave = new ChaveDTO();
-            chave.setSala(sala);
+            chave.setSala((sala == null || "".equals(sala)) ? null : sala);
+            chave.setCapacidade((capacidade == null || "".equals(capacidade)) ? null : Integer.parseInt(capacidade));
             List<ChaveDTO> chaves = ChaveRN.buscarChave(chave);
             chave = chaves.get(0);
             KeyControl.mainFrame.TxtDevolucaoID.setText(String.valueOf(chave.getId()));
             KeyControl.mainFrame.TxtDevolucaoCap.setText(String.valueOf(chave.getCapacidade()));
+            KeyControl.mainFrame.TxtDevolucaoSala.setText(chave.getSala());
+            KeyControl.mainFrame.ListDevolucaoTipo.setSelectedIndex(chave.getTipo());
+            
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
