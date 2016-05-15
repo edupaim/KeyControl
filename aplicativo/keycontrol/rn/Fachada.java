@@ -393,7 +393,7 @@ public class Fachada {
                 model.removeRow(i);
             }
             chaves.stream().forEach((chave) -> {
-                model.addRow(new Object[]{chave.getId(), chave.getSala(), chave.getCapacidade(), chave.getTipo()});
+                model.addRow(new Object[]{chave.getId(), chave.getSala(), chave.getCapacidade(), chave.getTipo(), chave.getBeneficiario_id()});
             });
             KeyControl.mainFrame.TblUser = new JTable(model);
         } catch (NegocioException ex) {
