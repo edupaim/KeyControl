@@ -446,6 +446,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         ScrollPaneTab.setViewportView(TblUser);
+        TblUser.getAccessibleContext().setAccessibleDescription("");
 
         ButAtualizarL.setText("Atualizar");
         ButAtualizarL.addActionListener(new java.awt.event.ActionListener() {
@@ -1349,11 +1350,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButCadastroCadUActionPerformed
 
     private void TblUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUserMouseClicked
-        KeyControl.fachada.tabelaUsuarioSelecionada(TblUser.getSelectedRow());
+        KeyControl.fachada.tabelaUsuarioSelecionada(TblUser.rowAtPoint(evt.getPoint()));
     }//GEN-LAST:event_TblUserMouseClicked
 
     private void ButAtualizarLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAtualizarLActionPerformed
-//        KeyControl.fachada.atualizarTabelaUsuarios();
+        KeyControl.fachada.atualizarTabelaUsuarios();
     }//GEN-LAST:event_ButAtualizarLActionPerformed
 
     private void ButSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButSairActionPerformed

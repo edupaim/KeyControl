@@ -16,9 +16,19 @@ import java.util.List;
  */
 public class ChaveDAO implements GenericoDAO<ChaveDTO> {
 
+    private static ChaveDAO singleton;
     
+    private ChaveDAO() {}
     
-    
+    public static ChaveDAO getInstance() {
+        if(singleton == null) {
+            singleton = new ChaveDAO();
+            return singleton;
+        }
+        else
+            return singleton;
+    }
+        
     // obs: pra que Integer id nos argumentos das funções se o DTO ja vem com o id?
     @Override
     public void atualizar(ChaveDTO obj) throws PersistenciaException {

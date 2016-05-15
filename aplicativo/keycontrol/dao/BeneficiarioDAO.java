@@ -25,6 +25,19 @@ import java.util.List;
  */
 public class BeneficiarioDAO implements GenericoDAO<IBeneficiarioDTO> {
     
+    private static BeneficiarioDAO singleton;
+    
+    private BeneficiarioDAO() {}
+    
+    public static BeneficiarioDAO getInstance() {
+        if(singleton == null) {
+            singleton = new BeneficiarioDAO();
+            return singleton;
+        }
+        else
+            return singleton;
+    }
+    
     public void inserir(IBeneficiarioDTO beneficiario) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Inserir Beneficiario");
         String sql = "INSERT INTO beneficiario (id_beneficiario, nome, matricula, tipo) values (NULL,?,?,?)";

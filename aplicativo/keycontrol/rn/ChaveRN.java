@@ -13,12 +13,21 @@ public class ChaveRN {
     /*
      Singleton
      */
-
-    private ChaveRN() {
+    private static ChaveRN singleton;
+    
+    private ChaveRN() {}
+    
+    public static ChaveRN getInstance() {
+        if(singleton == null) {
+            singleton = new ChaveRN();
+            return singleton;
+        }
+        else
+            return singleton;
     }
 
     public static void devolucaoChave(ChaveDTO chave) throws NegocioException {
-        ChaveDAO DAO = new ChaveDAO();
+        ChaveDAO DAO = ChaveDAO.getInstance();
         try {
             if (chave.getId() != null) {
                 ChaveDTO new_chave;
@@ -43,22 +52,19 @@ public class ChaveRN {
                 throw new NegocioException("Chave não disponível");
             }
 
-            ChaveDAO DAO = new ChaveDAO();
+            ChaveDAO DAO = ChaveDAO.getInstance();
             ChaveDTO chave = DAO.buscarPorId(idChave); //FAZ COM QUE VERIFIQUE A EXISTENCIA DE UMA CHAVE
             chave.setBeneficiario_id(idBeneficiario);
             DAO.atualizar(chave);
         } catch (NegocioException | PersistenciaException ex) {
 
         }
-
-        ChaveDAO DAO = new ChaveDAO();
-
     }
 
     public static boolean verificarDisponibilidade(int id) throws NegocioException {
 
         try {
-            ChaveDAO DAO = new ChaveDAO();
+            ChaveDAO DAO = ChaveDAO.getInstance();
             ChaveDTO c = DAO.buscarPorId(id);
             return (c.getBeneficiario_id() == null);
         } catch (PersistenciaException ex) {
@@ -68,7 +74,7 @@ public class ChaveRN {
     }
 
     public static List<ChaveDTO> buscarChave(ChaveDTO chave) throws NegocioException {
-        ChaveDAO DAO = new ChaveDAO();
+        ChaveDAO DAO = ChaveDAO.getInstance();
         List<ChaveDTO> chaves;
         try {
             chaves = DAO.buscar(chave);
@@ -88,7 +94,7 @@ public class ChaveRN {
             } else if (chave.getTipo() == null) {
                 throw new NegocioException("Tipo obrigatório.");
             } else {
-                ChaveDAO chaveDAO = new ChaveDAO();
+                ChaveDAO chaveDAO = ChaveDAO.getInstance();
                 chaveDAO.inserir(chave);
                 resul = true;
             }
@@ -104,7 +110,7 @@ public class ChaveRN {
             if (id == null || id < 1) {
                 throw new NegocioException("ID inválido.");
             }
-            ChaveDAO dao = new ChaveDAO();
+            ChaveDAO dao = ChaveDAO.getInstance();
             if (MensagensUtil.confirm("Deseja realmente deletar a chave da sala " + buscarPorId(id).getSala(), "DELETAR")) {
                 dao.deletar(id);
                 resul = true;
@@ -120,7 +126,7 @@ public class ChaveRN {
             if (id < 1) {
                 throw new NegocioException("ID inválido.");
             }
-            ChaveDAO dao = new ChaveDAO();
+            ChaveDAO dao = ChaveDAO.getInstance();
             return dao.buscarPorId(id);
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
@@ -129,7 +135,7 @@ public class ChaveRN {
     
     public static boolean atualizar(ChaveDTO chave) throws NegocioException {
         boolean resul = false;
-        ChaveDAO chaveDAO = new ChaveDAO();
+        ChaveDAO chaveDAO = ChaveDAO.getInstance();
         try {
             if (chave.getId() == null || chave.getId() < 0) {
                 throw new NegocioException("ID inválido.");

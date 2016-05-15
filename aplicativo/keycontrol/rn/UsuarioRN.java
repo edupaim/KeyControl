@@ -13,6 +13,23 @@ import java.util.List;
  * @author Edu
  */
 public class UsuarioRN {
+    /*
+     Singleton
+     */
+    
+    private static UsuarioRN singleton;
+    
+    private UsuarioRN() {}
+    
+    public static UsuarioRN getInstance() {
+        if(singleton == null) {
+            singleton = new UsuarioRN();
+            return singleton;
+        }
+        else
+            return singleton;
+    }
+    
 
     public boolean logar(String login, String senha) throws NegocioException {
         boolean resul = false;
