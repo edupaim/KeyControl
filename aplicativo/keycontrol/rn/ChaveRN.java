@@ -153,4 +153,13 @@ public class ChaveRN {
         }
         return resul;
     }
+
+    List<ChaveDTO> listarTodos() throws NegocioException {
+        ChaveDAO dao = ChaveDAO.getInstance();
+        try {
+            return dao.listarTodos();
+        } catch (PersistenciaException ex) {
+            throw new NegocioException(ex.getMessage());
+        }
+    }
 }

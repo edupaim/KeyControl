@@ -60,7 +60,6 @@ public class Fachada {
         KeyControl.mainFrame.TxtNomeAltC.setText(nome);
         KeyControl.mainFrame.TxtLoginAltC.setText(login);
         KeyControl.mainFrame.CBoxTipoAaltC.setSelectedIndex(tipo);
-
     }
 
     public void buscarUsuarios() {
@@ -384,7 +383,45 @@ public class Fachada {
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
-    
-        
+    }
+
+    public void atualizarTabelaChaves() {
+        try {
+            List<ChaveDTO> chaves = ChaveRN.getInstance().listarTodos();
+            DefaultTableModel model = (DefaultTableModel) KeyControl.mainFrame.TblChave.getModel();
+            for (int i = model.getRowCount() - 1; i >= 0; i--) {
+                model.removeRow(i);
+            }
+            chaves.stream().forEach((chave) -> {
+                model.addRow(new Object[]{chave.getId(), chave.getSala(), chave.getCapacidade(), chave.getTipo()});
+            });
+            KeyControl.mainFrame.TblUser = new JTable(model);
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+    public void tabelaChaveSelecionada(Integer linha) {
+        ChaveDTO chave = new ChaveDTO();
+        try {
+            if(linha >= 0) {
+                chave.setId((Integer) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 0));
+                chave.setSala((String) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 1));
+                chave.setCapacidade((Integer) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 2));
+                chave.setTipo((Integer) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 3));
+                KeyControl.mainFrame.AbasChaves.setSelectedComponent(KeyControl.mainFrame.AlteraChave);
+                campoAlterarChave(chave.getId(), chave.getSala(), chave.getCapacidade(), chave.getTipo());
+            }
+        }
+        catch (ClassCastException ex) {
+           System.out.println("Não foi possivel converter um dos campos. " + ex.getMessage());
+        }
+    }
+
+    private void campoAlterarChave(Integer id, String sala, Integer capacidade, Integer tipo) {
+        KeyControl.mainFrame.TxtIdAltC1.setText(String.valueOf(id));
+        KeyControl.mainFrame.TxtSalaAltC.setText(sala);
+        KeyControl.mainFrame.TxtCapacidadeAltC.setText(String.valueOf(capacidade));
+        KeyControl.mainFrame.CBoxTipoAaltC1.setSelectedIndex(tipo);
     }
 }

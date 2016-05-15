@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -130,7 +132,8 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
     public List<ChaveDTO> listarTodos() throws PersistenciaException {
         List<ChaveDTO> retorno = new ArrayList<>();
         Connection con = ConexaoUtil.abrirConexao("Listar Todas Chaves");
-        String sql = "SELECT * FROM usuario ";
+        String sql = "SELECT * FROM chave ";
+
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -143,9 +146,8 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
                 chave.setBeneficiario_id(rs.getInt(5));
                 retorno.add(chave);
             }
-
         } catch (SQLException ex) {
-            throw new PersistenciaException(ex.getMessage(), ex);
+            Logger.getLogger(ChaveDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             ConexaoUtil.fecharConexao(con);
         }
