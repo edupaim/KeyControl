@@ -108,9 +108,9 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
             ps.setInt(count, u.getId());
             for (int i = 0; i < values.size(); i++) {
                 if (values.get(i) instanceof Integer) {
-                    ps.setInt(i+1, (int) values.get(i));
+                    ps.setInt(i + 2, (int) values.get(i));
                 } else if (values.get(i) instanceof String) {
-                    ps.setString(i+1, (String) values.get(i));
+                    ps.setString(i + 2, (String) values.get(i));
                 }
             }
             ps.execute();
