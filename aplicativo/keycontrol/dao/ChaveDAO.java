@@ -37,9 +37,9 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
         Connection con = ConexaoUtil.abrirConexao("Atualizar Chave");
         List<Object> values = new ArrayList<>();
         boolean primeiro = true;
-        String sql = "UPDATE chaves ";
-        sql += "WHERE id_chave = ?";
-        sql += " SET ";
+        String sql = "UPDATE chave ";
+        sql += "SET ";
+        
         if (obj.getCapacidade() != null) {
             if (primeiro) {
                 sql += "capacidade = ?";
@@ -75,17 +75,20 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             }
             values.add(obj.getTipo());
         }
+        
+        sql += " WHERE id_chave = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, obj.getId());
-            for (int i = 0; i < values.size(); i++) {
+            int i;
+            for (i = 0; i < values.size(); i++) {
                 if (values.get(i) instanceof Integer) {
-                    ps.setInt(i+2, (int) values.get(i));
+                    ps.setInt(i+1, (int) values.get(i));
                 } else if (values.get(i) instanceof String) {
-                    ps.setString(i+2, (String) values.get(i));
+                    ps.setString(i+1, (String) values.get(i));
                 }
             }
+            ps.setInt(i+1, obj.getId());
             ps.execute();
         } catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
@@ -115,7 +118,7 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
     @Override
     public void deletar(Integer id) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Deletar Chave");
-        String sql = "DELETE FROM sala WHERE id_sala = ?";
+        String sql = "DELETE FROM chave WHERE id_chave = ?";
         try {
             try (PreparedStatement ps = con.prepareStatement(sql)) {
                 ps.setInt(1, id);

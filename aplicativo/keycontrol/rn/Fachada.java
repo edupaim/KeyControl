@@ -1,7 +1,9 @@
 package aplicativo.keycontrol.rn;
 
+import aplicativo.keycontrol.dto.AlunoDTO;
 import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.dto.ChaveDTO;
+import aplicativo.keycontrol.dto.IBeneficiarioDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.gui.LoginFrame;
 import aplicativo.keycontrol.gui.MainFrame;
@@ -9,7 +11,6 @@ import aplicativo.keycontrol.main.KeyControl;
 import aplicativo.keycontrol.util.MensagensUtil;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.PopupMenu;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,13 +23,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Edu
  */
 public class Fachada {
-
-    private static UsuarioRN usuarioRn;
-
-    public Fachada() {
-        Fachada.usuarioRn = UsuarioRN.getInstance();
-    }
-
+   
     /*
      * METODOS DO MAIN FRAME (GERAL)
      */
@@ -131,12 +126,16 @@ public class Fachada {
      */
     public void fazerLogin(String login, String senha) {
          try {
-            if (usuarioRn.logar(login, senha)) {
+            if (UsuarioRN.getInstance().logar(login, senha)) {
                 //MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
                 KeyControl.loginFrame.dispose();
                 KeyControl.mainFrame = new MainFrame();
                 KeyControl.mainFrame.setLocationRelativeTo(null);
                 KeyControl.mainFrame.setVisible(true);
+                if(KeyControl.getUsuarioLogado().getTipo() > 0) {
+                    KeyControl.mainFrame.MenuUsuarios.setVisible(false);
+                    KeyControl.mainFrame.MenuChaves.setVisible(false);
+                }
             }
          } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.loginFrame, ex.getMessage());
@@ -165,7 +164,7 @@ public class Fachada {
      */
     public void cadastrarUsuario(String nome, String login, String senha, String senhar, Integer tipo) {
         try {
-            if (usuarioRn.inserir(
+            if (UsuarioRN.getInstance().inserir(
                     new UsuarioDTO(null,
                             nome,
                             login,
@@ -203,7 +202,7 @@ public class Fachada {
 
     public void alterarUsuario(Integer id, String nome, String login, String senha, Integer tipo, String senhar) {
         try {
-            if (usuarioRn.atualizar(new UsuarioDTO(id,
+            if (UsuarioRN.getInstance().atualizar(new UsuarioDTO(id,
                     nome,
                     login,
                     senha,
@@ -223,7 +222,7 @@ public class Fachada {
 
     public void excluirUsuario(Integer id) {
         try {
-            if (!usuarioRn.deletar(id)) {
+            if (!UsuarioRN.getInstance().deletar(id)) {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Falha ao excluir.");
             } else {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Excluido com sucesso!");
@@ -245,7 +244,7 @@ public class Fachada {
         chave.setCapacidade(capacidade);
         chave.setTipo(tipo);
         try {
-            ChaveRN.inserir(chave);
+            ChaveRN.getInstance().inserir(chave);
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
@@ -346,18 +345,18 @@ public class Fachada {
             ChaveDTO chave = new ChaveDTO();
             Integer new_id = (id == null || "".equals(id)) ? null : Integer.parseInt(id);
             chave.setId(new_id);
-            ChaveRN.devolucaoChave(chave);
+            ChaveRN.getInstance().devolucaoChave(chave);
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
     }
 
-    public void buscarChave(String sala, String capacidade, Integer tipo) {
+    public void buscarChaveDevolucao(String sala, String capacidade, Integer tipo) {
         try {
             ChaveDTO chave = new ChaveDTO();
             chave.setSala((sala == null || "".equals(sala)) ? null : sala);
             chave.setCapacidade((capacidade == null || "".equals(capacidade)) ? null : Integer.parseInt(capacidade));
-            List<ChaveDTO> chaves = ChaveRN.buscarChave(chave);
+            List<ChaveDTO> chaves = ChaveRN.getInstance().buscarChave(chave);
             chave = chaves.get(0);
             KeyControl.mainFrame.TxtDevolucaoID.setText(String.valueOf(chave.getId()));
             KeyControl.mainFrame.TxtDevolucaoCap.setText(String.valueOf(chave.getCapacidade()));
@@ -423,5 +422,67 @@ public class Fachada {
         KeyControl.mainFrame.TxtSalaAltC.setText(sala);
         KeyControl.mainFrame.TxtCapacidadeAltC.setText(String.valueOf(capacidade));
         KeyControl.mainFrame.CBoxTipoAaltC1.setSelectedIndex(tipo);
+    }
+
+    public void excluirChave(Integer id) {
+        try {
+            if (!ChaveRN.getInstance().deletar(id)) {
+                MensagensUtil.addMsg(KeyControl.mainFrame, "Falha ao excluir.");
+            } else {
+                MensagensUtil.addMsg(KeyControl.mainFrame, "Excluido com sucesso!");
+                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
+                KeyControl.fachada.buscarUsuarios();
+                KeyControl.fachada.limparTodosCampos(KeyControl.mainFrame.Painel);
+            }
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+    public void alterarChave(int id, String sala, int capacidade, int tipo) {
+        try {
+            if (ChaveRN.getInstance().atualizar(new ChaveDTO(id, sala, capacidade, tipo, null))) {
+                MensagensUtil.addMsg(KeyControl.mainFrame, "Alterado com sucesso!");
+                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
+                Fachada.this.buscarUsuarios();
+                limparTodosCampos(KeyControl.mainFrame.Painel);
+            } else {
+                MensagensUtil.addMsg(KeyControl.mainFrame, "Falha na alteração.");
+            }
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+    public void emprestarChave(String matricula) {
+        try {
+            IBeneficiarioDTO beneficiario = BeneficiarioRN.getInstance().buscarPorMatricula(matricula);
+            KeyControl.mainFrame.TxtEmprestimoNome.setText(beneficiario.getNome());
+            String tipo;
+            if (beneficiario instanceof AlunoDTO)
+                tipo = "Aluno";
+            else
+                tipo = "Professor";
+            KeyControl.mainFrame.TxtEmprestimoTipo.setText(tipo);
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+    public void buscarChaveEmprestimo(String sala, String capacidade, int tipo) {
+        try {
+            ChaveDTO chave = new ChaveDTO();
+            chave.setSala((sala == null || "".equals(sala)) ? null : sala);
+            chave.setCapacidade((capacidade == null || "".equals(capacidade)) ? null : Integer.parseInt(capacidade));
+            List<ChaveDTO> chaves = ChaveRN.getInstance().buscarChave(chave);
+            chave = chaves.get(0);
+            KeyControl.mainFrame.TxtEmprestimoID.setText(String.valueOf(chave.getId()));
+            KeyControl.mainFrame.TxtEmprestimoCap.setText(String.valueOf(chave.getCapacidade()));
+            KeyControl.mainFrame.TxtEmprestimoSala.setText(chave.getSala());
+            KeyControl.mainFrame.ListEmprestimoTipo.setSelectedIndex(chave.getTipo());
+            
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
     }
 }
