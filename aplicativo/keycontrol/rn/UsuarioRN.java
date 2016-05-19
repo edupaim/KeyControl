@@ -13,6 +13,23 @@ import java.util.List;
  * @author Edu
  */
 public class UsuarioRN {
+    /*
+     Singleton
+     */
+    
+    private static UsuarioRN singleton;
+    
+    private UsuarioRN() {}
+    
+    public static UsuarioRN getInstance() {
+        if(singleton == null) {
+            singleton = new UsuarioRN();
+            return singleton;
+        }
+        else
+            return singleton;
+    }
+    
 
     public boolean logar(String login, String senha) throws NegocioException {
         boolean resul = false;
@@ -26,7 +43,7 @@ public class UsuarioRN {
                 UsuarioDTO usuario = new UsuarioDTO();
                 usuario.setLogin(login.trim());
                 usuario.setSenha(senha.trim());
-                UsuarioDAO usuarioDAO = new UsuarioDAO();
+                UsuarioDAO usuarioDAO = UsuarioDAO.getInstance();
                 usuarioR = usuarioDAO.logar(usuario);
                 if (usuarioR != null) {
                     resul = true;
@@ -55,7 +72,7 @@ public class UsuarioRN {
             } else {
                 u.setLogin(u.getLogin().trim());
                 u.setSenha(u.getSenha().trim());
-                UsuarioDAO usuarioDAO = new UsuarioDAO();
+                UsuarioDAO usuarioDAO = UsuarioDAO.getInstance();
                 usuarioDAO.inserir(u);
                 resul = true;
             }
@@ -67,7 +84,7 @@ public class UsuarioRN {
 
     public boolean atualizar(UsuarioDTO u, String senhar) throws NegocioException {
         boolean resul = false;
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        UsuarioDAO usuarioDAO = UsuarioDAO.getInstance();
         try {
             if (u.getId() == null || u.getId() < 0) {
                 throw new NegocioException("ID inválido.");
@@ -96,7 +113,7 @@ public class UsuarioRN {
             if (id == null || id == 0) {
                 throw new NegocioException("ID inválido.");
             }
-            UsuarioDAO dao = new UsuarioDAO();
+            UsuarioDAO dao = UsuarioDAO.getInstance();
             if (MensagensUtil.confirm("Deseja realmente deletar o usario "+buscarPorId(id).getNome(), "DELETAR")){
                 dao.deletar(id);
                 resul = true;
@@ -108,7 +125,7 @@ public class UsuarioRN {
     }
 
     public List<UsuarioDTO> listarTodos() throws NegocioException {
-        UsuarioDAO dao = new UsuarioDAO();
+        UsuarioDAO dao = UsuarioDAO.getInstance();
         try {
             return dao.listarTodos();
         } catch (PersistenciaException ex) {
@@ -121,7 +138,7 @@ public class UsuarioRN {
             if (id == 0) {
                 throw new NegocioException("ID inválido.");
             }
-            UsuarioDAO dao = new UsuarioDAO();
+            UsuarioDAO dao = UsuarioDAO.getInstance();
             return dao.buscarPorId(id);
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
@@ -130,7 +147,7 @@ public class UsuarioRN {
 
     public List<UsuarioDTO> buscar(UsuarioDTO u) throws NegocioException {
         List<UsuarioDTO> lista = new ArrayList<>();
-        UsuarioDAO userDao = new UsuarioDAO();
+        UsuarioDAO userDao = UsuarioDAO.getInstance();
         if (u.getLogin() != null && "".equals(u.getLogin())) {
             u.setLogin(null);
         }

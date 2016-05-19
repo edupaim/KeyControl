@@ -15,13 +15,27 @@ import java.util.List;
  */
 public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
 
+    private static UsuarioDAO singleton;
+    
+    private UsuarioDAO() {}
+    
+    public static UsuarioDAO getInstance() {
+        if(singleton == null) {
+            singleton = new UsuarioDAO();
+            return singleton;
+        }
+        else
+            return singleton;
+    }
+    
     public UsuarioDTO logar(UsuarioDTO usuario) throws PersistenciaException {
         UsuarioDTO usuarioR = null;
-        Connection con = ConexaoUtil.abrirConexao("Login");
+        Connection con = null;
         String sql = "SELECT * FROM usuario ";
         sql += "WHERE login = ? ";
         sql += "AND senha = ? ";
         try {
+            con = ConexaoUtil.abrirConexao("Login");
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, usuario.getLogin());
             ps.setString(2, usuario.getSenha());

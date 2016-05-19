@@ -15,13 +15,27 @@ import aplicativo.keycontrol.exception.PersistenciaException;
  * @author ramon
  */
 public class BeneficiarioRN {
+    
+    private static BeneficiarioRN singleton;
+    
+    private BeneficiarioRN() {}
+    
+    public static BeneficiarioRN getInstance() {
+        if(singleton == null) {
+            singleton = new BeneficiarioRN();
+            return singleton;
+        }
+        else
+            return singleton;
+    }
+    
     public static void inserir(IBeneficiarioDTO beneficiario) throws NegocioException{
         try {
             if(beneficiario.getMatricula().length()==0)
                 throw new NegocioException("Matricula obrigatória.");
             if(beneficiario.getNome().length()==0)
                 throw new NegocioException("Nome obrigatório.");
-            BeneficiarioDAO DAO = new BeneficiarioDAO();
+            BeneficiarioDAO DAO = BeneficiarioDAO.getInstance();
             DAO.inserir(beneficiario);
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
@@ -32,7 +46,7 @@ public class BeneficiarioRN {
         try {
             if(matricula.length()==0)
                 throw new NegocioException("Matricula obrigatória.");
-            BeneficiarioDAO DAO = new BeneficiarioDAO();
+            BeneficiarioDAO DAO = BeneficiarioDAO.getInstance();
             return DAO.buscarPorMatricula(matricula);
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
