@@ -10,12 +10,17 @@ package aplicativo.keycontrol.dto;
  * @author ramon
  */
 public interface IBeneficiarioDTO {
+
     public Integer getId();
+
     public void setId(int id);
+
     public String getNome();
+
     public void setNome(String nome);
+
     public String getMatricula();
+
     public void setMatricula(String nome);
-    
-    
+
 }

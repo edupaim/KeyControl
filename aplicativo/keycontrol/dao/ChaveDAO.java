@@ -167,9 +167,7 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            
             if (rs.next()) {
-                
                 chave = new ChaveDTO();
                 chave.setId(rs.getInt(1));
                 chave.setSala(rs.getString(2));
@@ -194,7 +192,6 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
         String sql = "SELECT * FROM chave";
         boolean primeiro = true;
         List<Object> values = new ArrayList<>();
-
         if (obj.getId() != null) {
             sql += " WHERE id_chave LIKE ?";
             primeiro = false;
@@ -211,10 +208,10 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
         }
         if (obj.getBeneficiario_id() != null) {
             if (primeiro) {
-                sql += " WHERE  id_beneficiario LIKE ?";
+                sql += " WHERE  id_beneficiario = ?";
                 primeiro = false;
             } else {
-                sql += " AND id_beneficiario LIKE ?";
+                sql += " AND id_beneficiario = ?";
             }
             values.add(obj.getBeneficiario_id());
         }
@@ -235,7 +232,6 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             }
             values.add(obj.getTipo());
         }
-
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             for (int i = 0; i < values.size(); i++) {

@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Edu
  */
 public class Fachada {
-   
+
     /*
      * METODOS DO MAIN FRAME (GERAL)
      */
@@ -103,7 +103,7 @@ public class Fachada {
     public void buscarUsuariosFiltrado() {
         List<UsuarioDTO> lista;
         Integer id;
-        if ("".equals(KeyControl.mainFrame.TxtIdBusU.getText())){
+        if ("".equals(KeyControl.mainFrame.TxtIdBusU.getText())) {
             id = null;
         } else {
             id = Integer.parseInt(KeyControl.mainFrame.TxtIdBusU.getText());
@@ -121,26 +121,58 @@ public class Fachada {
         }
     }
 
+    public void atualizarTabelaUsuarios() {
+        try {
+            List<UsuarioDTO> usuarios = UsuarioRN.getInstance().listarTodos();
+            DefaultTableModel model = (DefaultTableModel) KeyControl.mainFrame.TblUser.getModel();
+            for (int i = model.getRowCount() - 1; i >= 0; i--) {
+                model.removeRow(i);
+            }
+            usuarios.stream().forEach((user) -> {
+                model.addRow(new Object[]{user.getId(), user.getNome(), user.getLogin(), user.getTipo()});
+            });
+            KeyControl.mainFrame.TblUser = new JTable(model);
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+    public void atualizarTabelaChaves() {
+        try {
+            List<ChaveDTO> chaves = ChaveRN.getInstance().listarTodos();
+            DefaultTableModel model = (DefaultTableModel) KeyControl.mainFrame.TblChave.getModel();
+            for (int i = model.getRowCount() - 1; i >= 0; i--) {
+                model.removeRow(i);
+            }
+            chaves.stream().forEach((chave) -> {
+                model.addRow(new Object[]{chave.getId(), chave.getSala(), chave.getCapacidade(), chave.getTipo(), chave.getBeneficiario_id()});
+            });
+            KeyControl.mainFrame.TblUser = new JTable(model);
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
     /*
      * METODOS DO LOGIN FRAME
      */
     public void fazerLogin(String login, String senha) {
-         try {
+        try {
             if (UsuarioRN.getInstance().logar(login, senha)) {
                 //MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
                 KeyControl.loginFrame.dispose();
                 KeyControl.mainFrame = new MainFrame();
                 KeyControl.mainFrame.setLocationRelativeTo(null);
                 KeyControl.mainFrame.setVisible(true);
-                if(KeyControl.getUsuarioLogado().getTipo() > 0) {
+                if (KeyControl.getUsuarioLogado().getTipo() > 0) {
                     KeyControl.mainFrame.MenuUsuarios.setVisible(false);
                     KeyControl.mainFrame.MenuChaves.setVisible(false);
                 }
             }
-         } catch (NegocioException ex) {
+        } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.loginFrame, ex.getMessage());
-         }
-         
+        }
+
     }
 
     /*
@@ -186,7 +218,7 @@ public class Fachada {
     public void tabelaUsuarioSelecionada(Integer linha) {
         UsuarioDTO usuario = new UsuarioDTO();
         try {
-            if(linha >= 0) {
+            if (linha >= 0) {
                 usuario.setId((Integer) KeyControl.mainFrame.TblUser.getModel().getValueAt(linha, 0));
                 usuario.setNome((String) KeyControl.mainFrame.TblUser.getModel().getValueAt(linha, 1));
                 usuario.setLogin((String) KeyControl.mainFrame.TblUser.getModel().getValueAt(linha, 2));
@@ -194,9 +226,8 @@ public class Fachada {
                 KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.AlteraUsuario);
                 campoAlterarUsuario(usuario.getId(), usuario.getNome(), usuario.getLogin(), usuario.getTipo());
             }
-        }
-        catch (ClassCastException ex) {
-           System.out.println("Não foi possivel converter um dos campos. " + ex.getMessage());
+        } catch (ClassCastException ex) {
+            System.out.println("Não foi possivel converter um dos campos. " + ex.getMessage());
         }
     }
 
@@ -250,37 +281,63 @@ public class Fachada {
         }
     }
 
-    public void deletarChave(Integer id) {
+    public void excluirChave(Integer id) {
+        try {
+            if (!ChaveRN.getInstance().deletar(id)) {
+                MensagensUtil.addMsg(KeyControl.mainFrame, "Falha ao excluir.");
+            } else {
+                MensagensUtil.addMsg(KeyControl.mainFrame, "Excluido com sucesso!");
+                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
+                KeyControl.fachada.buscarUsuarios();
+                KeyControl.fachada.limparTodosCampos(KeyControl.mainFrame.Painel);
+            }
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+    public void alterarChave(int id, String sala, int capacidade, int tipo) {
+        try {
+            if (ChaveRN.getInstance().atualizar(new ChaveDTO(id, sala, capacidade, tipo, null))) {
+                MensagensUtil.addMsg(KeyControl.mainFrame, "Alterado com sucesso!");
+                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
+                Fachada.this.buscarUsuarios();
+                limparTodosCampos(KeyControl.mainFrame.Painel);
+            } else {
+                MensagensUtil.addMsg(KeyControl.mainFrame, "Falha na alteração.");
+            }
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+    public void listarChaveFiltrado(Integer id, String sala, Integer capacidade, Integer tipo, Integer estado) {
+        DefaultTableModel tbl = (DefaultTableModel) KeyControl.mainFrame.TblChave2.getModel();
+        if (estado > 0) {
+            estado = null;
+        }
+        ChaveDTO chave = new ChaveDTO(id, sala, capacidade, tipo, estado);
+        try {
+            List<ChaveDTO> lista = ChaveRN.getInstance().buscarChave(chave);
+            while (tbl.getRowCount() > 0) {
+                tbl.removeRow(0);
+            }
+            int i = 0;
+            for (ChaveDTO user : lista) {
+                tbl.addRow(new String[1]);
+                KeyControl.mainFrame.TblChave2.setValueAt(user.getId(), i, 0);
+                KeyControl.mainFrame.TblChave2.setValueAt(user.getSala(), i, 1);
+                KeyControl.mainFrame.TblChave2.setValueAt(user.getCapacidade(), i, 2);
+                KeyControl.mainFrame.TblChave2.setValueAt(user.getTipoString(), i, 3);
+                KeyControl.mainFrame.TblChave2.setValueAt(user.getBeneficiario_id(), i, 4);
+                i++;
+            }
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
 
     }
 
-//    public void listarChaveFiltrado(Integer id, String sala, Integer capacidade, Integer tipo, Integer estado){
-//        DefaultTableModel tbl = (DefaultTableModel) KeyControl.mainFrame.TblChave.getModel();
-//        if (estado>0){
-//            estado = null;
-//        }
-//        ChaveDTO chave = new ChaveDTO(id, sala, capacidade, tipo, estado);
-//        try {
-//            List<ChaveDTO> lista = ChaveRN.buscarChave(chave);
-//            while (tbl.getRowCount() > 0) {
-//                tbl.removeRow(0);
-//            }
-//            int i = 0;
-//            for (ChaveDTO user : lista) {
-//                tbl.addRow(new String[1]);
-//                KeyControl.mainFrame.TblChave.setValueAt(user.getId(), i, 0);
-//                KeyControl.mainFrame.TblChave.setValueAt(user.getSala(), i, 1);
-//                KeyControl.mainFrame.TblChave.setValueAt(user.getCapacidade(), i, 2);
-//                KeyControl.mainFrame.TblChave.setValueAt(user.getTipoString(), i, 3);
-//                KeyControl.mainFrame.TblChave.setValueAt(user.getBeneficiario_id(), i, 3);
-//                i++;
-//            }
-//        } catch (NegocioException ex) {
-//            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
-//        }
-//        
-//    }
-//    
 //    public void listarChave(){
 //        DefaultTableModel tbl = (DefaultTableModel) KeyControl.mainFrame.TblChaves.getModel();
 //        try {
@@ -362,39 +419,7 @@ public class Fachada {
             KeyControl.mainFrame.TxtDevolucaoCap.setText(String.valueOf(chave.getCapacidade()));
             KeyControl.mainFrame.TxtDevolucaoSala.setText(chave.getSala());
             KeyControl.mainFrame.ListDevolucaoTipo.setSelectedIndex(chave.getTipo());
-            
-        } catch (NegocioException ex) {
-            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
-        }
-    }
 
-    public void atualizarTabelaUsuarios() {
-        try {
-            List<UsuarioDTO> usuarios = UsuarioRN.getInstance().listarTodos();
-            DefaultTableModel model = (DefaultTableModel) KeyControl.mainFrame.TblUser.getModel();
-            for (int i = model.getRowCount() - 1; i >= 0; i--) {
-                model.removeRow(i);
-            }
-            usuarios.stream().forEach((user) -> {
-                model.addRow(new Object[]{user.getId(), user.getNome(), user.getLogin(), user.getTipo()});
-            });
-            KeyControl.mainFrame.TblUser = new JTable(model);
-        } catch (NegocioException ex) {
-            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
-        }
-    }
-
-    public void atualizarTabelaChaves() {
-        try {
-            List<ChaveDTO> chaves = ChaveRN.getInstance().listarTodos();
-            DefaultTableModel model = (DefaultTableModel) KeyControl.mainFrame.TblChave.getModel();
-            for (int i = model.getRowCount() - 1; i >= 0; i--) {
-                model.removeRow(i);
-            }
-            chaves.stream().forEach((chave) -> {
-                model.addRow(new Object[]{chave.getId(), chave.getSala(), chave.getCapacidade(), chave.getTipo(), chave.getBeneficiario_id()});
-            });
-            KeyControl.mainFrame.TblUser = new JTable(model);
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }
@@ -403,7 +428,7 @@ public class Fachada {
     public void tabelaChaveSelecionada(Integer linha) {
         ChaveDTO chave = new ChaveDTO();
         try {
-            if(linha >= 0) {
+            if (linha >= 0) {
                 chave.setId((Integer) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 0));
                 chave.setSala((String) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 1));
                 chave.setCapacidade((Integer) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 2));
@@ -411,9 +436,8 @@ public class Fachada {
                 KeyControl.mainFrame.AbasChaves.setSelectedComponent(KeyControl.mainFrame.AlteraChave);
                 campoAlterarChave(chave.getId(), chave.getSala(), chave.getCapacidade(), chave.getTipo());
             }
-        }
-        catch (ClassCastException ex) {
-           System.out.println("Não foi possivel converter um dos campos. " + ex.getMessage());
+        } catch (ClassCastException ex) {
+            System.out.println("Não foi possivel converter um dos campos. " + ex.getMessage());
         }
     }
 
@@ -424,45 +448,16 @@ public class Fachada {
         KeyControl.mainFrame.CBoxTipoAaltC1.setSelectedIndex(tipo);
     }
 
-    public void excluirChave(Integer id) {
-        try {
-            if (!ChaveRN.getInstance().deletar(id)) {
-                MensagensUtil.addMsg(KeyControl.mainFrame, "Falha ao excluir.");
-            } else {
-                MensagensUtil.addMsg(KeyControl.mainFrame, "Excluido com sucesso!");
-                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
-                KeyControl.fachada.buscarUsuarios();
-                KeyControl.fachada.limparTodosCampos(KeyControl.mainFrame.Painel);
-            }
-        } catch (NegocioException ex) {
-            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
-        }
-    }
-
-    public void alterarChave(int id, String sala, int capacidade, int tipo) {
-        try {
-            if (ChaveRN.getInstance().atualizar(new ChaveDTO(id, sala, capacidade, tipo, null))) {
-                MensagensUtil.addMsg(KeyControl.mainFrame, "Alterado com sucesso!");
-                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
-                Fachada.this.buscarUsuarios();
-                limparTodosCampos(KeyControl.mainFrame.Painel);
-            } else {
-                MensagensUtil.addMsg(KeyControl.mainFrame, "Falha na alteração.");
-            }
-        } catch (NegocioException ex) {
-            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
-        }
-    }
-
-    public void emprestarChave(String matricula) {
+    public void buscarBeneficiarioEmprestimo(String matricula) {
         try {
             IBeneficiarioDTO beneficiario = BeneficiarioRN.getInstance().buscarPorMatricula(matricula);
             KeyControl.mainFrame.TxtEmprestimoNome.setText(beneficiario.getNome());
             String tipo;
-            if (beneficiario instanceof AlunoDTO)
+            if (beneficiario instanceof AlunoDTO) {
                 tipo = "Aluno";
-            else
+            } else {
                 tipo = "Professor";
+            }
             KeyControl.mainFrame.TxtEmprestimoTipo.setText(tipo);
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
@@ -480,7 +475,18 @@ public class Fachada {
             KeyControl.mainFrame.TxtEmprestimoCap.setText(String.valueOf(chave.getCapacidade()));
             KeyControl.mainFrame.TxtEmprestimoSala.setText(chave.getSala());
             KeyControl.mainFrame.ListEmprestimoTipo.setSelectedIndex(chave.getTipo());
-            
+
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+    public void fazerEmprestimo(Integer id_chave, String matricula) {
+        ChaveDTO c;
+        try {
+            c = ChaveRN.getInstance().buscarPorId(id_chave);
+            IBeneficiarioDTO b = BeneficiarioRN.getInstance().buscarPorMatricula(matricula);
+            ChaveRN.getInstance().emprestar(c.getId(), b.getId());
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }

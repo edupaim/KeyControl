@@ -1,6 +1,7 @@
 package aplicativo.keycontrol.rn;
 
 import aplicativo.keycontrol.dao.ChaveDAO;
+import aplicativo.keycontrol.dao.HistoricoDAO;
 import aplicativo.keycontrol.dao.UsuarioDAO;
 import aplicativo.keycontrol.dto.ChaveDTO;
 import aplicativo.keycontrol.dto.UsuarioDTO;
@@ -13,17 +14,19 @@ public class ChaveRN {
     /*
      Singleton
      */
+
     private static ChaveRN singleton;
-    
-    private ChaveRN() {}
-    
+
+    private ChaveRN() {
+    }
+
     public static ChaveRN getInstance() {
-        if(singleton == null) {
+        if (singleton == null) {
             singleton = new ChaveRN();
             return singleton;
-        }
-        else
+        } else {
             return singleton;
+        }
     }
 
     public void devolucaoChave(ChaveDTO chave) throws NegocioException {
@@ -31,11 +34,10 @@ public class ChaveRN {
         try {
             if (chave.getId() != null) {
                 ChaveDTO new_chave;
-                if((new_chave = buscarPorId(chave.getId())) != null && new_chave.getBeneficiario_id() > 0) {
+                if ((new_chave = buscarPorId(chave.getId())) != null && new_chave.getBeneficiario_id() > 0) {
                     chave.setBeneficiario_id(0); // se for null, ele não irá modificar no metodo atualizar
                     DAO.atualizar(chave);
-                }
-                else {
+                } else {
                     throw new NegocioException("Chave já disponivel.");
                 }
             } else {
@@ -51,13 +53,13 @@ public class ChaveRN {
             if (!verificarDisponibilidade(idChave)) {
                 throw new NegocioException("Chave não disponível");
             }
-
             ChaveDAO DAO = ChaveDAO.getInstance();
             ChaveDTO chave = DAO.buscarPorId(idChave); //FAZ COM QUE VERIFIQUE A EXISTENCIA DE UMA CHAVE
             chave.setBeneficiario_id(idBeneficiario);
             DAO.atualizar(chave);
+            HistoricoDAO.getInstance().inserir(idChave, idBeneficiario, 0);
         } catch (NegocioException | PersistenciaException ex) {
-
+            throw new NegocioException(ex.getMessage());
         }
     }
 
@@ -66,7 +68,7 @@ public class ChaveRN {
         try {
             ChaveDAO DAO = ChaveDAO.getInstance();
             ChaveDTO c = DAO.buscarPorId(id);
-            return (c.getBeneficiario_id() == null);
+            return (c.getBeneficiario_id() == 0);
         } catch (PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }
@@ -132,7 +134,7 @@ public class ChaveRN {
             throw new NegocioException(ex.getMessage());
         }
     }
-    
+
     public boolean atualizar(ChaveDTO chave) throws NegocioException {
         boolean resul = false;
         ChaveDAO chaveDAO = ChaveDAO.getInstance();

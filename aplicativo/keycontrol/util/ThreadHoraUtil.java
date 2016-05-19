@@ -32,4 +32,7 @@ public class ThreadHoraUtil implements Runnable{
             }
         }
 
+        public String getHora(){
+            return sdf.format(new Date());
+        }
 }

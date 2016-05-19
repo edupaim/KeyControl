@@ -5,7 +5,6 @@
  */
 package aplicativo.keycontrol.dao;
 
-
 import aplicativo.keycontrol.dto.AlunoDTO;
 
 import aplicativo.keycontrol.dto.IBeneficiarioDTO;
@@ -24,20 +23,22 @@ import java.util.List;
  * @author ramon
  */
 public class BeneficiarioDAO implements GenericoDAO<IBeneficiarioDTO> {
-    
+
     private static BeneficiarioDAO singleton;
-    
-    private BeneficiarioDAO() {}
-    
+
+    private BeneficiarioDAO() {
+    }
+
     public static BeneficiarioDAO getInstance() {
-        if(singleton == null) {
+        if (singleton == null) {
             singleton = new BeneficiarioDAO();
             return singleton;
-        }
-        else
+        } else {
             return singleton;
+        }
     }
-    
+
+    @Override
     public void inserir(IBeneficiarioDTO beneficiario) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Inserir Beneficiario");
         String sql = "INSERT INTO beneficiario (id_beneficiario, nome, matricula, tipo) values (NULL,?,?,?)";
@@ -46,9 +47,9 @@ public class BeneficiarioDAO implements GenericoDAO<IBeneficiarioDTO> {
                 ps.setString(1, beneficiario.getNome());
                 ps.setString(2, beneficiario.getMatricula());
                 int tipo;
-                if (beneficiario instanceof AlunoDTO){
+                if (beneficiario instanceof AlunoDTO) {
                     tipo = 1;
-                }else{
+                } else {
                     tipo = 2;
                 }
                 ps.setInt(3, tipo);
@@ -60,7 +61,8 @@ public class BeneficiarioDAO implements GenericoDAO<IBeneficiarioDTO> {
             ConexaoUtil.fecharConexao(con);
         }
     }
-    
+
+    @Override
     public void deletar(Integer id) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Deletar Beneficiario");
         String sql = "DELETE FROM beneficiario WHERE id_beneficiario = ?";
@@ -75,17 +77,18 @@ public class BeneficiarioDAO implements GenericoDAO<IBeneficiarioDTO> {
             ConexaoUtil.fecharConexao(con);
         }
     }
-    
+
+    @Override
     public List<IBeneficiarioDTO> buscar(IBeneficiarioDTO b) throws PersistenciaException {
         return new ArrayList<>();
     }
-    
-    public IBeneficiarioDTO buscarPorId(Integer id) throws PersistenciaException{
+
+    @Override
+    public IBeneficiarioDTO buscarPorId(Integer id) throws PersistenciaException {
         return new AlunoDTO();
     }
-    
-    public IBeneficiarioDTO buscarPorMatricula(String matricula) throws PersistenciaException{
-        
+
+    public IBeneficiarioDTO buscarPorMatricula(String matricula) throws PersistenciaException {
         Connection con = ConexaoUtil.abrirConexao("Buscar Beneficiario por Matricula");
         String sql = "SELECT * FROM beneficiario ";
         sql += "WHERE matricula = ? ";
@@ -95,34 +98,32 @@ public class BeneficiarioDAO implements GenericoDAO<IBeneficiarioDTO> {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 IBeneficiarioDTO beneficiario;
-                if(rs.getInt("tipo") == 1){
+                if (rs.getInt("tipo") == 0) {
                     beneficiario = new AlunoDTO();
-                }else{
+                } else {
                     beneficiario = new ProfessorDTO();
                 }
-                
                 beneficiario.setId(rs.getInt("id_beneficiario"));
                 beneficiario.setNome(rs.getString("nome"));
                 beneficiario.setMatricula(rs.getString("matricula"));
-                
                 return beneficiario;
             }
             throw new PersistenciaException("Beneficiario inexistente");
-            
         } catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
         } finally {
             ConexaoUtil.fecharConexao(con);
         }
-        
+
     }
-    
-    public List<IBeneficiarioDTO> listarTodos() throws PersistenciaException{
+
+    @Override
+    public List<IBeneficiarioDTO> listarTodos() throws PersistenciaException {
         return new ArrayList();
     }
-    
-    
+
+    @Override
     public void atualizar(IBeneficiarioDTO beneficiario) throws PersistenciaException {
-        
+
     }
 }

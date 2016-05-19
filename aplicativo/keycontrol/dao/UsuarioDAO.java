@@ -16,18 +16,19 @@ import java.util.List;
 public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
 
     private static UsuarioDAO singleton;
-    
-    private UsuarioDAO() {}
-    
+
+    private UsuarioDAO() {
+    }
+
     public static UsuarioDAO getInstance() {
-        if(singleton == null) {
+        if (singleton == null) {
             singleton = new UsuarioDAO();
             return singleton;
-        }
-        else
+        } else {
             return singleton;
+        }
     }
-    
+
     public UsuarioDTO logar(UsuarioDTO usuario) throws PersistenciaException {
         UsuarioDTO usuarioR = null;
         Connection con = null;

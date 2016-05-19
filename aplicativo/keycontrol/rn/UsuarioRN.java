@@ -16,20 +16,20 @@ public class UsuarioRN {
     /*
      Singleton
      */
-    
+
     private static UsuarioRN singleton;
-    
-    private UsuarioRN() {}
-    
+
+    private UsuarioRN() {
+    }
+
     public static UsuarioRN getInstance() {
-        if(singleton == null) {
+        if (singleton == null) {
             singleton = new UsuarioRN();
             return singleton;
-        }
-        else
+        } else {
             return singleton;
+        }
     }
-    
 
     public boolean logar(String login, String senha) throws NegocioException {
         boolean resul = false;
@@ -114,7 +114,7 @@ public class UsuarioRN {
                 throw new NegocioException("ID inválido.");
             }
             UsuarioDAO dao = UsuarioDAO.getInstance();
-            if (MensagensUtil.confirm("Deseja realmente deletar o usario "+buscarPorId(id).getNome(), "DELETAR")){
+            if (MensagensUtil.confirm("Deseja realmente deletar o usario " + buscarPorId(id).getNome(), "DELETAR")) {
                 dao.deletar(id);
                 resul = true;
             }
