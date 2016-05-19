@@ -29,7 +29,7 @@ public class BeneficiarioRN {
             return singleton;
     }
     
-    public static void inserir(IBeneficiarioDTO beneficiario) throws NegocioException{
+    public void inserir(IBeneficiarioDTO beneficiario) throws NegocioException{
         try {
             if(beneficiario.getMatricula().length()==0)
                 throw new NegocioException("Matricula obrigatória.");
@@ -42,12 +42,13 @@ public class BeneficiarioRN {
         }
     }
     
-    public static IBeneficiarioDTO buscarPorMatricula(String matricula) throws NegocioException{
+    public IBeneficiarioDTO buscarPorMatricula(String matricula) throws NegocioException{
         try {
-            if(matricula.length()==0)
+            if(matricula.length() > 0) {
+                return BeneficiarioDAO.getInstance().buscarPorMatricula(matricula);
+            } else {
                 throw new NegocioException("Matricula obrigatória.");
-            BeneficiarioDAO DAO = BeneficiarioDAO.getInstance();
-            return DAO.buscarPorMatricula(matricula);
+            }
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }

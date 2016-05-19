@@ -26,7 +26,7 @@ public class ChaveRN {
             return singleton;
     }
 
-    public static void devolucaoChave(ChaveDTO chave) throws NegocioException {
+    public void devolucaoChave(ChaveDTO chave) throws NegocioException {
         ChaveDAO DAO = ChaveDAO.getInstance();
         try {
             if (chave.getId() != null) {
@@ -46,7 +46,7 @@ public class ChaveRN {
         }
     }
 
-    public static void emprestar(int idChave, int idBeneficiario) throws NegocioException {
+    public void emprestar(int idChave, int idBeneficiario) throws NegocioException {
         try {
             if (!verificarDisponibilidade(idChave)) {
                 throw new NegocioException("Chave não disponível");
@@ -61,7 +61,7 @@ public class ChaveRN {
         }
     }
 
-    public static boolean verificarDisponibilidade(int id) throws NegocioException {
+    public boolean verificarDisponibilidade(int id) throws NegocioException {
 
         try {
             ChaveDAO DAO = ChaveDAO.getInstance();
@@ -73,7 +73,7 @@ public class ChaveRN {
 
     }
 
-    public static List<ChaveDTO> buscarChave(ChaveDTO chave) throws NegocioException {
+    public List<ChaveDTO> buscarChave(ChaveDTO chave) throws NegocioException {
         ChaveDAO DAO = ChaveDAO.getInstance();
         List<ChaveDTO> chaves;
         try {
@@ -84,7 +84,7 @@ public class ChaveRN {
         }
     }
 
-    public static boolean inserir(ChaveDTO chave) throws NegocioException {
+    public boolean inserir(ChaveDTO chave) throws NegocioException {
         boolean resul = false;
         try {
             if (chave.getSala() == null || "".equals(chave.getSala())) {
@@ -104,7 +104,7 @@ public class ChaveRN {
         return resul;
     }
 
-    public static boolean deletar(Integer id) throws NegocioException {
+    public boolean deletar(Integer id) throws NegocioException {
         boolean resul = false;
         try {
             if (id == null || id < 1) {
@@ -121,7 +121,7 @@ public class ChaveRN {
         return resul;
     }
 
-    public static ChaveDTO buscarPorId(Integer id) throws NegocioException {
+    public ChaveDTO buscarPorId(Integer id) throws NegocioException {
         try {
             if (id < 1) {
                 throw new NegocioException("ID inválido.");
@@ -133,7 +133,7 @@ public class ChaveRN {
         }
     }
     
-    public static boolean atualizar(ChaveDTO chave) throws NegocioException {
+    public boolean atualizar(ChaveDTO chave) throws NegocioException {
         boolean resul = false;
         ChaveDAO chaveDAO = ChaveDAO.getInstance();
         try {

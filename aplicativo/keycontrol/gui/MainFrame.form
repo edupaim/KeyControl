@@ -398,7 +398,7 @@
                               <Component id="LabTipoC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CBoxTipoCadU" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="437" max="32767" attributes="0"/>
+                          <EmptySpace pref="217" max="32767" attributes="0"/>
                           <Component id="ButCadastroCadU" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -480,7 +480,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab" pref="411" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab" pref="638" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -489,7 +489,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab" pref="555" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab" pref="335" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ButAtualizarL" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -559,7 +559,7 @@
                                       <Component id="LabTipoB" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="LabNomeB" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="184" max="32767" attributes="0"/>
+                                  <EmptySpace pref="411" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="CBoxTipoBusU" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="TxtNomeBusU" alignment="0" pref="200" max="32767" attributes="0"/>
@@ -567,7 +567,7 @@
                                       <Component id="TxtIdBusU" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="ScrollPaneTab1" alignment="1" pref="411" max="32767" attributes="0"/>
+                              <Component id="ScrollPaneTab1" alignment="1" pref="638" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="ButBuscarBusU" min="-2" max="-2" attributes="0"/>
@@ -603,7 +603,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ButBuscarBusU" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab1" pref="440" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab1" pref="220" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -735,7 +735,7 @@
                                       <Component id="LabNomeA" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="LabSenhaNRA" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="148" max="32767" attributes="0"/>
+                                  <EmptySpace pref="375" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="TxtSenhaN2AltC" alignment="0" max="32767" attributes="0"/>
                                       <Component id="TxtNomeAltC" alignment="0" pref="200" max="32767" attributes="0"/>
@@ -785,7 +785,7 @@
                               <Component id="TxtSenhaN2AltC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="LabSenhaNRA" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="411" max="32767" attributes="0"/>
+                          <EmptySpace pref="191" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="ButAlterarAltC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ButExcluirAltC" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -919,7 +919,7 @@
                                       <Component id="LabSalaCadC" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="LabCapCadC" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="245" max="32767" attributes="0"/>
+                                  <EmptySpace pref="472" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="TxtSalaCadC" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
                                       <Component id="TxtCapacidadeCadC" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
@@ -929,7 +929,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="350" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="577" max="32767" attributes="0"/>
                           <Component id="ButCadastroCadU1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -952,7 +952,7 @@
                               <Component id="LabTipoCadC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CBoxTipoCadC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="489" max="32767" attributes="0"/>
+                          <EmptySpace pref="269" max="32767" attributes="0"/>
                           <Component id="ButCadastroCadU1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1023,7 +1023,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab2" pref="411" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab2" pref="638" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1032,7 +1032,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab2" pref="555" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab2" pref="335" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ButAtualizarL1" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -1093,7 +1093,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="ScrollPaneTab4" pref="411" max="32767" attributes="0"/>
+                              <Component id="ScrollPaneTab4" pref="638" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="LabIdB1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1160,7 +1160,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ButBuscarBusU1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="239" max="32767" attributes="0"/>
+                          <EmptySpace pref="19" max="32767" attributes="0"/>
                           <Component id="ScrollPaneTab4" min="-2" pref="181" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1299,13 +1299,13 @@
                                   <Component id="CBoxTipoAaltC1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="LabSenhaNA1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabCapacidadeNA1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="TxtCapacidadeAltC" min="-2" pref="92" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="LabLoginA1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="191" max="32767" attributes="0"/>
+                                  <Component id="LabSalaA" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="418" max="32767" attributes="0"/>
                                   <Component id="TxtSalaAltC" min="-2" pref="200" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1329,14 +1329,14 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="TxtSalaAltC" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabLoginA1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabSalaA" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LabSenhaNA1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabCapacidadeNA1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtCapacidadeAltC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="463" max="32767" attributes="0"/>
+                          <EmptySpace pref="243" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="ButAlterarAltC1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ButExcluirAltC1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1351,12 +1351,12 @@
                     <Property name="text" type="java.lang.String" value="ID"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="LabLoginA1">
+                <Component class="javax.swing.JLabel" name="LabSalaA">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Sala"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="LabSenhaNA1">
+                <Component class="javax.swing.JLabel" name="LabCapacidadeNA1">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Capacidade"/>
                   </Properties>
@@ -1584,22 +1584,26 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="ButtonEmprestimoEmprestar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="64" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoID" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextField2" min="-2" pref="84" max="-2" attributes="0"/>
+                              <Component id="TxtEmprestimoID" min="-2" pref="71" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoSala" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextField3" min="-2" pref="41" max="-2" attributes="0"/>
+                              <Component id="TxtEmprestimoSala" min="-2" pref="84" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoCap" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="TxtEmprestimoCap" min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoTipo1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ScrollEmprestimoTipo" min="-2" pref="117" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ButtonEmprestimoBuscar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1623,19 +1627,27 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="ButtonEmprestimoBuscar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ButtonEmprestimoEmprestar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                  <Component id="LabEmprestimoSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TxtEmprestimoSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabEmprestimoCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TxtEmprestimoCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabEmprestimoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TxtEmprestimoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabEmprestimoTipo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="ScrollEmprestimoTipo" alignment="1" min="-2" pref="19" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="177" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -1677,44 +1689,77 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEmprestimoPreencherActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Sala"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="ButtonEmprestimoBuscar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEmprestimoBuscarActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="ButtonEmprestimoEmprestar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Realizar Empr&#xe9;stimo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEmprestimoEmprestarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator3">
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator4">
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
+            <Component class="javax.swing.JLabel" name="LabEmprestimoID">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtEmprestimoID">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtEmprestimoSala">
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoSala">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sala"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoCap">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Capacidade"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="TxtEmprestimoCap">
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoTipo1">
               <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" value="Tipo"/>
               </Properties>
             </Component>
+            <Container class="javax.swing.JScrollPane" name="ScrollEmprestimoTipo">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="ListEmprestimoTipo">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="2">
+                        <StringItem index="0" value="Laborat&#xf3;rio"/>
+                        <StringItem index="1" value="Comum"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
