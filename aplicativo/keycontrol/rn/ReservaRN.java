@@ -38,15 +38,18 @@ public class ReservaRN {
             if (lista != null) {
                 for (Integer i = 0; i < lista.size(); i++) {
                     if (chave.getId().equals(lista.get(i).getId_chave()) 
-                            && ((dataInicio.before(lista.get(i).getDate_out()) || dataInicio.equals(lista.get(i).getDate_out()))
-                            || dataFim.before(lista.get(i).getDate_out()))
-                            && Objects.equals(horario, lista.get(i).getHorario())) {
+                            && Objects.equals(horario, lista.get(i).getHorario())
+                            && (
+                            (dataInicio.before(lista.get(i).getDate_out()) && dataInicio.after(lista.get(i).getDate_in())) 
+                            || 
+                            (dataFim.before(lista.get(i).getDate_out()) && dataFim.after(lista.get(i).getDate_in())))) 
+                    {
                         bool = false;
                     }
                 }
             }
             if (bool) {
-                ReservaDAO.getInstance().inserir(new ReservaDTO(benef.getId(), chave.getId(), dataInicio, dataFim, horario));
+                ReservaDAO.getInstance().inserir(new ReservaDTO(null, benef.getId(), chave.getId(), dataInicio, dataFim, horario));
             } else {
                 MensagensUtil.addMsg(null, "Chave já está reservada!");
             }

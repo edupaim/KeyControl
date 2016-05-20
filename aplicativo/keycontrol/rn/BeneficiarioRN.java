@@ -53,4 +53,15 @@ public class BeneficiarioRN {
             throw new NegocioException(ex.getMessage());
         }
     }
+    
+    public IBeneficiarioDTO buscarPorId(Integer id) throws NegocioException {
+        try {
+            if (id < 0) {
+                throw new NegocioException("ID inválido.");
+            }
+            return BeneficiarioDAO.getInstance().buscarPorId(id);
+        } catch (NegocioException | PersistenciaException ex) {
+            throw new NegocioException(ex.getMessage());
+        }
+    }
 }

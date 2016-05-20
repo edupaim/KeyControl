@@ -135,7 +135,7 @@ public class UsuarioRN {
 
     public UsuarioDTO buscarPorId(Integer id) throws NegocioException {
         try {
-            if (id == 0) {
+            if (id < 0) {
                 throw new NegocioException("ID inválido.");
             }
             UsuarioDAO dao = UsuarioDAO.getInstance();

@@ -13,18 +13,29 @@ import java.util.Date;
  */
 public class ReservaDTO {
 
+    private Integer id;
     private Integer id_beneficiario;
     private Date date_in;
     private Date date_out;
     private Integer horario;
 
-    public ReservaDTO(Integer id_beneficiario, Integer id_chave, Date date_in, Date date_out, Integer horario) {
+    public ReservaDTO(Integer id, Integer id_beneficiario, Integer id_chave, Date date_in, Date date_out, Integer horario) {
+        this.id = id;
         this.id_beneficiario = id_beneficiario;
         this.date_in = date_in;
         this.date_out = date_out;
         this.horario = horario;
         this.id_chave = id_chave;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
 
     private Integer id_chave;
 

@@ -91,7 +91,8 @@ public class ReservaDAO implements GenericoDAO<ReservaDTO> {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 // (id_beneficiario, id_chave, data_entrada, data_saida, id_horario)
-                ReservaDTO reserva = new ReservaDTO(rs.getInt("id_beneficiario"),
+                ReservaDTO reserva = new ReservaDTO(rs.getInt("id_reserva"),
+                        rs.getInt("id_beneficiario"),
                         rs.getInt("id_chave"),
                         rs.getDate("data_entrada"),
                         rs.getDate("data_saida"),

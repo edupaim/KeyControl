@@ -66,7 +66,7 @@ public class MainFrame extends javax.swing.JFrame {
         MenuReserva = new javax.swing.JButton();
         MenuReserva1 = new javax.swing.JButton();
         Painel = new javax.swing.JPanel();
-        AbasUsuarios = new javax.swing.JTabbedPane();
+        AbaUsuarios = new javax.swing.JTabbedPane();
         CadastroUsuario = new javax.swing.JPanel();
         LabLoginC = new javax.swing.JLabel();
         LabSenhaC = new javax.swing.JLabel();
@@ -110,7 +110,7 @@ public class MainFrame extends javax.swing.JFrame {
         TxtNomeAltC = new javax.swing.JTextField();
         ButExcluirAltC = new javax.swing.JButton();
         ButAlterarAltC = new javax.swing.JButton();
-        AbasChaves = new javax.swing.JTabbedPane();
+        AbaChaves = new javax.swing.JTabbedPane();
         CadastroChave = new javax.swing.JPanel();
         LabSalaCadC = new javax.swing.JLabel();
         LabCapCadC = new javax.swing.JLabel();
@@ -205,10 +205,15 @@ public class MainFrame extends javax.swing.JFrame {
         CBoxTipoEmpC2 = new javax.swing.JComboBox();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        AbaRelatorio = new javax.swing.JPanel();
+        AbaRelatorio = new javax.swing.JTabbedPane();
+        Emprestimos = new javax.swing.JPanel();
         ScrollPaneTab7 = new javax.swing.JScrollPane();
         TblRelatorio = new javax.swing.JTable();
         ButAtualizarR = new javax.swing.JButton();
+        Reservas = new javax.swing.JPanel();
+        ScrollPaneTab8 = new javax.swing.JScrollPane();
+        TblReserva = new javax.swing.JTable();
+        ButAtualizarR1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         ButSair = new javax.swing.JButton();
         ButLogout = new javax.swing.JButton();
@@ -369,10 +374,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         Painel.setLayout(new java.awt.CardLayout());
 
-        AbasUsuarios.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        AbasUsuarios.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        AbasUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        AbasUsuarios.setPreferredSize(new java.awt.Dimension(500, 600));
+        AbaUsuarios.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        AbaUsuarios.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        AbaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AbaUsuarios.setPreferredSize(new java.awt.Dimension(500, 600));
 
         LabLoginC.setText("Usuário");
 
@@ -452,7 +457,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(ButCadastroCadU))
         );
 
-        AbasUsuarios.addTab("Cadastrar", CadastroUsuario);
+        AbaUsuarios.addTab("Cadastrar", CadastroUsuario);
 
         ScrollPaneTab.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -515,7 +520,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(ButAtualizarL))
         );
 
-        AbasUsuarios.addTab("Listar", ListaUsuario);
+        AbaUsuarios.addTab("Listar", ListaUsuario);
 
         LabIdB.setText("ID");
 
@@ -642,7 +647,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        AbasUsuarios.addTab("Buscar", BuscaUsuario);
+        AbaUsuarios.addTab("Buscar", BuscaUsuario);
 
         LabIdA.setText("ID");
 
@@ -750,14 +755,14 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(ButExcluirAltC)))
         );
 
-        AbasUsuarios.addTab("Alterar", AlteraUsuario);
+        AbaUsuarios.addTab("Alterar", AlteraUsuario);
 
-        Painel.add(AbasUsuarios, "card2");
+        Painel.add(AbaUsuarios, "card2");
 
-        AbasChaves.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        AbasChaves.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        AbasChaves.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        AbasChaves.setPreferredSize(new java.awt.Dimension(500, 600));
+        AbaChaves.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        AbaChaves.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        AbaChaves.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AbaChaves.setPreferredSize(new java.awt.Dimension(500, 600));
 
         LabSalaCadC.setText("Sala");
 
@@ -822,7 +827,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(ButCadastroCadU1))
         );
 
-        AbasChaves.addTab("Cadastrar", CadastroChave);
+        AbaChaves.addTab("Cadastrar", CadastroChave);
 
         ScrollPaneTab2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -884,7 +889,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(ButAtualizarL1))
         );
 
-        AbasChaves.addTab("Listar", ListaChave);
+        AbaChaves.addTab("Listar", ListaChave);
 
         LabIdB1.setText("ID");
 
@@ -1021,7 +1026,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        AbasChaves.addTab("Buscar", BuscaChave);
+        AbaChaves.addTab("Buscar", BuscaChave);
 
         LabIdA1.setText("ID");
 
@@ -1104,9 +1109,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(ButExcluirAltC1)))
         );
 
-        AbasChaves.addTab("Alterar", AlteraChave);
+        AbaChaves.addTab("Alterar", AlteraChave);
 
-        Painel.add(AbasChaves, "card5");
+        Painel.add(AbaChaves, "card5");
 
         LabEmprestimoMatricula.setText("Matrícula");
 
@@ -1596,7 +1601,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Beneficiario", "ID Chave", "Data", "Tipo"
+                "ID", "Beneficiario", "Chave (Sala)", "Data", "Tipo"
             }
         ) {
             Class[] types = new Class [] {
@@ -1628,28 +1633,92 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout AbaRelatorioLayout = new javax.swing.GroupLayout(AbaRelatorio);
-        AbaRelatorio.setLayout(AbaRelatorioLayout);
-        AbaRelatorioLayout.setHorizontalGroup(
-            AbaRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AbaRelatorioLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout EmprestimosLayout = new javax.swing.GroupLayout(Emprestimos);
+        Emprestimos.setLayout(EmprestimosLayout);
+        EmprestimosLayout.setHorizontalGroup(
+            EmprestimosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EmprestimosLayout.createSequentialGroup()
+                .addGap(0, 647, Short.MAX_VALUE)
                 .addComponent(ButAtualizarR))
-            .addGroup(AbaRelatorioLayout.createSequentialGroup()
+            .addGroup(EmprestimosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTab7, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab7)
                 .addContainerGap())
         );
-        AbaRelatorioLayout.setVerticalGroup(
-            AbaRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AbaRelatorioLayout.createSequentialGroup()
+        EmprestimosLayout.setVerticalGroup(
+            EmprestimosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EmprestimosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTab7, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab7, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButAtualizarR))
         );
 
-        Painel.add(AbaRelatorio, "card7");
+        AbaRelatorio.addTab("Emprestimos", Emprestimos);
+
+        ScrollPaneTab8.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        TblReserva.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Beneficiario", "Chave (Sala)", "Entrada", "Saida", "Horario"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TblReserva.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblReservaMouseClicked(evt);
+            }
+        });
+        ScrollPaneTab8.setViewportView(TblReserva);
+
+        ButAtualizarR1.setText("Atualizar");
+        ButAtualizarR1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButAtualizarR1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ReservasLayout = new javax.swing.GroupLayout(Reservas);
+        Reservas.setLayout(ReservasLayout);
+        ReservasLayout.setHorizontalGroup(
+            ReservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReservasLayout.createSequentialGroup()
+                .addGap(0, 647, Short.MAX_VALUE)
+                .addComponent(ButAtualizarR1))
+            .addGroup(ReservasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollPaneTab8)
+                .addContainerGap())
+        );
+        ReservasLayout.setVerticalGroup(
+            ReservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ReservasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollPaneTab8, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ButAtualizarR1))
+        );
+
+        AbaRelatorio.addTab("Reserva", Reservas);
+
+        Painel.add(AbaRelatorio, "card8");
 
         ButSair.setText("Sair");
         ButSair.setToolTipText("");
@@ -1711,7 +1780,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuUsuariosActionPerformed
-        KeyControl.fachada.menuPainel(0, KeyControl.mainFrame.AbasUsuarios);
+        KeyControl.fachada.menuPainel(0, KeyControl.mainFrame.AbaUsuarios);
     }//GEN-LAST:event_MenuUsuariosActionPerformed
 
     private void ButCadastroCadUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCadastroCadUActionPerformed
@@ -1792,7 +1861,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtSenhaNAltCActionPerformed
 
     private void MenuChavesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuChavesActionPerformed
-        KeyControl.fachada.menuPainel(0, KeyControl.mainFrame.AbasChaves);
+        KeyControl.fachada.menuPainel(0, KeyControl.mainFrame.AbaChaves);
     }//GEN-LAST:event_MenuChavesActionPerformed
 
     private void ButCadastroCadU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCadastroCadU1ActionPerformed
@@ -1973,12 +2042,20 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TblRelatorioMouseClicked
 
     private void ButAtualizarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAtualizarRActionPerformed
-       KeyControl.fachada.relatorio();
+        KeyControl.fachada.relatorioEmprestimos();
     }//GEN-LAST:event_ButAtualizarRActionPerformed
 
     private void MenuReserva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuReserva1ActionPerformed
         KeyControl.fachada.menuPainel(1, AbaRelatorio);
     }//GEN-LAST:event_MenuReserva1ActionPerformed
+
+    private void TblReservaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblReservaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TblReservaMouseClicked
+
+    private void ButAtualizarR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAtualizarR1ActionPerformed
+        KeyControl.fachada.relatorioReservas();
+    }//GEN-LAST:event_ButAtualizarR1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2013,12 +2090,12 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTabbedPane AbaChaves;
     public javax.swing.JPanel AbaDevolucao;
     public javax.swing.JPanel AbaEmprestimo;
-    public javax.swing.JPanel AbaRelatorio;
+    public javax.swing.JTabbedPane AbaRelatorio;
     public javax.swing.JPanel AbaReserva;
-    public javax.swing.JTabbedPane AbasChaves;
-    public javax.swing.JTabbedPane AbasUsuarios;
+    public javax.swing.JTabbedPane AbaUsuarios;
     public javax.swing.JPanel AlteraChave;
     public javax.swing.JPanel AlteraUsuario;
     public javax.swing.JPanel BuscaChave;
@@ -2028,6 +2105,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JButton ButAtualizarL;
     public javax.swing.JButton ButAtualizarL1;
     public javax.swing.JButton ButAtualizarR;
+    public javax.swing.JButton ButAtualizarR1;
     public javax.swing.JButton ButBuscarBusU;
     public javax.swing.JButton ButBuscarBusU1;
     public javax.swing.JButton ButCadastroCadU;
@@ -2057,6 +2135,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JComboBox CBoxTipoEmpC2;
     public javax.swing.JPanel CadastroChave;
     public javax.swing.JPanel CadastroUsuario;
+    public javax.swing.JPanel Emprestimos;
     public javax.swing.JPanel Hora;
     public javax.swing.JPanel Infos;
     public javax.swing.JLabel LabCapCadC;
@@ -2117,6 +2196,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JButton MenuReserva1;
     public javax.swing.JButton MenuUsuarios;
     public javax.swing.JPanel Painel;
+    public javax.swing.JPanel Reservas;
     public javax.swing.JScrollPane ScrollPaneTab;
     public javax.swing.JScrollPane ScrollPaneTab1;
     public javax.swing.JScrollPane ScrollPaneTab2;
@@ -2125,6 +2205,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JScrollPane ScrollPaneTab5;
     public javax.swing.JScrollPane ScrollPaneTab6;
     public javax.swing.JScrollPane ScrollPaneTab7;
+    public javax.swing.JScrollPane ScrollPaneTab8;
     public javax.swing.JSeparator SeparatorDevolucao;
     public javax.swing.JTable TblChave;
     public javax.swing.JTable TblChave2;
@@ -2132,6 +2213,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JTable TblChaveEmp;
     public javax.swing.JTable TblChaveEmp1;
     public javax.swing.JTable TblRelatorio;
+    public javax.swing.JTable TblReserva;
     public javax.swing.JTable TblUser;
     public javax.swing.JTable TblUserFiltro;
     public javax.swing.JPanel Tipo;

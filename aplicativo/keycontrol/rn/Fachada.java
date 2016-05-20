@@ -1,11 +1,13 @@
 package aplicativo.keycontrol.rn;
 
 import aplicativo.keycontrol.dao.HistoricoDAO;
+import aplicativo.keycontrol.dao.ReservaDAO;
 import aplicativo.keycontrol.dto.AlunoDTO;
 import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.dto.ChaveDTO;
 import aplicativo.keycontrol.dto.HistoricoDTO;
 import aplicativo.keycontrol.dto.IBeneficiarioDTO;
+import aplicativo.keycontrol.dto.ReservaDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.gui.LoginFrame;
@@ -113,7 +115,7 @@ public class Fachada {
                             tipo),
                     senhar)) {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Cadastro efetuado com sucesso!");
-                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
+                KeyControl.mainFrame.AbaUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
                 Fachada.this.preencherTabelaUsuarios();
                 limparTodosCampos(KeyControl.mainFrame.Painel);
             } else {
@@ -173,7 +175,7 @@ public class Fachada {
         try {
             if (linha >= 0) {
                 UsuarioDTO usuario = UsuarioRN.getInstance().buscarPorId((Integer) KeyControl.mainFrame.TblUser.getModel().getValueAt(linha, 0));
-                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.AlteraUsuario);
+                KeyControl.mainFrame.AbaUsuarios.setSelectedComponent(KeyControl.mainFrame.AlteraUsuario);
                 campoAlterarUsuario(usuario.getId(), usuario.getNome(), usuario.getLogin(), usuario.getTipo());
             }
         } catch (ClassCastException ex) {
@@ -198,7 +200,7 @@ public class Fachada {
                     tipo
             ), senhar)) {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Alterado com sucesso!");
-                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
+                KeyControl.mainFrame.AbaUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
                 Fachada.this.preencherTabelaUsuarios();
                 limparTodosCampos(KeyControl.mainFrame.Painel);
             } else {
@@ -215,7 +217,7 @@ public class Fachada {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Falha ao excluir.");
             } else {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Excluido com sucesso!");
-                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
+                KeyControl.mainFrame.AbaUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
                 KeyControl.fachada.preencherTabelaUsuarios();
                 KeyControl.fachada.limparTodosCampos(KeyControl.mainFrame.Painel);
             }
@@ -261,7 +263,7 @@ public class Fachada {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Falha ao excluir.");
             } else {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Excluido com sucesso!");
-                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
+                KeyControl.mainFrame.AbaUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
                 KeyControl.fachada.preencherTabelaUsuarios();
                 KeyControl.fachada.limparTodosCampos(KeyControl.mainFrame.Painel);
             }
@@ -274,7 +276,7 @@ public class Fachada {
         try {
             if (ChaveRN.getInstance().atualizar(new ChaveDTO(id, sala, capacidade, tipo, null))) {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Alterado com sucesso!");
-                KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
+                KeyControl.mainFrame.AbaUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
                 Fachada.this.preencherTabelaUsuarios();
                 limparTodosCampos(KeyControl.mainFrame.Painel);
             } else {
@@ -309,7 +311,7 @@ public class Fachada {
         try {
             if (linha >= 0) {
                 ChaveDTO chave = ChaveRN.getInstance().buscarPorId((Integer) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 0));
-                KeyControl.mainFrame.AbasChaves.setSelectedComponent(KeyControl.mainFrame.AlteraChave);
+                KeyControl.mainFrame.AbaChaves.setSelectedComponent(KeyControl.mainFrame.AlteraChave);
                 campoAlterarChave(chave.getId(), chave.getSala(), chave.getCapacidade(), chave.getTipo());
             }
         } catch (ClassCastException ex) {
@@ -340,7 +342,7 @@ public class Fachada {
 
     public void buscarChaveDevolucao(String sala, String capacidade, Integer tipo) {
         try {
-            Integer i = 0;
+            Integer i;
             ChaveDTO chave = new ChaveDTO();
             chave.setSala((sala == null || "".equals(sala)) ? null : sala);
             chave.setCapacidade((capacidade == null || "".equals(capacidade)) ? null : Integer.parseInt(capacidade));
@@ -392,7 +394,7 @@ public class Fachada {
 
     public void buscarChaveEmprestimo(String sala, String capacidade, Integer tipo) {
         try {
-            Integer i = 0;
+            Integer i;
             ChaveDTO chave = new ChaveDTO();
             chave.setSala((sala == null || "".equals(sala)) ? null : sala);
             chave.setCapacidade((capacidade == null || "".equals(capacidade)) ? null : Integer.parseInt(capacidade));
@@ -442,9 +444,13 @@ public class Fachada {
             ChaveDTO chave = ChaveRN.getInstance().buscarPorId(id_chave);
             IBeneficiarioDTO benef = BeneficiarioRN.getInstance().buscarPorMatricula(matricula);
             try {
-                Date dataI = new SimpleDateFormat("dd/mm/yyyy").parse(dataIni);
-                Date dataF = new SimpleDateFormat("dd/mm/yyyy").parse(dataFim);
-                ReservaRN.getInstance().fazerReserva(chave, benef, dataI, dataF, horario);
+                Date dataI;
+                dataI = new SimpleDateFormat("dd/mm/yyyy").parse(dataIni);
+                Date dataF;
+                dataF = new SimpleDateFormat("dd/mm/yyyy").parse(dataFim);
+                if(ReservaRN.getInstance().fazerReserva(chave, benef, dataI, dataF, horario)){
+                 MensagensUtil.addMsg(null, "Reserva concluida!");
+                }
             } catch (ParseException ex) {
                 // Formato inválido
             }
@@ -496,7 +502,7 @@ public class Fachada {
         KeyControl.mainFrame.TblChaveEmp1 = new JTable(tbl);
     }
 
-    public void relatorio() {
+    public void relatorioEmprestimos() {
         List<HistoricoDTO> lista;
         try {
             lista = HistoricoDAO.getInstance().listarTodos();
@@ -508,6 +514,27 @@ public class Fachada {
                 tbl.addRow(new Object[]{h.getId(), h.getBenef().getNome(), h.getChave().getSala(), h.getData(), h.getTipo()});
             });
             KeyControl.mainFrame.TblRelatorio = new JTable(tbl);
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void relatorioReservas() {
+        List<ReservaDTO> lista;
+        try {
+            lista = ReservaDAO.getInstance().listarTodos();
+            DefaultTableModel tbl = (DefaultTableModel) KeyControl.mainFrame.TblReserva.getModel();
+            while (tbl.getRowCount() > 0) {
+                tbl.removeRow(0);
+            }
+            lista.stream().forEach((r) -> {
+                try {
+                    tbl.addRow(new Object[]{r.getId(), BeneficiarioRN.getInstance().buscarPorId(r.getId_beneficiario()).getNome(), ChaveRN.getInstance().buscarPorId(r.getId_chave()).getSala(), r.getDate_in(), r.getDate_out(), r.getHorario()});
+                } catch (NegocioException ex1) {
+                    Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex1);
+                }
+            });
+            KeyControl.mainFrame.TblReserva = new JTable(tbl);
         } catch (PersistenciaException ex) {
             Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
         }
