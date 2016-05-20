@@ -35,7 +35,7 @@ public class ChaveRN {
             if (chave.getId() != null) {
                 ChaveDTO new_chave;
                 if ((new_chave = buscarPorId(chave.getId())) != null && new_chave.getBeneficiario_id() > 0) {
-                    chave.setBeneficiario_id(0); // se for null, ele não irá modificar no metodo atualizar
+                    chave.setBeneficiario_id(0);
                     DAO.atualizar(chave);
                 } else {
                     throw new NegocioException("Chave já disponivel.");

@@ -480,7 +480,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab" pref="642" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab" pref="413" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -559,7 +559,7 @@
                                       <Component id="LabTipoB" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="LabNomeB" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="415" max="32767" attributes="0"/>
+                                  <EmptySpace pref="186" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="CBoxTipoBusU" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="TxtNomeBusU" alignment="0" pref="200" max="32767" attributes="0"/>
@@ -567,7 +567,7 @@
                                       <Component id="TxtIdBusU" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="ScrollPaneTab1" alignment="1" pref="642" max="32767" attributes="0"/>
+                              <Component id="ScrollPaneTab1" alignment="1" pref="413" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="ButBuscarBusU" min="-2" max="-2" attributes="0"/>
@@ -735,7 +735,7 @@
                                       <Component id="LabNomeA" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="LabSenhaNRA" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="379" max="32767" attributes="0"/>
+                                  <EmptySpace pref="150" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="TxtSenhaN2AltC" alignment="0" max="32767" attributes="0"/>
                                       <Component id="TxtNomeAltC" alignment="0" pref="200" max="32767" attributes="0"/>
@@ -1336,9 +1336,9 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
-                        <StringItem index="0" value="S"/>
-                        <StringItem index="1" value="L"/>
-                        <StringItem index="2" value="R"/>
+                        <StringItem index="0" value="Sala"/>
+                        <StringItem index="1" value="Laborat&#xf3;rio"/>
+                        <StringItem index="2" value="Reuni&#xe3;o"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1547,12 +1547,13 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
-                        <StringItem index="0" value="S"/>
-                        <StringItem index="1" value="L"/>
-                        <StringItem index="2" value="R"/>
+                        <StringItem index="0" value="Sala"/>
+                        <StringItem index="1" value="Laborat&#xf3;rio"/>
+                        <StringItem index="2" value="Reuni&#xe3;o"/>
                         <StringItem index="3" value="Nenhum"/>
                       </StringArray>
                     </Property>
+                    <Property name="selectedIndex" type="int" value="3"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                   <Events>
