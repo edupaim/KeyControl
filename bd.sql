@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `chave_tipo` (
   `tipo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela keycontrol.chave_tipo: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela keycontrol.chave_tipo: ~2 rows (aproximadamente)
 DELETE FROM `chave_tipo`;
 /*!40000 ALTER TABLE `chave_tipo` DISABLE KEYS */;
 INSERT INTO `chave_tipo` (`id_tipo_chave`, `tipo`) VALUES
@@ -98,36 +98,18 @@ CREATE TABLE IF NOT EXISTS `historico` (
   `id_chave` int(11) NOT NULL,
   `tipo_operacao` int(11) NOT NULL,
   PRIMARY KEY (`id_historico`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela keycontrol.historico: ~24 rows (aproximadamente)
+-- Copiando dados para a tabela keycontrol.historico: ~0 rows (aproximadamente)
 DELETE FROM `historico`;
 /*!40000 ALTER TABLE `historico` DISABLE KEYS */;
 INSERT INTO `historico` (`id_historico`, `id_beneficiario`, `data_operacao`, `id_chave`, `tipo_operacao`) VALUES
-	(1, 2, '2016-05-19 18:51:49', 2, 0),
-	(2, 2, '2016-05-20 01:56:05', 2, 0),
-	(3, 5, '2016-05-20 02:29:51', 1, 0),
-	(4, 5, '2016-05-20 02:39:25', 0, 1),
-	(5, 2, '2016-05-20 02:54:21', 0, 1),
-	(6, 5, '2016-05-20 03:01:16', 1, 0),
-	(7, 2, '2016-05-20 03:01:32', 1, 0),
-	(8, 5, '2016-05-20 03:04:31', 0, 1),
-	(9, 2, '2016-05-20 03:04:50', 1, 0),
-	(10, 3, '2016-05-20 11:36:14', 1, 0),
-	(11, 2, '2016-05-20 13:54:24', 0, 1),
-	(12, 3, '2016-05-20 13:54:29', 0, 1),
-	(13, 2, '2016-05-20 13:57:20', 1, 0),
-	(14, 3, '2016-05-20 13:57:21', 1, 0),
-	(15, 4, '2016-05-20 13:57:23', 1, 0),
-	(16, 5, '2016-05-20 13:57:24', 1, 0),
-	(17, 6, '2016-05-20 13:57:26', 1, 0),
-	(18, 7, '2016-05-20 13:57:27', 1, 0),
-	(19, 3, '2016-05-20 13:57:43', 0, 1),
-	(20, 6, '2016-05-20 13:57:44', 0, 1),
-	(21, 5, '2016-05-20 13:57:46', 0, 1),
-	(22, 4, '2016-05-20 13:57:49', 0, 1),
-	(23, 2, '2016-05-20 13:57:50', 0, 1),
-	(24, 7, '2016-05-20 13:57:52', 0, 1);
+	(1, 1, '2016-05-20 18:29:26', 2, 0),
+	(2, 1, '2016-05-20 18:29:28', 7, 0),
+	(3, 1, '2016-05-20 18:29:29', 8, 0),
+	(4, 1, '2016-05-20 18:32:17', 2, 1),
+	(5, 1, '2016-05-20 18:32:20', 7, 1),
+	(6, 1, '2016-05-20 18:32:22', 8, 1);
 /*!40000 ALTER TABLE `historico` ENABLE KEYS */;
 
 
@@ -179,11 +161,15 @@ CREATE TABLE IF NOT EXISTS `reserva` (
   `data_saida` date NOT NULL,
   `id_horario` int(11) NOT NULL,
   PRIMARY KEY (`id_reserva`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela keycontrol.reserva: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela keycontrol.reserva: ~3 rows (aproximadamente)
 DELETE FROM `reserva`;
 /*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
+INSERT INTO `reserva` (`id_reserva`, `id_chave`, `id_beneficiario`, `data_entrada`, `data_saida`, `id_horario`) VALUES
+	(1, 2, 2, '2222-01-21', '2222-01-22', 0),
+	(4, 4, 2, '2016-01-20', '2016-01-28', 0),
+	(8, 4, 1, '2016-01-28', '2016-01-29', 0);
 /*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
 
 
