@@ -141,12 +141,11 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                ChaveDTO chave = new ChaveDTO();
-                chave.setId(rs.getInt(1));
-                chave.setSala(rs.getString(2));
-                chave.setCapacidade(rs.getInt(3));
-                chave.setTipo(rs.getInt(4));
-                chave.setBeneficiario_id(rs.getInt(5));
+                ChaveDTO chave = new ChaveDTO(rs.getInt("id_chave"),
+                        rs.getString("sala"),
+                        rs.getInt("capacidade"),
+                        rs.getInt("tipo"),
+                        rs.getInt("id_beneficiario"));
                 retorno.add(chave);
             }
         } catch (SQLException ex) {
@@ -168,12 +167,11 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                chave = new ChaveDTO();
-                chave.setId(rs.getInt(1));
-                chave.setSala(rs.getString(2));
-                chave.setCapacidade(rs.getInt(3));
-                chave.setTipo(rs.getInt(4));
-                chave.setBeneficiario_id(rs.getInt(5));
+                chave = new ChaveDTO(rs.getInt("id_chave"),
+                        rs.getString("sala"),
+                        rs.getInt("capacidade"),
+                        rs.getInt("tipo"),
+                        rs.getInt("id_beneficiario"));
                 return chave;
             }
             throw new PersistenciaException("Chave inexistente");
@@ -243,11 +241,11 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
             }
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                lista.add(new ChaveDTO(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
-                        rs.getInt(5)
+                lista.add(new ChaveDTO(rs.getInt("id_chave"),
+                        rs.getString("sala"),
+                        rs.getInt("capacidade"),
+                        rs.getInt("tipo"),
+                        rs.getInt("id_beneficiario")
                 ));
             }
         } catch (SQLException ex) {

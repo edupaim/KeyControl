@@ -8,6 +8,8 @@ package aplicativo.keycontrol.gui;
 import aplicativo.keycontrol.main.KeyControl;
 import aplicativo.keycontrol.util.ThreadHoraUtil;
 import aplicativo.keycontrol.util.MensagensUtil;
+import javax.swing.JTable;
+import javax.swing.JViewport;
 
 /**
  *
@@ -1595,7 +1597,14 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonDevolucaoBuscarActionPerformed
 
     private void ButtonDevolucaoDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoDevolverActionPerformed
-        KeyControl.fachada.devolverChave((Integer) TblChaveDev.getModel().getValueAt(TblChaveDev.getSelectedRow(), 0));
+        JViewport view = ScrollPaneTab6.getViewport();
+        JTable tabela = (JTable) view.getView();
+        Integer linha = tabela.getSelectedRow();
+        if (linha > -1) {
+            KeyControl.fachada.devolverChave((Integer) tabela.getModel().getValueAt(linha, 0));
+        } else {
+            MensagensUtil.addMsg(null, "Selecione uma chave na tabela!");
+        }
     }//GEN-LAST:event_ButtonDevolucaoDevolverActionPerformed
 
     private void CBoxTipoCadCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoCadCActionPerformed
@@ -1615,13 +1624,16 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEmprestimoBuscarActionPerformed
 
     private void ButtonEmprestimoEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoEmprestarActionPerformed
-        int linha = TblChaveEmp.getSelectedRow();
+        JViewport view = ScrollPaneTab3.getViewport();
+        JTable tabela = (JTable) view.getView();
+        Integer linha = tabela.getSelectedRow();
         if (linha > -1) {
             KeyControl.fachada.fazerEmprestimo(
-                    (Integer) KeyControl.mainFrame.TblChaveEmp.getModel().getValueAt(linha, 1),
+                    (Integer) tabela.getModel().getValueAt(linha, 0),
                     TxtEmprestimoMatricula.getText());
+        } else {
+            MensagensUtil.addMsg(null, "Selecione uma chave na tabela!");
         }
-
     }//GEN-LAST:event_ButtonEmprestimoEmprestarActionPerformed
 
     private void CBoxTipoEmpCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoEmpCActionPerformed
@@ -1633,12 +1645,6 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_CBoxTipoDevCActionPerformed
 
     private void TblChaveEmpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblChaveEmpMouseClicked
-        int linha = TblChaveEmp.getSelectedRow();
-        if (linha > -1) {
-            KeyControl.fachada.fazerEmprestimo(
-                    (Integer) KeyControl.mainFrame.TblChaveEmp.getModel().getValueAt(linha, 1),
-                    TxtEmprestimoMatricula.getText());
-        }
     }//GEN-LAST:event_TblChaveEmpMouseClicked
 
     private void TblChaveDevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblChaveDevMouseClicked

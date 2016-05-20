@@ -42,12 +42,11 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
             ps.setString(2, usuario.getSenha());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                usuarioR = new UsuarioDTO();
-                usuarioR.setId(rs.getInt(1));
-                usuarioR.setLogin(rs.getString(3));
-                usuarioR.setNome(rs.getString(2));
-                usuarioR.setSenha(rs.getString(4));
-                usuarioR.setTipo(rs.getInt(5));
+                usuarioR = new UsuarioDTO(rs.getInt("id_usuario"),
+                        rs.getString("nome"),
+                        rs.getString("login"),
+                        rs.getString("senha"),
+                        rs.getInt("tipo"));
             }
         } catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
@@ -161,12 +160,11 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                UsuarioDTO u = new UsuarioDTO();
-                u.setId(rs.getInt(1));
-                u.setNome(rs.getString(2));
-                u.setLogin(rs.getString(3));
-                u.setSenha(rs.getString(4));
-                u.setTipo(rs.getInt(5));
+                UsuarioDTO u = new UsuarioDTO(rs.getInt("id_usuario"),
+                        rs.getString("nome"),
+                        rs.getString("login"),
+                        rs.getString("senha"),
+                        rs.getInt("tipo"));
                 retorno.add(u);
             }
 
@@ -189,12 +187,12 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                usuarioR = new UsuarioDTO();
-                usuarioR.setId(rs.getInt(1));
-                usuarioR.setLogin(rs.getString(3));
-                usuarioR.setNome(rs.getString(2));
-                usuarioR.setSenha(rs.getString(4));
-                usuarioR.setTipo(rs.getInt(5));
+                usuarioR = new UsuarioDTO(rs.getInt("id_usuario"),
+                        rs.getString("nome"),
+                        rs.getString("login"),
+                        rs.getString("senha"),
+                        rs.getInt("tipo"));
+                return usuarioR;
             }
         } catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
@@ -256,12 +254,11 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
             }
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                UsuarioDTO aux = new UsuarioDTO();
-                aux.setId(rs.getInt(1));
-                aux.setNome(rs.getString(2));
-                aux.setLogin(rs.getString(3));
-                aux.setSenha(rs.getString(4));
-                aux.setTipo(rs.getInt(5));
+                UsuarioDTO aux = new UsuarioDTO(rs.getInt("id_usuario"),
+                        rs.getString("nome"),
+                        rs.getString("login"),
+                        rs.getString("senha"),
+                        rs.getInt("tipo"));
                 lista.add(aux);
             }
         } catch (SQLException ex) {
