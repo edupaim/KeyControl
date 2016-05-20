@@ -1,14 +1,10 @@
 package aplicativo.keycontrol.dao;
 
-import aplicativo.keycontrol.dto.ChaveDTO;
-import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.util.ConexaoUtil;
-import aplicativo.keycontrol.util.ThreadHoraUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.Date;
 
 /*

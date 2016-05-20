@@ -58,18 +58,19 @@ CREATE TABLE IF NOT EXISTS `chave` (
   `tipo` int(11) NOT NULL COMMENT 'tipo da chave (char)',
   `id_beneficiario` int(10) NOT NULL DEFAULT '0' COMMENT 'estado da chave (string)',
   PRIMARY KEY (`id_chave`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela keycontrol.chave: 6 rows
+-- Copiando dados para a tabela keycontrol.chave: 7 rows
 DELETE FROM `chave`;
 /*!40000 ALTER TABLE `chave` DISABLE KEYS */;
 INSERT INTO `chave` (`id_chave`, `sala`, `capacidade`, `tipo`, `id_beneficiario`) VALUES
-	(2, '101', 50, 0, 1),
-	(3, '102', 50, 0, 1),
+	(2, '101', 50, 0, 0),
+	(3, '102', 50, 0, 0),
 	(4, '201', 20, 0, 0),
 	(5, '12', 21, 1, 0),
 	(6, '14', 21, 1, 0),
-	(7, '25', 21, 1, 0);
+	(7, '25', 21, 1, 0),
+	(8, '1', 10, 2, 0);
 /*!40000 ALTER TABLE `chave` ENABLE KEYS */;
 
 
@@ -79,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `chave_tipo` (
   `tipo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela keycontrol.chave_tipo: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela keycontrol.chave_tipo: ~3 rows (aproximadamente)
 DELETE FROM `chave_tipo`;
 /*!40000 ALTER TABLE `chave_tipo` DISABLE KEYS */;
 INSERT INTO `chave_tipo` (`id_tipo_chave`, `tipo`) VALUES
@@ -97,9 +98,9 @@ CREATE TABLE IF NOT EXISTS `historico` (
   `id_chave` int(11) NOT NULL,
   `tipo_operacao` int(11) NOT NULL,
   PRIMARY KEY (`id_historico`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela keycontrol.historico: ~9 rows (aproximadamente)
+-- Copiando dados para a tabela keycontrol.historico: ~24 rows (aproximadamente)
 DELETE FROM `historico`;
 /*!40000 ALTER TABLE `historico` DISABLE KEYS */;
 INSERT INTO `historico` (`id_historico`, `id_beneficiario`, `data_operacao`, `id_chave`, `tipo_operacao`) VALUES
@@ -112,7 +113,21 @@ INSERT INTO `historico` (`id_historico`, `id_beneficiario`, `data_operacao`, `id
 	(7, 2, '2016-05-20 03:01:32', 1, 0),
 	(8, 5, '2016-05-20 03:04:31', 0, 1),
 	(9, 2, '2016-05-20 03:04:50', 1, 0),
-	(10, 3, '2016-05-20 11:36:14', 1, 0);
+	(10, 3, '2016-05-20 11:36:14', 1, 0),
+	(11, 2, '2016-05-20 13:54:24', 0, 1),
+	(12, 3, '2016-05-20 13:54:29', 0, 1),
+	(13, 2, '2016-05-20 13:57:20', 1, 0),
+	(14, 3, '2016-05-20 13:57:21', 1, 0),
+	(15, 4, '2016-05-20 13:57:23', 1, 0),
+	(16, 5, '2016-05-20 13:57:24', 1, 0),
+	(17, 6, '2016-05-20 13:57:26', 1, 0),
+	(18, 7, '2016-05-20 13:57:27', 1, 0),
+	(19, 3, '2016-05-20 13:57:43', 0, 1),
+	(20, 6, '2016-05-20 13:57:44', 0, 1),
+	(21, 5, '2016-05-20 13:57:46', 0, 1),
+	(22, 4, '2016-05-20 13:57:49', 0, 1),
+	(23, 2, '2016-05-20 13:57:50', 0, 1),
+	(24, 7, '2016-05-20 13:57:52', 0, 1);
 /*!40000 ALTER TABLE `historico` ENABLE KEYS */;
 
 
@@ -130,6 +145,46 @@ INSERT INTO `historico_tipo` (`id_tipo`, `tipo`) VALUES
 	(0, 'Emprestimo'),
 	(1, 'Devolucao');
 /*!40000 ALTER TABLE `historico_tipo` ENABLE KEYS */;
+
+
+-- Copiando estrutura para tabela keycontrol.horario
+CREATE TABLE IF NOT EXISTS `horario` (
+  `id_horario` int(11) NOT NULL AUTO_INCREMENT,
+  `comeco` time NOT NULL,
+  `fim` time NOT NULL,
+  PRIMARY KEY (`id_horario`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- Copiando dados para a tabela keycontrol.horario: ~8 rows (aproximadamente)
+DELETE FROM `horario`;
+/*!40000 ALTER TABLE `horario` DISABLE KEYS */;
+INSERT INTO `horario` (`id_horario`, `comeco`, `fim`) VALUES
+	(1, '07:00:00', '08:50:00'),
+	(2, '08:50:00', '10:40:00'),
+	(3, '10:40:00', '12:30:00'),
+	(4, '13:00:00', '14:50:00'),
+	(5, '14:50:00', '16:40:00'),
+	(6, '16:40:00', '18:30:00'),
+	(7, '18:30:00', '20:20:00'),
+	(8, '20:20:00', '22:10:00');
+/*!40000 ALTER TABLE `horario` ENABLE KEYS */;
+
+
+-- Copiando estrutura para tabela keycontrol.reserva
+CREATE TABLE IF NOT EXISTS `reserva` (
+  `id_reserva` int(11) NOT NULL AUTO_INCREMENT,
+  `id_chave` int(11) NOT NULL,
+  `id_beneficiario` int(11) NOT NULL,
+  `data_entrada` date NOT NULL,
+  `data_saida` date NOT NULL,
+  `id_horario` int(11) NOT NULL,
+  PRIMARY KEY (`id_reserva`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Copiando dados para a tabela keycontrol.reserva: ~0 rows (aproximadamente)
+DELETE FROM `reserva`;
+/*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
 
 
 -- Copiando estrutura para tabela keycontrol.usuario
