@@ -64,6 +64,7 @@ public class MainFrame extends javax.swing.JFrame {
         MenuEmprestimo = new javax.swing.JButton();
         MenuDevolucao = new javax.swing.JButton();
         MenuReserva = new javax.swing.JButton();
+        MenuReserva1 = new javax.swing.JButton();
         Painel = new javax.swing.JPanel();
         AbasUsuarios = new javax.swing.JTabbedPane();
         CadastroUsuario = new javax.swing.JPanel();
@@ -158,8 +159,6 @@ public class MainFrame extends javax.swing.JFrame {
         ButtonEmprestimoEmprestar = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
-        LabEmprestimoID = new javax.swing.JLabel();
-        TxtEmprestimoID = new javax.swing.JTextField();
         TxtEmprestimoSala = new javax.swing.JTextField();
         LabEmprestimoSala = new javax.swing.JLabel();
         LabEmprestimoCap = new javax.swing.JLabel();
@@ -173,8 +172,6 @@ public class MainFrame extends javax.swing.JFrame {
         TxtDevolucaoSala = new javax.swing.JTextField();
         LabDevolucaoCap = new javax.swing.JLabel();
         TxtDevolucaoCap = new javax.swing.JTextField();
-        LabDevolucaoID = new javax.swing.JLabel();
-        TxtDevolucaoID = new javax.swing.JTextField();
         ButtonDevolucaoBuscar = new javax.swing.JButton();
         SeparatorDevolucao = new javax.swing.JSeparator();
         ButtonDevolucaoDevolver = new javax.swing.JButton();
@@ -194,8 +191,6 @@ public class MainFrame extends javax.swing.JFrame {
         ButtonEmprestimoEmprestar1 = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
-        LabEmprestimoID1 = new javax.swing.JLabel();
-        TxtEmprestimoID1 = new javax.swing.JTextField();
         TxtEmprestimoSala1 = new javax.swing.JTextField();
         LabEmprestimoSala1 = new javax.swing.JLabel();
         LabEmprestimoCap1 = new javax.swing.JLabel();
@@ -204,6 +199,16 @@ public class MainFrame extends javax.swing.JFrame {
         CBoxTipoEmpC1 = new javax.swing.JComboBox();
         ScrollPaneTab5 = new javax.swing.JScrollPane();
         TblChaveEmp1 = new javax.swing.JTable();
+        LabEmprestimoMatricula2 = new javax.swing.JLabel();
+        LabEmprestimoMatricula3 = new javax.swing.JLabel();
+        LabEmprestimoTipo4 = new javax.swing.JLabel();
+        CBoxTipoEmpC2 = new javax.swing.JComboBox();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jFormattedTextField3 = new javax.swing.JFormattedTextField();
+        AbaRelatorio = new javax.swing.JPanel();
+        ScrollPaneTab7 = new javax.swing.JScrollPane();
+        TblRelatorio = new javax.swing.JTable();
+        ButAtualizarR = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         ButSair = new javax.swing.JButton();
         ButLogout = new javax.swing.JButton();
@@ -326,6 +331,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        MenuReserva1.setText("Relatório");
+        MenuReserva1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuReserva1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -340,6 +352,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(MenuDevolucao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(MenuReserva)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(MenuReserva1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MenuLayout.setVerticalGroup(
@@ -349,7 +363,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(MenuChaves)
                 .addComponent(MenuEmprestimo)
                 .addComponent(MenuDevolucao)
-                .addComponent(MenuReserva))
+                .addComponent(MenuReserva)
+                .addComponent(MenuReserva1))
         );
 
         Painel.setLayout(new java.awt.CardLayout());
@@ -433,7 +448,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(CadastroUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabTipoC)
                     .addComponent(CBoxTipoCadU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 435, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
                 .addComponent(ButCadastroCadU))
         );
 
@@ -495,7 +510,7 @@ public class MainFrame extends javax.swing.JFrame {
             ListaUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ListaUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTab, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButAtualizarL))
         );
@@ -623,7 +638,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButBuscarBusU)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ScrollPaneTab1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -729,7 +744,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(AlteraUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TxtSenhaN2AltC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabSenhaNRA))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 409, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
                 .addGroup(AlteraUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButAlterarAltC)
                     .addComponent(ButExcluirAltC)))
@@ -803,7 +818,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(CadastroChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabTipoCadC)
                     .addComponent(CBoxTipoCadC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 487, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
                 .addComponent(ButCadastroCadU1))
         );
 
@@ -864,7 +879,7 @@ public class MainFrame extends javax.swing.JFrame {
             ListaChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ListaChaveLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPaneTab2, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab2, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButAtualizarL1))
         );
@@ -1001,7 +1016,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(LabLoginB4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ButBuscarBusU1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ScrollPaneTab4, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1083,7 +1098,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(AlteraChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LabCapacidadeNA1)
                     .addComponent(TxtCapacidadeAltC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 461, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
                 .addGroup(AlteraChaveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButAlterarAltC1)
                     .addComponent(ButExcluirAltC1)))
@@ -1123,10 +1138,6 @@ public class MainFrame extends javax.swing.JFrame {
                 ButtonEmprestimoEmprestarActionPerformed(evt);
             }
         });
-
-        LabEmprestimoID.setText("ID");
-
-        TxtEmprestimoID.setEditable(false);
 
         LabEmprestimoSala.setText("Sala");
 
@@ -1207,10 +1218,6 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(ButtonEmprestimoEmprestar))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaEmprestimoLayout.createSequentialGroup()
-                        .addComponent(LabEmprestimoID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtEmprestimoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
                         .addComponent(LabEmprestimoSala)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TxtEmprestimoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1243,21 +1250,18 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AbaEmprestimoLayout.createSequentialGroup()
-                        .addComponent(ButtonEmprestimoBuscar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(LabEmprestimoSala)
                         .addComponent(TxtEmprestimoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(LabEmprestimoCap)
                         .addComponent(TxtEmprestimoCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabEmprestimoID)
-                        .addComponent(TxtEmprestimoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(LabEmprestimoTipo1)
-                        .addComponent(CBoxTipoEmpC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(CBoxTipoEmpC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ButtonEmprestimoBuscar))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ScrollPaneTab3, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab3, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonEmprestimoEmprestar)
                 .addContainerGap())
@@ -1268,10 +1272,6 @@ public class MainFrame extends javax.swing.JFrame {
         LabDevolucaoSala.setText("Sala");
 
         LabDevolucaoCap.setText("Capacidade");
-
-        LabDevolucaoID.setText("ID");
-
-        TxtDevolucaoID.setEditable(false);
 
         ButtonDevolucaoBuscar.setText("Buscar");
         ButtonDevolucaoBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -1339,10 +1339,6 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SeparatorDevolucao)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
-                        .addComponent(LabDevolucaoID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
                         .addComponent(LabDevolucaoSala)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TxtDevolucaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1356,7 +1352,7 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(CBoxTipoDevC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ButtonDevolucaoBuscar))
-                    .addComponent(ScrollPaneTab6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ScrollPaneTab6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(ButtonDevolucaoDevolver)))
@@ -1372,14 +1368,12 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(TxtDevolucaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabDevolucaoCap)
                     .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabDevolucaoID)
-                    .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabDevolucaoTipo)
                     .addComponent(CBoxTipoDevC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(SeparatorDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ScrollPaneTab6, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                .addComponent(ScrollPaneTab6, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonDevolucaoDevolver)
                 .addContainerGap())
@@ -1411,16 +1405,12 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        ButtonEmprestimoEmprestar1.setText("Realizar Empréstimo");
+        ButtonEmprestimoEmprestar1.setText("Realizar Reserva");
         ButtonEmprestimoEmprestar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonEmprestimoEmprestar1ActionPerformed(evt);
             }
         });
-
-        LabEmprestimoID1.setText("ID");
-
-        TxtEmprestimoID1.setEditable(false);
 
         LabEmprestimoSala1.setText("Sala");
 
@@ -1469,6 +1459,32 @@ public class MainFrame extends javax.swing.JFrame {
         });
         ScrollPaneTab5.setViewportView(TblChaveEmp1);
 
+        LabEmprestimoMatricula2.setText("Inicio");
+
+        LabEmprestimoMatricula3.setText("Fim");
+
+        LabEmprestimoTipo4.setText("Horario");
+
+        CBoxTipoEmpC2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "7:00 - 8:50", "8:50 - 10:40", "10:40 - 12:30", "13:00 - 14:50", "14:50 - 16:40", "16:40 - 18:30", "18:30 - 20:20", "20:20 - 22:10" }));
+        CBoxTipoEmpC2.setToolTipText("");
+        CBoxTipoEmpC2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBoxTipoEmpC2ActionPerformed(evt);
+            }
+        });
+
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         javax.swing.GroupLayout AbaReservaLayout = new javax.swing.GroupLayout(AbaReserva);
         AbaReserva.setLayout(AbaReservaLayout);
         AbaReservaLayout.setHorizontalGroup(
@@ -1501,10 +1517,6 @@ public class MainFrame extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(ButtonEmprestimoEmprestar1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaReservaLayout.createSequentialGroup()
-                        .addComponent(LabEmprestimoID1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtEmprestimoID1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
                         .addComponent(LabEmprestimoSala1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TxtEmprestimoSala1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1517,7 +1529,20 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CBoxTipoEmpC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonEmprestimoBuscar1)))
+                        .addComponent(ButtonEmprestimoBuscar1))
+                    .addGroup(AbaReservaLayout.createSequentialGroup()
+                        .addComponent(LabEmprestimoMatricula2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabEmprestimoMatricula3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LabEmprestimoTipo4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CBoxTipoEmpC2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         AbaReservaLayout.setVerticalGroup(
@@ -1537,26 +1562,94 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(AbaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonEmprestimoBuscar1)
                     .addGroup(AbaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(LabEmprestimoSala1)
                         .addComponent(TxtEmprestimoSala1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(LabEmprestimoCap1)
                         .addComponent(TxtEmprestimoCap1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabEmprestimoID1)
-                        .addComponent(TxtEmprestimoID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(LabEmprestimoTipo3)
-                        .addComponent(CBoxTipoEmpC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(CBoxTipoEmpC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ButtonEmprestimoBuscar1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ScrollPaneTab5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(ScrollPaneTab5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(AbaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabEmprestimoMatricula2)
+                    .addComponent(LabEmprestimoMatricula3)
+                    .addComponent(LabEmprestimoTipo4)
+                    .addComponent(CBoxTipoEmpC2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(ButtonEmprestimoEmprestar1)
                 .addContainerGap())
         );
 
         Painel.add(AbaReserva, "card4");
+
+        ScrollPaneTab7.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        TblRelatorio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Beneficiario", "ID Chave", "Data", "Tipo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TblRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblRelatorioMouseClicked(evt);
+            }
+        });
+        ScrollPaneTab7.setViewportView(TblRelatorio);
+
+        ButAtualizarR.setText("Atualizar");
+        ButAtualizarR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButAtualizarRActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AbaRelatorioLayout = new javax.swing.GroupLayout(AbaRelatorio);
+        AbaRelatorio.setLayout(AbaRelatorioLayout);
+        AbaRelatorioLayout.setHorizontalGroup(
+            AbaRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AbaRelatorioLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(ButAtualizarR))
+            .addGroup(AbaRelatorioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollPaneTab7, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        AbaRelatorioLayout.setVerticalGroup(
+            AbaRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AbaRelatorioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ScrollPaneTab7, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ButAtualizarR))
+        );
+
+        Painel.add(AbaRelatorio, "card7");
 
         ButSair.setText("Sair");
         ButSair.setToolTipText("");
@@ -1604,7 +1697,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1778,7 +1871,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuDevolucaoActionPerformed
 
     private void MenuReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuReservaActionPerformed
-        // TODO add your handling code here:
+        KeyControl.fachada.menuPainel(1, AbaReserva);
     }//GEN-LAST:event_MenuReservaActionPerformed
 
     private void TxtCapacidadeBusCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCapacidadeBusCActionPerformed
@@ -1845,15 +1938,22 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TblChaveDevMouseClicked
 
     private void ButtonEmprestimoPreencher1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoPreencher1ActionPerformed
-        // TODO add your handling code here:
+        KeyControl.fachada.buscarBeneficiarioReserva(TxtEmprestimoMatricula1.getText());
     }//GEN-LAST:event_ButtonEmprestimoPreencher1ActionPerformed
 
     private void ButtonEmprestimoBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoBuscar1ActionPerformed
-        // TODO add your handling code here:
+        KeyControl.fachada.buscarChaveReserva(TxtEmprestimoSala1.getText(), TxtEmprestimoCap1.getText(), CBoxTipoEmpC1.getSelectedIndex());
     }//GEN-LAST:event_ButtonEmprestimoBuscar1ActionPerformed
 
     private void ButtonEmprestimoEmprestar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoEmprestar1ActionPerformed
-        // TODO add your handling code here:
+        JViewport view = ScrollPaneTab5.getViewport();
+        JTable tabela = (JTable) view.getView();
+        Integer linha = tabela.getSelectedRow();
+        KeyControl.fachada.reservarChave(TxtEmprestimoMatricula1.getText(),
+                (Integer) tabela.getModel().getValueAt(linha, 0),
+                jFormattedTextField1.getText(),
+                jFormattedTextField3.getText(),
+                CBoxTipoEmpC2.getSelectedIndex());
     }//GEN-LAST:event_ButtonEmprestimoEmprestar1ActionPerformed
 
     private void CBoxTipoEmpC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoEmpC1ActionPerformed
@@ -1863,6 +1963,22 @@ public class MainFrame extends javax.swing.JFrame {
     private void TblChaveEmp1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblChaveEmp1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_TblChaveEmp1MouseClicked
+
+    private void CBoxTipoEmpC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoEmpC2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBoxTipoEmpC2ActionPerformed
+
+    private void TblRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblRelatorioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TblRelatorioMouseClicked
+
+    private void ButAtualizarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAtualizarRActionPerformed
+       KeyControl.fachada.relatorio();
+    }//GEN-LAST:event_ButAtualizarRActionPerformed
+
+    private void MenuReserva1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuReserva1ActionPerformed
+        KeyControl.fachada.menuPainel(1, AbaRelatorio);
+    }//GEN-LAST:event_MenuReserva1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1899,6 +2015,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel AbaDevolucao;
     public javax.swing.JPanel AbaEmprestimo;
+    public javax.swing.JPanel AbaRelatorio;
     public javax.swing.JPanel AbaReserva;
     public javax.swing.JTabbedPane AbasChaves;
     public javax.swing.JTabbedPane AbasUsuarios;
@@ -1910,6 +2027,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JButton ButAlterarAltC1;
     public javax.swing.JButton ButAtualizarL;
     public javax.swing.JButton ButAtualizarL1;
+    public javax.swing.JButton ButAtualizarR;
     public javax.swing.JButton ButBuscarBusU;
     public javax.swing.JButton ButBuscarBusU1;
     public javax.swing.JButton ButCadastroCadU;
@@ -1936,6 +2054,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JComboBox CBoxTipoDevC;
     public javax.swing.JComboBox CBoxTipoEmpC;
     public javax.swing.JComboBox CBoxTipoEmpC1;
+    public javax.swing.JComboBox CBoxTipoEmpC2;
     public javax.swing.JPanel CadastroChave;
     public javax.swing.JPanel CadastroUsuario;
     public javax.swing.JPanel Hora;
@@ -1943,15 +2062,14 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JLabel LabCapCadC;
     public javax.swing.JLabel LabCapacidadeNA1;
     public javax.swing.JLabel LabDevolucaoCap;
-    public javax.swing.JLabel LabDevolucaoID;
     public javax.swing.JLabel LabDevolucaoSala;
     public javax.swing.JLabel LabDevolucaoTipo;
     public javax.swing.JLabel LabEmprestimoCap;
     public javax.swing.JLabel LabEmprestimoCap1;
-    public javax.swing.JLabel LabEmprestimoID;
-    public javax.swing.JLabel LabEmprestimoID1;
     public javax.swing.JLabel LabEmprestimoMatricula;
     public javax.swing.JLabel LabEmprestimoMatricula1;
+    public javax.swing.JLabel LabEmprestimoMatricula2;
+    public javax.swing.JLabel LabEmprestimoMatricula3;
     public javax.swing.JLabel LabEmprestimoNome;
     public javax.swing.JLabel LabEmprestimoNome1;
     public javax.swing.JLabel LabEmprestimoSala;
@@ -1960,6 +2078,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JLabel LabEmprestimoTipo1;
     public javax.swing.JLabel LabEmprestimoTipo2;
     public javax.swing.JLabel LabEmprestimoTipo3;
+    public javax.swing.JLabel LabEmprestimoTipo4;
     public javax.swing.JLabel LabIdA;
     public javax.swing.JLabel LabIdA1;
     public javax.swing.JLabel LabIdB;
@@ -1995,6 +2114,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JButton MenuDevolucao;
     public javax.swing.JButton MenuEmprestimo;
     public javax.swing.JButton MenuReserva;
+    public javax.swing.JButton MenuReserva1;
     public javax.swing.JButton MenuUsuarios;
     public javax.swing.JPanel Painel;
     public javax.swing.JScrollPane ScrollPaneTab;
@@ -2004,12 +2124,14 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JScrollPane ScrollPaneTab4;
     public javax.swing.JScrollPane ScrollPaneTab5;
     public javax.swing.JScrollPane ScrollPaneTab6;
+    public javax.swing.JScrollPane ScrollPaneTab7;
     public javax.swing.JSeparator SeparatorDevolucao;
     public javax.swing.JTable TblChave;
     public javax.swing.JTable TblChave2;
     public javax.swing.JTable TblChaveDev;
     public javax.swing.JTable TblChaveEmp;
     public javax.swing.JTable TblChaveEmp1;
+    public javax.swing.JTable TblRelatorio;
     public javax.swing.JTable TblUser;
     public javax.swing.JTable TblUserFiltro;
     public javax.swing.JPanel Tipo;
@@ -2017,12 +2139,9 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JTextField TxtCapacidadeBusC;
     public javax.swing.JTextField TxtCapacidadeCadC;
     public javax.swing.JTextField TxtDevolucaoCap;
-    public javax.swing.JTextField TxtDevolucaoID;
     public javax.swing.JTextField TxtDevolucaoSala;
     public javax.swing.JTextField TxtEmprestimoCap;
     public javax.swing.JTextField TxtEmprestimoCap1;
-    public javax.swing.JTextField TxtEmprestimoID;
-    public javax.swing.JTextField TxtEmprestimoID1;
     public javax.swing.JTextField TxtEmprestimoMatricula;
     public javax.swing.JTextField TxtEmprestimoMatricula1;
     public javax.swing.JTextField TxtEmprestimoNome;
@@ -2049,6 +2168,8 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JPasswordField TxtSenhaRCadU;
     public javax.swing.JTextField TxtUserCadU;
     public javax.swing.JPanel Usuario;
+    public javax.swing.JFormattedTextField jFormattedTextField1;
+    public javax.swing.JFormattedTextField jFormattedTextField3;
     public javax.swing.JSeparator jSeparator1;
     public javax.swing.JSeparator jSeparator3;
     public javax.swing.JSeparator jSeparator4;

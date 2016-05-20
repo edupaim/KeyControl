@@ -1,11 +1,16 @@
 package aplicativo.keycontrol.dao;
 
+import aplicativo.keycontrol.dto.HistoricoDTO;
+import aplicativo.keycontrol.dto.ReservaDTO;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.util.ConexaoUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /*
  * @author Edu
@@ -42,6 +47,30 @@ public class HistoricoDAO {
         } finally {
             ConexaoUtil.fecharConexao(con);
         }
+    }
+    
+    public List<HistoricoDTO> listarTodos() throws PersistenciaException {
+        List<HistoricoDTO> retorno = new ArrayList<>();
+        Connection con = ConexaoUtil.abrirConexao("Listar Todas Reservas");
+        String sql = "SELECT * FROM historico ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                // (id_beneficiario, id_chave, data_entrada, data_saida, id_horario)
+                HistoricoDTO historico = new HistoricoDTO(rs.getInt("id_historico"),
+                ChaveDAO.getInstance().buscarPorId(rs.getInt("id_chave")),
+                BeneficiarioDAO.getInstance().buscarPorId(rs.getInt("id_beneficiario")),
+                rs.getTimestamp("data_operacao"),
+                rs.getInt("tipo_operacao"));
+                retorno.add(historico);
+            }
+        } catch (SQLException ex) {
+            throw new PersistenciaException("Houve um erro no banco de dados: " + ex.getMessage());
+        } finally {
+            ConexaoUtil.fecharConexao(con);
+        }
+        return retorno;
     }
 
 }

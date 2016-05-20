@@ -15,6 +15,7 @@ public class AlunoDTO implements IBeneficiarioDTO {
     private String nome;
     private String matricula;
 
+
     @Override
     public Integer getId() {
         return this.id;

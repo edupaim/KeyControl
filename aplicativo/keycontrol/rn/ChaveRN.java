@@ -3,10 +3,13 @@ package aplicativo.keycontrol.rn;
 import aplicativo.keycontrol.dao.ChaveDAO;
 import aplicativo.keycontrol.dao.HistoricoDAO;
 import aplicativo.keycontrol.dto.ChaveDTO;
+import aplicativo.keycontrol.dto.HistoricoDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.util.MensagensUtil;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ChaveRN {
     /*
@@ -35,7 +38,7 @@ public class ChaveRN {
                 if ((new_chave = buscarPorId(chave.getId())) != null && new_chave.getBeneficiario_id() > 0) {
                     chave.setBeneficiario_id(0);
                     DAO.atualizar(chave);
-                    HistoricoDAO.getInstance().inserir(chave.getId(), chave.getBeneficiario_id(), 1);
+                    HistoricoDAO.getInstance().inserir(new_chave.getBeneficiario_id(), new_chave.getId(), 1);
                 } else {
                     throw new NegocioException("Chave já disponivel.");
                 }
@@ -56,7 +59,7 @@ public class ChaveRN {
             ChaveDTO chave = DAO.buscarPorId(idChave); //FAZ COM QUE VERIFIQUE A EXISTENCIA DE UMA CHAVE
             chave.setBeneficiario_id(idBeneficiario);
             DAO.atualizar(chave);
-            HistoricoDAO.getInstance().inserir(chave.getId(), idBeneficiario, 0);
+            HistoricoDAO.getInstance().inserir(idBeneficiario, chave.getId(), 0);
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }
@@ -156,9 +159,16 @@ public class ChaveRN {
     }
 
     List<ChaveDTO> listarTodos() throws NegocioException {
-        ChaveDAO dao = ChaveDAO.getInstance();
         try {
-            return dao.listarTodos();
+            return ChaveDAO.getInstance().listarTodos();
+        } catch (PersistenciaException ex) {
+            throw new NegocioException(ex.getMessage());
+        }
+    }
+
+    public List<HistoricoDTO> relatorio() throws NegocioException {
+        try {
+            return HistoricoDAO.getInstance().listarTodos();
         } catch (PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }

@@ -1,17 +1,23 @@
 package aplicativo.keycontrol.rn;
 
+import aplicativo.keycontrol.dao.HistoricoDAO;
 import aplicativo.keycontrol.dto.AlunoDTO;
 import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.dto.ChaveDTO;
+import aplicativo.keycontrol.dto.HistoricoDTO;
 import aplicativo.keycontrol.dto.IBeneficiarioDTO;
 import aplicativo.keycontrol.exception.NegocioException;
+import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.gui.LoginFrame;
 import aplicativo.keycontrol.gui.MainFrame;
 import aplicativo.keycontrol.main.KeyControl;
 import aplicativo.keycontrol.util.MensagensUtil;
 import java.awt.Component;
 import java.awt.Container;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -406,11 +412,10 @@ public class Fachada {
         }
     }
 
-    public void fazerEmprestimo(Integer id, String matricula) {
+    public void fazerEmprestimo(Integer id_chave, String matricula) {
         ChaveDTO c;
-
         try {
-            c = ChaveRN.getInstance().buscarPorId(id);
+            c = ChaveRN.getInstance().buscarPorId(id_chave);
             IBeneficiarioDTO b = BeneficiarioRN.getInstance().buscarPorMatricula(matricula);
             ChaveRN.getInstance().emprestar(c.getId(), b.getId());
         } catch (NegocioException ex) {
@@ -427,5 +432,84 @@ public class Fachada {
             tbl.addRow(new Object[]{c.getId(), c.getSala(), c.getCapacidade(), c.getTipoString(), c.getBeneficiario_id()});
         });
         KeyControl.mainFrame.TblChaveEmp = new JTable(tbl);
+    }
+
+    /*
+     * METODOS DO RESERVA DE CHAVE MAIN FRAME
+     */
+    public void reservarChave(String matricula, Integer id_chave, String dataIni, String dataFim, Integer horario) {
+        try {
+            ChaveDTO chave = ChaveRN.getInstance().buscarPorId(id_chave);
+            IBeneficiarioDTO benef = BeneficiarioRN.getInstance().buscarPorMatricula(matricula);
+            try {
+                Date dataI = new SimpleDateFormat("dd/mm/yyyy").parse(dataIni);
+                Date dataF = new SimpleDateFormat("dd/mm/yyyy").parse(dataFim);
+                ReservaRN.getInstance().fazerReserva(chave, benef, dataI, dataF, horario);
+            } catch (ParseException ex) {
+                // Formato inválido
+            }
+        } catch (NegocioException ex) {
+            Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void buscarBeneficiarioReserva(String matricula) {
+        try {
+            IBeneficiarioDTO beneficiario = BeneficiarioRN.getInstance().buscarPorMatricula(matricula);
+            KeyControl.mainFrame.TxtEmprestimoNome1.setText(beneficiario.getNome());
+            String tipo;
+            if (beneficiario instanceof AlunoDTO) {
+                tipo = "Aluno";
+            } else {
+                tipo = "Professor";
+            }
+            KeyControl.mainFrame.TxtEmprestimoTipo1.setText(tipo);
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+    public void buscarChaveReserva(String sala, String capacidade, Integer tipo) {
+        try {
+            Integer i = 0;
+            ChaveDTO chave = new ChaveDTO();
+            chave.setSala((sala == null || "".equals(sala)) ? null : sala);
+            chave.setCapacidade((capacidade == null || "".equals(capacidade)) ? null : Integer.parseInt(capacidade));
+            if (tipo < 3) {
+                chave.setTipo(tipo);
+            }
+            List<ChaveDTO> chaves = ChaveRN.getInstance().buscarChave(chave);
+            listarChaveReserva(chaves);
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
+        }
+    }
+
+    public void listarChaveReserva(List<ChaveDTO> lista) {
+        DefaultTableModel tbl = (DefaultTableModel) KeyControl.mainFrame.TblChaveEmp1.getModel();
+        while (tbl.getRowCount() > 0) {
+            tbl.removeRow(0);
+        }
+        lista.stream().forEach((c) -> {
+            tbl.addRow(new Object[]{c.getId(), c.getSala(), c.getCapacidade(), c.getTipoString(), c.getBeneficiario_id()});
+        });
+        KeyControl.mainFrame.TblChaveEmp1 = new JTable(tbl);
+    }
+
+    public void relatorio() {
+        List<HistoricoDTO> lista;
+        try {
+            lista = HistoricoDAO.getInstance().listarTodos();
+            DefaultTableModel tbl = (DefaultTableModel) KeyControl.mainFrame.TblRelatorio.getModel();
+            while (tbl.getRowCount() > 0) {
+                tbl.removeRow(0);
+            }
+            lista.stream().forEach((h) -> {
+                tbl.addRow(new Object[]{h.getId(), h.getBenef().getNome(), h.getChave().getSala(), h.getData(), h.getTipo()});
+            });
+            KeyControl.mainFrame.TblRelatorio = new JTable(tbl);
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

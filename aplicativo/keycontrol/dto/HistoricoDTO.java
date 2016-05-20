@@ -6,17 +6,26 @@ import java.util.Date;
  * @author Edu
  */
 public class HistoricoDTO {
-
+    Integer id;
     ChaveDTO chave;
     IBeneficiarioDTO benef;
     Date data;
     Integer tipo;
 
-    public HistoricoDTO(ChaveDTO chave, IBeneficiarioDTO benef, Date data, Integer tipo) {
+    public HistoricoDTO(Integer id, ChaveDTO chave, IBeneficiarioDTO benef, Date data, Integer tipo) {
+        this.id = id;
         this.chave = chave;
         this.benef = benef;
         this.data = data;
         this.tipo = tipo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public ChaveDTO getChave() {

@@ -9,6 +9,7 @@ import aplicativo.keycontrol.dto.AlunoDTO;
 
 import aplicativo.keycontrol.dto.IBeneficiarioDTO;
 import aplicativo.keycontrol.dto.ProfessorDTO;
+import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.util.ConexaoUtil;
 import java.sql.Connection;
@@ -85,7 +86,31 @@ public class BeneficiarioDAO implements GenericoDAO<IBeneficiarioDTO> {
 
     @Override
     public IBeneficiarioDTO buscarPorId(Integer id) throws PersistenciaException {
-        return new AlunoDTO();
+        IBeneficiarioDTO benefR = null;
+        Connection con = ConexaoUtil.abrirConexao("Buscar Usuario por ID");
+        String sql = "SELECT * FROM beneficiario ";
+        sql += "WHERE id_beneficiario = ? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                if (rs.getInt("tipo") == 0) {
+                    benefR = new AlunoDTO();
+                } else {
+                    benefR = new ProfessorDTO();
+                }
+                benefR.setId(rs.getInt("id_beneficiario"));
+                benefR.setNome(rs.getString("nome"));
+                benefR.setMatricula(rs.getString("matricula"));
+                return benefR;
+            }
+        } catch (SQLException ex) {
+            throw new PersistenciaException(ex.getMessage(), ex);
+        } finally {
+            ConexaoUtil.fecharConexao(con);
+        }
+        return benefR;
     }
 
     public IBeneficiarioDTO buscarPorMatricula(String matricula) throws PersistenciaException {

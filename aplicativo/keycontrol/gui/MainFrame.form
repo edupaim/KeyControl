@@ -44,7 +44,7 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="Menu" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="Painel" pref="380" max="32767" attributes="0"/>
+              <Component id="Painel" pref="385" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -237,6 +237,8 @@
                   <Component id="MenuDevolucao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="MenuReserva" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="MenuReserva1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -249,6 +251,7 @@
                   <Component id="MenuEmprestimo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="MenuDevolucao" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="MenuReserva" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="MenuReserva1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -293,6 +296,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuReservaActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="MenuReserva1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Relat&#xf3;rio"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuReserva1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -398,7 +409,7 @@
                               <Component id="LabTipoC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CBoxTipoCadU" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="435" max="32767" attributes="0"/>
+                          <EmptySpace pref="220" max="32767" attributes="0"/>
                           <Component id="ButCadastroCadU" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -489,7 +500,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab" pref="555" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab" pref="340" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ButAtualizarL" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -603,7 +614,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ButBuscarBusU" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab1" pref="438" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab1" pref="223" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -785,7 +796,7 @@
                               <Component id="TxtSenhaN2AltC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="LabSenhaNRA" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="409" max="32767" attributes="0"/>
+                          <EmptySpace pref="194" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="ButAlterarAltC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ButExcluirAltC" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -952,7 +963,7 @@
                               <Component id="LabTipoCadC" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CBoxTipoCadC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="487" max="32767" attributes="0"/>
+                          <EmptySpace pref="272" max="32767" attributes="0"/>
                           <Component id="ButCadastroCadU1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1032,7 +1043,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ScrollPaneTab2" pref="555" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab2" pref="340" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ButAtualizarL1" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -1154,7 +1165,7 @@
                           <Component id="LabLoginB4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="ButBuscarBusU1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="243" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="ScrollPaneTab4" min="-2" pref="181" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1326,7 +1337,7 @@
                               <Component id="LabCapacidadeNA1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtCapacidadeAltC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="461" max="32767" attributes="0"/>
+                          <EmptySpace pref="246" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="ButAlterarAltC1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="ButExcluirAltC1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1439,10 +1450,6 @@
                               <Component id="ButtonEmprestimoEmprestar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="LabEmprestimoID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="TxtEmprestimoID" min="-2" pref="71" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="LabEmprestimoSala" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="TxtEmprestimoSala" min="-2" pref="84" max="-2" attributes="0"/>
@@ -1480,24 +1487,20 @@
                       <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="ButtonEmprestimoBuscar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="LabEmprestimoSala" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtEmprestimoSala" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="LabEmprestimoCap" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtEmprestimoCap" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabEmprestimoID" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtEmprestimoID" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="LabEmprestimoTipo1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CBoxTipoEmpC" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="ButtonEmprestimoBuscar" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ScrollPaneTab3" pref="173" max="32767" attributes="0"/>
+                      <Component id="ScrollPaneTab3" pref="172" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="ButtonEmprestimoEmprestar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1560,16 +1563,6 @@
             <Component class="javax.swing.JSeparator" name="jSeparator3">
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator4">
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabEmprestimoID">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ID"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtEmprestimoID">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="TxtEmprestimoSala">
             </Component>
@@ -1652,10 +1645,6 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="SeparatorDevolucao" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="LabDevolucaoID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="TxtDevolucaoID" min="-2" pref="71" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="LabDevolucaoSala" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="TxtDevolucaoSala" min="-2" pref="84" max="-2" attributes="0"/>
@@ -1670,7 +1659,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="ButtonDevolucaoBuscar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="ScrollPaneTab6" alignment="1" max="32767" attributes="0"/>
+                          <Component id="ScrollPaneTab6" alignment="1" pref="545" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="ButtonDevolucaoDevolver" min="-2" max="-2" attributes="0"/>
@@ -1690,15 +1679,13 @@
                           <Component id="TxtDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="LabDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TxtDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="LabDevolucaoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="CBoxTipoDevC" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="SeparatorDevolucao" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ScrollPaneTab6" pref="192" max="32767" attributes="0"/>
+                      <Component id="ScrollPaneTab6" pref="272" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="ButtonDevolucaoDevolver" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1720,16 +1707,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="TxtDevolucaoCap">
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabDevolucaoID">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ID"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtDevolucaoID">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="ButtonDevolucaoBuscar">
               <Properties>
@@ -1811,7 +1788,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="ScrollPaneTab5" alignment="0" max="32767" attributes="0"/>
@@ -1844,10 +1821,6 @@
                               <Component id="ButtonEmprestimoEmprestar1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="LabEmprestimoID1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="TxtEmprestimoID1" min="-2" pref="71" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Component id="LabEmprestimoSala1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="TxtEmprestimoSala1" min="-2" pref="84" max="-2" attributes="0"/>
@@ -1861,6 +1834,20 @@
                               <Component id="CBoxTipoEmpC1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="ButtonEmprestimoBuscar1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="LabEmprestimoMatricula2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jFormattedTextField1" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoMatricula3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jFormattedTextField3" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoTipo4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="CBoxTipoEmpC2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1885,23 +1872,30 @@
                       <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="ButtonEmprestimoBuscar1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="LabEmprestimoSala1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtEmprestimoSala1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="LabEmprestimoCap1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TxtEmprestimoCap1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabEmprestimoID1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtEmprestimoID1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="LabEmprestimoTipo3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CBoxTipoEmpC1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="ButtonEmprestimoBuscar1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="ScrollPaneTab5" min="-2" pref="75" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="ScrollPaneTab5" min="-2" pref="124" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace pref="98" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LabEmprestimoMatricula2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabEmprestimoMatricula3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabEmprestimoTipo4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="CBoxTipoEmpC2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFormattedTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jFormattedTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
                       <Component id="ButtonEmprestimoEmprestar1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1954,7 +1948,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="ButtonEmprestimoEmprestar1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Realizar Empr&#xe9;stimo"/>
+                <Property name="text" type="java.lang.String" value="Realizar Reserva"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEmprestimoEmprestar1ActionPerformed"/>
@@ -1963,16 +1957,6 @@
             <Component class="javax.swing.JSeparator" name="jSeparator5">
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator6">
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabEmprestimoID1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ID"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtEmprestimoID1">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="TxtEmprestimoSala1">
             </Component>
@@ -2038,6 +2022,129 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoMatricula2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Inicio"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoMatricula3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Fim"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoTipo4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Horario"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="CBoxTipoEmpC2">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="8">
+                    <StringItem index="0" value="7:00 - 8:50"/>
+                    <StringItem index="1" value="8:50 - 10:40"/>
+                    <StringItem index="2" value="10:40 - 12:30"/>
+                    <StringItem index="3" value="13:00 - 14:50"/>
+                    <StringItem index="4" value="14:50 - 16:40"/>
+                    <StringItem index="5" value="16:40 - 18:30"/>
+                    <StringItem index="6" value="18:30 - 20:20"/>
+                    <StringItem index="7" value="20:20 - 22:10"/>
+                  </StringArray>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CBoxTipoEmpC2ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="##/##/####" subtype="-1" type="5"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField3">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+                  <Format format="##/##/####" subtype="-1" type="5"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="AbaRelatorio">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card7"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="ButAtualizarR" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ScrollPaneTab7" pref="413" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ScrollPaneTab7" pref="345" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ButAtualizarR" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="ScrollPaneTab7">
+              <Properties>
+                <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="TblRelatorio">
+                  <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="5" rowCount="0">
+                        <Column editable="false" title="ID" type="java.lang.Integer"/>
+                        <Column editable="false" title="Beneficiario" type="java.lang.String"/>
+                        <Column editable="false" title="ID Chave" type="java.lang.Integer"/>
+                        <Column editable="false" title="Data" type="java.lang.String"/>
+                        <Column editable="false" title="Tipo" type="java.lang.String"/>
+                      </Table>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TblRelatorioMouseClicked"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="ButAtualizarR">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButAtualizarRActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
