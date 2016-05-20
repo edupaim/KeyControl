@@ -1957,6 +1957,7 @@ public class MainFrame extends javax.swing.JFrame {
         Integer linha = tabela.getSelectedRow();
         if (linha > -1) {
             KeyControl.fachada.devolverChave((Integer) tabela.getModel().getValueAt(linha, 0));
+            KeyControl.fachada.buscarChaveDevolucao(null, null, 4);
         } else {
             MensagensUtil.addMsg(null, "Selecione uma chave na tabela!");
         }
@@ -1986,9 +1987,11 @@ public class MainFrame extends javax.swing.JFrame {
             KeyControl.fachada.fazerEmprestimo(
                     (Integer) tabela.getModel().getValueAt(linha, 0),
                     TxtEmprestimoMatricula.getText());
+            KeyControl.fachada.buscarChaveEmprestimo(null, null, 4);
         } else {
             MensagensUtil.addMsg(null, "Selecione uma chave na tabela!");
         }
+        
     }//GEN-LAST:event_ButtonEmprestimoEmprestarActionPerformed
 
     private void CBoxTipoEmpCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoEmpCActionPerformed

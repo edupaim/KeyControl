@@ -419,7 +419,7 @@ public class Fachada {
         try {
             c = ChaveRN.getInstance().buscarPorId(id_chave);
             IBeneficiarioDTO b = BeneficiarioRN.getInstance().buscarPorMatricula(matricula);
-            ChaveRN.getInstance().emprestar(c.getId(), b.getId());
+            ChaveRN.getInstance().emprestar(c, b);
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
         }

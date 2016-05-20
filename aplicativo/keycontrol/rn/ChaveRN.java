@@ -2,12 +2,18 @@ package aplicativo.keycontrol.rn;
 
 import aplicativo.keycontrol.dao.ChaveDAO;
 import aplicativo.keycontrol.dao.HistoricoDAO;
+import aplicativo.keycontrol.dao.ReservaDAO;
 import aplicativo.keycontrol.dto.ChaveDTO;
 import aplicativo.keycontrol.dto.HistoricoDTO;
+import aplicativo.keycontrol.dto.IBeneficiarioDTO;
+import aplicativo.keycontrol.dto.ReservaDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.util.MensagensUtil;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -50,16 +56,29 @@ public class ChaveRN {
         }
     }
 
-    public void emprestar(int idChave, int idBeneficiario) throws NegocioException {
+    public void emprestar(ChaveDTO c, IBeneficiarioDTO b) throws NegocioException {
         try {
-            if (!verificarDisponibilidade(idChave)) {
+            boolean bool = true;
+            List<ReservaDTO> lista = ReservaDAO.getInstance().listarTodos();
+            Timestamp time = new java.sql.Timestamp(new Date().getTime());
+            if (!verificarDisponibilidade(c.getId())) {
                 throw new NegocioException("Chave não disponível");
+            } else {
+                for (Integer i = 0; i < lista.size(); i++) {
+                    if (c.getId().equals(lista.get(i).getId_chave())
+                            /*&& Objects.equals( HORARIO ATUAL , lista.get(i).getHorario())*/
+                            && ((time.before(lista.get(i).getDate_out()) && time.after(lista.get(i).getDate_in())))) {
+                        bool = false;
+                    }
+                }
             }
-            ChaveDAO DAO = ChaveDAO.getInstance();
-            ChaveDTO chave = DAO.buscarPorId(idChave); //FAZ COM QUE VERIFIQUE A EXISTENCIA DE UMA CHAVE
-            chave.setBeneficiario_id(idBeneficiario);
-            DAO.atualizar(chave);
-            HistoricoDAO.getInstance().inserir(idBeneficiario, chave.getId(), 0);
+            if (bool) {
+                ChaveDAO DAO = ChaveDAO.getInstance();
+                ChaveDTO chave = DAO.buscarPorId(c.getId()); //FAZ COM QUE VERIFIQUE A EXISTENCIA DE UMA CHAVE
+                chave.setBeneficiario_id(b.getId());
+                DAO.atualizar(chave);
+                HistoricoDAO.getInstance().inserir(b.getId(), chave.getId(), 0);
+            }
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }
