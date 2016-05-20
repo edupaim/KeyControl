@@ -161,18 +161,15 @@ public class Fachada {
     }
 
     public void tabelaUsuarioSelecionada(Integer linha) {
-        UsuarioDTO usuario = new UsuarioDTO();
         try {
             if (linha >= 0) {
-                usuario.setId((Integer) KeyControl.mainFrame.TblUser.getModel().getValueAt(linha, 0));
-                usuario.setNome((String) KeyControl.mainFrame.TblUser.getModel().getValueAt(linha, 1));
-                usuario.setLogin((String) KeyControl.mainFrame.TblUser.getModel().getValueAt(linha, 2));
-                usuario.setTipo((Integer) KeyControl.mainFrame.TblUser.getModel().getValueAt(linha, 3));
+                UsuarioDTO usuario = UsuarioRN.getInstance().buscarPorId((Integer) KeyControl.mainFrame.TblUser.getModel().getValueAt(linha, 0));
                 KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.AlteraUsuario);
                 campoAlterarUsuario(usuario.getId(), usuario.getNome(), usuario.getLogin(), usuario.getTipo());
             }
         } catch (ClassCastException ex) {
             System.out.println("Não foi possivel converter um dos campos. " + ex.getMessage());
+        } catch (NegocioException ex) {
         }
     }
 
@@ -307,18 +304,15 @@ public class Fachada {
     }
 
     public void tabelaChaveSelecionada(Integer linha) {
-        ChaveDTO chave = new ChaveDTO();
         try {
             if (linha >= 0) {
-                chave.setId((Integer) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 0));
-                chave.setSala((String) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 1));
-                chave.setCapacidade((Integer) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 2));
-                chave.setTipo((Integer) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 3));
+                ChaveDTO chave = ChaveRN.getInstance().buscarPorId((Integer) KeyControl.mainFrame.TblChave.getModel().getValueAt(linha, 0));
                 KeyControl.mainFrame.AbasChaves.setSelectedComponent(KeyControl.mainFrame.AlteraChave);
                 campoAlterarChave(chave.getId(), chave.getSala(), chave.getCapacidade(), chave.getTipo());
             }
         } catch (ClassCastException ex) {
             System.out.println("Não foi possivel converter um dos campos. " + ex.getMessage());
+        } catch (NegocioException ex) {
         }
     }
 
@@ -328,7 +322,7 @@ public class Fachada {
         KeyControl.mainFrame.TxtCapacidadeAltC.setText(String.valueOf(capacidade));
         KeyControl.mainFrame.CBoxTipoAaltC1.setSelectedIndex(tipo);
     }
-    
+
     /*
      * METODOS DO DEVOLUCAO MAIN FRAME
      */
@@ -348,12 +342,15 @@ public class Fachada {
             ChaveDTO chave = new ChaveDTO();
             chave.setSala((sala == null || "".equals(sala)) ? null : sala);
             chave.setCapacidade((capacidade == null || "".equals(capacidade)) ? null : Integer.parseInt(capacidade));
+            if (tipo < 3) {
+                chave.setTipo(tipo);
+            }
             List<ChaveDTO> chaves = ChaveRN.getInstance().buscarChave(chave);
             chave = chaves.get(0);
             KeyControl.mainFrame.TxtDevolucaoID.setText(String.valueOf(chave.getId()));
             KeyControl.mainFrame.TxtDevolucaoCap.setText(String.valueOf(chave.getCapacidade()));
             KeyControl.mainFrame.TxtDevolucaoSala.setText(chave.getSala());
-            KeyControl.mainFrame.ListDevolucaoTipo.setSelectedIndex(chave.getTipo());
+            KeyControl.mainFrame.CBoxTipoDevC.setSelectedIndex(chave.getTipo());
 
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());
@@ -379,17 +376,21 @@ public class Fachada {
         }
     }
 
-    public void buscarChaveEmprestimo(String sala, String capacidade, int tipo) {
+    public void buscarChaveEmprestimo(String sala, String capacidade, Integer tipo) {
         try {
+
             ChaveDTO chave = new ChaveDTO();
             chave.setSala((sala == null || "".equals(sala)) ? null : sala);
             chave.setCapacidade((capacidade == null || "".equals(capacidade)) ? null : Integer.parseInt(capacidade));
+            if (tipo < 3) {
+                chave.setTipo(tipo);
+            }
             List<ChaveDTO> chaves = ChaveRN.getInstance().buscarChave(chave);
             chave = chaves.get(0);
             KeyControl.mainFrame.TxtEmprestimoID.setText(String.valueOf(chave.getId()));
             KeyControl.mainFrame.TxtEmprestimoCap.setText(String.valueOf(chave.getCapacidade()));
             KeyControl.mainFrame.TxtEmprestimoSala.setText(chave.getSala());
-            KeyControl.mainFrame.ListEmprestimoTipo.setSelectedIndex(chave.getTipo());
+            KeyControl.mainFrame.CBoxTipoEmpC.setSelectedIndex(chave.getTipo());
 
         } catch (NegocioException ex) {
             MensagensUtil.addMsg(KeyControl.mainFrame, ex.getMessage());

@@ -872,362 +872,6 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="AbaDevolucao">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card5"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="SeparatorDevolucao" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="ButtonDevolucaoDevolver" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="LabDevolucaoID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TxtDevolucaoID" min="-2" pref="71" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabDevolucaoSala" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TxtDevolucaoSala" min="-2" pref="84" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabDevolucaoCap" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TxtDevolucaoCap" min="-2" pref="41" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabDevolucaoTipo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="ScrollDevolucaoTipo" min="-2" pref="117" max="-2" attributes="0"/>
-                              <EmptySpace pref="120" max="32767" attributes="0"/>
-                              <Component id="ButtonDevolucaoBuscar" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ButtonDevolucaoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TxtDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LabDevolucaoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="ScrollDevolucaoTipo" min="-2" pref="19" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="SeparatorDevolucao" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ButtonDevolucaoDevolver" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="497" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="LabDevolucaoSala">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Sala"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtDevolucaoSala">
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabDevolucaoCap">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Capacidade"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtDevolucaoCap">
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabDevolucaoID">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ID"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtDevolucaoID">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="ButtonDevolucaoBuscar">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDevolucaoBuscarActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="SeparatorDevolucao">
-            </Component>
-            <Component class="javax.swing.JButton" name="ButtonDevolucaoDevolver">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Realizar Devolu&#xe7;&#xe3;o"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDevolucaoDevolverActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabDevolucaoTipo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tipo"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="ScrollDevolucaoTipo">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JList" name="ListDevolucaoTipo">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Laborat&#xf3;rio"/>
-                        <StringItem index="1" value="Comum"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="AbaEmprestimo">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card4"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jSeparator3" max="32767" attributes="0"/>
-                          <Component id="jSeparator4" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="LabEmprestimoMatricula" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TxtEmprestimoMatricula" min="-2" pref="173" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="LabEmprestimoNome" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="TxtEmprestimoNome" max="32767" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="LabEmprestimoTipo" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="TxtEmprestimoTipo" min="-2" pref="129" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="400" max="-2" attributes="0"/>
-                                      <Component id="ButtonEmprestimoPreencher" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="ButtonEmprestimoEmprestar" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="LabEmprestimoID" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TxtEmprestimoID" min="-2" pref="71" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabEmprestimoSala" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TxtEmprestimoSala" min="-2" pref="84" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabEmprestimoCap" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TxtEmprestimoCap" min="-2" pref="41" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="LabEmprestimoTipo1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="ScrollEmprestimoTipo" min="-2" pref="117" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="ButtonEmprestimoBuscar" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="LabEmprestimoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtEmprestimoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabEmprestimoNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtEmprestimoNome" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LabEmprestimoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtEmprestimoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="ButtonEmprestimoPreencher" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="ButtonEmprestimoBuscar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="ButtonEmprestimoEmprestar" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="LabEmprestimoSala" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TxtEmprestimoSala" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="LabEmprestimoCap" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TxtEmprestimoCap" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="LabEmprestimoID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TxtEmprestimoID" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="LabEmprestimoTipo1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="ScrollEmprestimoTipo" alignment="1" min="-2" pref="19" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="397" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="LabEmprestimoMatricula">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Matr&#xed;cula"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtEmprestimoMatricula">
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabEmprestimoNome">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nome"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtEmprestimoNome">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabEmprestimoTipo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tipo"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtEmprestimoTipo">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="ButtonEmprestimoPreencher">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Preencher"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEmprestimoPreencherActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="ButtonEmprestimoBuscar">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Buscar"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEmprestimoBuscarActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="ButtonEmprestimoEmprestar">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Realizar Empr&#xe9;stimo"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEmprestimoEmprestarActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator3">
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator4">
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabEmprestimoID">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ID"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtEmprestimoID">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtEmprestimoSala">
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabEmprestimoSala">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Sala"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabEmprestimoCap">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Capacidade"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="TxtEmprestimoCap">
-            </Component>
-            <Component class="javax.swing.JLabel" name="LabEmprestimoTipo1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tipo"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="ScrollEmprestimoTipo">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JList" name="ListEmprestimoTipo">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Laborat&#xf3;rio"/>
-                        <StringItem index="1" value="Comum"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
         <Container class="javax.swing.JTabbedPane" name="AbasChaves">
           <Properties>
             <Property name="tabLayoutPolicy" type="int" value="1"/>
@@ -1723,9 +1367,9 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
-                        <StringItem index="0" value="S"/>
-                        <StringItem index="1" value="L"/>
-                        <StringItem index="2" value="R"/>
+                        <StringItem index="0" value="Sala"/>
+                        <StringItem index="1" value="Laborat&#xf3;rio"/>
+                        <StringItem index="2" value="Reuni&#xe3;o"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1750,6 +1394,349 @@
                 </Component>
               </SubComponents>
             </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="AbaEmprestimo">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card4"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jSeparator3" max="32767" attributes="0"/>
+                          <Component id="jSeparator4" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="LabEmprestimoMatricula" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="TxtEmprestimoMatricula" min="-2" pref="173" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="LabEmprestimoNome" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="TxtEmprestimoNome" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                      <Component id="LabEmprestimoTipo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="TxtEmprestimoTipo" min="-2" pref="129" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="583" max="-2" attributes="0"/>
+                                      <Component id="ButtonEmprestimoPreencher" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="ButtonEmprestimoEmprestar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="LabEmprestimoID" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TxtEmprestimoID" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoSala" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TxtEmprestimoSala" min="-2" pref="84" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoCap" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TxtEmprestimoCap" min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoTipo1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="CBoxTipoEmpC" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="ButtonEmprestimoBuscar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LabEmprestimoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtEmprestimoMatricula" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabEmprestimoNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtEmprestimoNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabEmprestimoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtEmprestimoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="ButtonEmprestimoPreencher" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="ButtonEmprestimoBuscar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="ButtonEmprestimoEmprestar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="LabEmprestimoSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TxtEmprestimoSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TxtEmprestimoCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TxtEmprestimoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabEmprestimoTipo1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="CBoxTipoEmpC" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="177" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoMatricula">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Matr&#xed;cula"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtEmprestimoMatricula">
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoNome">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nome"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtEmprestimoNome">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoTipo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtEmprestimoTipo">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="ButtonEmprestimoPreencher">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Preencher"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEmprestimoPreencherActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="ButtonEmprestimoBuscar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEmprestimoBuscarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="ButtonEmprestimoEmprestar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Realizar Empr&#xe9;stimo"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEmprestimoEmprestarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator3">
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator4">
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoID">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtEmprestimoID">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtEmprestimoSala">
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoSala">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sala"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoCap">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Capacidade"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtEmprestimoCap">
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabEmprestimoTipo1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="CBoxTipoEmpC">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Sala"/>
+                    <StringItem index="1" value="Laborat&#xf3;rio"/>
+                    <StringItem index="2" value="Reuni&#xe3;o"/>
+                    <StringItem index="3" value="Nenhum"/>
+                  </StringArray>
+                </Property>
+                <Property name="selectedIndex" type="int" value="3"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CBoxTipoEmpCActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="AbaDevolucao">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card5"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="SeparatorDevolucao" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="ButtonDevolucaoDevolver" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="LabDevolucaoID" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoID" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoSala" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoSala" min="-2" pref="84" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoCap" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TxtDevolucaoCap" min="-2" pref="41" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="LabDevolucaoTipo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="CBoxTipoDevC" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="170" max="32767" attributes="0"/>
+                              <Component id="ButtonDevolucaoBuscar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ButtonDevolucaoBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtDevolucaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtDevolucaoCap" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtDevolucaoID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabDevolucaoTipo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="CBoxTipoDevC" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="SeparatorDevolucao" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="ButtonDevolucaoDevolver" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="497" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="LabDevolucaoSala">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sala"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtDevolucaoSala">
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabDevolucaoCap">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Capacidade"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtDevolucaoCap">
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabDevolucaoID">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ID"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="TxtDevolucaoID">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="ButtonDevolucaoBuscar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDevolucaoBuscarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="SeparatorDevolucao">
+            </Component>
+            <Component class="javax.swing.JButton" name="ButtonDevolucaoDevolver">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Realizar Devolu&#xe7;&#xe3;o"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDevolucaoDevolverActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="LabDevolucaoTipo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tipo"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="CBoxTipoDevC">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Sala"/>
+                    <StringItem index="1" value="Laborat&#xf3;rio"/>
+                    <StringItem index="2" value="Reuni&#xe3;o"/>
+                    <StringItem index="3" value="Nenhum"/>
+                  </StringArray>
+                </Property>
+                <Property name="selectedIndex" type="int" value="3"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CBoxTipoDevCActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

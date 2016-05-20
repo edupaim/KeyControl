@@ -107,40 +107,6 @@ public class MainFrame extends javax.swing.JFrame {
         TxtNomeAltC = new javax.swing.JTextField();
         ButExcluirAltC = new javax.swing.JButton();
         ButAlterarAltC = new javax.swing.JButton();
-        AbaDevolucao = new javax.swing.JPanel();
-        LabDevolucaoSala = new javax.swing.JLabel();
-        TxtDevolucaoSala = new javax.swing.JTextField();
-        LabDevolucaoCap = new javax.swing.JLabel();
-        TxtDevolucaoCap = new javax.swing.JTextField();
-        LabDevolucaoID = new javax.swing.JLabel();
-        TxtDevolucaoID = new javax.swing.JTextField();
-        ButtonDevolucaoBuscar = new javax.swing.JButton();
-        SeparatorDevolucao = new javax.swing.JSeparator();
-        ButtonDevolucaoDevolver = new javax.swing.JButton();
-        LabDevolucaoTipo = new javax.swing.JLabel();
-        ScrollDevolucaoTipo = new javax.swing.JScrollPane();
-        ListDevolucaoTipo = new javax.swing.JList<String>();
-        AbaEmprestimo = new javax.swing.JPanel();
-        LabEmprestimoMatricula = new javax.swing.JLabel();
-        TxtEmprestimoMatricula = new javax.swing.JTextField();
-        LabEmprestimoNome = new javax.swing.JLabel();
-        TxtEmprestimoNome = new javax.swing.JTextField();
-        LabEmprestimoTipo = new javax.swing.JLabel();
-        TxtEmprestimoTipo = new javax.swing.JTextField();
-        ButtonEmprestimoPreencher = new javax.swing.JButton();
-        ButtonEmprestimoBuscar = new javax.swing.JButton();
-        ButtonEmprestimoEmprestar = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
-        LabEmprestimoID = new javax.swing.JLabel();
-        TxtEmprestimoID = new javax.swing.JTextField();
-        TxtEmprestimoSala = new javax.swing.JTextField();
-        LabEmprestimoSala = new javax.swing.JLabel();
-        LabEmprestimoCap = new javax.swing.JLabel();
-        TxtEmprestimoCap = new javax.swing.JTextField();
-        LabEmprestimoTipo1 = new javax.swing.JLabel();
-        ScrollEmprestimoTipo = new javax.swing.JScrollPane();
-        ListEmprestimoTipo = new javax.swing.JList<String>();
         AbasChaves = new javax.swing.JTabbedPane();
         CadastroChave = new javax.swing.JPanel();
         LabSalaCadC = new javax.swing.JLabel();
@@ -178,6 +144,38 @@ public class MainFrame extends javax.swing.JFrame {
         ButExcluirAltC1 = new javax.swing.JButton();
         ButAlterarAltC1 = new javax.swing.JButton();
         TxtCapacidadeAltC = new javax.swing.JTextField();
+        AbaEmprestimo = new javax.swing.JPanel();
+        LabEmprestimoMatricula = new javax.swing.JLabel();
+        TxtEmprestimoMatricula = new javax.swing.JTextField();
+        LabEmprestimoNome = new javax.swing.JLabel();
+        TxtEmprestimoNome = new javax.swing.JTextField();
+        LabEmprestimoTipo = new javax.swing.JLabel();
+        TxtEmprestimoTipo = new javax.swing.JTextField();
+        ButtonEmprestimoPreencher = new javax.swing.JButton();
+        ButtonEmprestimoBuscar = new javax.swing.JButton();
+        ButtonEmprestimoEmprestar = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        LabEmprestimoID = new javax.swing.JLabel();
+        TxtEmprestimoID = new javax.swing.JTextField();
+        TxtEmprestimoSala = new javax.swing.JTextField();
+        LabEmprestimoSala = new javax.swing.JLabel();
+        LabEmprestimoCap = new javax.swing.JLabel();
+        TxtEmprestimoCap = new javax.swing.JTextField();
+        LabEmprestimoTipo1 = new javax.swing.JLabel();
+        CBoxTipoEmpC = new javax.swing.JComboBox();
+        AbaDevolucao = new javax.swing.JPanel();
+        LabDevolucaoSala = new javax.swing.JLabel();
+        TxtDevolucaoSala = new javax.swing.JTextField();
+        LabDevolucaoCap = new javax.swing.JLabel();
+        TxtDevolucaoCap = new javax.swing.JTextField();
+        LabDevolucaoID = new javax.swing.JLabel();
+        TxtDevolucaoID = new javax.swing.JTextField();
+        ButtonDevolucaoBuscar = new javax.swing.JButton();
+        SeparatorDevolucao = new javax.swing.JSeparator();
+        ButtonDevolucaoDevolver = new javax.swing.JButton();
+        LabDevolucaoTipo = new javax.swing.JLabel();
+        CBoxTipoDevC = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
         ButSair = new javax.swing.JButton();
         ButLogout = new javax.swing.JButton();
@@ -713,227 +711,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         Painel.add(AbasUsuarios, "card2");
 
-        LabDevolucaoSala.setText("Sala");
-
-        LabDevolucaoCap.setText("Capacidade");
-
-        LabDevolucaoID.setText("ID");
-
-        TxtDevolucaoID.setEditable(false);
-
-        ButtonDevolucaoBuscar.setText("Buscar");
-        ButtonDevolucaoBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonDevolucaoBuscarActionPerformed(evt);
-            }
-        });
-
-        ButtonDevolucaoDevolver.setText("Realizar Devolução");
-        ButtonDevolucaoDevolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonDevolucaoDevolverActionPerformed(evt);
-            }
-        });
-
-        LabDevolucaoTipo.setText("Tipo");
-
-        ListDevolucaoTipo.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Laboratório", "Comum" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        ScrollDevolucaoTipo.setViewportView(ListDevolucaoTipo);
-
-        javax.swing.GroupLayout AbaDevolucaoLayout = new javax.swing.GroupLayout(AbaDevolucao);
-        AbaDevolucao.setLayout(AbaDevolucaoLayout);
-        AbaDevolucaoLayout.setHorizontalGroup(
-            AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SeparatorDevolucao)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(ButtonDevolucaoDevolver))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
-                        .addComponent(LabDevolucaoID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(LabDevolucaoSala)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtDevolucaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(LabDevolucaoCap)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(LabDevolucaoTipo)
-                        .addGap(18, 18, 18)
-                        .addComponent(ScrollDevolucaoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                        .addComponent(ButtonDevolucaoBuscar)))
-                .addContainerGap())
-        );
-        AbaDevolucaoLayout.setVerticalGroup(
-            AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AbaDevolucaoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ButtonDevolucaoBuscar)
-                        .addComponent(LabDevolucaoSala)
-                        .addComponent(TxtDevolucaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabDevolucaoCap)
-                        .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabDevolucaoID)
-                        .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(LabDevolucaoTipo))
-                    .addComponent(ScrollDevolucaoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(SeparatorDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonDevolucaoDevolver)
-                .addContainerGap(497, Short.MAX_VALUE))
-        );
-
-        Painel.add(AbaDevolucao, "card5");
-
-        LabEmprestimoMatricula.setText("Matrícula");
-
-        LabEmprestimoNome.setText("Nome");
-
-        TxtEmprestimoNome.setEnabled(false);
-
-        LabEmprestimoTipo.setText("Tipo");
-
-        TxtEmprestimoTipo.setEnabled(false);
-
-        ButtonEmprestimoPreencher.setText("Preencher");
-        ButtonEmprestimoPreencher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonEmprestimoPreencherActionPerformed(evt);
-            }
-        });
-
-        ButtonEmprestimoBuscar.setText("Buscar");
-        ButtonEmprestimoBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonEmprestimoBuscarActionPerformed(evt);
-            }
-        });
-
-        ButtonEmprestimoEmprestar.setText("Realizar Empréstimo");
-        ButtonEmprestimoEmprestar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonEmprestimoEmprestarActionPerformed(evt);
-            }
-        });
-
-        LabEmprestimoID.setText("ID");
-
-        TxtEmprestimoID.setEditable(false);
-
-        LabEmprestimoSala.setText("Sala");
-
-        LabEmprestimoCap.setText("Capacidade");
-
-        LabEmprestimoTipo1.setText("Tipo");
-
-        ListEmprestimoTipo.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Laboratório", "Comum" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        ScrollEmprestimoTipo.setViewportView(ListEmprestimoTipo);
-
-        javax.swing.GroupLayout AbaEmprestimoLayout = new javax.swing.GroupLayout(AbaEmprestimo);
-        AbaEmprestimo.setLayout(AbaEmprestimoLayout);
-        AbaEmprestimoLayout.setHorizontalGroup(
-            AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AbaEmprestimoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator3)
-                    .addComponent(jSeparator4)
-                    .addGroup(AbaEmprestimoLayout.createSequentialGroup()
-                        .addComponent(LabEmprestimoMatricula)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtEmprestimoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(AbaEmprestimoLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(LabEmprestimoNome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxtEmprestimoNome)
-                                .addGap(18, 18, 18)
-                                .addComponent(LabEmprestimoTipo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxtEmprestimoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(AbaEmprestimoLayout.createSequentialGroup()
-                                .addGap(400, 400, 400)
-                                .addComponent(ButtonEmprestimoPreencher))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaEmprestimoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(ButtonEmprestimoEmprestar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaEmprestimoLayout.createSequentialGroup()
-                        .addComponent(LabEmprestimoID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtEmprestimoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(LabEmprestimoSala)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtEmprestimoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(LabEmprestimoCap)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtEmprestimoCap, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(LabEmprestimoTipo1)
-                        .addGap(18, 18, 18)
-                        .addComponent(ScrollEmprestimoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonEmprestimoBuscar)))
-                .addContainerGap())
-        );
-        AbaEmprestimoLayout.setVerticalGroup(
-            AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AbaEmprestimoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabEmprestimoMatricula)
-                    .addComponent(TxtEmprestimoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabEmprestimoNome)
-                    .addComponent(TxtEmprestimoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LabEmprestimoTipo)
-                    .addComponent(TxtEmprestimoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ButtonEmprestimoPreencher)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AbaEmprestimoLayout.createSequentialGroup()
-                        .addComponent(ButtonEmprestimoBuscar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ButtonEmprestimoEmprestar))
-                    .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LabEmprestimoSala)
-                            .addComponent(TxtEmprestimoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabEmprestimoCap)
-                            .addComponent(TxtEmprestimoCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabEmprestimoID)
-                            .addComponent(TxtEmprestimoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LabEmprestimoTipo1))
-                        .addComponent(ScrollEmprestimoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(397, Short.MAX_VALUE))
-        );
-
-        Painel.add(AbaEmprestimo, "card4");
-
         AbasChaves.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         AbasChaves.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         AbasChaves.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1213,7 +990,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         TxtIdAltC1.setEditable(false);
 
-        CBoxTipoAaltC1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "S", "L", "R" }));
+        CBoxTipoAaltC1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sala", "Laboratório", "Reunião" }));
 
         ButExcluirAltC1.setText("Excluir");
         ButExcluirAltC1.addActionListener(new java.awt.event.ActionListener() {
@@ -1287,6 +1064,230 @@ public class MainFrame extends javax.swing.JFrame {
         AbasChaves.addTab("Alterar", AlteraChave);
 
         Painel.add(AbasChaves, "card5");
+
+        LabEmprestimoMatricula.setText("Matrícula");
+
+        LabEmprestimoNome.setText("Nome");
+
+        TxtEmprestimoNome.setEnabled(false);
+
+        LabEmprestimoTipo.setText("Tipo");
+
+        TxtEmprestimoTipo.setEnabled(false);
+
+        ButtonEmprestimoPreencher.setText("Preencher");
+        ButtonEmprestimoPreencher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEmprestimoPreencherActionPerformed(evt);
+            }
+        });
+
+        ButtonEmprestimoBuscar.setText("Buscar");
+        ButtonEmprestimoBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEmprestimoBuscarActionPerformed(evt);
+            }
+        });
+
+        ButtonEmprestimoEmprestar.setText("Realizar Empréstimo");
+        ButtonEmprestimoEmprestar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEmprestimoEmprestarActionPerformed(evt);
+            }
+        });
+
+        LabEmprestimoID.setText("ID");
+
+        TxtEmprestimoID.setEditable(false);
+
+        LabEmprestimoSala.setText("Sala");
+
+        LabEmprestimoCap.setText("Capacidade");
+
+        LabEmprestimoTipo1.setText("Tipo");
+
+        CBoxTipoEmpC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sala", "Laboratório", "Reunião", "Nenhum" }));
+        CBoxTipoEmpC.setSelectedIndex(3);
+        CBoxTipoEmpC.setToolTipText("");
+        CBoxTipoEmpC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBoxTipoEmpCActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AbaEmprestimoLayout = new javax.swing.GroupLayout(AbaEmprestimo);
+        AbaEmprestimo.setLayout(AbaEmprestimoLayout);
+        AbaEmprestimoLayout.setHorizontalGroup(
+            AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AbaEmprestimoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator3)
+                    .addComponent(jSeparator4)
+                    .addGroup(AbaEmprestimoLayout.createSequentialGroup()
+                        .addComponent(LabEmprestimoMatricula)
+                        .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(AbaEmprestimoLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TxtEmprestimoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addComponent(LabEmprestimoNome)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TxtEmprestimoNome)
+                                .addGap(24, 24, 24)
+                                .addComponent(LabEmprestimoTipo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TxtEmprestimoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6))
+                            .addGroup(AbaEmprestimoLayout.createSequentialGroup()
+                                .addGap(583, 583, 583)
+                                .addComponent(ButtonEmprestimoPreencher))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaEmprestimoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ButtonEmprestimoEmprestar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaEmprestimoLayout.createSequentialGroup()
+                        .addComponent(LabEmprestimoID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtEmprestimoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(LabEmprestimoSala)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtEmprestimoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(LabEmprestimoCap)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtEmprestimoCap, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(LabEmprestimoTipo1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CBoxTipoEmpC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtonEmprestimoBuscar)))
+                .addContainerGap())
+        );
+        AbaEmprestimoLayout.setVerticalGroup(
+            AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AbaEmprestimoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabEmprestimoMatricula)
+                    .addComponent(TxtEmprestimoMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabEmprestimoNome)
+                    .addComponent(TxtEmprestimoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabEmprestimoTipo)
+                    .addComponent(TxtEmprestimoTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonEmprestimoPreencher)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AbaEmprestimoLayout.createSequentialGroup()
+                        .addComponent(ButtonEmprestimoBuscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ButtonEmprestimoEmprestar))
+                    .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LabEmprestimoSala)
+                        .addComponent(TxtEmprestimoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabEmprestimoCap)
+                        .addComponent(TxtEmprestimoCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabEmprestimoID)
+                        .addComponent(TxtEmprestimoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabEmprestimoTipo1)
+                        .addComponent(CBoxTipoEmpC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(177, Short.MAX_VALUE))
+        );
+
+        Painel.add(AbaEmprestimo, "card4");
+
+        LabDevolucaoSala.setText("Sala");
+
+        LabDevolucaoCap.setText("Capacidade");
+
+        LabDevolucaoID.setText("ID");
+
+        TxtDevolucaoID.setEditable(false);
+
+        ButtonDevolucaoBuscar.setText("Buscar");
+        ButtonDevolucaoBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonDevolucaoBuscarActionPerformed(evt);
+            }
+        });
+
+        ButtonDevolucaoDevolver.setText("Realizar Devolução");
+        ButtonDevolucaoDevolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonDevolucaoDevolverActionPerformed(evt);
+            }
+        });
+
+        LabDevolucaoTipo.setText("Tipo");
+
+        CBoxTipoDevC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sala", "Laboratório", "Reunião", "Nenhum" }));
+        CBoxTipoDevC.setSelectedIndex(3);
+        CBoxTipoDevC.setToolTipText("");
+        CBoxTipoDevC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBoxTipoDevCActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AbaDevolucaoLayout = new javax.swing.GroupLayout(AbaDevolucao);
+        AbaDevolucao.setLayout(AbaDevolucaoLayout);
+        AbaDevolucaoLayout.setHorizontalGroup(
+            AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SeparatorDevolucao)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ButtonDevolucaoDevolver))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
+                        .addComponent(LabDevolucaoID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(LabDevolucaoSala)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtDevolucaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(LabDevolucaoCap)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(LabDevolucaoTipo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CBoxTipoDevC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                        .addComponent(ButtonDevolucaoBuscar)))
+                .addContainerGap())
+        );
+        AbaDevolucaoLayout.setVerticalGroup(
+            AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AbaDevolucaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonDevolucaoBuscar)
+                    .addComponent(LabDevolucaoSala)
+                    .addComponent(TxtDevolucaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabDevolucaoCap)
+                    .addComponent(TxtDevolucaoCap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabDevolucaoID)
+                    .addComponent(TxtDevolucaoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabDevolucaoTipo)
+                    .addComponent(CBoxTipoDevC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(SeparatorDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonDevolucaoDevolver)
+                .addContainerGap(497, Short.MAX_VALUE))
+        );
+
+        Painel.add(AbaDevolucao, "card5");
 
         ButSair.setText("Sair");
         ButSair.setToolTipText("");
@@ -1516,7 +1517,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtCapacidadeBusCActionPerformed
 
     private void ButtonDevolucaoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoBuscarActionPerformed
-        KeyControl.fachada.buscarChaveDevolucao(TxtDevolucaoSala.getText(), TxtDevolucaoCap.getText(), ListDevolucaoTipo.getSelectedIndex());
+        KeyControl.fachada.buscarChaveDevolucao(TxtDevolucaoSala.getText(), TxtDevolucaoCap.getText(), CBoxTipoDevC.getSelectedIndex());
     }//GEN-LAST:event_ButtonDevolucaoBuscarActionPerformed
 
     private void ButtonDevolucaoDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoDevolverActionPerformed
@@ -1536,12 +1537,20 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEmprestimoPreencherActionPerformed
 
     private void ButtonEmprestimoBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoBuscarActionPerformed
-        KeyControl.fachada.buscarChaveEmprestimo(TxtEmprestimoSala.getText(), TxtEmprestimoCap.getText(), ListEmprestimoTipo.getSelectedIndex());
+        KeyControl.fachada.buscarChaveEmprestimo(TxtEmprestimoSala.getText(), TxtEmprestimoCap.getText(), CBoxTipoEmpC.getSelectedIndex());
     }//GEN-LAST:event_ButtonEmprestimoBuscarActionPerformed
 
     private void ButtonEmprestimoEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoEmprestarActionPerformed
         KeyControl.fachada.fazerEmprestimo(Integer.parseInt(TxtEmprestimoID.getText()), TxtEmprestimoMatricula.getText());
     }//GEN-LAST:event_ButtonEmprestimoEmprestarActionPerformed
+
+    private void CBoxTipoEmpCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoEmpCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBoxTipoEmpCActionPerformed
+
+    private void CBoxTipoDevCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoDevCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBoxTipoDevCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1608,6 +1617,8 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JComboBox CBoxTipoBusU;
     public javax.swing.JComboBox CBoxTipoCadC;
     public javax.swing.JComboBox CBoxTipoCadU;
+    public javax.swing.JComboBox CBoxTipoDevC;
+    public javax.swing.JComboBox CBoxTipoEmpC;
     public javax.swing.JPanel CadastroChave;
     public javax.swing.JPanel CadastroUsuario;
     public javax.swing.JPanel Hora;
@@ -1653,8 +1664,6 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JLabel LbHora;
     public javax.swing.JLabel LbNome;
     public javax.swing.JLabel LbTipo;
-    public javax.swing.JList<String> ListDevolucaoTipo;
-    public javax.swing.JList<String> ListEmprestimoTipo;
     public javax.swing.JPanel ListaChave;
     public javax.swing.JPanel ListaUsuario;
     public javax.swing.JPanel Menu;
@@ -1664,8 +1673,6 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JButton MenuReserva;
     public javax.swing.JButton MenuUsuarios;
     public javax.swing.JPanel Painel;
-    public javax.swing.JScrollPane ScrollDevolucaoTipo;
-    public javax.swing.JScrollPane ScrollEmprestimoTipo;
     public javax.swing.JScrollPane ScrollPaneTab;
     public javax.swing.JScrollPane ScrollPaneTab1;
     public javax.swing.JScrollPane ScrollPaneTab2;
