@@ -164,6 +164,8 @@ public class MainFrame extends javax.swing.JFrame {
         TxtEmprestimoCap = new javax.swing.JTextField();
         LabEmprestimoTipo1 = new javax.swing.JLabel();
         CBoxTipoEmpC = new javax.swing.JComboBox();
+        ScrollPaneTab3 = new javax.swing.JScrollPane();
+        TblChaveEmp = new javax.swing.JTable();
         AbaDevolucao = new javax.swing.JPanel();
         LabDevolucaoSala = new javax.swing.JLabel();
         TxtDevolucaoSala = new javax.swing.JTextField();
@@ -176,6 +178,8 @@ public class MainFrame extends javax.swing.JFrame {
         ButtonDevolucaoDevolver = new javax.swing.JButton();
         LabDevolucaoTipo = new javax.swing.JLabel();
         CBoxTipoDevC = new javax.swing.JComboBox();
+        ScrollPaneTab6 = new javax.swing.JScrollPane();
+        TblChaveDev = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         ButSair = new javax.swing.JButton();
         ButLogout = new javax.swing.JButton();
@@ -1115,6 +1119,38 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        ScrollPaneTab3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        TblChaveEmp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Sala", "Capacidade", "Tipo", "ID Benef."
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TblChaveEmp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblChaveEmpMouseClicked(evt);
+            }
+        });
+        ScrollPaneTab3.setViewportView(TblChaveEmp);
+
         javax.swing.GroupLayout AbaEmprestimoLayout = new javax.swing.GroupLayout(AbaEmprestimo);
         AbaEmprestimo.setLayout(AbaEmprestimoLayout);
         AbaEmprestimoLayout.setHorizontalGroup(
@@ -1122,6 +1158,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(AbaEmprestimoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ScrollPaneTab3)
                     .addComponent(jSeparator3)
                     .addComponent(jSeparator4)
                     .addGroup(AbaEmprestimoLayout.createSequentialGroup()
@@ -1185,9 +1222,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(AbaEmprestimoLayout.createSequentialGroup()
                         .addComponent(ButtonEmprestimoBuscar)
                         .addGap(18, 18, 18)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ButtonEmprestimoEmprestar))
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AbaEmprestimoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(LabEmprestimoSala)
                         .addComponent(TxtEmprestimoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1197,7 +1232,11 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(TxtEmprestimoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(LabEmprestimoTipo1)
                         .addComponent(CBoxTipoEmpC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ScrollPaneTab3, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonEmprestimoEmprestar)
+                .addContainerGap())
         );
 
         Painel.add(AbaEmprestimo, "card4");
@@ -1235,17 +1274,46 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        ScrollPaneTab6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        TblChaveDev.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Sala", "Capacidade", "Tipo", "ID Benef."
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TblChaveDev.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblChaveDevMouseClicked(evt);
+            }
+        });
+        ScrollPaneTab6.setViewportView(TblChaveDev);
+
         javax.swing.GroupLayout AbaDevolucaoLayout = new javax.swing.GroupLayout(AbaDevolucao);
         AbaDevolucao.setLayout(AbaDevolucaoLayout);
         AbaDevolucaoLayout.setHorizontalGroup(
             AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
+            .addGroup(AbaDevolucaoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(AbaDevolucaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(SeparatorDevolucao)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(ButtonDevolucaoDevolver))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
                         .addComponent(LabDevolucaoID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1262,8 +1330,12 @@ public class MainFrame extends javax.swing.JFrame {
                         .addComponent(LabDevolucaoTipo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CBoxTipoDevC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
-                        .addComponent(ButtonDevolucaoBuscar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtonDevolucaoBuscar))
+                    .addComponent(ScrollPaneTab6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaDevolucaoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ButtonDevolucaoDevolver)))
                 .addContainerGap())
         );
         AbaDevolucaoLayout.setVerticalGroup(
@@ -1282,9 +1354,11 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(CBoxTipoDevC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(SeparatorDevolucao, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ScrollPaneTab6, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonDevolucaoDevolver)
-                .addContainerGap(497, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         Painel.add(AbaDevolucao, "card5");
@@ -1398,7 +1472,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TxtNomeBusUActionPerformed
 
     private void TblUserFiltroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblUserFiltroMouseClicked
-        KeyControl.fachada.tabelaUsuarioSelecionada(TblUserFiltro.getSelectedRow());
+        KeyControl.fachada.tabelaUsuarioSelecionada(TblUserFiltro.rowAtPoint(evt.getPoint()));
     }//GEN-LAST:event_TblUserFiltroMouseClicked
 
     private void ButBuscarBusUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButBuscarBusUActionPerformed
@@ -1521,7 +1595,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonDevolucaoBuscarActionPerformed
 
     private void ButtonDevolucaoDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDevolucaoDevolverActionPerformed
-        KeyControl.fachada.devolverChave(TxtDevolucaoID.getText());
+        KeyControl.fachada.devolverChave((Integer) TblChaveDev.getModel().getValueAt(TblChaveDev.getSelectedRow(), 0));
     }//GEN-LAST:event_ButtonDevolucaoDevolverActionPerformed
 
     private void CBoxTipoCadCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoCadCActionPerformed
@@ -1541,7 +1615,13 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEmprestimoBuscarActionPerformed
 
     private void ButtonEmprestimoEmprestarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoEmprestarActionPerformed
-        KeyControl.fachada.fazerEmprestimo(Integer.parseInt(TxtEmprestimoID.getText()), TxtEmprestimoMatricula.getText());
+        int linha = TblChaveEmp.getSelectedRow();
+        if (linha > -1) {
+            KeyControl.fachada.fazerEmprestimo(
+                    (Integer) KeyControl.mainFrame.TblChaveEmp.getModel().getValueAt(linha, 1),
+                    TxtEmprestimoMatricula.getText());
+        }
+
     }//GEN-LAST:event_ButtonEmprestimoEmprestarActionPerformed
 
     private void CBoxTipoEmpCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoEmpCActionPerformed
@@ -1551,6 +1631,19 @@ public class MainFrame extends javax.swing.JFrame {
     private void CBoxTipoDevCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoDevCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CBoxTipoDevCActionPerformed
+
+    private void TblChaveEmpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblChaveEmpMouseClicked
+        int linha = TblChaveEmp.getSelectedRow();
+        if (linha > -1) {
+            KeyControl.fachada.fazerEmprestimo(
+                    (Integer) KeyControl.mainFrame.TblChaveEmp.getModel().getValueAt(linha, 1),
+                    TxtEmprestimoMatricula.getText());
+        }
+    }//GEN-LAST:event_TblChaveEmpMouseClicked
+
+    private void TblChaveDevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblChaveDevMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TblChaveDevMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1676,10 +1769,14 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JScrollPane ScrollPaneTab;
     public javax.swing.JScrollPane ScrollPaneTab1;
     public javax.swing.JScrollPane ScrollPaneTab2;
+    public javax.swing.JScrollPane ScrollPaneTab3;
     public javax.swing.JScrollPane ScrollPaneTab4;
+    public javax.swing.JScrollPane ScrollPaneTab6;
     public javax.swing.JSeparator SeparatorDevolucao;
     public javax.swing.JTable TblChave;
     public javax.swing.JTable TblChave2;
+    public javax.swing.JTable TblChaveDev;
+    public javax.swing.JTable TblChaveEmp;
     public javax.swing.JTable TblUser;
     public javax.swing.JTable TblUserFiltro;
     public javax.swing.JPanel Tipo;

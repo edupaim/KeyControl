@@ -2,9 +2,7 @@ package aplicativo.keycontrol.rn;
 
 import aplicativo.keycontrol.dao.ChaveDAO;
 import aplicativo.keycontrol.dao.HistoricoDAO;
-import aplicativo.keycontrol.dao.UsuarioDAO;
 import aplicativo.keycontrol.dto.ChaveDTO;
-import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.util.MensagensUtil;
@@ -37,6 +35,7 @@ public class ChaveRN {
                 if ((new_chave = buscarPorId(chave.getId())) != null && new_chave.getBeneficiario_id() > 0) {
                     chave.setBeneficiario_id(0);
                     DAO.atualizar(chave);
+                    HistoricoDAO.getInstance().inserir(chave.getId(), chave.getBeneficiario_id(), 1);
                 } else {
                     throw new NegocioException("Chave já disponivel.");
                 }
