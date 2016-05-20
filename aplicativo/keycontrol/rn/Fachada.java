@@ -108,7 +108,7 @@ public class Fachada {
                     senhar)) {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Cadastro efetuado com sucesso!");
                 KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
-                Fachada.this.tabelaUsuarios();
+                Fachada.this.preencherTabelaUsuarios();
                 limparTodosCampos(KeyControl.mainFrame.Painel);
             } else {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Falha no cadastro.");
@@ -118,7 +118,7 @@ public class Fachada {
         }
     }
 
-    public void tabelaUsuarios() {
+    public void preencherTabelaUsuarios() {
         try {
             List<UsuarioDTO> usuarios = UsuarioRN.getInstance().listarTodos();
             DefaultTableModel model = (DefaultTableModel) KeyControl.mainFrame.TblUser.getModel();
@@ -134,9 +134,8 @@ public class Fachada {
         }
     }
 
-    public void tabelaUsuariosFiltrado(List<UsuarioDTO> consulta) {
+    public void preencherTabelaUsuariosFiltrado(List<UsuarioDTO> consulta) {
         if (consulta != null) {
-
             DefaultTableModel model = (DefaultTableModel) KeyControl.mainFrame.TblUserFiltro.getModel();
             for (int i = model.getRowCount() - 1; i >= 0; i--) {
                 model.removeRow(i);
@@ -146,7 +145,7 @@ public class Fachada {
             });
             KeyControl.mainFrame.TblUserFiltro = new JTable(model);
         } else {
-            Fachada.this.tabelaUsuarios();
+            Fachada.this.preencherTabelaUsuarios();
         }
     }
 
@@ -158,7 +157,7 @@ public class Fachada {
                     login,
                     null,
                     tipo));
-            tabelaUsuariosFiltrado(lista);
+            preencherTabelaUsuariosFiltrado(lista);
         } catch (NegocioException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -194,7 +193,7 @@ public class Fachada {
             ), senhar)) {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Alterado com sucesso!");
                 KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
-                Fachada.this.tabelaUsuarios();
+                Fachada.this.preencherTabelaUsuarios();
                 limparTodosCampos(KeyControl.mainFrame.Painel);
             } else {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Falha na alteração.");
@@ -211,7 +210,7 @@ public class Fachada {
             } else {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Excluido com sucesso!");
                 KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
-                KeyControl.fachada.tabelaUsuarios();
+                KeyControl.fachada.preencherTabelaUsuarios();
                 KeyControl.fachada.limparTodosCampos(KeyControl.mainFrame.Painel);
             }
         } catch (NegocioException ex) {
@@ -257,7 +256,7 @@ public class Fachada {
             } else {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Excluido com sucesso!");
                 KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
-                KeyControl.fachada.tabelaUsuarios();
+                KeyControl.fachada.preencherTabelaUsuarios();
                 KeyControl.fachada.limparTodosCampos(KeyControl.mainFrame.Painel);
             }
         } catch (NegocioException ex) {
@@ -270,7 +269,7 @@ public class Fachada {
             if (ChaveRN.getInstance().atualizar(new ChaveDTO(id, sala, capacidade, tipo, null))) {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Alterado com sucesso!");
                 KeyControl.mainFrame.AbasUsuarios.setSelectedComponent(KeyControl.mainFrame.ListaUsuario);
-                Fachada.this.tabelaUsuarios();
+                Fachada.this.preencherTabelaUsuarios();
                 limparTodosCampos(KeyControl.mainFrame.Painel);
             } else {
                 MensagensUtil.addMsg(KeyControl.mainFrame, "Falha na alteração.");

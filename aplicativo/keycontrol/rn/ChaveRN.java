@@ -56,7 +56,7 @@ public class ChaveRN {
             ChaveDTO chave = DAO.buscarPorId(idChave); //FAZ COM QUE VERIFIQUE A EXISTENCIA DE UMA CHAVE
             chave.setBeneficiario_id(idBeneficiario);
             DAO.atualizar(chave);
-            HistoricoDAO.getInstance().inserir(idChave, idBeneficiario, 0);
+            HistoricoDAO.getInstance().inserir(chave.getId(), idBeneficiario, 0);
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }

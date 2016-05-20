@@ -182,6 +182,28 @@ public class MainFrame extends javax.swing.JFrame {
         CBoxTipoDevC = new javax.swing.JComboBox();
         ScrollPaneTab6 = new javax.swing.JScrollPane();
         TblChaveDev = new javax.swing.JTable();
+        AbaReserva = new javax.swing.JPanel();
+        LabEmprestimoMatricula1 = new javax.swing.JLabel();
+        TxtEmprestimoMatricula1 = new javax.swing.JTextField();
+        LabEmprestimoNome1 = new javax.swing.JLabel();
+        TxtEmprestimoNome1 = new javax.swing.JTextField();
+        LabEmprestimoTipo2 = new javax.swing.JLabel();
+        TxtEmprestimoTipo1 = new javax.swing.JTextField();
+        ButtonEmprestimoPreencher1 = new javax.swing.JButton();
+        ButtonEmprestimoBuscar1 = new javax.swing.JButton();
+        ButtonEmprestimoEmprestar1 = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
+        LabEmprestimoID1 = new javax.swing.JLabel();
+        TxtEmprestimoID1 = new javax.swing.JTextField();
+        TxtEmprestimoSala1 = new javax.swing.JTextField();
+        LabEmprestimoSala1 = new javax.swing.JLabel();
+        LabEmprestimoCap1 = new javax.swing.JLabel();
+        TxtEmprestimoCap1 = new javax.swing.JTextField();
+        LabEmprestimoTipo3 = new javax.swing.JLabel();
+        CBoxTipoEmpC1 = new javax.swing.JComboBox();
+        ScrollPaneTab5 = new javax.swing.JScrollPane();
+        TblChaveEmp1 = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         ButSair = new javax.swing.JButton();
         ButLogout = new javax.swing.JButton();
@@ -1365,6 +1387,177 @@ public class MainFrame extends javax.swing.JFrame {
 
         Painel.add(AbaDevolucao, "card5");
 
+        LabEmprestimoMatricula1.setText("Matrícula");
+
+        LabEmprestimoNome1.setText("Nome");
+
+        TxtEmprestimoNome1.setEnabled(false);
+
+        LabEmprestimoTipo2.setText("Tipo");
+
+        TxtEmprestimoTipo1.setEnabled(false);
+
+        ButtonEmprestimoPreencher1.setText("Preencher");
+        ButtonEmprestimoPreencher1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEmprestimoPreencher1ActionPerformed(evt);
+            }
+        });
+
+        ButtonEmprestimoBuscar1.setText("Buscar");
+        ButtonEmprestimoBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEmprestimoBuscar1ActionPerformed(evt);
+            }
+        });
+
+        ButtonEmprestimoEmprestar1.setText("Realizar Empréstimo");
+        ButtonEmprestimoEmprestar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEmprestimoEmprestar1ActionPerformed(evt);
+            }
+        });
+
+        LabEmprestimoID1.setText("ID");
+
+        TxtEmprestimoID1.setEditable(false);
+
+        LabEmprestimoSala1.setText("Sala");
+
+        LabEmprestimoCap1.setText("Capacidade");
+
+        LabEmprestimoTipo3.setText("Tipo");
+
+        CBoxTipoEmpC1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sala", "Laboratório", "Reunião", "Nenhum" }));
+        CBoxTipoEmpC1.setSelectedIndex(3);
+        CBoxTipoEmpC1.setToolTipText("");
+        CBoxTipoEmpC1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBoxTipoEmpC1ActionPerformed(evt);
+            }
+        });
+
+        ScrollPaneTab5.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        TblChaveEmp1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Sala", "Capacidade", "Tipo", "ID Benef."
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TblChaveEmp1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TblChaveEmp1MouseClicked(evt);
+            }
+        });
+        ScrollPaneTab5.setViewportView(TblChaveEmp1);
+
+        javax.swing.GroupLayout AbaReservaLayout = new javax.swing.GroupLayout(AbaReserva);
+        AbaReserva.setLayout(AbaReservaLayout);
+        AbaReservaLayout.setHorizontalGroup(
+            AbaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AbaReservaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AbaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ScrollPaneTab5)
+                    .addComponent(jSeparator5)
+                    .addComponent(jSeparator6)
+                    .addGroup(AbaReservaLayout.createSequentialGroup()
+                        .addComponent(LabEmprestimoMatricula1)
+                        .addGroup(AbaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(AbaReservaLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TxtEmprestimoMatricula1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addComponent(LabEmprestimoNome1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TxtEmprestimoNome1)
+                                .addGap(24, 24, 24)
+                                .addComponent(LabEmprestimoTipo2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TxtEmprestimoTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6))
+                            .addGroup(AbaReservaLayout.createSequentialGroup()
+                                .addGap(583, 583, 583)
+                                .addComponent(ButtonEmprestimoPreencher1))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaReservaLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ButtonEmprestimoEmprestar1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AbaReservaLayout.createSequentialGroup()
+                        .addComponent(LabEmprestimoID1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtEmprestimoID1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(LabEmprestimoSala1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtEmprestimoSala1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(LabEmprestimoCap1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtEmprestimoCap1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(LabEmprestimoTipo3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CBoxTipoEmpC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtonEmprestimoBuscar1)))
+                .addContainerGap())
+        );
+        AbaReservaLayout.setVerticalGroup(
+            AbaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AbaReservaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AbaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LabEmprestimoMatricula1)
+                    .addComponent(TxtEmprestimoMatricula1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabEmprestimoNome1)
+                    .addComponent(TxtEmprestimoNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabEmprestimoTipo2)
+                    .addComponent(TxtEmprestimoTipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonEmprestimoPreencher1)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(AbaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ButtonEmprestimoBuscar1)
+                    .addGroup(AbaReservaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LabEmprestimoSala1)
+                        .addComponent(TxtEmprestimoSala1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabEmprestimoCap1)
+                        .addComponent(TxtEmprestimoCap1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabEmprestimoID1)
+                        .addComponent(TxtEmprestimoID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LabEmprestimoTipo3)
+                        .addComponent(CBoxTipoEmpC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ScrollPaneTab5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addComponent(ButtonEmprestimoEmprestar1)
+                .addContainerGap())
+        );
+
+        Painel.add(AbaReserva, "card4");
+
         ButSair.setText("Sair");
         ButSair.setToolTipText("");
         ButSair.addActionListener(new java.awt.event.ActionListener() {
@@ -1442,7 +1635,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_TblUserMouseClicked
 
     private void ButAtualizarLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButAtualizarLActionPerformed
-        KeyControl.fachada.tabelaUsuarios();
+        KeyControl.fachada.preencherTabelaUsuarios();
     }//GEN-LAST:event_ButAtualizarLActionPerformed
 
     private void ButSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButSairActionPerformed
@@ -1651,6 +1844,26 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TblChaveDevMouseClicked
 
+    private void ButtonEmprestimoPreencher1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoPreencher1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonEmprestimoPreencher1ActionPerformed
+
+    private void ButtonEmprestimoBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoBuscar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonEmprestimoBuscar1ActionPerformed
+
+    private void ButtonEmprestimoEmprestar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmprestimoEmprestar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonEmprestimoEmprestar1ActionPerformed
+
+    private void CBoxTipoEmpC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoEmpC1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBoxTipoEmpC1ActionPerformed
+
+    private void TblChaveEmp1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TblChaveEmp1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TblChaveEmp1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1686,6 +1899,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JPanel AbaDevolucao;
     public javax.swing.JPanel AbaEmprestimo;
+    public javax.swing.JPanel AbaReserva;
     public javax.swing.JTabbedPane AbasChaves;
     public javax.swing.JTabbedPane AbasUsuarios;
     public javax.swing.JPanel AlteraChave;
@@ -1708,8 +1922,11 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JButton ButtonDevolucaoBuscar;
     public javax.swing.JButton ButtonDevolucaoDevolver;
     public javax.swing.JButton ButtonEmprestimoBuscar;
+    public javax.swing.JButton ButtonEmprestimoBuscar1;
     public javax.swing.JButton ButtonEmprestimoEmprestar;
+    public javax.swing.JButton ButtonEmprestimoEmprestar1;
     public javax.swing.JButton ButtonEmprestimoPreencher;
+    public javax.swing.JButton ButtonEmprestimoPreencher1;
     public javax.swing.JComboBox CBoxTipoAaltC;
     public javax.swing.JComboBox CBoxTipoAaltC1;
     public javax.swing.JComboBox CBoxTipoBusC;
@@ -1718,6 +1935,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JComboBox CBoxTipoCadU;
     public javax.swing.JComboBox CBoxTipoDevC;
     public javax.swing.JComboBox CBoxTipoEmpC;
+    public javax.swing.JComboBox CBoxTipoEmpC1;
     public javax.swing.JPanel CadastroChave;
     public javax.swing.JPanel CadastroUsuario;
     public javax.swing.JPanel Hora;
@@ -1729,12 +1947,19 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JLabel LabDevolucaoSala;
     public javax.swing.JLabel LabDevolucaoTipo;
     public javax.swing.JLabel LabEmprestimoCap;
+    public javax.swing.JLabel LabEmprestimoCap1;
     public javax.swing.JLabel LabEmprestimoID;
+    public javax.swing.JLabel LabEmprestimoID1;
     public javax.swing.JLabel LabEmprestimoMatricula;
+    public javax.swing.JLabel LabEmprestimoMatricula1;
     public javax.swing.JLabel LabEmprestimoNome;
+    public javax.swing.JLabel LabEmprestimoNome1;
     public javax.swing.JLabel LabEmprestimoSala;
+    public javax.swing.JLabel LabEmprestimoSala1;
     public javax.swing.JLabel LabEmprestimoTipo;
     public javax.swing.JLabel LabEmprestimoTipo1;
+    public javax.swing.JLabel LabEmprestimoTipo2;
+    public javax.swing.JLabel LabEmprestimoTipo3;
     public javax.swing.JLabel LabIdA;
     public javax.swing.JLabel LabIdA1;
     public javax.swing.JLabel LabIdB;
@@ -1777,12 +2002,14 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JScrollPane ScrollPaneTab2;
     public javax.swing.JScrollPane ScrollPaneTab3;
     public javax.swing.JScrollPane ScrollPaneTab4;
+    public javax.swing.JScrollPane ScrollPaneTab5;
     public javax.swing.JScrollPane ScrollPaneTab6;
     public javax.swing.JSeparator SeparatorDevolucao;
     public javax.swing.JTable TblChave;
     public javax.swing.JTable TblChave2;
     public javax.swing.JTable TblChaveDev;
     public javax.swing.JTable TblChaveEmp;
+    public javax.swing.JTable TblChaveEmp1;
     public javax.swing.JTable TblUser;
     public javax.swing.JTable TblUserFiltro;
     public javax.swing.JPanel Tipo;
@@ -1793,11 +2020,17 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JTextField TxtDevolucaoID;
     public javax.swing.JTextField TxtDevolucaoSala;
     public javax.swing.JTextField TxtEmprestimoCap;
+    public javax.swing.JTextField TxtEmprestimoCap1;
     public javax.swing.JTextField TxtEmprestimoID;
+    public javax.swing.JTextField TxtEmprestimoID1;
     public javax.swing.JTextField TxtEmprestimoMatricula;
+    public javax.swing.JTextField TxtEmprestimoMatricula1;
     public javax.swing.JTextField TxtEmprestimoNome;
+    public javax.swing.JTextField TxtEmprestimoNome1;
     public javax.swing.JTextField TxtEmprestimoSala;
+    public javax.swing.JTextField TxtEmprestimoSala1;
     public javax.swing.JTextField TxtEmprestimoTipo;
+    public javax.swing.JTextField TxtEmprestimoTipo1;
     public javax.swing.JTextField TxtIdAltC;
     public javax.swing.JTextField TxtIdAltC1;
     public javax.swing.JTextField TxtIdBusC;
@@ -1819,5 +2052,7 @@ public class MainFrame extends javax.swing.JFrame {
     public javax.swing.JSeparator jSeparator1;
     public javax.swing.JSeparator jSeparator3;
     public javax.swing.JSeparator jSeparator4;
+    public javax.swing.JSeparator jSeparator5;
+    public javax.swing.JSeparator jSeparator6;
     // End of variables declaration//GEN-END:variables
 }
