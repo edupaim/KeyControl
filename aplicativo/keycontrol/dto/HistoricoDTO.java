@@ -6,6 +6,7 @@ import java.util.Date;
  * @author Edu
  */
 public class HistoricoDTO {
+
     Integer id;
     ChaveDTO chave;
     IBeneficiarioDTO benef;
@@ -18,6 +19,17 @@ public class HistoricoDTO {
         this.benef = benef;
         this.data = data;
         this.tipo = tipo;
+    }
+
+    public String getTipoString(Integer tipo) {
+        switch (tipo) {
+            case 0:
+                return "Emprestimo";
+            case 1:
+                return "Devolução";
+            default:
+                return "Tipo não identificado";
+        }
     }
 
     public Integer getId() {

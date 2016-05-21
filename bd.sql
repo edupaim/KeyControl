@@ -64,9 +64,9 @@ CREATE TABLE IF NOT EXISTS `chave` (
 DELETE FROM `chave`;
 /*!40000 ALTER TABLE `chave` DISABLE KEYS */;
 INSERT INTO `chave` (`id_chave`, `sala`, `capacidade`, `tipo`, `id_beneficiario`) VALUES
-	(2, '101', 50, 0, 0),
+	(2, '101', 50, 0, 1),
 	(3, '102', 50, 0, 0),
-	(4, '201', 20, 0, 0),
+	(4, '201', 20, 0, 1),
 	(5, '12', 21, 1, 0),
 	(6, '14', 21, 1, 0),
 	(7, '25', 21, 1, 0),
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `chave_tipo` (
   `tipo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela keycontrol.chave_tipo: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela keycontrol.chave_tipo: ~3 rows (aproximadamente)
 DELETE FROM `chave_tipo`;
 /*!40000 ALTER TABLE `chave_tipo` DISABLE KEYS */;
 INSERT INTO `chave_tipo` (`id_tipo_chave`, `tipo`) VALUES
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `historico` (
   PRIMARY KEY (`id_historico`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela keycontrol.historico: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela keycontrol.historico: ~6 rows (aproximadamente)
 DELETE FROM `historico`;
 /*!40000 ALTER TABLE `historico` DISABLE KEYS */;
 INSERT INTO `historico` (`id_historico`, `id_beneficiario`, `data_operacao`, `id_chave`, `tipo_operacao`) VALUES
@@ -109,7 +109,37 @@ INSERT INTO `historico` (`id_historico`, `id_beneficiario`, `data_operacao`, `id
 	(3, 1, '2016-05-20 18:29:29', 8, 0),
 	(4, 1, '2016-05-20 18:32:17', 2, 1),
 	(5, 1, '2016-05-20 18:32:20', 7, 1),
-	(6, 1, '2016-05-20 18:32:22', 8, 1);
+	(6, 1, '2016-05-20 18:32:22', 8, 1),
+	(7, 1, '2016-05-20 20:02:47', 3, 0),
+	(8, 1, '2016-05-20 20:04:17', 4, 0),
+	(9, 1, '2016-05-20 20:05:23', 6, 0),
+	(10, 1, '2016-05-20 20:05:25', 2, 0),
+	(11, 1, '2016-05-20 20:05:27', 7, 0),
+	(12, 1, '2016-05-20 20:05:28', 5, 0),
+	(13, 1, '2016-05-20 20:05:29', 8, 0),
+	(14, 1, '2016-05-20 20:05:35', 3, 1),
+	(15, 1, '2016-05-20 20:05:36', 5, 1),
+	(16, 1, '2016-05-20 20:07:10', 6, 1),
+	(17, 1, '2016-05-20 20:07:11', 7, 1),
+	(18, 1, '2016-05-20 20:07:12', 2, 1),
+	(19, 1, '2016-05-20 20:07:14', 4, 1),
+	(20, 1, '2016-05-20 20:07:15', 8, 1),
+	(21, 1, '2016-05-20 21:55:32', 2, 0),
+	(22, 1, '2016-05-20 21:55:35', 3, 0),
+	(23, 1, '2016-05-20 21:55:37', 4, 0),
+	(24, 1, '2016-05-20 21:55:38', 5, 0),
+	(25, 1, '2016-05-20 21:55:40', 6, 0),
+	(26, 1, '2016-05-20 21:55:42', 7, 0),
+	(27, 1, '2016-05-20 21:55:45', 8, 0),
+	(28, 1, '2016-05-20 21:55:50', 2, 1),
+	(29, 1, '2016-05-20 21:55:52', 3, 1),
+	(30, 1, '2016-05-20 21:55:54', 4, 1),
+	(31, 1, '2016-05-20 21:55:55', 5, 1),
+	(32, 1, '2016-05-20 21:55:57', 6, 1),
+	(33, 1, '2016-05-20 21:55:59', 7, 1),
+	(34, 1, '2016-05-20 21:56:00', 8, 1),
+	(35, 1, '2016-05-20 22:10:47', 2, 0),
+	(36, 1, '2016-05-20 22:10:49', 4, 0);
 /*!40000 ALTER TABLE `historico` ENABLE KEYS */;
 
 
@@ -141,14 +171,14 @@ CREATE TABLE IF NOT EXISTS `horario` (
 DELETE FROM `horario`;
 /*!40000 ALTER TABLE `horario` DISABLE KEYS */;
 INSERT INTO `horario` (`id_horario`, `comeco`, `fim`) VALUES
-	(1, '07:00:00', '08:50:00'),
-	(2, '08:50:00', '10:40:00'),
-	(3, '10:40:00', '12:30:00'),
-	(4, '13:00:00', '14:50:00'),
-	(5, '14:50:00', '16:40:00'),
-	(6, '16:40:00', '18:30:00'),
-	(7, '18:30:00', '20:20:00'),
-	(8, '20:20:00', '22:10:00');
+	(0, '07:00:00', '08:50:00'),
+	(1, '08:50:00', '10:40:00'),
+	(2, '10:40:00', '12:30:00'),
+	(3, '13:00:00', '14:50:00'),
+	(4, '14:50:00', '16:40:00'),
+	(5, '16:40:00', '18:30:00'),
+	(6, '18:30:00', '20:20:00'),
+	(7, '20:20:00', '22:10:00');
 /*!40000 ALTER TABLE `horario` ENABLE KEYS */;
 
 
@@ -169,7 +199,11 @@ DELETE FROM `reserva`;
 INSERT INTO `reserva` (`id_reserva`, `id_chave`, `id_beneficiario`, `data_entrada`, `data_saida`, `id_horario`) VALUES
 	(1, 2, 2, '2222-01-21', '2222-01-22', 0),
 	(4, 4, 2, '2016-01-20', '2016-01-28', 0),
-	(8, 4, 1, '2016-01-28', '2016-01-29', 0);
+	(8, 4, 1, '2016-01-28', '2016-01-29', 0),
+	(9, 4, 1, '2016-01-20', '2016-01-27', 0),
+	(10, 4, 1, '2016-01-29', '2016-01-30', 0),
+	(11, 4, 1, '2016-01-30', '2016-01-31', 0),
+	(12, 4, 1, '2212-01-22', '2212-01-23', 2);
 /*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
 
 

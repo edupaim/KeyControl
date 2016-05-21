@@ -10,7 +10,9 @@ import aplicativo.keycontrol.dto.ReservaDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.util.MensagensUtil;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -191,5 +193,9 @@ public class ChaveRN {
         } catch (PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
         }
+    }
+
+    public Integer horaAtual() {
+        return null;
     }
 }

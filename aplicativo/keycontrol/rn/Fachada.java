@@ -511,7 +511,7 @@ public class Fachada {
                 tbl.removeRow(0);
             }
             lista.stream().forEach((h) -> {
-                tbl.addRow(new Object[]{h.getId(), h.getBenef().getNome(), h.getChave().getSala(), h.getData(), h.getTipo()});
+                tbl.addRow(new Object[]{h.getId(), h.getBenef().getNome(), h.getChave().getSala(), h.getData(), h.getTipoString(h.getTipo())});
             });
             KeyControl.mainFrame.TblRelatorio = new JTable(tbl);
         } catch (PersistenciaException ex) {
@@ -529,7 +529,7 @@ public class Fachada {
             }
             lista.stream().forEach((r) -> {
                 try {
-                    tbl.addRow(new Object[]{r.getId(), BeneficiarioRN.getInstance().buscarPorId(r.getId_beneficiario()).getNome(), ChaveRN.getInstance().buscarPorId(r.getId_chave()).getSala(), r.getDate_in(), r.getDate_out(), r.getHorario()});
+                    tbl.addRow(new Object[]{r.getId(), BeneficiarioRN.getInstance().buscarPorId(r.getId_beneficiario()).getNome(), ChaveRN.getInstance().buscarPorId(r.getId_chave()).getSala(), r.getDate_in(), r.getDate_out(), r.getHorarioString(r.getHorario())});
                 } catch (NegocioException ex1) {
                     Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex1);
                 }

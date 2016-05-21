@@ -27,7 +27,28 @@ public class ReservaDTO {
         this.horario = horario;
         this.id_chave = id_chave;
     }
-
+public String getHorarioString(Integer hora){
+    switch (hora) {
+            case 0:
+                return "07:00 ~ 08:50";
+            case 1:
+                return "08:50 ~ 10:40";
+            case 2:
+                return "10:40 ~ 12:30";
+            case 3:
+                return "13:00 ~ 14:50";
+            case 4:
+                return "14:50 ~ 16:40";
+            case 5:
+                return "16:40 ~ 18:30";
+            case 6:
+                return "18:30 ~ 20:20";
+            case 7:
+                return "20:20 ~ 22:10";
+            default:
+                return "Tipo não identificado";
+        }
+}
     public Integer getId() {
         return id;
     }
