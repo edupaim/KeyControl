@@ -10,14 +10,13 @@ import aplicativo.keycontrol.dto.ReservaDTO;
 import aplicativo.keycontrol.exception.NegocioException;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.util.MensagensUtil;
-import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 public class ChaveRN {
     /*
@@ -68,7 +67,7 @@ public class ChaveRN {
             } else {
                 for (Integer i = 0; i < lista.size(); i++) {
                     if (c.getId().equals(lista.get(i).getId_chave())
-                            /*&& Objects.equals( HORARIO ATUAL , lista.get(i).getHorario())*/
+                            && horaAtual().equals(lista.get(i).getHorario())
                             && ((time.before(lista.get(i).getDate_out()) && time.after(lista.get(i).getDate_in())))) {
                         bool = false;
                     }
@@ -80,6 +79,8 @@ public class ChaveRN {
                 chave.setBeneficiario_id(b.getId());
                 DAO.atualizar(chave);
                 HistoricoDAO.getInstance().inserir(b.getId(), chave.getId(), 0);
+            } else {
+                MensagensUtil.addMsg(null, "Chave está reservada para este horario!");
             }
         } catch (NegocioException | PersistenciaException ex) {
             throw new NegocioException(ex.getMessage());
@@ -196,6 +197,33 @@ public class ChaveRN {
     }
 
     public Integer horaAtual() {
+        List<String> horas = new ArrayList<>();
+        horas.add("07:00");
+        horas.add("08:50");
+        horas.add("10:40");
+        horas.add("12:30");
+        horas.add("13:00");
+        horas.add("14:50");
+        horas.add("16:40");
+        horas.add("18:30");
+        horas.add("20:20");
+        horas.add("22:10");
+        Date agora = new Date();
+        for (Integer i = 0; i < horas.size() - 1; i++) {
+            if (i != 4) {
+                String[] hora = horas.get(i).split (Pattern.quote (":"));
+                String[] hora2 = horas.get(i+1).split (Pattern.quote (":"));
+                Date horaA = new Date();
+                Date horaB = new Date();
+                horaA.setHours(Integer.parseInt(hora[0]));
+                horaA.setMinutes(Integer.parseInt(hora[1]));
+                horaB.setHours(Integer.parseInt(hora2[0]));
+                horaB.setMinutes(Integer.parseInt(hora2[1]));
+                if (agora.getTime() > horaA.getTime() && agora.getTime() < horaB.getTime()) {
+                    return i;
+                }
+            }
+        }
         return null;
     }
 }

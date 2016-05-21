@@ -445,9 +445,9 @@ public class Fachada {
             IBeneficiarioDTO benef = BeneficiarioRN.getInstance().buscarPorMatricula(matricula);
             try {
                 Date dataI;
-                dataI = new SimpleDateFormat("dd/mm/yyyy").parse(dataIni);
+                dataI = new SimpleDateFormat("dd/MM/yyyy").parse(dataIni);
                 Date dataF;
-                dataF = new SimpleDateFormat("dd/mm/yyyy").parse(dataFim);
+                dataF = new SimpleDateFormat("dd/MM/yyyy").parse(dataFim);
                 if(ReservaRN.getInstance().fazerReserva(chave, benef, dataI, dataF, horario)){
                  MensagensUtil.addMsg(null, "Reserva concluida!");
                 }
@@ -477,7 +477,6 @@ public class Fachada {
 
     public void buscarChaveReserva(String sala, String capacidade, Integer tipo) {
         try {
-            Integer i = 0;
             ChaveDTO chave = new ChaveDTO();
             chave.setSala((sala == null || "".equals(sala)) ? null : sala);
             chave.setCapacidade((capacidade == null || "".equals(capacidade)) ? null : Integer.parseInt(capacidade));

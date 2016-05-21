@@ -6,7 +6,6 @@
 package aplicativo.keycontrol.gui;
 
 import aplicativo.keycontrol.main.KeyControl;
-import aplicativo.keycontrol.rn.ChaveRN;
 import aplicativo.keycontrol.util.ThreadHoraUtil;
 import aplicativo.keycontrol.util.MensagensUtil;
 import javax.swing.JTable;
@@ -1992,8 +1991,6 @@ public class MainFrame extends javax.swing.JFrame {
         } else {
             MensagensUtil.addMsg(null, "Selecione uma chave na tabela!");
         }
-        ChaveRN.getInstance().horaAtual();
-        
     }//GEN-LAST:event_ButtonEmprestimoEmprestarActionPerformed
 
     private void CBoxTipoEmpCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoEmpCActionPerformed

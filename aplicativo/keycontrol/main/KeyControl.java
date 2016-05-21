@@ -8,6 +8,7 @@ package aplicativo.keycontrol.main;
 import aplicativo.keycontrol.dto.UsuarioDTO;
 import aplicativo.keycontrol.gui.LoginFrame;
 import aplicativo.keycontrol.gui.MainFrame;
+import aplicativo.keycontrol.rn.ChaveRN;
 import aplicativo.keycontrol.rn.Fachada;
 
 /**
@@ -35,6 +36,7 @@ public class KeyControl {
         loginFrame = new LoginFrame();
         loginFrame.setLocationRelativeTo(null);
         loginFrame.setVisible(true);
+        System.out.println(ChaveRN.getInstance().horaAtual());
     }
 
     public static UsuarioDTO getUsuarioLogado() {
