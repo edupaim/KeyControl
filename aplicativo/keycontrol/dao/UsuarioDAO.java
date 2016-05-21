@@ -51,7 +51,8 @@ public class UsuarioDAO implements GenericoDAO<UsuarioDTO> {
         } catch (SQLException ex) {
             throw new PersistenciaException(ex.getMessage(), ex);
         } finally {
-            ConexaoUtil.fecharConexao(con);
+            if(con != null)
+                ConexaoUtil.fecharConexao(con);
         }
         return usuarioR;
     }
