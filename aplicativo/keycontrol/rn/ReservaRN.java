@@ -11,8 +11,6 @@ import aplicativo.keycontrol.util.MensagensUtil;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /*
  * @author Edu

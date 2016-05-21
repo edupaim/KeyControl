@@ -21,8 +21,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -63,27 +61,21 @@ public class Fachada {
      * METODOS DO LOGIN FRAME
      */
     public void fazerLogin(String login, String senha) {
-        /*try {
-         if (UsuarioRN.getInstance().logar(login, senha)) {
-         MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
-         KeyControl.loginFrame.dispose();
-         KeyControl.mainFrame = new MainFrame();
-         KeyControl.mainFrame.setLocationRelativeTo(null);
-         KeyControl.mainFrame.setVisible(true);
-         if (KeyControl.getUsuarioLogado().getTipo() > 0) {
-         KeyControl.mainFrame.MenuUsuarios.setVisible(false);
-         KeyControl.mainFrame.MenuChaves.setVisible(false);
-         }
-         }
-         } catch (NegocioException ex) {
-         MensagensUtil.addMsg(KeyControl.loginFrame, ex.getMessage());
-         }*/
-        KeyControl.setUsuarioLogado(new UsuarioDTO(0, "", "", "", 0));
-        KeyControl.loginFrame.dispose();
-        KeyControl.mainFrame = new MainFrame();
-        KeyControl.mainFrame.setLocationRelativeTo(null);
-        KeyControl.mainFrame.setVisible(true);
-
+        try {
+            if (UsuarioRN.getInstance().logar(login, senha)) {
+                MensagensUtil.addMsg(KeyControl.loginFrame, "Login com sucesso!");
+                KeyControl.loginFrame.dispose();
+                KeyControl.mainFrame = new MainFrame();
+                KeyControl.mainFrame.setLocationRelativeTo(null);
+                KeyControl.mainFrame.setVisible(true);
+                if (KeyControl.getUsuarioLogado().getTipo() > 0) {
+                    KeyControl.mainFrame.MenuUsuarios.setVisible(false);
+                    KeyControl.mainFrame.MenuChaves.setVisible(false);
+                }
+            }
+        } catch (NegocioException ex) {
+            MensagensUtil.addMsg(KeyControl.loginFrame, ex.getMessage());
+        }
     }
 
     /*
@@ -328,7 +320,7 @@ public class Fachada {
     }
 
     /*
-     * METODOS DO DEVOLUCAO MAIN FRAME
+     * METODOS DA DEVOLUCAO > MAIN FRAME
      */
     public void devolverChave(Integer id) {
         try {
@@ -374,7 +366,7 @@ public class Fachada {
     }
 
     /*
-     * METODOS DO EMPRESTIMO MAIN FRAME
+     * METODOS DO EMPRESTIMO > MAIN FRAME
      */
     public void buscarBeneficiarioEmprestimo(String matricula) {
         try {
@@ -437,7 +429,7 @@ public class Fachada {
     }
 
     /*
-     * METODOS DO RESERVA DE CHAVE MAIN FRAME
+     * METODOS DO RESERVA DE CHAVE > MAIN FRAME
      */
     public void reservarChave(String matricula, Integer id_chave, String dataIni, String dataFim, Integer horario) {
         try {
@@ -501,6 +493,9 @@ public class Fachada {
         KeyControl.mainFrame.TblChaveEmp1 = new JTable(tbl);
     }
 
+    /*
+     * METODOS DO RELATORIO > MAIN FRAME
+     */
     public void relatorioEmprestimos() {
         List<HistoricoDTO> lista;
         try {
