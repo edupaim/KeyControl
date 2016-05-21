@@ -3,6 +3,7 @@ package aplicativo.keycontrol.dao;
 import aplicativo.keycontrol.dto.ChaveDTO;
 import aplicativo.keycontrol.exception.PersistenciaException;
 import aplicativo.keycontrol.util.ConexaoUtil;
+import aplicativo.keycontrol.util.MensagensUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -149,7 +150,7 @@ public class ChaveDAO implements GenericoDAO<ChaveDTO> {
                 retorno.add(chave);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ChaveDAO.class.getName()).log(Level.SEVERE, null, ex);
+            MensagensUtil.addMsg(null, ex.getMessage());
         } finally {
             ConexaoUtil.fecharConexao(con);
         }

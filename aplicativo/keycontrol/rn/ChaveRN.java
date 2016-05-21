@@ -75,7 +75,7 @@ public class ChaveRN {
             }
             if (bool) {
                 ChaveDAO DAO = ChaveDAO.getInstance();
-                ChaveDTO chave = DAO.buscarPorId(c.getId()); //FAZ COM QUE VERIFIQUE A EXISTENCIA DE UMA CHAVE
+                ChaveDTO chave = DAO.buscarPorId(c.getId());
                 chave.setBeneficiario_id(b.getId());
                 DAO.atualizar(chave);
                 HistoricoDAO.getInstance().inserir(b.getId(), chave.getId(), 0);

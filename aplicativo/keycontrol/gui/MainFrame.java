@@ -2020,11 +2020,15 @@ public class MainFrame extends javax.swing.JFrame {
         JViewport view = ScrollPaneTab5.getViewport();
         JTable tabela = (JTable) view.getView();
         Integer linha = tabela.getSelectedRow();
-        KeyControl.fachada.reservarChave(TxtEmprestimoMatricula1.getText(),
-                (Integer) tabela.getModel().getValueAt(linha, 0),
-                jFormattedTextField1.getText(),
-                jFormattedTextField3.getText(),
-                CBoxTipoEmpC2.getSelectedIndex());
+        if (linha > -1) {
+            KeyControl.fachada.reservarChave(TxtEmprestimoMatricula1.getText(),
+                    (Integer) tabela.getModel().getValueAt(linha, 0),
+                    jFormattedTextField1.getText(),
+                    jFormattedTextField3.getText(),
+                    CBoxTipoEmpC2.getSelectedIndex());
+        } else {
+            MensagensUtil.addMsg(null, "Selecione uma chave!");
+        }
     }//GEN-LAST:event_ButtonEmprestimoEmprestar1ActionPerformed
 
     private void CBoxTipoEmpC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxTipoEmpC1ActionPerformed
@@ -2063,11 +2067,6 @@ public class MainFrame extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -2076,11 +2075,8 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            MensagensUtil.addMsg(null, ex.getMessage());
         }
-        //</editor-fold>
-
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

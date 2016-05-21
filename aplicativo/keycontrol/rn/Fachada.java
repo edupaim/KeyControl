@@ -167,7 +167,7 @@ public class Fachada {
                     tipo));
             preencherTabelaUsuariosFiltrado(lista);
         } catch (NegocioException ex) {
-            Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            MensagensUtil.addMsg(null, ex.getMessage());
         }
     }
 
@@ -448,14 +448,14 @@ public class Fachada {
                 dataI = new SimpleDateFormat("dd/MM/yyyy").parse(dataIni);
                 Date dataF;
                 dataF = new SimpleDateFormat("dd/MM/yyyy").parse(dataFim);
-                if(ReservaRN.getInstance().fazerReserva(chave, benef, dataI, dataF, horario)){
-                 MensagensUtil.addMsg(null, "Reserva concluida!");
+                if (ReservaRN.getInstance().fazerReserva(chave, benef, dataI, dataF, horario)) {
+                    MensagensUtil.addMsg(null, "Reserva concluida!");
                 }
             } catch (ParseException ex) {
-                // Formato inválido
+                MensagensUtil.addMsg(null, "Digite a data correta.");
             }
         } catch (NegocioException ex) {
-            Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
+            MensagensUtil.addMsg(null, ex.getMessage());
         }
     }
 
@@ -514,10 +514,10 @@ public class Fachada {
             });
             KeyControl.mainFrame.TblRelatorio = new JTable(tbl);
         } catch (PersistenciaException ex) {
-            Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
+            MensagensUtil.addMsg(null, ex.getMessage());
         }
     }
-    
+
     public void relatorioReservas() {
         List<ReservaDTO> lista;
         try {
@@ -530,12 +530,12 @@ public class Fachada {
                 try {
                     tbl.addRow(new Object[]{r.getId(), BeneficiarioRN.getInstance().buscarPorId(r.getId_beneficiario()).getNome(), ChaveRN.getInstance().buscarPorId(r.getId_chave()).getSala(), r.getDate_in(), r.getDate_out(), r.getHorarioString(r.getHorario())});
                 } catch (NegocioException ex1) {
-                    Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex1);
+                    MensagensUtil.addMsg(null, ex1.getMessage());
                 }
             });
             KeyControl.mainFrame.TblReserva = new JTable(tbl);
         } catch (PersistenciaException ex) {
-            Logger.getLogger(Fachada.class.getName()).log(Level.SEVERE, null, ex);
+            MensagensUtil.addMsg(null, ex.getMessage());
         }
     }
 }
